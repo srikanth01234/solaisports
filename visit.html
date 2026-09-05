@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Solai - Choose Your Destination</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & GLOBAL STYLES
+       ========================================================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --primary-green: #8CF716;
+      --primary-green-hover: #7ae605;
+      --bg-dark: #070d08;
+      --card-bg-dark: rgba(14, 22, 16, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.14);
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    /* Outer Wrapper with Turf Night Lighting Background */
+    .visit-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      padding: 30px 24px 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(6, 12, 8, 0.75) 0%, rgba(8, 16, 10, 0.65) 50%, rgba(5, 10, 7, 0.92) 100%),
+                  url('https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* Lighting glow overlay */
+    .visit-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(140, 247, 22, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Top Decorative Grid Dots */
+    .grid-dots-top-left {
+      position: absolute;
+      top: 24px;
+      left: 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 5px);
+      gap: 6px;
+      opacity: 0.6;
+    }
+
+    .grid-dots-top-left span {
+      width: 5px;
+      height: 5px;
+      background-color: var(--primary-green);
+      border-radius: 50%;
+    }
+
+    /* Header Logo */
+    .header-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      user-select: none;
+      margin-bottom: 24px;
+      z-index: 5;
+    }
+
+    .logo-main {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .logo-main .green-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary-green);
+      border-radius: 2px;
+      margin-left: 2px;
+    }
+
+    .logo-sub {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 3px;
+    }
+
+    /* Container Box */
+    .container {
+      width: 100%;
+      max-width: 940px;
+      margin: 0 auto;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Welcome Badge */
+    .welcome-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 6px 18px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .welcome-badge .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--primary-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--primary-green);
+    }
+
+    /* Main Title */
+    .page-title {
+      font-size: clamp(38px, 5.5vw, 64px);
+      font-weight: 900;
+      line-height: 1.05;
+      text-align: center;
+      color: #ffffff;
+      letter-spacing: -1.5px;
+    }
+
+    .page-title .highlight {
+      color: var(--primary-green);
+    }
+
+    .subtitle-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .subtitle-text {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.85);
+      text-transform: uppercase;
+    }
+
+    .doodle-arrow {
+      position: absolute;
+      right: -55px;
+      top: -15px;
+      width: 45px;
+      height: 45px;
+      opacity: 0.8;
+    }
+
+    /* ==========================================================================
+       TWO DESTINATION CARDS
+       ========================================================================== */
+    .destination-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      width: 100%;
+      margin-bottom: 36px;
+    }
+
+    .dest-card {
+      position: relative;
+      background: var(--card-bg-dark);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 40px 32px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dest-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary-green);
+      box-shadow: 0 25px 60px rgba(140, 247, 22, 0.2);
+    }
+
+    /* Background image preview container */
+    .card-bg-preview {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .dest-card:hover .card-bg-preview {
+      opacity: 0.28;
+    }
+
+    /* Circular Icon Header */
+    .icon-sphere {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(140, 247, 22, 0.35) 0%, rgba(15, 30, 18, 0.95) 100%);
+      border: 1px solid var(--primary-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(140, 247, 22, 0.25);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .icon-sphere svg {
+      width: 36px;
+      height: 36px;
+      stroke-width: 1.8;
+    }
+
+    .cursive-subtext {
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      color: var(--primary-green);
+      line-height: 1;
+      margin-bottom: 2px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-main-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-description {
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 320px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+      flex: 1;
+    }
+
+    /* CTA Pill Button inside card */
+    .btn-dest-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      max-width: 260px;
+      background: rgba(10, 18, 12, 0.85);
+      border: 1.5px solid var(--primary-green);
+      color: #ffffff;
+      padding: 12px 20px 12px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-dest-cta:hover {
+      background: var(--primary-green);
+      color: #0b120c;
+      box-shadow: 0 8px 25px rgba(140, 247, 22, 0.4);
+    }
+
+    .btn-dest-cta .btn-arrow {
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-dest-cta:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       WHY VISIT SOLAI? CONTAINER
+       ========================================================================== */
+    .why-visit-box {
+      width: 100%;
+      background: var(--card-bg-dark);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 28px 36px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      margin-bottom: 40px;
+    }
+
+    .why-visit-title {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .why-visit-title .highlight {
+      color: var(--primary-green);
+    }
+
+    .features-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .why-feature-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .why-feature-col:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .why-feature-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-green);
+      margin-bottom: 10px;
+    }
+
+    .why-feature-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke-width: 1.8;
+    }
+
+    .why-feature-heading {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .why-feature-desc {
+      font-size: 12px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 160px;
+    }
+
+    /* ==========================================================================
+       FOOTER SECTION
+       ========================================================================== */
+    .footer-section {
+      width: 100%;
+      max-width: 940px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 5;
+      padding-top: 10px;
+    }
+
+    .lets-play-text {
+      font-family: 'Caveat', cursive;
+      font-size: 38px;
+      color: var(--primary-green);
+      line-height: 1;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+    }
+
+    .social-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon-btn:hover {
+      background: var(--primary-green);
+      color: #0b120c;
+      transform: translateY(-2px);
+    }
+
+    .thank-you-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .heart-icon {
+      color: var(--primary-green);
+      font-size: 20px;
+    }
+
+    .thank-you-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .thank-you-sub {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+    }
+
+    /* Custom Toast */
+    .custom-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(18, 26, 20, 0.95);
+      color: #8CF716;
+      border: 1px solid #8CF716;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 13.5px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Responsive Design (< 768px) */
+    @media (max-width: 768px) {
+      .destination-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .features-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .why-feature-col:not(:last-child)::after {
+        display: none;
+      }
+      .footer-section {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+      .thank-you-block {
+        align-items: center;
+      }
+      .doodle-arrow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="visit-wrapper">
+    <!-- Top Decorative Dots -->
+    <div class="grid-dots-top-left">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Container Content -->
+    <div class="container">
+      <!-- Header Logo -->
+      <a href="index.html" class="header-logo">
+        <div class="logo-main">
+          SOLAI<span class="green-dot"></span>
+        </div>
+        <div class="logo-sub">SPORTS ARENA</div>
+      </a>
+
+      <!-- Welcome Badge -->
+      <div class="welcome-badge">
+        <span class="dot"></span>
+        WELCOME TO SOLAI
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="page-title">
+        Choose Your<br>
+        <span class="highlight">Destination</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <div class="subtitle-row">
+        <span class="subtitle-text">— WE'RE GLAD YOU'RE HERE! —</span>
+        <!-- Doodle Arrow -->
+        <svg class="doodle-arrow" viewBox="0 0 100 100" fill="none" stroke="#8CF716" stroke-width="2.5" stroke-linecap="round">
+          <path d="M 10,20 Q 80,10 70,60 T 20,80 Q 70,85 85,75" />
+          <polyline points="75,65 85,75 72,82" />
+        </svg>
+      </div>
+
+      <!-- DESTINATION CARDS GRID -->
+      <div class="destination-cards-grid">
+        <!-- Card 1: Explore Our Website -->
+        <div class="dest-card">
+          <div class="card-bg-preview" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80');"></div>
+          
+          <div class="icon-sphere">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+
+          <div class="cursive-subtext">Explore Our</div>
+          <h2 class="card-main-title">WEBSITE</h2>
+          <p class="card-description">
+            Discover our facilities, sports, services and book your slot online easily.
+          </p>
+
+          <a href="index.html" class="btn-dest-cta">
+            VISIT WEBSITE
+            <span class="btn-arrow">➔</span>
+          </a>
+        </div>
+
+        <!-- Card 2: Find Our Location -->
+        <div class="dest-card">
+          <div class="card-bg-preview" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80');"></div>
+          
+          <div class="icon-sphere">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+
+          <div class="cursive-subtext">Find Our</div>
+          <h2 class="card-main-title">LOCATION</h2>
+          <p class="card-description">
+            Visit us at our arena and experience the game like never before.
+          </p>
+
+          <a href="https://maps.google.com" target="_blank" class="btn-dest-cta" id="locationCtaBtn">
+            GET DIRECTIONS
+            <span class="btn-arrow">➔</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- WHY VISIT SOLAI? CONTAINER -->
+      <div class="why-visit-box">
+        <h3 class="why-visit-title">
+          — WHY <span class="highlight">VISIT</span> SOLAI? —
+        </h3>
+
+        <div class="features-row">
+          <!-- Col 1 -->
+          <div class="why-feature-col">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="why-feature-heading">PREMIUM FACILITIES</div>
+            <div class="why-feature-desc">World-class turfs and indoor games</div>
+          </div>
+
+          <!-- Col 2 -->
+          <div class="why-feature-col">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+                <circle cx="15" cy="15" r="2"/>
+                <line x1="15" y1="13" x2="15" y2="17"/>
+                <line x1="13" y1="15" x2="17" y2="15"/>
+              </svg>
+            </div>
+            <div class="why-feature-heading">EASY BOOKING</div>
+            <div class="why-feature-desc">Quick & hassle-free slot booking</div>
+          </div>
+
+          <!-- Col 3 -->
+          <div class="why-feature-col">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="why-feature-heading">FOR EVERYONE</div>
+            <div class="why-feature-desc">Perfect for players, friends & families</div>
+          </div>
+
+          <!-- Col 4 -->
+          <div class="why-feature-col">
+            <div class="why-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                <path d="M4 22h16"/>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
+              </svg>
+            </div>
+            <div class="why-feature-heading">BEST EXPERIENCE</div>
+            <div class="why-feature-desc">Quality matches, unforgettable moments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer-section">
+      <div class="lets-play-text">Let's Play!</div>
+
+      <div class="social-block">
+        <div class="social-title">STAY CONNECTED</div>
+        <div class="social-icons">
+          <a href="#" class="social-icon-btn" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-icon-btn" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-icon-btn" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="thank-you-block">
+        <span class="heart-icon">♡</span>
+        <div class="thank-you-title">THANK YOU</div>
+        <div class="thank-you-sub">FOR CHOOSING SOLAI SPORTS ARENA</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const locationBtn = document.getElementById('locationCtaBtn');
+      if (locationBtn) {
+        locationBtn.addEventListener('click', (e) => {
+          showNotification("Opening Google Maps Directions to Solai Sports Arena...");
+        });
+      }
+
+      function showNotification(message) {
+        let existingToast = document.querySelector('.custom-toast');
+        if (existingToast) existingToast.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'custom-toast';
+        toast.innerText = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.transform = 'translateX(-50%) translateY(0)';
+        }, 10);
+
+        setTimeout(() => {
+          toast.style.transform = 'translateX(-50%) translateY(100px)';
+          setTimeout(() => toast.remove(), 400);
+        }, 3000);
+      }
+    });
+  </script>
+</body>
+</html>

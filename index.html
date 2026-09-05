@@ -1,0 +1,6442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solai Sports Arena - Premium Sports Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & GLOBAL STYLES
+       ========================================================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --primary-green: #8CF716;
+      --primary-green-hover: #7ae605;
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --text-main: #ffffff;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: #0b120c;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       HERO CONTAINER & BACKGROUND
+       ========================================================================== */
+    .hero-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 48px 24px 48px;
+      background: #060c08;
+      overflow: hidden;
+    }
+
+    /* Dynamic Hero Background Slideshow */
+    .hero-bg-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-bg-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: opacity;
+    }
+
+    .hero-bg-layer.active {
+      opacity: 1;
+    }
+
+    /* Overlay gradient over background images for readability */
+    .hero-bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(8, 15, 10, 0.65) 0%, rgba(10, 20, 13, 0.4) 45%, rgba(6, 12, 8, 0.85) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Lighting glow overlay */
+    .hero-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 18% 25%, rgba(140, 247, 22, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 82% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+      height: 52px;
+    }
+
+    /* Logo */
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .logo-main {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .logo-main .green-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background-color: var(--primary-green);
+      border-radius: 2px;
+      margin-left: 2px;
+    }
+
+    .logo-sub {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 2px;
+    }
+
+    /* Nav Tabs Pill */
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      padding: 5px;
+      border-radius: 100px;
+      gap: 2px;
+    }
+
+    .nav-link {
+      padding: 8px 22px;
+      border-radius: 100px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link.active {
+      background: #ffffff;
+      color: #0b120c;
+      font-weight: 700;
+    }
+
+    /* Header Right CTA Button */
+    .btn-header-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #194812;
+      color: #ffffff;
+      padding: 6px 6px 6px 20px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: 1px solid rgba(140, 247, 22, 0.35);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-header-cta:hover {
+      background: #1f5916;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(140, 247, 22, 0.25);
+    }
+
+    .btn-header-cta .icon-circle {
+      width: 32px;
+      height: 32px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b120c;
+    }
+
+    /* ==========================================================================
+       MAIN HERO SECTION CONTENT
+       ========================================================================== */
+    .hero-main {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Top Badge */
+    .experience-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 6px 18px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .experience-badge .badge-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--primary-green);
+    }
+
+    /* Main Title */
+    .hero-title {
+      font-size: clamp(48px, 6vw, 84px);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -2px;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 15px;
+      user-select: none;
+    }
+
+    .hero-title .highlight-green {
+      color: var(--primary-green);
+    }
+
+    /* Grid Layout for Left Content & Right Cards Stack */
+    .hero-grid-content {
+      display: flex;
+      width: 100%;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: -45px;
+      /* Shifted UP to eliminate empty space */
+    }
+
+    /* Left Side Content (NO BACKGROUND CARD - Pure Text & Button) */
+    .left-content {
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      transform: translateY(-100px);
+      /* Moved further UP as requested */
+    }
+
+    .left-title {
+      font-size: clamp(24px, 2.5vw, 34px);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .left-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .rating-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stars-group {
+      display: flex;
+      gap: 4px;
+      color: var(--primary-green);
+    }
+
+    .rating-score {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .happy-players {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* Left CTA Button */
+    .btn-left-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 230px;
+      background: var(--primary-green);
+      color: #0b120c;
+      padding: 10px 10px 10px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 800;
+      margin-top: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-left-cta:hover {
+      background: var(--primary-green-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(140, 247, 22, 0.4);
+    }
+
+    .btn-left-cta .btn-arrow-circle {
+      width: 36px;
+      height: 36px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b120c;
+    }
+
+    /* ==========================================================================
+       RIGHT SPORTS CARDS (2-Column Staggered Grid as in Image)
+       ========================================================================== */
+    .right-sports-grid {
+      display: grid;
+      grid-template-columns: 140px 140px;
+      gap: 12px;
+      align-items: start;
+      transform: translateY(-90px);
+      /* Tuned for compact 68px card images */
+    }
+
+    .sports-col-2 {
+      margin-top: 18px;
+      /* Staggered offset downward */
+    }
+
+    .sports-card {
+      background: rgba(14, 22, 16, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 14px;
+      padding: 6px 6px 7px 6px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sports-card-img-wrapper {
+      width: 100%;
+      height: 68px;
+      /* Reduced image height to fit laptop screen */
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .sports-card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .sports-card-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.2px;
+      display: block;
+    }
+
+    .sports-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      border-color: var(--primary-green);
+      box-shadow: 0 12px 30px rgba(140, 247, 22, 0.25);
+    }
+
+    .sports-card:hover .sports-card-img-wrapper img {
+      transform: scale(1.1);
+    }
+
+    /* Active Highlighted Sports Card State */
+    .sports-card.active {
+      border-color: var(--primary-green) !important;
+      box-shadow: 0 0 24px rgba(140, 247, 22, 0.5), 0 10px 28px rgba(0, 0, 0, 0.5) !important;
+      transform: translateY(-4px) scale(1.04) !important;
+    }
+
+    .sports-card.active .sports-card-label {
+      color: var(--primary-green) !important;
+      text-shadow: 0 0 10px rgba(140, 247, 22, 0.4);
+    }
+
+    .sports-card.active .sports-card-img-wrapper img {
+      transform: scale(1.1);
+    }
+
+    .mobile-sport-card.active {
+      border: 2px solid var(--primary-green) !important;
+      box-shadow: 0 0 22px rgba(140, 247, 22, 0.45) !important;
+    }
+
+    /* ==========================================================================
+       BOTTOM FEATURES BAR STRIP
+       ========================================================================== */
+    .bottom-features-bar {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 16px 28px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .feature-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: #e2e8f0;
+    }
+
+    .feature-icon-wrapper {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b120c;
+    }
+
+    .feature-icon-wrapper svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 1.8;
+    }
+
+    .feature-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0b120c;
+      line-height: 1.2;
+    }
+
+    /* Toast Notification */
+    .custom-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(18, 26, 20, 0.95);
+      color: #8CF716;
+      border: 1px solid #8CF716;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 13.5px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* ==========================================================================
+       MOBILE RESPONSIVE STYLES (< 768px - Reference Design Match)
+       ========================================================================== */
+    .mobile-only {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(10, 18, 12, 0.96);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 80px 24px 30px 24px;
+      gap: 18px;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .mobile-nav-drawer.active {
+      right: 0;
+    }
+
+    .mobile-nav-item {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-nav-item.active {
+      color: var(--primary-green);
+    }
+
+    .mobile-drawer-btn {
+      margin-top: auto;
+      background: var(--primary-green);
+      color: #0b120c;
+      border: none;
+      padding: 14px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: block !important;
+      }
+
+      .mobile-menu-btn {
+        display: flex !important;
+      }
+
+      .nav-pill,
+      .btn-header-cta {
+        display: none !important;
+      }
+
+      html,
+      body {
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: auto !important;
+      }
+
+      .hero-wrapper {
+        height: auto !important;
+        min-height: 100vh;
+        max-height: none !important;
+        padding: 16px 20px 40px 20px !important;
+        overflow: visible !important;
+      }
+
+      .header {
+        height: 48px;
+      }
+
+      .mobile-hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      .mobile-facility-badge {
+        display: inline-block;
+        background: rgba(140, 247, 22, 0.15);
+        color: var(--primary-green);
+        border: 1px solid rgba(140, 247, 22, 0.3);
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        margin-bottom: 16px;
+      }
+
+      .mobile-hero-headline {
+        font-size: 42px;
+        font-weight: 900;
+        line-height: 1.05;
+        letter-spacing: -1px;
+        color: #ffffff;
+        margin-bottom: 14px;
+      }
+
+      .mobile-hero-headline .highlight-green {
+        color: var(--primary-green);
+      }
+
+      .mobile-hero-sub {
+        font-size: 14px;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.75);
+        margin-bottom: 24px;
+        max-width: 320px;
+      }
+
+      .mobile-cta-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 280px;
+        background: var(--primary-green);
+        color: #0b120c;
+        border: none;
+        padding: 14px 16px 14px 24px;
+        border-radius: 100px;
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: 0.5px;
+        box-shadow: 0 8px 25px rgba(140, 247, 22, 0.35);
+        cursor: pointer;
+        margin-bottom: 32px;
+      }
+
+      .mobile-cta-btn .circle-icon {
+        width: 36px;
+        height: 36px;
+        background: #0b120c;
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+      }
+
+      .mobile-navbar-pill {
+        display: flex !important;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 3px 6px;
+        border-radius: 100px;
+        gap: 2px;
+      }
+
+      .mobile-nav-link {
+        padding: 4px 10px;
+        border-radius: 100px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .mobile-nav-link.active {
+        background: #ffffff;
+        color: #0b120c;
+        font-weight: 800;
+      }
+
+      /* Horizontal Sports Cards Carousel */
+      .mobile-cards-carousel {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+
+      .mobile-cards-carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .mobile-sport-card {
+        flex: 0 0 115px;
+        /* Reduced card width */
+        height: 145px;
+        /* Reduced card height */
+        border-radius: 14px;
+        position: relative;
+        overflow: hidden;
+        scroll-snap-align: start;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .mobile-sport-card.featured {
+        flex: 0 0 128px;
+        border-color: var(--primary-green);
+      }
+
+      .mobile-sport-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .mobile-sport-card .card-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.9) 100%);
+      }
+
+      .mobile-sport-card .card-footer {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        z-index: 2;
+      }
+
+      .card-sport-title {
+        font-size: 11px;
+        font-weight: 900;
+        color: #ffffff;
+        line-height: 1.1;
+      }
+
+      .card-sport-sub {
+        font-size: 10px;
+        font-weight: 800;
+        color: var(--primary-green);
+      }
+
+      .mobile-sport-card .arrow-btn {
+        width: 22px;
+        height: 22px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 9px;
+      }
+
+      /* Carousel Dots */
+      .mobile-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        margin: 16px 0 28px 0;
+      }
+
+      .mobile-dots .dot {
+        width: 6px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+      }
+
+      .mobile-dots .dot.active {
+        background: var(--primary-green);
+        width: 16px;
+        border-radius: 100px;
+      }
+
+      /* Mobile Stats Box */
+      .mobile-stats-box {
+        width: 100%;
+        background: rgba(18, 25, 20, 0.85);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 20px 14px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .stat-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stat-col:not(:last-child) {
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .stat-icon {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+
+      .stat-val {
+        font-size: 17px;
+        font-weight: 900;
+        color: #ffffff;
+        line-height: 1;
+      }
+
+      .stat-lbl {
+        font-size: 9px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 4px;
+        line-height: 1.25;
+      }
+
+      /* Mobile Bottom Banner */
+      .mobile-bottom-banner {
+        width: 100%;
+        background: rgba(18, 25, 20, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 16px;
+      }
+
+      .banner-badge {
+        display: inline-block;
+        background: rgba(140, 247, 22, 0.12);
+        color: var(--primary-green);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .banner-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .banner-text {
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.25;
+      }
+
+      .banner-highlight {
+        color: var(--primary-green);
+        font-style: italic;
+        font-weight: 800;
+      }
+
+      .banner-cta-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--primary-green);
+        color: #ffffff;
+        padding: 10px 16px;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .banner-cta-btn svg {
+        color: var(--primary-green);
+      }
+
+      .mobile-trust-footer {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 600;
+      }
+    }
+
+    /* ==========================================================================
+       WHY CHOOSE US SECTION (Matching Reference Design)
+       ========================================================================== */
+    .why-choose-section {
+      width: 100%;
+      background-color: #FAFBF9;
+      color: #111827;
+      padding: 80px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-choose-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(220, 240, 225, 0.4) 0%, rgba(250, 251, 249, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .why-choose-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(230, 245, 232, 0.5) 0%, rgba(250, 251, 249, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .why-choose-container {
+      max-width: 1340px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* --- TOP ROW (Header + Slanted Gallery) --- */
+    .why-choose-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 30px;
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    .why-choose-header-col {
+      flex: 1;
+      max-width: 460px;
+      padding-top: 10px;
+    }
+
+    .eyebrow-container {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #277443;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-line {
+      width: 45px;
+      height: 2px;
+      background-color: #277443;
+      border-radius: 2px;
+    }
+
+    .why-choose-title {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.05;
+      color: #111827;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .why-choose-title .highlight-green-text {
+      color: #277443;
+    }
+
+    .why-choose-description {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #4B5563;
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+
+    .explore-facilities-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background-color: #0D140E;
+      color: #FFFFFF;
+      padding: 8px 8px 8px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(13, 20, 14, 0.15);
+    }
+
+    .explore-facilities-btn:hover {
+      background-color: #1a261c;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(13, 20, 14, 0.25);
+    }
+
+    .explore-facilities-btn .btn-arrow-icon {
+      width: 36px;
+      height: 36px;
+      background-color: #8CF716;
+      color: #0D140E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      transition: transform 0.3s ease;
+    }
+
+    .explore-facilities-btn:hover .btn-arrow-icon {
+      transform: translate(2px, -2px) rotate(45deg);
+    }
+
+    /* Top Right Tagline */
+    .top-right-tagline {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #111827;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .top-right-tagline::after {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background-color: #111827;
+    }
+
+    /* --- SLANTED CARDS GALLERY --- */
+    .slanted-gallery-wrapper {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 10px;
+      gap: 14px;
+      gap: 7px;
+      height: 430px;
+    }
+
+    .slanted-card {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      transform: skewX(-14deg);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+      border: 2px solid #FFFFFF;
+      flex-shrink: 0;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .slanted-card:hover {
+      transform: skewX(-14deg) translateY(-8px) scale(1.02);
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    /* Card 1: Far Left Slice (Shortest, low offset) */
+    /* Card 1: Far Left Slice (Shortest, low offset, narrowed width) */
+    .slanted-card:nth-child(1) {
+      width: 125px;
+      width: 98px;
+      height: 250px;
+      margin-top: 130px;
+    }
+
+    /* Card 2: Middle-Left Slice (Medium height) */
+    /* Card 2: Middle-Left Slice (Medium height, narrowed width) */
+    .slanted-card:nth-child(2) {
+      width: 135px;
+      width: 112px;
+      height: 330px;
+      margin-top: 50px;
+    }
+
+    /* Card 3: Center Peak Slice (TALLEST PEAK) */
+    .slanted-card:nth-child(3) {
+      width: 145px;
+      width: 140px;
+      height: 410px;
+      margin-top: 0px;
+    }
+
+    /* Card 4: Arena Building Slice (WIDEST CARD) */
+    .slanted-card:nth-child(4) {
+      width: 270px;
+      width: 260px;
+      height: 320px;
+      margin-top: 75px;
+    }
+
+    /* Card 5: Dark Quote Card */
+    .slanted-card:nth-child(5) {
+      width: 185px;
+      width: 175px;
+      height: 340px;
+      margin-top: 45px;
+      background: linear-gradient(135deg, #0A130C 0%, #060D08 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Continuous Sliced Image Alignment Across Cards 1 to 4 */
+    .slanted-card img {
+      width: 340%;
+      width: 360%;
+      height: 140%;
+      object-fit: cover;
+      position: absolute;
+      top: -20%;
+      transform: skewX(14deg);
+      pointer-events: none;
+    }
+
+    .slanted-card:nth-child(1) img {
+      left: 0%;
+      top: -30%;
+    }
+
+    .slanted-card:nth-child(2) img {
+      left: -65%;
+      left: -50%;
+      top: -15%;
+    }
+
+    .slanted-card:nth-child(3) img {
+      left: -130%;
+      left: -110%;
+      top: 0%;
+    }
+
+    .slanted-card:nth-child(4) img {
+      left: -195%;
+      left: -170%;
+      top: -18%;
+    }
+
+    /* Card 5 Cursive Dark Card Content */
+    .cursive-card-content {
+      transform: skewX(14deg);
+      color: #FFFFFF;
+      text-align: left;
+      padding: 24px 20px;
+    }
+
+    .cursive-text {
+      font-family: 'Caveat', cursive;
+      font-size: 42px;
+      line-height: 1.1;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.5px;
+    }
+
+    .cursive-underline {
+      width: 48px;
+      height: 3px;
+      background-color: var(--primary-green, #8CF716);
+      margin-top: 14px;
+      border-radius: 3px;
+      box-shadow: 0 0 10px rgba(140, 247, 22, 0.5);
+    }
+
+    /* --- 6-COLUMN FEATURES GRID --- */
+    .why-choose-features-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border-top: 1px solid #E2E8F0;
+      border-bottom: 1px solid #E2E8F0;
+      margin-top: 40px;
+      margin-bottom: 48px;
+    }
+
+    .why-feature-item {
+      padding: 32px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .why-feature-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background-color: #E2E8F0;
+    }
+
+    .feature-num-badge {
+      font-size: 16px;
+      font-weight: 800;
+      color: #277443;
+      margin-bottom: 24px;
+      display: inline-block;
+      position: relative;
+      width: fit-content;
+    }
+
+    .feature-num-badge::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #277443;
+    }
+
+    .feature-icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #E6F3E9 0%, #F4F9F5 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(39, 116, 67, 0.06);
+      border: 1px solid rgba(39, 116, 67, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .why-feature-item:hover .feature-icon-box {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(39, 116, 67, 0.15);
+      background: radial-gradient(circle at center, #D8ECD9 0%, #EEF7F0 100%);
+    }
+
+    .feature-icon-box svg {
+      width: 28px;
+      height: 28px;
+      stroke: #111827;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .why-feature-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .why-feature-desc {
+      font-size: 13.5px;
+      color: #6B7280;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    /* --- BOTTOM STATS & COMMUNITY BANNER --- */
+    .why-choose-banner {
+      width: 100%;
+      min-height: 160px;
+      border-radius: 40px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0A130C 0%, #0F1D11 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 48px;
+      color: #FFFFFF;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .banner-left-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .banner-eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .banner-headline {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+    }
+
+    .banner-stats-group {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .banner-stat-item {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .banner-stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .stat-number-val {
+      font-size: 32px;
+      font-weight: 900;
+      color: #8CF716;
+      line-height: 1;
+    }
+
+    .banner-community-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: #FFFFFF;
+      transition: transform 0.3s ease;
+    }
+
+    .banner-community-cta:hover {
+      transform: translateX(4px);
+    }
+
+    .community-arrow-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: #8CF716;
+      color: #081109;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      box-shadow: 0 4px 15px rgba(140, 247, 22, 0.3);
+    }
+
+    .community-cta-text {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    /* --- RESPONSIVE MEDIA QUERIES --- */
+    /* ==========================================================================
+       RESPONSIVE & MOBILE DESIGN ENHANCEMENTS
+       ========================================================================== */
+    @media (max-width: 1200px) {
+      .why-choose-features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .why-feature-item:nth-child(3)::after {
+        display: none;
+      }
+
+      .why-feature-item {
+        border-bottom: 1px solid #E2E8F0;
+      }
+
+      .slanted-card:nth-child(1) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .why-choose-top-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .why-choose-header-col {
+        max-width: 100%;
+      }
+
+      .top-right-tagline {
+        position: relative;
+        margin-bottom: 16px;
+      }
+
+      .slanted-gallery-wrapper {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+
+      .slanted-gallery-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      .why-choose-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 32px 24px;
+      }
+
+      .banner-stats-group {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      /* Hero Section Mobile Polish */
+      .hero-wrapper {
+        padding: 16px 16px 36px 16px !important;
+      }
+
+      .mobile-hero-headline {
+        font-size: clamp(34px, 9vw, 44px);
+        line-height: 1.05;
+      }
+
+      .mobile-cta-btn {
+        max-width: 100%;
+        margin-bottom: 24px;
+      }
+
+      .mobile-stats-box {
+        padding: 16px 8px;
+        gap: 4px;
+        border-radius: 18px;
+      }
+
+      .stat-val {
+        font-size: 15px;
+      }
+
+      .stat-lbl {
+        font-size: 8.5px;
+      }
+
+      /* Why Choose Us Mobile Section Polish */
+      .why-choose-section {
+        padding: 48px 16px 36px 16px;
+      }
+
+      .why-choose-title {
+        font-size: clamp(30px, 8.5vw, 42px);
+        line-height: 1.08;
+      }
+
+      .why-choose-description {
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+
+      .explore-facilities-btn {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      /* Slanted Cards Mobile Touch Carousel */
+      .slanted-gallery-wrapper {
+        margin-top: 24px;
+        gap: 8px;
+        overflow-x: auto;
+        width: 100%;
+        scroll-snap-type: x mandatory;
+        padding: 8px 4px 16px 4px;
+      }
+
+      .slanted-card {
+        height: 230px;
+        border-radius: 24px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        transform: skewX(-10deg);
+      }
+
+      .slanted-card:nth-child(1) {
+        display: block;
+        width: 100px;
+        margin-left: 0;
+      }
+
+      .slanted-card:nth-child(2) {
+        display: block;
+        width: 110px;
+      }
+
+      .slanted-card:nth-child(3) {
+        display: block;
+        width: 115px;
+      }
+
+      .slanted-card:nth-child(4) {
+        display: block;
+        width: 140px;
+      }
+
+      .slanted-card:nth-child(5) {
+        display: block;
+        width: 145px;
+      }
+
+      .cursive-card-content {
+        transform: skewX(10deg);
+        padding: 14px;
+      }
+
+      .cursive-text {
+        font-size: 28px;
+      }
+
+      /* 6 Features Mobile Cards Grid */
+      .why-choose-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        border: none;
+        margin-top: 32px;
+        margin-bottom: 36px;
+      }
+
+      .why-feature-item {
+        background: #FFFFFF;
+        border: 1px solid #EAECE9;
+        border-radius: 20px;
+        padding: 20px 14px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      }
+
+      .why-feature-item::after {
+        display: none;
+      }
+
+      .feature-num-badge {
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+
+      .feature-icon-box {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 16px;
+      }
+
+      .feature-icon-box svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .why-feature-title {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .why-feature-desc {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      /* Bottom Banner Mobile Polish */
+      .why-choose-banner {
+        border-radius: 28px;
+        padding: 28px 20px;
+        gap: 20px;
+      }
+
+      .banner-headline {
+        font-size: 18px;
+      }
+
+      .banner-stats-group {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        width: 100%;
+      }
+
+      .banner-stat-item {
+        padding-left: 10px;
+      }
+
+      .banner-stat-item::before {
+        display: block;
+      }
+
+      .banner-stat-item:first-child {
+        padding-left: 0;
+      }
+
+      .banner-stat-item:first-child::before {
+        display: none;
+      }
+
+      .stat-label {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+      }
+
+      .stat-number-val {
+        font-size: 24px;
+      }
+
+      .banner-community-cta {
+        width: 100%;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 10px 16px;
+        border-radius: 100px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .community-arrow-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+
+      .community-cta-text {
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .why-choose-features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .banner-stats-group {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .banner-stat-item {
+        padding-left: 0;
+      }
+
+      .banner-stat-item::before {
+        display: none;
+      }
+    }
+
+    /* ==========================================================================
+       THE GAME UNFOLDS (4-Stage Cinematic Scroll Animation)
+       ========================================================================== */
+    .unfolds-section {
+      width: 100%;
+      background-color: #040905;
+      color: #FFFFFF;
+      position: relative;
+    }
+
+    /* 320vh Scroll Track */
+    .unfolds-scroll-track {
+      height: 320vh;
+      position: relative;
+    }
+
+    /* Sticky Viewport Container */
+    .unfolds-sticky-wrapper {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #0B160D 0%, #040905 85%);
+    }
+
+    /* Header Title */
+    .unfolds-header {
+      position: absolute;
+      top: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 20;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+
+    .unfolds-title {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .unfolds-title .highlight-green-text {
+      color: #8CF716;
+    }
+
+    .unfolds-subtitle {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: rgba(255, 255, 255, 0.65);
+      text-transform: uppercase;
+    }
+
+    /* Center Video Container */
+    .unfolds-center-video-wrapper {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #8CF716;
+      box-shadow: 0 0 40px rgba(140, 247, 22, 0.35), 0 20px 60px rgba(0, 0, 0, 0.8);
+      z-index: 10;
+      will-change: transform, width, height, border-radius, opacity;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .unfolds-video-player {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .unfolds-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(4, 9, 5, 0.15) 0%, rgba(4, 9, 5, 0.75) 100%);
+      pointer-events: none;
+    }
+
+    /* Center Play Badge */
+    .unfolds-play-badge {
+      position: absolute;
+      z-index: 12;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .play-icon-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(140, 247, 22, 0.95);
+      color: #040905;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(140, 247, 22, 0.6);
+    }
+
+    .play-icon-circle svg {
+      width: 20px;
+      height: 20px;
+      margin-left: 3px;
+    }
+
+    .watch-text {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Final Stage Fullscreen Headline Reveal */
+    .unfolds-final-headline {
+      position: absolute;
+      z-index: 15;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .unfolds-final-headline.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .final-eyebrow {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #8CF716;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .final-title {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      color: #FFFFFF;
+    }
+
+    .final-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #8CF716;
+      color: #040905;
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 10px 30px rgba(140, 247, 22, 0.4);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .final-cta-btn:hover {
+      transform: scale(1.05);
+      background: #7ee20e;
+    }
+
+    /* Cards Wrapper */
+    .unfolds-cards-wrapper {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Tilted Card Styles */
+    .unfolds-card {
+      position: absolute;
+      width: 320px;
+      height: 360px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1.5px solid #8CF716;
+      background-color: #0B130C;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      will-change: transform, opacity;
+      pointer-events: auto;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .unfolds-card:hover {
+      box-shadow: 0 0 30px rgba(140, 247, 22, 0.35);
+      border-color: #9EE827;
+    }
+
+    .unfolds-card-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .unfolds-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4, 9, 5, 0.85) 0%, rgba(4, 9, 5, 0.3) 50%, rgba(4, 9, 5, 0.95) 100%);
+    }
+
+    .unfolds-card-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .unfolds-card-num {
+      font-size: 36px;
+      font-weight: 900;
+      color: #8CF716;
+      line-height: 1;
+    }
+
+    .unfolds-card-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid #8CF716;
+      background: rgba(4, 9, 5, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+      margin-bottom: auto;
+    }
+
+    .unfolds-card-badge svg {
+      width: 24px;
+      height: 24px;
+      stroke: #8CF716;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .unfolds-card-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .unfolds-card-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+    }
+
+    /* Initial Positional Rotations & Offsets (Stage 1) */
+    .card-cricket {
+      top: 14%;
+      left: 10%;
+    }
+
+    .card-football {
+      top: 14%;
+      right: 10%;
+    }
+
+    .card-indoor {
+      bottom: 12%;
+      left: 10%;
+    }
+
+    .card-turf {
+      bottom: 12%;
+      right: 10%;
+    }
+
+    /* Scroll Hint */
+    .unfolds-scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      z-index: 20;
+      transition: opacity 0.3s ease;
+    }
+
+    .mouse-badge {
+      width: 22px;
+      height: 34px;
+      border: 2px solid #8CF716;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      padding-top: 4px;
+    }
+
+    .mouse-dot {
+      width: 4px;
+      height: 6px;
+      background: #8CF716;
+      border-radius: 2px;
+      animation: mouseScrollAnim 1.8s infinite ease-in-out;
+    }
+
+    .unfolds-scroll-hint span {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .down-arrow {
+      color: #8CF716;
+      font-size: 12px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1200px) {
+      .unfolds-card {
+        width: 270px;
+        height: 310px;
+      }
+
+      .card-cricket {
+        left: 4%;
+      }
+
+      .card-football {
+        right: 4%;
+      }
+
+      .card-indoor {
+        left: 4%;
+      }
+
+      .card-turf {
+        right: 4%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .unfolds-scroll-track {
+        height: auto;
+      }
+
+      .unfolds-sticky-wrapper {
+        position: relative;
+        height: auto;
+        padding: 60px 16px;
+        flex-direction: column;
+      }
+
+      .unfolds-header {
+        position: relative;
+        top: 0;
+        transform: none;
+        margin-bottom: 32px;
+      }
+
+      .unfolds-center-video-wrapper {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        margin-bottom: 32px;
+      }
+
+      .unfolds-cards-wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        width: 100%;
+        pointer-events: auto;
+      }
+
+      .unfolds-card {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        border-radius: 18px;
+      }
+
+      .final-title {
+        font-size: 32px;
+      }
+
+      .unfolds-scroll-hint {
+        display: none;
+      }
+    }
+
+    /* ==========================================================================
+       GALLERY / ARENA EXPERIENCE SECTION (Matching Reference Design)
+       ========================================================================== */
+    .gallery-section {
+      width: 100%;
+      background-color: #FAFBF9;
+      color: #111827;
+      padding: 80px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-section::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(220, 240, 225, 0.45) 0%, rgba(250, 251, 249, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .gallery-container {
+      max-width: 1340px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* --- TOP HEADER ROW --- */
+    .gallery-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .gallery-header-left {
+      max-width: 520px;
+    }
+
+    .gallery-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .gallery-eyebrow-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #277443;
+      text-transform: uppercase;
+    }
+
+    .gallery-eyebrow-line {
+      width: 45px;
+      height: 2px;
+      background-color: #277443;
+      border-radius: 2px;
+    }
+
+    .gallery-title {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #111827;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .gallery-title .highlight-green-text {
+      color: #277443;
+    }
+
+    .gallery-description {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #4B5563;
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+
+    .explore-gallery-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #111827;
+      text-transform: uppercase;
+      transition: transform 0.3s ease;
+    }
+
+    .explore-gallery-btn:hover {
+      transform: translateX(4px);
+    }
+
+    .btn-circle-outline {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .explore-gallery-btn:hover .btn-circle-outline {
+      background-color: #111827;
+      color: #FFFFFF;
+    }
+
+    /* Top Right Tagline & Watermark */
+    .gallery-header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: relative;
+    }
+
+    .gallery-right-tagline {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #111827;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .gallery-right-tagline::after {
+      content: '';
+      width: 35px;
+      height: 2px;
+      background-color: #111827;
+    }
+
+    .gallery-watermark-box {
+      position: relative;
+      text-align: right;
+    }
+
+    .watermark-bg-text {
+      position: absolute;
+      right: -20px;
+      top: -30px;
+      font-size: 110px;
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.035);
+      letter-spacing: -2px;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .watermark-words-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: rgba(17, 24, 39, 0.7);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* --- ASYMMETRIC GALLERY CARDS GRID --- */
+    .gallery-cards-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr 240px;
+      gap: 20px;
+      margin-bottom: 32px;
+      align-items: stretch;
+    }
+
+    .gallery-col-side {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .gallery-card-sm {
+      flex: 1;
+      min-height: 190px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+    }
+
+    .gallery-card-sm img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-card-sm:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-card-sm-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+    }
+
+    .gallery-card-tag {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .gallery-card-tag::after {
+      content: '';
+      width: 20px;
+      height: 1.5px;
+      background-color: #8CF716;
+    }
+
+    /* CENTER MAIN FEATURE CARD (Stepped Tab Shape with Smooth Curves) */
+    .gallery-main-card {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      clip-path: url(#mainCardClip);
+      -webkit-clip-path: url(#mainCardClip);
+    }
+
+    .gallery-main-card-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.6s ease, opacity 0.3s ease;
+    }
+
+    .gallery-main-card:hover .gallery-main-card-bg {
+      transform: scale(1.05);
+    }
+
+    .gallery-main-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 17, 10, 0.3) 0%, rgba(8, 17, 10, 0.2) 50%, rgba(8, 17, 10, 0.85) 100%);
+    }
+
+    /* Play Badge Overlay */
+    .gallery-main-play-badge {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-main-card:hover .gallery-main-play-badge {
+      transform: scale(1.08);
+    }
+
+    .gallery-play-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(10, 18, 12, 0.75);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid #FFFFFF;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-play-circle svg {
+      width: 22px;
+      height: 22px;
+      margin-left: 3px;
+      fill: #FFFFFF;
+    }
+
+    .gallery-watch-text {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Main Card Bottom Footer Tags */
+    .gallery-main-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 28px;
+      right: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 5;
+    }
+
+    .main-tag-left {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .main-tag-left::after {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background-color: #277443;
+    }
+
+    .main-counter-right {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* --- CAROUSEL CONTROLS & TESTIMONIAL ROW --- */
+    .gallery-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 44px;
+    }
+
+    .slider-nav-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-slider-prev,
+    .btn-slider-next {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-slider-prev {
+      background: transparent;
+      border: 1.5px solid #D1D5DB;
+      color: #111827;
+    }
+
+    .btn-slider-prev:hover {
+      border-color: #111827;
+      background: #FFFFFF;
+    }
+
+    .btn-slider-next {
+      background: #1B3824;
+      border: none;
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px rgba(27, 56, 36, 0.25);
+    }
+
+    .btn-slider-next:hover {
+      background: #277443;
+      transform: translateX(2px);
+    }
+
+    /* Progress Line */
+    .slider-progress-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 240px;
+    }
+
+    .progress-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: #6B7280;
+    }
+
+    .progress-track-line {
+      flex: 1;
+      height: 2px;
+      background-color: #E5E7EB;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 35%;
+      background-color: #277443;
+      border-radius: 2px;
+    }
+
+    /* Testimonial Quote Callout */
+    .gallery-quote-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 480px;
+    }
+
+    .quote-icon {
+      font-size: 48px;
+      line-height: 1;
+      color: #C8E6C9;
+      font-family: Georgia, serif;
+      font-weight: 900;
+    }
+
+    .quote-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quote-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #374151;
+      font-style: italic;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .quote-author {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #9CA3AF;
+      text-transform: uppercase;
+    }
+
+    /* --- BOTTOM STATS & STORY BANNER --- */
+    .gallery-bottom-banner {
+      width: 100%;
+      background-color: #F1F5EE;
+      border-radius: 36px;
+      padding: 20px 32px 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #E2E8F0;
+    }
+
+    .banner-stats-group-light {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .light-stat-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .light-stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background-color: #CBD5E1;
+    }
+
+    .light-stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .light-stat-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #111827;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .light-stat-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .light-stat-val {
+      font-size: 26px;
+      font-weight: 900;
+      color: #277443;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .light-stat-lbl {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: #6B7280;
+      text-transform: uppercase;
+    }
+
+    .story-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background-color: #0D150E;
+      color: #FFFFFF;
+      padding: 10px 24px 10px 14px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(13, 21, 14, 0.2);
+    }
+
+    .story-cta-btn:hover {
+      background-color: #1b2b1d;
+      transform: translateY(-2px);
+    }
+
+    .story-btn-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .story-btn-text {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    /* Responsive Gallery Rules */
+    @media (max-width: 1100px) {
+      .gallery-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-main-card {
+        clip-path: none;
+        border-radius: 28px;
+        min-height: 320px;
+      }
+
+      .gallery-col-side {
+        flex-direction: row;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-section {
+        padding: 50px 16px;
+      }
+
+      .gallery-top-row {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .gallery-title {
+        font-size: 38px;
+      }
+
+      .gallery-watermark-box {
+        display: none;
+      }
+
+      .gallery-col-side {
+        flex-direction: column;
+      }
+
+      .gallery-controls-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .gallery-bottom-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 28px 20px;
+        border-radius: 28px;
+      }
+
+      .banner-stats-group-light {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .light-stat-item::after {
+        display: none;
+      }
+
+      .story-cta-btn {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    /* ==========================================================================
+       ABOUT US SECTION STYLES
+       ========================================================================== */
+    .about-section {
+      position: relative;
+      width: 100%;
+      background: #FAFCF9;
+      padding: 100px 48px;
+      overflow: hidden;
+    }
+
+    .about-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Left Column: Image Card & Taglines */
+    .about-image-col {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    /* Far Left Vertical Rotated Margin Text */
+    .far-left-vertical-tagline {
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #94A3B8;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+
+    .far-left-vertical-tagline .v-line-accent {
+      display: inline-block;
+      width: 32px;
+      height: 2px;
+      background-color: var(--primary-green, #8CF716);
+    }
+
+    /* Card Wrapper & Top-Right Tagline */
+    .about-image-card-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .top-right-vertical-tagline {
+      position: absolute;
+      top: -30px;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #64748B;
+      z-index: 5;
+    }
+
+    /* Custom Organic Skewed & Curved Image Card Shape */
+    .about-image-card {
+      width: 100%;
+      height: 520px;
+      height: 600px;
+      transform: skewX(-7deg);
+      border-radius: 0px 140px 100px 140px;
+      border-radius: 0px 150px 110px 150px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
+      border: 3px solid #FFFFFF;
+      position: relative;
+      background-color: #0A130C;
+    }
+
+    .about-image-card img {
+      width: 135%;
+      height: 120%;
+      height: 125%;
+      object-fit: cover;
+      position: absolute;
+      top: -10%;
+      left: -15%;
+      transform: skewX(7deg) scale(1.05);
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .about-image-card:hover img {
+      transform: skewX(7deg) scale(1.12);
+    }
+
+    /* Right Column: Content Styles */
+    .about-content-col {
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .about-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .about-eyebrow .eyebrow-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #1E3A2B;
+    }
+
+    .about-eyebrow .eyebrow-line {
+      display: inline-block;
+      width: 48px;
+      height: 2px;
+      background-color: var(--primary-green, #8CF716);
+      border-radius: 2px;
+    }
+
+    .about-title {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -1px;
+      color: #0F172A;
+      margin: 0;
+    }
+
+    .about-title .highlight-dark-green {
+      color: #1B4D2E;
+      display: inline-block;
+    }
+
+    .about-subheadline {
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #64748B;
+      margin-top: 14px;
+      margin-bottom: 24px;
+    }
+
+    .about-description {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #475569;
+      margin-bottom: 36px;
+      max-width: 620px;
+    }
+
+    /* 4 Values Grid */
+    .about-values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .about-value-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .value-icon-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #EAF8E6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1B4D2E;
+      margin-bottom: 12px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .about-value-item:hover .value-icon-circle {
+      transform: translateY(-4px);
+      background: #D5F3CB;
+    }
+
+    .value-icon-circle svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .value-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+
+    .value-sub {
+      font-size: 11.5px;
+      line-height: 1.35;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    /* Divider Line */
+    .about-divider-line {
+      width: 100%;
+      height: 1px;
+      background-color: #E2E8F0;
+      margin-bottom: 28px;
+    }
+
+    /* 3 Stats Bar */
+    .about-stats-bar {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .about-stat-item {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .about-stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background-color: #CBD5E1;
+    }
+
+    .about-stat-item .stat-num {
+      font-size: 32px;
+      font-weight: 900;
+      color: #1B4D2E;
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .about-stat-item .stat-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #64748B;
+      margin-top: 6px;
+    }
+
+    /* CTA Row & Watermark */
+    .about-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      position: relative;
+    }
+
+    .our-story-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .story-circle-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #0D2314;
+      color: var(--primary-green, #8CF716);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 8px 20px rgba(13, 35, 20, 0.25);
+    }
+
+    .our-story-btn:hover .story-circle-icon {
+      transform: translateX(4px) scale(1.05);
+      background: #14351F;
+    }
+
+    .story-btn-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #0F172A;
+    }
+
+    .story-btn-line {
+      display: inline-block;
+      width: 48px;
+      height: 2px;
+      background-color: #CBD5E1;
+      border-radius: 2px;
+    }
+
+    .about-corner-watermark {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      line-height: 1.25;
+      color: rgba(148, 163, 184, 0.22);
+      text-align: right;
+      user-select: none;
+    }
+
+    /* Responsive Adjustments for Tablet & Mobile */
+    @media (max-width: 1024px) {
+      .about-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .about-image-col {
+        justify-content: center;
+      }
+
+      .far-left-vertical-tagline {
+        display: none;
+      }
+
+      .about-title {
+        font-size: 38px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-section {
+        padding: 60px 20px;
+      }
+
+      .about-image-card {
+        height: 340px;
+        border-radius: 0px 90px 60px 90px;
+      }
+
+      .about-title {
+        font-size: 30px;
+      }
+
+      .about-values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .about-stats-bar {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .about-stat-item:not(:last-child)::after {
+        display: none;
+      }
+
+      .about-corner-watermark {
+        font-size: 12px;
+      }
+    }
+
+    /* ==========================================================================
+       TESTIMONIALS SECTION STYLES (Matching Reference Design)
+       ========================================================================== */
+    .testimonials-section {
+      position: relative;
+      width: 100%;
+      background-color: #F5F8F4;
+      color: #111827;
+      padding: 90px 48px;
+      overflow: hidden;
+    }
+
+    .testi-bg-curve-left {
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(215, 235, 212, 0.4) 0%, rgba(245, 248, 244, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .testi-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Top Header Row */
+    .testi-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 44px;
+    }
+
+    .testi-header-left {
+      max-width: 480px;
+    }
+
+    .testi-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .testi-eyebrow-line {
+      width: 32px;
+      height: 3px;
+      background-color: #277443;
+      border-radius: 2px;
+    }
+
+    .testi-eyebrow-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #277443;
+      text-transform: uppercase;
+    }
+
+    .testi-title {
+      font-size: clamp(38px, 4.5vw, 54px);
+      font-weight: 900;
+      color: #111827;
+      line-height: 1.08;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .highlight-green-title {
+      color: #1F522E;
+    }
+
+    .testi-subdesc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #4B5563;
+      font-weight: 500;
+    }
+
+    /* Center Cursive Artwork */
+    .testi-header-center {
+      position: relative;
+      margin-top: -10px;
+      text-align: center;
+    }
+
+    .testi-cursive-text {
+      font-family: 'Caveat', cursive;
+      font-size: 38px;
+      font-weight: 700;
+      color: #8DB89B;
+      line-height: 1.05;
+      transform: rotate(-8deg);
+      opacity: 0.9;
+      user-select: none;
+    }
+
+    .testi-cursive-line {
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #8DB89B, transparent);
+      margin: 4px auto 0 auto;
+      transform: rotate(-8deg);
+    }
+
+    /* Right Tagline */
+    .testi-header-right {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .testi-right-bar {
+      width: 28px;
+      height: 2px;
+      background-color: #277443;
+      border-radius: 2px;
+      margin-top: 6px;
+    }
+
+    .testi-right-tagline {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #6B7280;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
+    /* Main Content Row */
+    .testi-main-row {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 40px;
+      align-items: center;
+    }
+
+    /* Left White Feature Card */
+    .testi-main-card {
+      background: #FFFFFF;
+      border-radius: 36px;
+      padding: 56px 64px 40px 64px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+      position: relative;
+      overflow: hidden;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #EAECE9;
+    }
+
+    /* Watermark Quotes */
+    .watermark-quote {
+      font-family: Georgia, serif;
+      font-size: 110px;
+      font-weight: 900;
+      color: rgba(31, 82, 46, 0.06);
+      position: absolute;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .quote-open {
+      top: 24px;
+      left: 140px;
+    }
+
+    .quote-close {
+      bottom: 60px;
+      right: 140px;
+    }
+
+    /* Arrow Buttons */
+    .testi-nav-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      position: absolute;
+      top: 48%;
+      transform: translateY(-50%);
+      z-index: 10;
+      transition: all 0.3s ease;
+      border: none;
+      outline: none;
+    }
+
+    .btn-prev {
+      left: 32px;
+      background: #EEF3EC;
+      color: #111827;
+    }
+
+    .btn-prev:hover {
+      background: #111827;
+      color: #FFFFFF;
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .btn-next {
+      right: 32px;
+      background: #1F522E;
+      color: #FFFFFF;
+      box-shadow: 0 6px 18px rgba(31, 82, 46, 0.25);
+    }
+
+    .btn-next:hover {
+      background: #153c20;
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 8px 22px rgba(31, 82, 46, 0.35);
+    }
+
+    /* Inner Center Content */
+    .testi-card-content {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .testi-stars-row {
+      color: #1F522E;
+      font-size: 18px;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .testi-quote-text {
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.48;
+      margin-bottom: 24px;
+      transition: opacity 0.2s ease;
+    }
+
+    .testi-author-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testi-author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #E2E8F0;
+    }
+
+    .testi-author-info {
+      text-align: left;
+    }
+
+    .testi-author-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.2;
+      transition: opacity 0.2s ease;
+    }
+
+    .testi-author-role {
+      font-size: 12.5px;
+      color: #6B7280;
+      font-weight: 500;
+    }
+
+    /* Bottom Footer Bar of Card */
+    .testi-card-footer {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 36px;
+      padding-top: 16px;
+    }
+
+    .testi-footer-tag {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-vert-accent {
+      width: 2px;
+      height: 24px;
+      background-color: #277443;
+      border-radius: 2px;
+    }
+
+    .footer-tag-top {
+      display: block;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      color: #6B7280;
+      text-transform: uppercase;
+    }
+
+    .footer-tag-sub {
+      display: block;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #9CA3AF;
+      text-transform: uppercase;
+    }
+
+    /* Pagination Dots */
+    .testi-dots-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .testi-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #D3E4D6;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .testi-dot.active {
+      background-color: #1F522E;
+      width: 10px;
+      height: 10px;
+    }
+
+    /* Slide Counter */
+    .testi-counter {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #6B7280;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .counter-dash {
+      color: #277443;
+    }
+
+    /* Right Side Overlapping Staggered Photo Stack */
+    .testi-photo-stack {
+      position: relative;
+      height: 380px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .stack-card {
+      position: absolute;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-front {
+      width: 240px;
+      height: 360px;
+      left: 0;
+      z-index: 3;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      border: 2px solid #FFFFFF;
+      pointer-events: auto;
+    }
+
+    .card-mid {
+      width: 240px;
+      height: 360px;
+      left: 60px;
+      z-index: 2;
+      opacity: 0.85;
+      transform: scale(0.94) translateY(10px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      pointer-events: none;
+    }
+
+    .card-back {
+      width: 240px;
+      height: 360px;
+      left: 110px;
+      z-index: 1;
+      opacity: 0.65;
+      transform: scale(0.88) translateY(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      pointer-events: none;
+    }
+
+    .card-hidden {
+      width: 240px;
+      height: 360px;
+      left: 150px;
+      z-index: 0;
+      opacity: 0;
+      transform: scale(0.82) translateY(30px);
+      pointer-events: none;
+    }
+
+    .card-exit {
+      width: 240px;
+      height: 360px;
+      left: -80px;
+      z-index: 4;
+      opacity: 0;
+      transform: scale(0.9) rotate(-10deg) translateY(-20px);
+      pointer-events: none;
+    }
+
+    .stack-card-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stack-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.88) 100%);
+    }
+
+    .stack-card-body {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #FFFFFF;
+    }
+
+    .stack-stars {
+      color: #8CF716;
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .stack-quote {
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.92);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .stack-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 12px;
+    }
+
+    .stack-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #8CF716;
+    }
+
+    .stack-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .stack-role {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+    }
+
+    /* Responsive Media Queries */
+    @media (max-width: 1100px) {
+      .testi-top-row {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .testi-header-center {
+        display: none;
+      }
+
+      .testi-main-row {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .testi-photo-stack {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-section {
+        padding: 50px 16px;
+      }
+
+      .testi-main-card {
+        padding: 36px 24px 28px 24px;
+        border-radius: 28px;
+      }
+
+      .btn-prev {
+        left: 12px;
+      }
+
+      .btn-next {
+        right: 12px;
+      }
+
+      .watermark-quote {
+        display: none;
+      }
+
+      .testi-card-footer {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    /* ==========================================================================
+       FAQ / GOT QUESTIONS SECTION (Matching Reference Design)
+       ========================================================================== */
+    .faq-section {
+      width: 100%;
+      background-color: #FAFBF8;
+      color: #111827;
+      padding: 90px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(215, 238, 220, 0.4) 0%, rgba(250, 251, 248, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .faq-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 0.75fr 1.65fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    /* --- COLUMN 1: LEFT CONTENT --- */
+    .faq-col-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .faq-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .faq-eyebrow-line {
+      width: 32px;
+      height: 2px;
+      background-color: #277443;
+      border-radius: 2px;
+    }
+
+    .faq-eyebrow-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #277443;
+      text-transform: uppercase;
+    }
+
+    .faq-title {
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #111827;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .faq-title .highlight-green-text {
+      color: #1b4d27;
+    }
+
+    .faq-description {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #4B5563;
+      margin-bottom: 28px;
+      font-weight: 500;
+      max-width: 380px;
+    }
+
+    /* Ready To Play Pill Banner - Reduced Width */
+    .faq-cta-banner {
+      background: linear-gradient(135deg, #183622 0%, #102616 100%);
+      border-radius: 100px;
+      padding: 10px 16px 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 12px 28px rgba(24, 54, 34, 0.22);
+      text-decoration: none;
+      margin-bottom: 28px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .faq-cta-banner:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(24, 54, 34, 0.35);
+    }
+
+    .cta-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cta-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8CF716;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .cta-text-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cta-eyebrow {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #8CF716;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .cta-heading {
+      font-size: 14px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .cta-subtext {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+      line-height: 1.3;
+      margin-top: 1px;
+    }
+
+    .cta-arrow-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #8CF716;
+      color: #060c07;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-cta-banner:hover .cta-arrow-circle {
+      transform: scale(1.08) rotate(45deg);
+    }
+
+    /* 3-Column Features Row */
+    .faq-features-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .faq-feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .faq-feature-icon {
+      margin-bottom: 8px;
+    }
+
+    .faq-feature-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #111827;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .faq-feature-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #111827;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .faq-feature-sub {
+      font-size: 11px;
+      color: #6B7280;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    /* Cursive Watermark */
+    .faq-cursive-text {
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: #A3C5AB;
+      line-height: 1.05;
+      user-select: none;
+    }
+
+    /* --- COLUMN 2: CENTER CAPSULE IMAGE CARD --- */
+    .faq-col-center {
+      display: flex;
+      justify-content: flex-start;
+      margin-left: -55px;
+    }
+
+    .faq-capsule-card {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      height: 550px;
+      border-radius: 180px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
+      border: 4px solid #FFFFFF;
+      background-color: #0A130C;
+    }
+
+    .faq-capsule-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-capsule-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .capsule-top-tagline {
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      z-index: 2;
+      max-width: 160px;
+      line-height: 1.4;
+    }
+
+    .capsule-badge-bottom {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      user-select: none;
+    }
+
+    .capsule-badge-text {
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #111827;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* --- COLUMN 3: RIGHT ACCORDION LIST --- */
+    .faq-col-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-top-quote-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .quote-green-line {
+      width: 28px;
+      height: 2px;
+      background-color: #277443;
+      border-radius: 2px;
+    }
+
+    .quote-italic-text {
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    /* Accordion List Container */
+    .faq-accordion-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-accordion-item {
+      background: #FFFFFF;
+      border: 1px solid #EAECE9;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-accordion-item:hover {
+      border-color: #D1D5DB;
+    }
+
+    .faq-accordion-item.active {
+      background-color: #F4F9F4;
+      border-color: #C8E3C6;
+      box-shadow: 0 8px 25px rgba(39, 116, 67, 0.08);
+    }
+
+    .faq-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 22px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-header-left-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .faq-item-num {
+      font-size: 14px;
+      font-weight: 800;
+      color: #111827;
+      min-width: 24px;
+    }
+
+    .faq-item-question {
+      font-size: 15px;
+      font-weight: 700;
+      color: #111827;
+      transition: color 0.2s ease;
+    }
+
+    .faq-accordion-item.active .faq-item-question {
+      color: #1b4d27;
+    }
+
+    .faq-toggle-icon {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+      padding: 0 22px 0 62px;
+    }
+
+    .faq-accordion-item.active .faq-item-body {
+      grid-template-rows: 1fr;
+      padding: 0 22px 18px 62px;
+    }
+
+    .faq-answer-inner {
+      overflow: hidden;
+    }
+
+    .faq-answer-text {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #4B5563;
+      font-weight: 500;
+      padding-top: 4px;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+    }
+
+    .faq-accordion-item.active .faq-answer-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Rules for FAQ Section */
+    @media (max-width: 1200px) {
+      .faq-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .faq-col-center {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .faq-section {
+        padding: 50px 16px;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .faq-title {
+        font-size: 38px;
+      }
+
+      .faq-cta-banner {
+        max-width: 100%;
+      }
+
+      .faq-top-quote-row {
+        justify-content: flex-start;
+      }
+    }
+
+    /* ==========================================================================
+       FOOTER SECTION STYLES (Matching Reference Design)
+       ========================================================================== */
+    .site-footer {
+      position: relative;
+      width: 100%;
+      background-color: #060c07;
+      color: #111827;
+      padding: 36px 0 16px 0;
+      overflow: hidden;
+    }
+
+    /* Subtle Outer Background Arc Lines */
+    .footer-bg-arcs-top-right {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .footer-bg-arcs-bottom-left {
+      position: absolute;
+      bottom: 10px;
+      left: -30px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .footer-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Main White Rounded Footer Card */
+    .footer-card {
+      background: #FFFFFF;
+      border-radius: 36px;
+      padding: 36px 44px 20px 44px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 4-Column Upper Grid Layout */
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr 1.15fr 1.25fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* Columns vertical divider lines */
+    .footer-col-links,
+    .footer-col-touch,
+    .footer-col-hours {
+      border-left: 1px solid #EAECE9;
+      padding-left: 36px;
+    }
+
+    /* Column 1: Brand / Logo */
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo-main {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #0c180e;
+      line-height: 1;
+    }
+
+    .footer-logo-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #1b4d27 35%, #e0e7dd 35%);
+      margin: 6px 0 8px 0;
+    }
+
+    .footer-logo-sub {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      color: #0c180e;
+      text-transform: uppercase;
+    }
+
+    .footer-brand-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #4B5563;
+      margin-bottom: 28px;
+      font-weight: 500;
+      max-width: 330px;
+    }
+
+    /* Social Group */
+    .footer-social-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .social-circle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #F0F4EE;
+      color: #1b4d27;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .social-circle-btn:hover {
+      background: #1b4d27;
+      color: #FFFFFF;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(27, 77, 39, 0.25);
+    }
+
+    .footer-col-tagline {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #4B5563;
+      text-transform: uppercase;
+    }
+
+    /* Section Headers */
+    .footer-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .header-green-bar {
+      width: 32px;
+      height: 3px;
+      background-color: #1b4d27;
+      border-radius: 2px;
+    }
+
+    .footer-header-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #111827;
+      text-transform: uppercase;
+    }
+
+    /* Column 2: Quick Links */
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links-list li a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1F2937;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .link-chevron {
+      font-size: 14px;
+      color: #6B7280;
+      font-weight: 900;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links-list li a:hover {
+      color: #1b4d27;
+      transform: translateX(4px);
+    }
+
+    .footer-links-list li a:hover .link-chevron {
+      color: #1b4d27;
+    }
+
+    /* Column 3 & 4: Contact & Info items */
+    .contact-info-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #F0F4EE;
+      color: #1b4d27;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .contact-val {
+      font-size: 13px;
+      color: #6B7280;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .contact-val.phone-link,
+    .contact-val.email-link {
+      text-decoration: none;
+      color: #4B5563;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .contact-val.phone-link:hover,
+    .contact-val.email-link:hover {
+      color: #1b4d27;
+    }
+
+    /* Hours & Book Slot Divider */
+    .hours-divider {
+      width: 100%;
+      height: 1px;
+      background-color: #EAECE9;
+      margin: 24px 0;
+    }
+
+    .book-slot-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .book-slot-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .book-subtext {
+      font-size: 13px;
+      color: #6B7280;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .footer-book-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      background-color: #1b4d27;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      border-radius: 100px;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(27, 77, 39, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .footer-book-btn:hover {
+      background-color: #12361b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(27, 77, 39, 0.35);
+    }
+
+    /* Watermark Row (Bottom of White Card) */
+    .footer-watermark-row {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid #F0F2EE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+    }
+
+    /* Center Serif Watermark - Brightly Visible */
+    .watermark-center-text {
+      position: relative;
+      width: 100%;
+      text-align: center;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(48px, 8vw, 105px);
+      font-weight: 800;
+      color: #1b4d27;
+      opacity: 0.32;
+      letter-spacing: -1.5px;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    /* Outer Bottom Copyright Bar */
+    .footer-bottom-bar {
+      position: relative;
+      margin-top: 16px;
+    }
+
+    .bottom-bar-line {
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .bottom-bar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .copyright-text {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
+    .legal-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .legal-links a {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .legal-links a:hover {
+      color: #8CF716;
+    }
+
+    .legal-sep {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 11px;
+    }
+
+    /* Responsive Media Queries */
+    @media (max-width: 1200px) {
+      .footer-card {
+        padding: 44px 36px 36px 36px;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 28px;
+      }
+
+      .footer-col-touch {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .watermark-center-text {
+        font-size: 80px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-footer {
+        padding: 24px 0 16px 0;
+      }
+
+      .footer-card {
+        border-radius: 24px;
+        padding: 24px 18px 16px 18px;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .footer-col-links,
+      .footer-col-touch,
+      .footer-col-hours {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .footer-watermark-row {
+        margin-top: 16px;
+        padding-top: 12px;
+      }
+
+      .watermark-center-text {
+        font-size: 38px;
+        opacity: 0.35;
+      }
+
+      .bottom-bar-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero-wrapper">
+    <!-- DYNAMIC HERO BACKGROUND SLIDESHOW -->
+    <div class="hero-bg-slideshow" id="heroBgSlideshow">
+      <div class="hero-bg-layer active" id="heroBgLayer1"></div>
+      <div class="hero-bg-layer" id="heroBgLayer2"></div>
+    </div>
+    <div class="hero-bg-overlay"></div>
+
+    <!-- NAVBAR / HEADER -->
+    <header class="header">
+      <!-- Logo -->
+      <a href="#" class="logo-container">
+        <div class="logo-main">
+          SOLAI<span class="green-dot"></span>
+        </div>
+        <div class="logo-sub">SPORTS ARENA</div>
+      </a>
+
+      <!-- Desktop Navigation Pill -->
+      <nav class="nav-pill">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#facilities" class="nav-link active">Facilities</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Mobile Top Navbar Pill -->
+      <nav class="mobile-navbar-pill mobile-only">
+        <a href="#home" class="mobile-nav-link active">Home</a>
+        <a href="#facilities" class="mobile-nav-link">Facilities</a>
+        <a href="#gallery" class="mobile-nav-link">Gallery</a>
+        <a href="#about" class="mobile-nav-link">About Us</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <button class="btn-header-cta" id="headerBookBtn">
+        Book Your Slot
+        <span class="icon-circle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </button>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+      <a href="#home" class="mobile-nav-item active">Home</a>
+      <a href="#facilities" class="mobile-nav-item">Facilities</a>
+      <a href="#gallery" class="mobile-nav-item">Gallery</a>
+      <a href="#about" class="mobile-nav-item">About Us</a>
+      <a href="#contact" class="mobile-nav-item">Contact</a>
+      <button class="mobile-drawer-btn" id="drawerBookBtn">Book Your Slot →</button>
+    </div>
+
+    <!-- MAIN HERO CONTENT (Desktop & Tablet) -->
+    <main class="hero-main desktop-only">
+      <!-- Main Heading (Play More. Live Better.) -->
+      <h1 class="hero-title">
+        Play More.<br>
+        <span class="highlight-green">Live</span> Better.
+      </h1>
+
+      <!-- Hero Content Flex Layout -->
+      <div class="hero-grid-content">
+        <!-- Left Side Text & Button (NO CARD BG) -->
+        <div class="left-content">
+          <h2 class="left-title">Premium Turfs &<br>Indoor Games</h2>
+          <p class="left-desc">Football, Cricket, Badminton and more — all under one roof.</p>
+
+          <div class="rating-box">
+            <div class="stars-group">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </div>
+            <span class="rating-score">4.8</span>
+          </div>
+
+          <div class="happy-players">500+ Happy Players</div>
+
+          <a href="#book" class="btn-left-cta" id="leftBookBtn">
+            Book Your Slot
+            <span class="btn-arrow-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <!-- Right Side Staggered 2-Column Sports Cards -->
+        <div class="right-sports-grid">
+          <!-- Column 1 -->
+          <div class="sports-col-1">
+            <div class="sports-card" data-sport="Football Turf">
+              <div class="sports-card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=400&q=80"
+                  alt="Football Turf" />
+              </div>
+              <span class="sports-card-label">Football Turf</span>
+            </div>
+
+            <div class="sports-card" data-sport="Cricket Turf" style="margin-top: 14px;">
+              <div class="sports-card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=400&q=80"
+                  alt="Cricket Turf" />
+              </div>
+              <span class="sports-card-label">Cricket Turf</span>
+            </div>
+
+            <div class="sports-card" data-sport="Table Tennis" style="margin-top: 14px;">
+              <div class="sports-card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=400&q=80"
+                  alt="Table Tennis" />
+              </div>
+              <span class="sports-card-label">Table Tennis</span>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="sports-col-2">
+            <div class="sports-card" data-sport="Badminton">
+              <div class="sports-card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80"
+                  alt="Badminton" />
+              </div>
+              <span class="sports-card-label">Badminton</span>
+            </div>
+
+            <div class="sports-card" data-sport="Indoor Games" style="margin-top: 14px;">
+              <div class="sports-card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=400&q=80"
+                  alt="Indoor Games" />
+              </div>
+              <span class="sports-card-label">Indoor Games</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- MOBILE-ONLY HERO CONTENT (Strict Reference Match) -->
+    <div class="mobile-hero-container mobile-only">
+      <!-- Badge -->
+      <div class="mobile-facility-badge">
+        PREMIUM SPORTS FACILITY
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="mobile-hero-headline">
+        PLAY.<br>
+        COMPETE.<br>
+        <span class="highlight-green">CONQUER.</span>
+      </h1>
+
+      <p class="mobile-hero-sub">
+        Experience the best turf, indoor games and sports facilities in town.
+      </p>
+
+      <!-- CTA Button -->
+      <button class="mobile-cta-btn" id="mobileCtaBtn">
+        BOOK YOUR SLOT
+        <span class="circle-icon">➔</span>
+      </button>
+
+      <!-- Horizontal Cards Carousel -->
+      <div class="mobile-cards-carousel">
+        <!-- Card 1 -->
+        <div class="mobile-sport-card" data-sport="Football Turf">
+          <img src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=500&q=80"
+            alt="Football Turf" />
+          <div class="card-gradient"></div>
+          <div class="card-footer">
+            <div>
+              <div class="card-sport-title">FOOTBALL</div>
+              <div class="card-sport-sub">TURF</div>
+            </div>
+            <div class="arrow-btn">➔</div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="mobile-sport-card featured" data-sport="Cricket Turf">
+          <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=500&q=80"
+            alt="Cricket Turf" />
+          <div class="card-gradient"></div>
+          <div class="card-footer">
+            <div>
+              <div class="card-sport-title">CRICKET</div>
+              <div class="card-sport-sub">TURF</div>
+            </div>
+            <div class="arrow-btn">➔</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="mobile-sport-card" data-sport="Indoor Games">
+          <img src="https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=500&q=80"
+            alt="Indoor Games" />
+          <div class="card-gradient"></div>
+          <div class="card-footer">
+            <div>
+              <div class="card-sport-title">INDOOR</div>
+              <div class="card-sport-sub">GAMES</div>
+            </div>
+            <div class="arrow-btn">➔</div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="mobile-sport-card" data-sport="More Sports">
+          <img src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=500&q=80"
+            alt="More Sports" />
+          <div class="card-gradient"></div>
+          <div class="card-footer">
+            <div>
+              <div class="card-sport-title">MORE</div>
+              <div class="card-sport-sub">SPORTS</div>
+            </div>
+            <div class="arrow-btn">➔</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Pagination Dots -->
+      <div class="mobile-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+      <!-- Mobile Stats Grid Box -->
+      <div class="mobile-stats-box">
+        <div class="stat-col">
+          <div class="stat-icon">🏟️</div>
+          <div class="stat-val">4+</div>
+          <div class="stat-lbl">PREMIUM<br>TURF</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-icon">👥</div>
+          <div class="stat-val">500+</div>
+          <div class="stat-lbl">HAPPY<br>PLAYERS</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-icon">📅</div>
+          <div class="stat-val">24/7</div>
+          <div class="stat-lbl">EASY SLOT<br>BOOKING</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-icon">🛡️</div>
+          <div class="stat-val">100%</div>
+          <div class="stat-lbl">SAFE &<br>SECURE</div>
+        </div>
+      </div>
+
+      <div class="mobile-trust-footer">
+        🔒 Trusted by thousands of players
+      </div>
+    </div>
+
+    <!-- BOTTOM FEATURES BAR (Desktop Only) -->
+    <div class="bottom-features-bar desktop-only">
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <div class="feature-title">Premium Turfs</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+          </svg>
+        </div>
+        <div class="feature-title">Well Maintained</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="2" x2="12" y2="6" />
+            <line x1="12" y1="18" x2="12" y2="22" />
+            <line x1="4.93" y1="4.93" x2="7.76" y2="7.76" />
+            <line x1="16.24" y1="16.24" x2="19.07" y2="19.07" />
+            <line x1="2" y1="12" x2="6" y2="12" />
+            <line x1="18" y1="12" x2="22" y2="12" />
+            <line x1="4.93" y1="19.07" x2="7.76" y2="16.24" />
+            <line x1="16.24" y1="7.76" x2="19.07" y2="4.93" />
+            <circle cx="12" cy="12" r="4" />
+          </svg>
+        </div>
+        <div class="feature-title">Flood Lights</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+            <path d="m9 16 2 2 4-4" />
+          </svg>
+        </div>
+        <div class="feature-title">Easy Booking</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.05 10.9 2 11.2 2 11.5V16c0 .6.4 1 1 1h2" />
+            <circle cx="7" cy="17" r="2" />
+            <path d="M9 17h6" />
+            <circle cx="17" cy="17" r="2" />
+          </svg>
+        </div>
+        <div class="feature-title">Parking Available</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+            <line x1="6" y1="1" x2="6" y2="4" />
+            <line x1="10" y1="1" x2="10" y2="4" />
+            <line x1="14" y1="1" x2="14" y2="4" />
+          </svg>
+        </div>
+        <div class="feature-title">Cafe & Refreshments</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       ABOUT US SECTION (Placed Directly After Hero Section)
+       ========================================================================== -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+
+      <!-- Left Column: Custom Skewed & Curved Arena Image + Vertical Taglines -->
+      <div class="about-image-col">
+        <!-- Far Left Margin Rotated Vertical Text -->
+        <div class="far-left-vertical-tagline">
+          PLAY &nbsp; BELONG &nbsp; | &nbsp; REPEAT
+          <span class="v-line-accent"></span>
+        </div>
+
+        <!-- Custom Shaped Image Card -->
+        <div class="about-image-card-wrapper">
+          <!-- Top Right Vertical Tagline -->
+          <div class="top-right-vertical-tagline">
+            <span>SPORTS</span>
+            <span>PEOPLE</span>
+            <span>COMMUNITY</span>
+          </div>
+
+          <div class="about-image-card">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1200&q=85"
+              alt="Solai Sports Arena Building and Turf" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: About Us Content, 4 Values, Stats & CTA -->
+      <div class="about-content-col">
+        <!-- Eyebrow Header -->
+        <div class="about-eyebrow">
+          <span class="eyebrow-text">ABOUT US</span>
+          <span class="eyebrow-line"></span>
+        </div>
+
+        <!-- Main Headline -->
+        <h2 class="about-title">
+          MORE THAN<br>
+          <span class="highlight-dark-green">A SPORTS ARENA.</span>
+        </h2>
+
+        <!-- Subheadline -->
+        <div class="about-subheadline">
+          A COMMUNITY FOR EVERYONE.
+        </div>
+
+        <!-- Paragraph Description -->
+        <p class="about-description">
+          At Solai Sports Arena, we believe sports have the power to bring people together. We've built a modern, safe and well-maintained facility where passion meets community — a space for players of all ages to play, connect and create lasting memories.
+        </p>
+
+        <!-- 4 Values Grid -->
+        <div class="about-values-grid">
+          <!-- Item 1: People -->
+          <div class="about-value-item">
+            <div class="value-icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="value-title">PEOPLE</div>
+            <div class="value-sub">A stronger community</div>
+          </div>
+
+          <!-- Item 2: Excellence -->
+          <div class="about-value-item">
+            <div class="value-icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h12l4 6-10 12L2 9z" />
+                <path d="M11 3v18" />
+                <path d="M2 9h20" />
+              </svg>
+            </div>
+            <div class="value-title">EXCELLENCE</div>
+            <div class="value-sub">Best-in-class facilities</div>
+          </div>
+
+          <!-- Item 3: Trust -->
+          <div class="about-value-item">
+            <div class="value-icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div class="value-title">TRUST</div>
+            <div class="value-sub">Safe & secure environment</div>
+          </div>
+
+          <!-- Item 4: Passion -->
+          <div class="about-value-item">
+            <div class="value-icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </div>
+            <div class="value-title">PASSION</div>
+            <div class="value-sub">For a healthier tomorrow</div>
+          </div>
+        </div>
+
+        <div class="about-divider-line"></div>
+
+        <!-- 3-Column Stats Bar -->
+        <div class="about-stats-bar">
+          <div class="about-stat-item">
+            <div class="stat-num">5K+</div>
+            <div class="stat-label">HAPPY PLAYERS</div>
+          </div>
+          <div class="about-stat-item">
+            <div class="stat-num">50+</div>
+            <div class="stat-label">TEAMS</div>
+          </div>
+          <div class="about-stat-item">
+            <div class="stat-num">4.8</div>
+            <div class="stat-label">AVERAGE RATING</div>
+          </div>
+        </div>
+
+        <!-- CTA & Bottom Watermark Row -->
+        <div class="about-cta-row">
+          <a href="#contact" class="our-story-btn">
+            <span class="story-circle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="story-btn-text">OUR STORY</span>
+            <span class="story-btn-line"></span>
+          </a>
+
+          <div class="about-corner-watermark">
+            PLAY<br>BELONG<br>REPEAT
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WHY CHOOSE US SECTION (Strict Reference Match)
+       ========================================================================== -->
+  <section id="why-choose-us" class="why-choose-section">
+    <div class="why-choose-container">
+
+      <!-- Top Row: Left Header & Right Slanted Gallery -->
+      <div class="why-choose-top-row">
+
+        <!-- Left Column: Header & Description -->
+        <div class="why-choose-header-col">
+          <div class="eyebrow-container">
+            <span class="eyebrow-text">WHY CHOOSE US</span>
+            <span class="eyebrow-line"></span>
+          </div>
+
+          <h2 class="why-choose-title">
+            MORE THAN<br>
+            JUST A <span class="highlight-green-text">TURF</span>
+          </h2>
+
+          <p class="why-choose-description">
+            We create the perfect space for you to play, connect and make great memories — with world-class facilities
+            and a premium experience.
+          </p>
+
+          <a href="#facilities" class="explore-facilities-btn">
+            EXPLORE OUR FACILITIES
+            <span class="btn-arrow-icon">↗</span>
+          </a>
+        </div>
+
+        <!-- Top Right Tagline -->
+        <div class="top-right-tagline">
+          PLAY &nbsp;|&nbsp; TRAIN &nbsp;|&nbsp; CONNECT
+        </div>
+
+        <!-- Right Column: Slanted Gallery Cards -->
+        <div class="slanted-gallery-wrapper">
+          <!-- Card 1 -->
+          <div class="slanted-card">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85"
+              alt="Solai Turf Arena Slice 1" />
+          </div>
+          <!-- Card 2 -->
+          <div class="slanted-card">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85"
+              alt="Solai Turf Arena Slice 2" />
+          </div>
+          <!-- Card 3 -->
+          <div class="slanted-card">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85"
+              alt="Solai Turf Arena Slice 3" />
+          </div>
+          <!-- Card 4 -->
+          <div class="slanted-card">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85"
+              alt="Solai Turf Arena Slice 4" />
+          </div>
+          <!-- Card 5 (Dark Cursive Script Card) -->
+          <div class="slanted-card">
+            <div class="cursive-card-content">
+              <div class="cursive-text">
+                Good<br>
+                Games<br>
+                Better<br>
+                People
+              </div>
+              <div class="cursive-underline"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Middle 6-Column Features Grid -->
+      <div class="why-choose-features-grid">
+
+        <!-- Feature 01 -->
+        <div class="why-feature-item">
+          <span class="feature-num-badge">01</span>
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <h3 class="why-feature-title">Premium Sports Facilities</h3>
+          <p class="why-feature-desc">
+            Top-quality turfs and world-class infrastructure for the best playing experience.
+          </p>
+        </div>
+
+        <!-- Feature 02 -->
+        <div class="why-feature-item">
+          <span class="feature-num-badge">02</span>
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </div>
+          <h3 class="why-feature-title">Professional Lighting</h3>
+          <p class="why-feature-desc">
+            High-performance lighting for clear visibility and exciting day and night games.
+          </p>
+        </div>
+
+        <!-- Feature 03 -->
+        <div class="why-feature-item">
+          <span class="feature-num-badge">03</span>
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </svg>
+          </div>
+          <h3 class="why-feature-title">Clean & Well Maintained</h3>
+          <p class="why-feature-desc">
+            Hygienic, safe and meticulously maintained facilities for your peace of mind.
+          </p>
+        </div>
+
+        <!-- Feature 04 -->
+        <div class="why-feature-item">
+          <span class="feature-num-badge">04</span>
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24">
+              <rect x="4" y="4" width="16" height="16" rx="4" />
+              <path d="M9 16V8h4a3 3 0 0 1 0 6H9" />
+            </svg>
+          </div>
+          <h3 class="why-feature-title">Parking Available</h3>
+          <p class="why-feature-desc">
+            Spacious and secure parking for cars and bikes. Hassle-free arrivals every time.
+          </p>
+        </div>
+
+        <!-- Feature 05 -->
+        <div class="why-feature-item">
+          <span class="feature-num-badge">05</span>
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+              <path d="m9 16 2 2 4-4" />
+            </svg>
+          </div>
+          <h3 class="why-feature-title">Easy Slot Booking</h3>
+          <p class="why-feature-desc">
+            Quick and convenient online booking. Choose your time, play on your terms.
+          </p>
+        </div>
+
+        <!-- Feature 06 -->
+        <div class="why-feature-item">
+          <span class="feature-num-badge">06</span>
+          <div class="feature-icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3 class="why-feature-title">Perfect for Teams & Groups</h3>
+          <p class="why-feature-desc">
+            Ideal for matches, training sessions, corporate events and celebrations.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bottom Stat & Community Banner -->
+      <div class="why-choose-banner">
+        <div class="banner-left-content">
+          <span class="banner-eyebrow">ONE ARENA.</span>
+          <h3 class="banner-headline">ENDLESS POSSIBILITIES.</h3>
+        </div>
+
+        <div class="banner-stats-group">
+          <div class="banner-stat-item">
+            <span class="stat-label">PLAYERS</span>
+            <span class="stat-number-val">5K+</span>
+          </div>
+          <div class="banner-stat-item">
+            <span class="stat-label">TEAM BOOKINGS</span>
+            <span class="stat-number-val">1K+</span>
+          </div>
+          <div class="banner-stat-item">
+            <span class="stat-label">HAPPY CUSTOMERS</span>
+            <span class="stat-number-val">98%</span>
+          </div>
+        </div>
+
+        <a href="#community" class="banner-community-cta">
+          <span class="community-arrow-btn">↗</span>
+          <span class="community-cta-text">BE A PART<br>OF OUR COMMUNITY</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EXPLORE OUR ARENA / THE GAME UNFOLDS (4-Stage Cinematic Scroll Animation)
+       ========================================================================== -->
+  <section id="facilities" class="unfolds-section">
+    <!-- 320vh Scroll Track -->
+    <div class="unfolds-scroll-track" id="unfoldsTrack">
+      <div class="unfolds-sticky-wrapper">
+
+        <!-- Header: The Game Unfolds -->
+        <div class="unfolds-header" id="unfoldsHeader">
+          <h2 class="unfolds-title">
+            THE GAME<br>
+            <span class="highlight-green-text">UNFOLDS</span>
+          </h2>
+          <p class="unfolds-subtitle">ONE ARENA. EVERY SPORT.</p>
+        </div>
+
+        <!-- Center Circular Video Reveal Container -->
+        <div class="unfolds-center-video-wrapper" id="unfoldsCenterVideo">
+          <video class="unfolds-video-player" autoplay loop muted playsinline
+            poster="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=80">
+            <source
+              src="https://assets.mixkit.co/videos/preview/mixkit-playing-a-game-of-soccer-on-a-field-41544-large.mp4"
+              type="video/mp4">
+          </video>
+          <div class="unfolds-video-overlay"></div>
+
+          <!-- Initial Center Play Button & Badge -->
+          <div class="unfolds-play-badge" id="unfoldsPlayBadge">
+            <div class="play-icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="8 5 19 12 8 19 8 5" />
+              </svg>
+            </div>
+            <span class="watch-text">WATCH THE GAME IN ACTION</span>
+          </div>
+
+          <!-- Final Stage Headline Reveal Inside Fullscreen Video -->
+          <div class="unfolds-final-headline" id="unfoldsFinalHeadline">
+            <span class="final-eyebrow">SOLAI SPORTS ARENA</span>
+            <h3 class="final-title">ONE PLACE.<br><span class="highlight-green-text">EVERY GAME.</span></h3>
+            <a href="#contact" class="final-cta-btn">BOOK YOUR ARENA SLOT ➔</a>
+          </div>
+        </div>
+
+        <!-- The 4 Dynamic Tilted Cards Surrounding the Center -->
+        <div class="unfolds-cards-wrapper">
+
+          <!-- Card 01: CRICKET (Top-Left ↖) -->
+          <div class="unfolds-card card-cricket" id="unfoldsCard1">
+            <img class="unfolds-card-img"
+              src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1000&q=80"
+              alt="Cricket Arena" />
+            <div class="unfolds-card-overlay"></div>
+            <div class="unfolds-card-content">
+              <span class="unfolds-card-num">01</span>
+              <div class="unfolds-card-badge">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 20l11-11" />
+                  <path d="M12.5 6.5L17.5 11.5" />
+                  <path d="M15 4l5 5-2.5 2.5-5-5L15 4z" />
+                  <circle cx="6" cy="18" r="2" />
+                </svg>
+              </div>
+              <h3 class="unfolds-card-title">CRICKET</h3>
+              <p class="unfolds-card-sub">Feel the tradition.</p>
+            </div>
+          </div>
+
+          <!-- Card 02: FOOTBALL (Top-Right ↗) -->
+          <div class="unfolds-card card-football" id="unfoldsCard2">
+            <img class="unfolds-card-img"
+              src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1000&q=80"
+              alt="Football Arena" />
+            <div class="unfolds-card-overlay"></div>
+            <div class="unfolds-card-content">
+              <span class="unfolds-card-num">02</span>
+              <div class="unfolds-card-badge">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <polygon points="12 8 15 10 14 14 10 14 9 10" />
+                  <line x1="12" y1="3" x2="12" y2="8" />
+                  <line x1="20" y1="9" x2="15" y2="10" />
+                  <line x1="18" y1="18" x2="14" y2="14" />
+                  <line x1="6" y1="18" x2="10" y2="14" />
+                  <line x1="4" y1="9" x2="9" y2="10" />
+                </svg>
+              </div>
+              <h3 class="unfolds-card-title">FOOTBALL</h3>
+              <p class="unfolds-card-sub">Live the passion.</p>
+            </div>
+          </div>
+
+          <!-- Card 03: INDOOR GAMES (Bottom-Left ↙) -->
+          <div class="unfolds-card card-indoor" id="unfoldsCard3">
+            <img class="unfolds-card-img"
+              src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1000&q=80"
+              alt="Indoor Games" />
+            <div class="unfolds-card-overlay"></div>
+            <div class="unfolds-card-content">
+              <span class="unfolds-card-num">03</span>
+              <div class="unfolds-card-badge">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2a4 4 0 0 0-4 4v2l-3 6h14l-3-6V6a4 4 0 0 0-4-4z" />
+                  <circle cx="12" cy="19" r="3" />
+                </svg>
+              </div>
+              <h3 class="unfolds-card-title">INDOOR GAMES</h3>
+              <p class="unfolds-card-sub">Play. Compete. Repeat.</p>
+            </div>
+          </div>
+
+          <!-- Card 04: TURF EXPERIENCE (Bottom-Right ↘) -->
+          <div class="unfolds-card card-turf" id="unfoldsCard4">
+            <img class="unfolds-card-img"
+              src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1000&q=80"
+              alt="Turf Experience" />
+            <div class="unfolds-card-overlay"></div>
+            <div class="unfolds-card-content">
+              <span class="unfolds-card-num">04</span>
+              <div class="unfolds-card-badge">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="16" rx="2" />
+                  <line x1="12" y1="4" x2="12" y2="20" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </div>
+              <h3 class="unfolds-card-title">TURF EXPERIENCE</h3>
+              <p class="unfolds-card-sub">Premium turf. Pro experience.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="unfolds-scroll-hint" id="unfoldsScrollHint">
+          <div class="mouse-badge">
+            <div class="mouse-dot"></div>
+          </div>
+          <span>SCROLL TO EXPLORE</span>
+          <span class="down-arrow">∨</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SVG ClipPath for Main Card Smooth Stepped Curves -->
+  <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+    <defs>
+      <clipPath id="mainCardClip" clipPathUnits="objectBoundingBox">
+        <path d="M 0,0.25 Q 0,0.18 0.04,0.18 L 0.22,0.18 Q 0.26,0.18 0.28,0.13 L 0.33,0.04 Q 0.35,0 0.39,0 L 0.94,0 Q 1,0 1,0.06 L 1,0.94 Q 1,1 0.94,1 L 0.06,1 Q 0,1 0,0.94 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- ==========================================================================
+       GALLERY / ARENA EXPERIENCE SECTION (Matching Reference Design)
+       ========================================================================== -->
+  <section id="gallery" class="gallery-section">
+    <div class="gallery-container">
+
+      <!-- Top Header Row -->
+      <div class="gallery-top-row">
+        <div class="gallery-header-left">
+          <div class="gallery-eyebrow">
+            <span class="gallery-eyebrow-text">GALLERY / ARENA EXPERIENCE</span>
+            <span class="gallery-eyebrow-line"></span>
+          </div>
+
+          <h2 class="gallery-title">
+            REAL MOMENTS.<br>
+            <span class="highlight-green-text">LASTING MEMORIES.</span>
+          </h2>
+
+          <p class="gallery-description">
+            Step into the action. Explore real moments from Solai Sports Arena — where passion, community and great
+            games come together.
+          </p>
+
+          <a href="#gallery" class="explore-gallery-btn">
+            <span class="btn-circle-outline">→</span>
+            EXPLORE FULL GALLERY
+          </a>
+        </div>
+
+        <div class="gallery-header-right">
+          <div class="gallery-right-tagline">
+            PLAY &nbsp;|&nbsp; BELONG &nbsp;|&nbsp; REPEAT
+          </div>
+
+          <div class="gallery-watermark-box">
+            <div class="watermark-bg-text">SOLAI</div>
+            <div class="watermark-words-list">
+              <span>PEOPLE</span>
+              <span>GAMES</span>
+              <span>MOMENTS</span>
+              <span>COMMUNITY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Asymmetric 3-Column Gallery Cards Grid -->
+      <div class="gallery-cards-grid">
+
+        <!-- Left Side Column (2 Cards) -->
+        <div class="gallery-col-side">
+          <div class="gallery-card-sm">
+            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80"
+              alt="Cricket Pitch Night" />
+            <div class="gallery-card-sm-overlay"></div>
+            <span class="gallery-card-tag">CRICKET</span>
+          </div>
+
+          <div class="gallery-card-sm">
+            <img src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80"
+              alt="Football Turf Night" />
+            <div class="gallery-card-sm-overlay"></div>
+            <span class="gallery-card-tag">FOOTBALL</span>
+          </div>
+        </div>
+
+        <!-- Center Main Feature Card (Stepped Tab Profile) -->
+        <div class="gallery-main-card">
+          <img class="gallery-main-card-bg"
+            src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1200&q=80"
+            alt="Solai Sports Arena Main Night View" />
+          <div class="gallery-main-card-overlay"></div>
+
+          <div class="gallery-main-play-badge">
+            <div class="gallery-play-circle">
+              <svg viewBox="0 0 24 24">
+                <polygon points="8 5 19 12 8 19 8 5" />
+              </svg>
+            </div>
+            <span class="gallery-watch-text">WATCH OUR ARENA</span>
+          </div>
+
+          <div class="gallery-main-footer">
+            <span class="main-tag-left">NIGHT VIBES</span>
+            <span class="main-counter-right">01 / 06</span>
+          </div>
+        </div>
+
+        <!-- Right Side Column (2 Cards) -->
+        <div class="gallery-col-side">
+          <div class="gallery-card-sm">
+            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80"
+              alt="Badminton Court" />
+            <div class="gallery-card-sm-overlay"></div>
+            <span class="gallery-card-tag">BADMINTON</span>
+          </div>
+
+          <div class="gallery-card-sm">
+            <img src="https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80"
+              alt="Indoor Games Lounge" />
+            <div class="gallery-card-sm-overlay"></div>
+            <span class="gallery-card-tag">INDOOR GAMES</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls & Quote Row -->
+      <div class="gallery-controls-row">
+        <div class="slider-nav-group">
+          <button class="btn-slider-prev" aria-label="Previous image">←</button>
+          <button class="btn-slider-next" aria-label="Next image">→</button>
+
+          <div class="slider-progress-wrapper">
+            <span class="progress-num">01</span>
+            <div class="progress-track-line">
+              <div class="progress-fill-line"></div>
+            </div>
+            <span class="progress-num">06</span>
+          </div>
+        </div>
+
+        <div class="gallery-quote-box">
+          <span class="quote-icon">“</span>
+          <div class="quote-content">
+            <p class="quote-text">"Amazing place! Great facilities, clean turf and perfect for our weekend matches."</p>
+            <span class="quote-author">— A HAPPY PLAYER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Stats & Story Banner -->
+      <div class="gallery-bottom-banner">
+        <div class="banner-stats-group-light">
+
+          <div class="light-stat-item">
+            <div class="light-stat-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="light-stat-info">
+              <span class="light-stat-val">5K+</span>
+              <span class="light-stat-lbl">HAPPY PLAYERS</span>
+            </div>
+          </div>
+
+          <div class="light-stat-item">
+            <div class="light-stat-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+                <path d="m9 16 2 2 4-4" />
+              </svg>
+            </div>
+            <div class="light-stat-info">
+              <span class="light-stat-val">1K+</span>
+              <span class="light-stat-lbl">TEAM BOOKINGS</span>
+            </div>
+          </div>
+
+          <div class="light-stat-item">
+            <div class="light-stat-icon">
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <div class="light-stat-info">
+              <span class="light-stat-val">98%</span>
+              <span class="light-stat-lbl">POSITIVE REVIEWS</span>
+            </div>
+          </div>
+
+        </div>
+
+        <a href="#community" class="story-cta-btn">
+          <span class="story-btn-circle">→</span>
+          <span class="story-btn-text">BE A PART OF OUR STORY</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TESTIMONIALS SECTION (Matching Reference Design)
+       ========================================================================== -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="testi-bg-curve-left"></div>
+
+    <div class="testi-container">
+
+      <!-- Top Header Row -->
+      <div class="testi-top-row">
+        <!-- Left Header -->
+        <div class="testi-header-left">
+          <div class="testi-eyebrow">
+            <span class="testi-eyebrow-line"></span>
+            <span class="testi-eyebrow-text">TESTIMONIALS</span>
+          </div>
+
+          <h2 class="testi-title">
+            Voices from <span class="highlight-green-title">Our Players</span>
+          </h2>
+
+          <p class="testi-subdesc">
+            Real stories from our community. Different people, one passion — the game.
+          </p>
+        </div>
+
+        <!-- Center Cursive Artwork -->
+        <div class="testi-header-center">
+          <div class="testi-cursive-text">
+            Play<br>
+            Belong<br>
+            Repeat
+          </div>
+          <div class="testi-cursive-line"></div>
+        </div>
+
+        <!-- Right Tagline -->
+        <div class="testi-header-right">
+          <span class="testi-right-bar"></span>
+          <span class="testi-right-tagline">
+            MORE THAN<br>
+            A SPORTS ARENA
+          </span>
+        </div>
+      </div>
+
+      <!-- Main Content Row -->
+      <div class="testi-main-row">
+
+        <!-- Left White Feature Card (Main Slider Card) -->
+        <div class="testi-main-card">
+          <!-- Background Watermark Quotes -->
+          <span class="watermark-quote quote-open">“</span>
+          <span class="watermark-quote quote-close">”</span>
+
+          <!-- Navigation Arrow Buttons -->
+          <button class="testi-nav-btn btn-prev" id="testiPrevBtn" aria-label="Previous testimonial">←</button>
+          <button class="testi-nav-btn btn-next" id="testiNextBtn" aria-label="Next testimonial">→</button>
+
+          <!-- Inner Center Content -->
+          <div class="testi-card-content">
+            <div class="testi-stars-row" id="testiStars">★★★★★</div>
+
+            <p class="testi-quote-text" id="testiQuote">
+              “One of the best turf arenas in the city! The ground, lighting and facilities are excellent. A perfect place to play with friends.”
+            </p>
+
+            <div class="testi-author-box">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Arun Prakash" class="testi-author-avatar" id="testiAvatar" />
+              <div class="testi-author-info">
+                <div class="testi-author-name" id="testiName">Arun Prakash</div>
+                <div class="testi-author-role" id="testiRole">Regular Player</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Footer Bar of Card -->
+          <div class="testi-card-footer">
+            <div class="testi-footer-tag">
+              <span class="footer-vert-accent"></span>
+              <div>
+                <span class="footer-tag-top">PLAYERS TODAY</span>
+                <span class="footer-tag-sub">A STRONGER COMMUNITY TOMORROW</span>
+              </div>
+            </div>
+
+            <div class="testi-dots-group" id="testiDots">
+              <span class="testi-dot active" data-index="0"></span>
+              <span class="testi-dot" data-index="1"></span>
+              <span class="testi-dot" data-index="2"></span>
+              <span class="testi-dot" data-index="3"></span>
+              <span class="testi-dot" data-index="4"></span>
+            </div>
+
+            <div class="testi-counter">
+              <span id="testiCurrentNum">01</span>
+              <span class="counter-dash">/</span>
+              <span>05</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Overlapping Staggered Photo Stack -->
+        <div class="testi-photo-stack" id="testiPhotoStack">
+
+          <!-- Stack Card 0 -->
+          <div class="stack-card card-front" data-stack-index="0">
+            <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=600&q=80" alt="Arun Prakash on Turf" class="stack-card-bg" />
+            <div class="stack-card-overlay"></div>
+            <div class="stack-card-body">
+              <div class="stack-stars">★★★★★</div>
+              <p class="stack-quote">“One of the best turf arenas in the city! Excellent ground and lighting.”</p>
+              <div class="stack-author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Arun Prakash" class="stack-avatar" />
+                <div>
+                  <div class="stack-name">Arun Prakash</div>
+                  <div class="stack-role">Regular Player</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stack Card 1 -->
+          <div class="stack-card card-mid" data-stack-index="1">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80" alt="Divya S on Turf" class="stack-card-bg" />
+            <div class="stack-card-overlay"></div>
+            <div class="stack-card-body">
+              <div class="stack-stars">★★★★★</div>
+              <p class="stack-quote">“Great turf, well maintained and safe. Staff are very supportive!”</p>
+              <div class="stack-author">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Divya S" class="stack-avatar" />
+                <div>
+                  <div class="stack-name">Divya S</div>
+                  <div class="stack-role">Team Captain</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stack Card 2 -->
+          <div class="stack-card card-back" data-stack-index="2">
+            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80" alt="Karthik Raja" class="stack-card-bg" />
+            <div class="stack-card-overlay"></div>
+            <div class="stack-card-body">
+              <div class="stack-stars">★★★★★</div>
+              <p class="stack-quote">“Perfect venue for corporate sports days. Lighting is top notch!”</p>
+              <div class="stack-author">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Karthik Raja" class="stack-avatar" />
+                <div>
+                  <div class="stack-name">Karthik Raja</div>
+                  <div class="stack-role">Tournament Host</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stack Card 3 -->
+          <div class="stack-card card-hidden" data-stack-index="3">
+            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80" alt="Sneha Reddy" class="stack-card-bg" />
+            <div class="stack-card-overlay"></div>
+            <div class="stack-card-body">
+              <div class="stack-stars">★★★★★</div>
+              <p class="stack-quote">“Awesome badminton court environment. Clean & easy booking!”</p>
+              <div class="stack-author">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Sneha Reddy" class="stack-avatar" />
+                <div>
+                  <div class="stack-name">Sneha Reddy</div>
+                  <div class="stack-role">Badminton Enthusiast</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stack Card 4 -->
+          <div class="stack-card card-hidden" data-stack-index="4">
+            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80" alt="Vikram Menon" class="stack-card-bg" />
+            <div class="stack-card-overlay"></div>
+            <div class="stack-card-body">
+              <div class="stack-stars">★★★★★</div>
+              <p class="stack-quote">“Night matches under LED floodlights are an incredible feeling!”</p>
+              <div class="stack-author">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80" alt="Vikram Menon" class="stack-avatar" />
+                <div>
+                  <div class="stack-name">Vikram Menon</div>
+                  <div class="stack-role">Weekend Cricketer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FAQ / GOT QUESTIONS SECTION (Matching Reference Design)
+       ========================================================================== -->
+  <section id="faq" class="faq-section">
+    <div class="faq-container">
+      <div class="faq-grid">
+
+        <!-- Column 1: Left Content & CTA -->
+        <div class="faq-col-left">
+          <div class="faq-eyebrow">
+            <span class="faq-eyebrow-line"></span>
+            <span class="faq-eyebrow-text">FAQ</span>
+          </div>
+
+          <h2 class="faq-title">
+            Got<br>
+            <span class="highlight-green-text">Questions?</span>
+          </h2>
+
+          <p class="faq-description">
+            Find answers to the most common questions about our turf, bookings, facilities and more. Still need help? We're always here for you.
+          </p>
+
+          <!-- Ready To Play Pill Banner -->
+          <a href="#book" class="faq-cta-banner">
+            <div class="cta-banner-left">
+              <div class="cta-icon-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <div class="cta-text-box">
+                <span class="cta-eyebrow">READY TO PLAY?</span>
+                <span class="cta-heading">Book Your Slot</span>
+                <!-- <span class="cta-subtext">Choose your game. Pick your time. Get on the field.</span> -->
+              </div>
+            </div>
+            <div class="cta-arrow-circle">➔</div>
+          </a>
+
+          <!-- Cursive Watermark -->
+          <div class="faq-cursive-text">
+            Good<br>
+            Games<br>
+            Better People
+          </div>
+        </div>
+
+        <!-- Column 2: Center Capsule Image Card -->
+        <div class="faq-col-center">
+          <div class="faq-capsule-card">
+            <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=800&q=80"
+              alt="Soccer Cleats on Turf" />
+            
+            <div class="capsule-top-tagline">
+              MORE THAN A SPORTS<br>ARENA
+            </div>
+
+            <div class="capsule-badge-bottom">
+              <div class="capsule-badge-text">
+                PLAY<br>• BELONG •<br>REPEAT
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Right Accordion Questions -->
+        <div class="faq-col-right">
+          <!-- Top Right Quote -->
+          <div class="faq-top-quote-row">
+            <span class="quote-green-line"></span>
+            <span class="quote-italic-text">"Play is not just a game, it's a better way of life."</span>
+          </div>
+
+                 <!-- Question 01 -->
+            <div class="faq-accordion-item">
+              <div class="faq-item-header">
+                <div class="faq-header-left-group">
+                  <span class="faq-item-num">01</span>
+                  <span class="faq-item-question">What sports facilities do you offer?</span>
+                </div>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-item-body">
+                <div class="faq-answer-inner">
+                  <p class="faq-answer-text">
+                    We offer top-quality football and cricket turfs, indoor badminton courts, table tennis, and multi-sport activity zones built to international standards.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 02 -->
+            <div class="faq-accordion-item">
+              <div class="faq-item-header">
+                <div class="faq-header-left-group">
+                  <span class="faq-item-num">02</span>
+                  <span class="faq-item-question">How can I book a slot?</span>
+                </div>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-item-body">
+                <div class="faq-answer-inner">
+                  <p class="faq-answer-text">
+                    You can book your slot easily online via our website, pick your preferred sport, choose an available time slot, and confirm instantly.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 03 -->
+            <div class="faq-accordion-item">
+              <div class="faq-item-header">
+                <div class="faq-header-left-group">
+                  <span class="faq-item-num">03</span>
+                  <span class="faq-item-question">What are your operating hours?</span>
+                </div>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-item-body">
+                <div class="faq-answer-inner">
+                  <p class="faq-answer-text">
+                    We are open 7 days a week, from 6:00 AM to 11:00 PM, equipped with high-intensity professional LED lighting for night play.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 04 -->
+            <div class="faq-accordion-item">
+              <div class="faq-item-header">
+                <div class="faq-header-left-group">
+                  <span class="faq-item-num">04</span>
+                  <span class="faq-item-question">Is equipment provided?</span>
+                </div>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-item-body">
+                <div class="faq-answer-inner">
+                  <p class="faq-answer-text">
+                    Basic equipment such as bibs, footballs, and cricket balls are provided. Premium racquets and gear are available for rent at the arena lounge.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 05 -->
+            <div class="faq-accordion-item">
+              <div class="faq-item-header">
+                <div class="faq-header-left-group">
+                  <span class="faq-item-num">05</span>
+                  <span class="faq-item-question">Do you offer coaching or training?</span>
+                </div>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-item-body">
+                <div class="faq-answer-inner">
+                  <p class="faq-answer-text">
+                    Yes, we host structured coaching academies for football, cricket, and badminton led by certified professional coaches for kids and adults.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 06 -->
+            <div class="faq-accordion-item">
+              <div class="faq-item-header">
+                <div class="faq-header-left-group">
+                  <span class="faq-item-num">06</span>
+                  <span class="faq-item-question">Is parking available?</span>
+                </div>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-item-body">
+                <div class="faq-answer-inner">
+                  <p class="faq-answer-text">
+                    Yes, we provide spacious and secure parking for both 2-wheelers and 4-wheelers inside the arena premises completely free of charge.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 07 -->
+            <div class="faq-accordion-item">
+              <div class="faq-item-header">
+                <div class="faq-header-left-group">
+                  <span class="faq-item-num">07</span>
+                  <span class="faq-item-question">Can we host tournaments or corporate events?</span>
+                </div>
+                <span class="faq-toggle-icon">+</span>
+              </div>
+              <div class="faq-item-body">
+                <div class="faq-answer-inner">
+                  <p class="faq-answer-text">
+                    Absolutely! We specialize in custom corporate sports days, private leagues, tournaments, and birthday matches with full event support.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 08 (Expanded by Default) -->
+            <div class="faq-accordion-item active">
+              <div class="faq-item-header">
+                <div class="faq-header-left-group">
+                  <span class="faq-item-num">08</span>
+                  <span class="faq-item-question">Are there any membership plans?</span>
+                </div>
+                <span class="faq-toggle-icon">−</span>
+              </div>
+              <div class="faq-item-body">
+                <div class="faq-answer-inner">
+                  <p class="faq-answer-text">
+                    Yes, we offer monthly, quarterly, and annual membership plans that include discounted slot rates, priority booking, and exclusive event access.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER SECTION (Matching Reference Design)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <!-- Subtle Background Curved Vector Arcs -->
+    <div class="footer-bg-arcs-top-right">
+      <svg width="450" height="450" viewBox="0 0 400 400" fill="none">
+        <circle cx="400" cy="0" r="360" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6" />
+        <circle cx="400" cy="0" r="290" stroke="#1F3D24" stroke-width="1" opacity="0.4" />
+        <circle cx="400" cy="0" r="220" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.5" />
+      </svg>
+    </div>
+    <div class="footer-bg-arcs-bottom-left">
+      <svg width="450" height="450" viewBox="0 0 400 400" fill="none">
+        <circle cx="0" cy="400" r="360" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6" />
+        <circle cx="0" cy="400" r="290" stroke="#1F3D24" stroke-width="1" opacity="0.4" />
+        <circle cx="0" cy="400" r="220" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.5" />
+      </svg>
+    </div>
+
+    <div class="footer-container">
+      <!-- Main White Rounded Footer Card -->
+      <div class="footer-card">
+        
+        <!-- Top 4-Column Grid -->
+        <div class="footer-top-grid">
+          
+          <!-- Column 1: Brand & Logo -->
+          <div class="footer-col footer-col-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-main">SOLAI</div>
+              <div class="footer-logo-line"></div>
+              <div class="footer-logo-sub">SPORTS ARENA</div>
+            </div>
+
+            <p class="footer-brand-desc">
+              A modern sports arena built for people who love to play, connect and stay active. Discover premium facilities, book your slots and be part of a growing sports community.
+            </p>
+
+            <div class="footer-social-group">
+              <a href="#" class="social-circle-btn" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="Location">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </a>
+            </div>
+
+            <div class="footer-col-tagline">
+              PLAY &nbsp;|&nbsp; BELONG &nbsp;|&nbsp; REPEAT
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="footer-col footer-col-links">
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">QUICK LINKS</h4>
+            </div>
+
+            <ul class="footer-links-list">
+              <li><a href="#home"><span class="link-chevron">›</span> Home</a></li>
+              <li><a href="#about"><span class="link-chevron">›</span> About Us</a></li>
+              <li><a href="#facilities"><span class="link-chevron">›</span> Facilities</a></li>
+              <li><a href="#gallery"><span class="link-chevron">›</span> Gallery</a></li>
+              <li><a href="#pricing"><span class="link-chevron">›</span> Pricing</a></li>
+              <li><a href="#events"><span class="link-chevron">›</span> Events</a></li>
+              <li><a href="#blog"><span class="link-chevron">›</span> Blog</a></li>
+              <li><a href="#contact"><span class="link-chevron">›</span> Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Get In Touch -->
+          <div class="footer-col footer-col-touch">
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">GET IN TOUCH</h4>
+            </div>
+
+            <div class="contact-info-stack">
+              <!-- Location -->
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Our Location</span>
+                  <p class="contact-val">123, Sports Avenue,<br>Coimbatore, Tamil Nadu – 641001</p>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Call Us</span>
+                  <a href="tel:+919876543210" class="contact-val phone-link">+91 98765 43210</a>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Email Us</span>
+                  <a href="mailto:info@solaisportsarena.com" class="contact-val email-link">info@solaisportsarena.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 4: Opening Hours & Book Your Slot -->
+          <div class="footer-col footer-col-hours">
+            <!-- Opening Hours Block -->
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">OPENING HOURS</h4>
+            </div>
+
+            <div class="contact-item hours-item">
+              <div class="contact-icon-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Monday – Sunday</span>
+                <p class="contact-val hours-val">6:00 AM – 11:00 PM</p>
+              </div>
+            </div>
+
+            <div class="hours-divider"></div>
+
+            <!-- Book Your Slot Block -->
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">BOOK YOUR SLOT</h4>
+            </div>
+
+            <div class="book-slot-wrapper">
+              <div class="contact-icon-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <div class="book-slot-content">
+                <span class="book-subtext">Get on the field today.</span>
+                <a href="#book" class="footer-book-btn">
+                  BOOK NOW &nbsp;→
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Bottom Watermark -->
+        <div class="footer-watermark-row">
+          <div class="watermark-center-text">
+            solaisports
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Outer Bottom Copyright & Legal Links -->
+      <div class="footer-bottom-bar">
+        <div class="bottom-bar-line"></div>
+        <div class="bottom-bar-content">
+          <p class="copyright-text">© 2026 SolaiSports. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="#">Privacy Policy</a>
+            <span class="legal-sep">|</span>
+            <a href="#">Terms & Conditions</a>
+            <span class="legal-sep">|</span>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
