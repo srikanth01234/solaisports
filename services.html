@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services — Solai Sports Infra | Premium Sports Infrastructure</title>
+  <meta name="description"
+    content="Explore Solai Sports Infra's premium services: Cricket & Football Turf, Pickleball Courts, Badminton Courts, Wooden, Acrylic, Synthetic Flooring, Gem Surface & EPDM Flooring." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & GLOBAL STYLES
+       ========================================================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --primary-green: #8CF716;
+      --primary-green-hover: #7ae605;
+      --dark-green: #194812;
+      --deep-green: #1b4d27;
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --text-main: #111827;
+      --bg-dark: #ffffff;
+      --bg-darker: #060c08;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: #ffffff;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION (Matching index.html)
+       ========================================================================== */
+    .page-top-wrapper {
+      position: relative;
+      width: 100%;
+      background: var(--bg-darker);
+      overflow: hidden;
+    }
+
+    .header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+      height: 52px;
+      padding: 20px 48px;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .logo-main {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .logo-main .green-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background-color: var(--primary-green);
+      border-radius: 2px;
+      margin-left: 2px;
+    }
+
+    .logo-sub {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 2px;
+    }
+
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      padding: 5px;
+      border-radius: 100px;
+      gap: 2px;
+    }
+
+    .nav-link {
+      padding: 8px 22px;
+      border-radius: 100px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link.active {
+      background: #ffffff;
+      color: #0b120c;
+      font-weight: 700;
+    }
+
+    .btn-header-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #194812;
+      color: #ffffff;
+      padding: 6px 6px 6px 20px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: 1px solid rgba(140, 247, 22, 0.35);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-header-cta:hover {
+      background: #1f5916;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(140, 247, 22, 0.25);
+    }
+
+    .btn-header-cta .icon-circle {
+      width: 32px;
+      height: 32px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b120c;
+    }
+
+    /* Mobile Nav */
+    .mobile-menu-btn {
+      display: none;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(10, 18, 12, 0.96);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 80px 24px 30px 24px;
+      gap: 18px;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .mobile-nav-drawer.active {
+      right: 0;
+    }
+
+    .mobile-nav-item {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-nav-item.active {
+      color: var(--primary-green);
+    }
+
+    .mobile-drawer-btn {
+      margin-top: 12px;
+      background: var(--primary-green);
+      color: #0b120c;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .mobile-overlay-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-overlay-bg.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* ==========================================================================
+       HERO BANNER SECTION
+       ========================================================================== */
+    .services-hero {
+      position: relative;
+      width: 100%;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 48px 40px;
+      background: var(--bg-darker);
+      overflow: hidden;
+    }
+
+    /* Animated gradient orbs */
+    .services-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(140, 247, 22, 0.15) 0%, transparent 60%);
+      border-radius: 50%;
+      animation: orbFloat1 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .services-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(140, 247, 22, 0.08) 0%, transparent 55%);
+      border-radius: 50%;
+      animation: orbFloat2 10s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes orbFloat1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.1); }
+    }
+
+    @keyframes orbFloat2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-50px, -20px) scale(1.15); }
+    }
+
+    /* Decorative grid lines */
+    .hero-grid-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(140, 247, 22, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140, 247, 22, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .hero-breadcrumb {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 16px;
+    }
+
+    .hero-breadcrumb a {
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .hero-breadcrumb a:hover {
+      color: var(--primary-green);
+    }
+
+    .hero-breadcrumb .bc-sep {
+      color: var(--primary-green);
+      font-size: 11px;
+    }
+
+    .hero-breadcrumb .bc-current {
+      color: var(--primary-green);
+      font-weight: 700;
+    }
+
+    .hero-tag-pill {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(140, 247, 22, 0.08);
+      border: 1px solid rgba(140, 247, 22, 0.25);
+      padding: 8px 22px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--primary-green);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-tag-pill .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--primary-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary-green);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .hero-main-title {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -2px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .hero-main-title .green-text {
+      color: var(--primary-green);
+    }
+
+    .hero-subtitle {
+      position: relative;
+      z-index: 2;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 580px;
+      font-weight: 500;
+    }
+
+    /* Decorative floating shapes */
+    .hero-deco-shape {
+      position: absolute;
+      border: 1px solid rgba(140, 247, 22, 0.15);
+      border-radius: 16px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .deco-1 {
+      width: 60px;
+      height: 60px;
+      top: 20%;
+      left: 8%;
+      transform: rotate(45deg);
+      animation: decoFloat 6s ease-in-out infinite;
+    }
+
+    .deco-2 {
+      width: 40px;
+      height: 40px;
+      top: 30%;
+      right: 12%;
+      border-radius: 50%;
+      animation: decoFloat 8s ease-in-out infinite reverse;
+    }
+
+    .deco-3 {
+      width: 80px;
+      height: 80px;
+      bottom: 15%;
+      left: 15%;
+      border-radius: 50%;
+      border-style: dashed;
+      animation: decoFloat 7s ease-in-out infinite;
+    }
+
+    @keyframes decoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+      50% { transform: translateY(-15px) rotate(10deg); opacity: 1; }
+    }
+
+    /* ==========================================================================
+       SERVICES BENTO GRID
+       ========================================================================== */
+    .services-bento-section {
+      position: relative;
+      width: 100%;
+      padding: 80px 48px 60px;
+      background: #ffffff;
+    }
+
+    .services-bento-section .section-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* Section Header */
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--deep-green);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-header .section-label .label-line {
+      width: 28px;
+      height: 2px;
+      background: var(--deep-green);
+      border-radius: 2px;
+    }
+
+    .section-header .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      color: #111827;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-header .section-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #4B5563;
+      max-width: 550px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+
+    /* Bento Grid Layout */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 18px;
+    }
+
+    /* Card size variations */
+    .bento-card.card-wide {
+      grid-column: span 2;
+    }
+
+    .bento-card.card-tall {
+      grid-row: span 2;
+    }
+
+    /* Base Card Style */
+    .bento-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      min-height: 260px;
+      background: #f8faf8;
+      border: 1px solid #e5e7eb;
+      transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bento-card:hover {
+      border-color: var(--deep-green);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(27, 77, 39, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .bento-card-img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bento-card:hover .bento-card-img {
+      transform: scale(1.08);
+    }
+
+    /* Glassmorphic overlay at bottom */
+    .bento-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 24px 22px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.85) 60%, transparent 100%);
+      z-index: 2;
+      transition: all 0.4s ease;
+    }
+
+    .bento-card-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--deep-green);
+      margin-bottom: 8px;
+    }
+
+    .bento-card-category .cat-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--deep-green);
+      border-radius: 50%;
+    }
+
+    .bento-card-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .bento-card-desc {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #4B5563;
+      font-weight: 500;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .bento-card:hover .bento-card-desc {
+      max-height: 80px;
+      opacity: 1;
+      margin-top: 6px;
+    }
+
+    /* Card number badge */
+    .bento-card-num {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #374151;
+      z-index: 3;
+      transition: all 0.3s ease;
+    }
+
+    .bento-card:hover .bento-card-num {
+      background: #e5f2da;
+      border-color: var(--deep-green);
+      color: var(--deep-green);
+    }
+
+    /* Arrow icon in card */
+    .bento-card-arrow {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 36px;
+      height: 36px;
+      background: #e5f2da;
+      border: 1px solid #c8e0b4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.35s ease;
+    }
+
+    .bento-card:hover .bento-card-arrow {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bento-card-arrow svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--deep-green);
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    /* ==========================================================================
+       SERVICE DETAIL SECTIONS (Alternating Layout)
+       ========================================================================== */
+    .service-details-zone {
+      width: 100%;
+      padding: 40px 48px 0;
+      background: #ffffff;
+    }
+
+    .service-detail-block {
+      max-width: 1300px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-detail-block.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-detail-block.reverse {
+      direction: rtl;
+    }
+
+    .service-detail-block.reverse > * {
+      direction: ltr;
+    }
+
+    /* Image Side */
+    .sd-image-wrapper {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #f3f4f6;
+    }
+
+    .sd-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .sd-image-wrapper:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Green accent corner on image */
+    .sd-image-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 70px;
+      height: 70px;
+      border-top: 3px solid var(--deep-green);
+      border-left: 3px solid var(--deep-green);
+      border-radius: 24px 0 0 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .sd-image-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 70px;
+      height: 70px;
+      border-bottom: 3px solid var(--deep-green);
+      border-right: 3px solid var(--deep-green);
+      border-radius: 0 0 24px 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Service number badge on image */
+    .sd-number-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--deep-green);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--deep-green);
+      letter-spacing: 1.5px;
+      z-index: 3;
+    }
+
+    /* Content Side */
+    .sd-content {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .sd-category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--deep-green);
+      width: fit-content;
+    }
+
+    .sd-category-tag .tag-line {
+      width: 24px;
+      height: 2px;
+      background: var(--deep-green);
+      border-radius: 2px;
+    }
+
+    .sd-title {
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      color: #111827;
+    }
+
+    .sd-description {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #4B5563;
+      font-weight: 500;
+    }
+
+    /* Features List */
+    .sd-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .sd-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .sd-feature-item .check-icon {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      background: #e5f2da;
+      border: 1px solid #c8e0b4;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sd-feature-item .check-icon svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--deep-green);
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .sd-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--deep-green);
+      color: #ffffff;
+      padding: 14px 14px 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      width: fit-content;
+      margin-top: 8px;
+      transition: all 0.35s ease;
+    }
+
+    .sd-cta-btn:hover {
+      background: #143b1e;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(27, 77, 39, 0.25);
+    }
+
+    .sd-cta-btn .btn-circle {
+      width: 34px;
+      height: 34px;
+      background: var(--primary-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sd-cta-btn .btn-circle svg {
+      width: 16px;
+      height: 16px;
+      stroke: #0b120c;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    /* Divider between service blocks */
+    .service-divider {
+      max-width: 1300px;
+      margin: 0 auto 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(27, 77, 39, 0.15) 50%, transparent 100%);
+    }
+
+    /* ==========================================================================
+       TRUST/STATS STRIP
+       ========================================================================== */
+    .trust-strip {
+      width: 100%;
+      padding: 60px 48px;
+      background: #f8faf8;
+    }
+
+    .trust-strip-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border-radius: 24px;
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .trust-stat-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .trust-stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: #e5e7eb;
+    }
+
+    .trust-stat-number {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--deep-green);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .trust-stat-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #4B5563;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==========================================================================
+       CTA SECTION
+       ========================================================================== */
+    .services-cta-section {
+      width: 100%;
+      padding: 80px 48px;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-cta-card {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #194812 0%, #0e2a0a 50%, #1a5c12 100%);
+      border-radius: 32px;
+      padding: 64px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(140, 247, 22, 0.2);
+    }
+
+    .services-cta-card::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(140, 247, 22, 0.15) 0%, transparent 60%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .services-cta-card::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -60px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(140, 247, 22, 0.1) 0%, transparent 55%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(140, 247, 22, 0.1);
+      border: 1px solid rgba(140, 247, 22, 0.25);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--primary-green);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-subtitle {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      font-weight: 500;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-buttons-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primary-green);
+      color: #0b120c;
+      padding: 16px 16px 16px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 800;
+      transition: all 0.35s ease;
+    }
+
+    .cta-btn-primary:hover {
+      background: var(--primary-green-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(140, 247, 22, 0.4);
+    }
+
+    .cta-btn-primary .btn-circle {
+      width: 38px;
+      height: 38px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-btn-primary .btn-circle svg {
+      width: 18px;
+      height: 18px;
+      stroke: #0b120c;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    .cta-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: #ffffff;
+      padding: 16px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: all 0.35s ease;
+    }
+
+    .cta-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-3px);
+    }
+
+    /* ==========================================================================
+       FOOTER (Matching index.html)
+       ========================================================================== */
+    .site-footer {
+      position: relative;
+      width: 100%;
+      background-color: #060c07;
+      color: #111827;
+      padding: 36px 0 16px 0;
+      overflow: hidden;
+    }
+
+    .footer-bg-arcs-top-right {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .footer-bg-arcs-bottom-left {
+      position: absolute;
+      bottom: 10px;
+      left: -30px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .footer-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-card {
+      background: #FFFFFF;
+      border-radius: 36px;
+      padding: 36px 44px 20px 44px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr 1.15fr 1.25fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .footer-col-links,
+    .footer-col-touch,
+    .footer-col-hours {
+      border-left: 1px solid #EAECE9;
+      padding-left: 36px;
+    }
+
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo-main {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #0c180e;
+      line-height: 1;
+    }
+
+    .footer-logo-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #1b4d27 35%, #e0e7dd 35%);
+      margin: 6px 0 8px 0;
+    }
+
+    .footer-logo-sub {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      color: #0c180e;
+      text-transform: uppercase;
+    }
+
+    .footer-brand-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #4B5563;
+      margin-bottom: 28px;
+      font-weight: 500;
+      max-width: 330px;
+    }
+
+    .footer-social-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .social-circle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #F0F4EE;
+      color: #1b4d27;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .social-circle-btn:hover {
+      background: #1b4d27;
+      color: #FFFFFF;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(27, 77, 39, 0.25);
+    }
+
+    .footer-col-tagline {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #4B5563;
+      text-transform: uppercase;
+    }
+
+    .footer-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .header-green-bar {
+      width: 32px;
+      height: 3px;
+      background-color: #1b4d27;
+      border-radius: 2px;
+    }
+
+    .footer-header-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #111827;
+      text-transform: uppercase;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links-list li a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1F2937;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .link-chevron {
+      font-size: 14px;
+      color: #6B7280;
+      font-weight: 900;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links-list li a:hover {
+      color: #1b4d27;
+      transform: translateX(4px);
+    }
+
+    .footer-links-list li a:hover .link-chevron {
+      color: #1b4d27;
+    }
+
+    .contact-info-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #F0F4EE;
+      color: #1b4d27;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .contact-val {
+      font-size: 13px;
+      color: #6B7280;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .contact-val.phone-link,
+    .contact-val.email-link {
+      text-decoration: none;
+      color: #4B5563;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .contact-val.phone-link:hover,
+    .contact-val.email-link:hover {
+      color: #1b4d27;
+    }
+
+    .hours-divider {
+      width: 100%;
+      height: 1px;
+      background: #EAECE9;
+      margin: 20px 0;
+    }
+
+    .hours-val {
+      font-weight: 700 !important;
+      color: #374151 !important;
+    }
+
+    .book-slot-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .book-slot-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .book-subtext {
+      font-size: 13px;
+      color: #6B7280;
+      font-weight: 500;
+    }
+
+    .footer-book-btn {
+      display: inline-flex;
+      align-items: center;
+      background: #1b4d27;
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-book-btn:hover {
+      background: #256934;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(27, 77, 39, 0.3);
+    }
+
+    .footer-watermark-row {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #EAECE9;
+      text-align: center;
+    }
+
+    .watermark-center-text {
+      font-size: 100px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: #F3F5F2;
+      user-select: none;
+      line-height: 1;
+      opacity: 0.55;
+    }
+
+    .footer-bottom-bar {
+      margin-top: 20px;
+    }
+
+    .bottom-bar-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+    }
+
+    .bottom-bar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .copyright-text {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
+    .legal-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .legal-links a {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .legal-links a:hover {
+      color: #8CF716;
+    }
+
+    .legal-sep {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 11px;
+    }
+
+    /* ==========================================================================
+       FLOATING WHATSAPP BUTTON
+       ========================================================================== */
+    .whatsapp-float-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 1500;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: waPulse 2.2s infinite;
+      border: none;
+      cursor: pointer;
+    }
+
+    .whatsapp-float-btn:hover {
+      transform: scale(1.1) translateY(-3px);
+      background: #20bd5a;
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+    }
+
+    .whatsapp-float-btn svg {
+      width: 34px;
+      height: 34px;
+      fill: #ffffff;
+    }
+
+    @keyframes waPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* ==========================================================================
+       SCROLL REVEAL ANIMATION
+       ========================================================================== */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+    .reveal-delay-7 { transition-delay: 0.7s; }
+    .reveal-delay-8 { transition-delay: 0.8s; }
+
+    /* ==========================================================================
+       RESPONSIVE STYLES
+       ========================================================================== */
+    @media (max-width: 1200px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bento-card.card-wide {
+        grid-column: span 2;
+      }
+
+      .trust-strip-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      .trust-stat-item:nth-child(2)::after {
+        display: none;
+      }
+
+      .footer-card {
+        padding: 44px 36px 36px 36px;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 28px;
+      }
+
+      .footer-col-touch {
+        border-left: none;
+        padding-left: 0;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .header {
+        padding: 20px 24px;
+      }
+
+      .services-hero {
+        padding: 80px 24px 60px;
+      }
+
+      .services-bento-section {
+        padding: 60px 24px 40px;
+      }
+
+      .service-details-zone {
+        padding: 40px 24px 0;
+      }
+
+      .service-detail-block {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .service-detail-block.reverse {
+        direction: ltr;
+      }
+
+      .trust-strip {
+        padding: 40px 24px;
+      }
+
+      .services-cta-section {
+        padding: 60px 24px;
+      }
+
+      .services-cta-card {
+        padding: 48px 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-pill,
+      .btn-header-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .header {
+        padding: 16px 18px;
+      }
+
+      .services-hero {
+        padding: 70px 18px 50px;
+        min-height: 340px;
+      }
+
+      .hero-main-title {
+        font-size: 36px;
+        letter-spacing: -1px;
+      }
+
+      .hero-subtitle {
+        font-size: 14px;
+      }
+
+      .hero-deco-shape {
+        display: none;
+      }
+
+      .services-bento-section {
+        padding: 48px 18px 32px;
+      }
+
+      .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .bento-card.card-wide {
+        grid-column: span 1;
+      }
+
+      .bento-card {
+        min-height: 220px;
+      }
+
+      .bento-card-desc {
+        max-height: unset !important;
+        opacity: 1 !important;
+        margin-top: 4px !important;
+      }
+
+      .service-details-zone {
+        padding: 32px 18px 0;
+      }
+
+      .service-detail-block {
+        margin-bottom: 48px;
+        gap: 28px;
+      }
+
+      .sd-title {
+        font-size: 26px;
+      }
+
+      .trust-strip {
+        padding: 32px 18px;
+      }
+
+      .trust-strip-inner {
+        grid-template-columns: 1fr 1fr;
+        padding: 28px 20px;
+        gap: 24px;
+      }
+
+      .trust-stat-item::after {
+        display: none !important;
+      }
+
+      .trust-stat-number {
+        font-size: 32px;
+      }
+
+      .services-cta-section {
+        padding: 40px 18px;
+      }
+
+      .services-cta-card {
+        padding: 40px 22px;
+        border-radius: 24px;
+      }
+
+      .cta-title {
+        font-size: 28px;
+      }
+
+      .cta-buttons-row {
+        flex-direction: column;
+      }
+
+      .site-footer {
+        padding: 24px 0 16px 0;
+      }
+
+      .footer-card {
+        border-radius: 24px;
+        padding: 24px 18px 16px 18px;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .footer-col-links,
+      .footer-col-touch,
+      .footer-col-hours {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .footer-watermark-row {
+        margin-top: 16px;
+        padding-top: 12px;
+      }
+
+      .watermark-center-text {
+        font-size: 38px;
+        opacity: 0.35;
+      }
+
+      .bottom-bar-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-main-title {
+        font-size: 30px;
+      }
+
+      .bento-card-title {
+        font-size: 17px;
+      }
+
+      .trust-strip-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====== PAGE TOP WRAPPER ====== -->
+  <div class="page-top-wrapper">
+
+    <!-- NAVBAR / HEADER -->
+    <header class="header">
+      <a href="index.html" class="logo-container">
+        <div class="logo-main">
+          SOLAI<span class="green-dot"></span>
+        </div>
+        <div class="logo-sub">SPORTS INFRA</div>
+      </a>
+
+      <nav class="nav-pill">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link active">Facilities</a>
+        <a href="projects.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <a href="index.html#contact" class="btn-header-cta">
+        Get Free Quote
+        <span class="icon-circle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </a>
+
+      <!-- Mobile Hamburger -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-overlay-bg" id="mobileOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+      <a href="index.html" class="mobile-nav-item">Home</a>
+      <a href="services.html" class="mobile-nav-item active">Services</a>
+      <a href="index.html#gallery" class="mobile-nav-item">Projects</a>
+      <a href="index.html#about" class="mobile-nav-item">About Us</a>
+      <a href="index.html#contact" class="mobile-nav-item">Contact</a>
+      <button class="mobile-drawer-btn" onclick="window.location.href='index.html#contact'">Get Free Quote →</button>
+    </div>
+
+    <!-- ====== HERO BANNER ====== -->
+    <section class="services-hero" id="services-top">
+      <div class="hero-grid-lines"></div>
+
+      <!-- Decorative shapes -->
+      <div class="hero-deco-shape deco-1"></div>
+      <div class="hero-deco-shape deco-2"></div>
+      <div class="hero-deco-shape deco-3"></div>
+
+      <div class="hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="bc-sep">›</span>
+        <span class="bc-current">Our Services</span>
+      </div>
+
+      <div class="hero-tag-pill">
+        <span class="pulse-dot"></span>
+        What We Build
+      </div>
+
+      <h1 class="hero-main-title">
+        Premium Sports<br>
+        <span class="green-text">Infrastructure</span> Solutions
+      </h1>
+
+      <p class="hero-subtitle">
+        From world-class turfs to professional-grade flooring — we design, build, and deliver sports facilities that
+        inspire peak performance.
+      </p>
+    </section>
+  </div>
+
+  <!-- ====== SERVICES BENTO GRID ====== -->
+  <section class="services-bento-section" id="services-grid">
+    <div class="section-container">
+
+      <div class="section-header reveal-on-scroll">
+        <div class="section-label">
+          <span class="label-line"></span>
+          Our Services
+          <span class="label-line"></span>
+        </div>
+        <h2 class="section-title">Explore Our Expertise</h2>
+        <p class="section-desc">
+          Eight specialized services covering every aspect of modern sports infrastructure construction.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+
+        <!-- Card 1: Cricket & Football Turf (Wide) -->
+        <div class="bento-card card-wide reveal-on-scroll reveal-delay-1" data-service="cricket-football-turf">
+          <img class="bento-card-img"
+            src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80"
+            alt="Cricket & Football Turf" loading="lazy" />
+          <div class="bento-card-num">01</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Turf Construction</div>
+            <h3 class="bento-card-title">Cricket & Football Turf</h3>
+            <p class="bento-card-desc">FIFA & ICC grade synthetic turf fields built with precision engineering for
+              professional and recreational use.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Pickleball Courts -->
+        <div class="bento-card reveal-on-scroll reveal-delay-2" data-service="pickleball-courts">
+          <img class="bento-card-img"
+            src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80"
+            alt="Pickleball Courts" loading="lazy" />
+          <div class="bento-card-num">02</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Court Construction</div>
+            <h3 class="bento-card-title">Pickleball Courts</h3>
+            <p class="bento-card-desc">Tournament-ready pickleball courts with professional acrylic surfaces and precise
+              markings.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Badminton Courts -->
+        <div class="bento-card reveal-on-scroll reveal-delay-3" data-service="badminton-courts">
+          <img class="bento-card-img"
+            src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=600&q=80"
+            alt="Badminton Courts" loading="lazy" />
+          <div class="bento-card-num">03</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Court Construction</div>
+            <h3 class="bento-card-title">Badminton Courts</h3>
+            <p class="bento-card-desc">BWF-standard badminton courts with optimal shock absorption and grip for
+              competitive play.</p>
+          </div>
+        </div>
+
+        <!-- Card 4: Wooden Sports Flooring -->
+        <div class="bento-card reveal-on-scroll reveal-delay-4" data-service="wooden-flooring">
+          <img class="bento-card-img"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80"
+            alt="Wooden Sports Flooring" loading="lazy" />
+          <div class="bento-card-num">04</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Flooring Solutions</div>
+            <h3 class="bento-card-title">Wooden Sports Flooring</h3>
+            <p class="bento-card-desc">Premium hardwood flooring systems engineered for basketball, volleyball, and
+              multi-sport facilities.</p>
+          </div>
+        </div>
+
+        <!-- Card 5: Acrylic Sports Flooring -->
+        <div class="bento-card reveal-on-scroll reveal-delay-5" data-service="acrylic-flooring">
+          <img class="bento-card-img"
+            src="https://images.unsplash.com/photo-1568579351588-eb5e327c4bfc?w=600&q=80"
+            alt="Acrylic Sports Flooring" loading="lazy" />
+          <div class="bento-card-num">05</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Flooring Solutions</div>
+            <h3 class="bento-card-title">Acrylic Sports Flooring</h3>
+            <p class="bento-card-desc">Multi-layered acrylic coating systems delivering consistent ball bounce, speed,
+              and all-weather durability.</p>
+          </div>
+        </div>
+
+        <!-- Card 6: Synthetic Sports Flooring (Wide) -->
+        <div class="bento-card card-wide reveal-on-scroll reveal-delay-6" data-service="synthetic-flooring">
+          <img class="bento-card-img"
+            src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&q=80"
+            alt="Synthetic Sports Flooring" loading="lazy" />
+          <div class="bento-card-num">06</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Flooring Solutions</div>
+            <h3 class="bento-card-title">Synthetic Sports Flooring</h3>
+            <p class="bento-card-desc">Versatile synthetic flooring engineered for multi-sport use — from jogging tracks
+              to indoor arenas.</p>
+          </div>
+        </div>
+
+        <!-- Card 7: Gem Surface -->
+        <div class="bento-card reveal-on-scroll reveal-delay-7" data-service="gem-surface">
+          <img class="bento-card-img"
+            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
+            alt="Gem Surface" loading="lazy" />
+          <div class="bento-card-num">07</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Specialty Surfaces</div>
+            <h3 class="bento-card-title">Gem Surface</h3>
+            <p class="bento-card-desc">High-performance textured surface ideal for pathways, play areas, and
+              multipurpose sports zones.</p>
+          </div>
+        </div>
+
+        <!-- Card 8: EPDM Flooring -->
+        <div class="bento-card reveal-on-scroll reveal-delay-8" data-service="epdm-flooring">
+          <img class="bento-card-img"
+            src="https://images.unsplash.com/photo-1590239926044-4131f5d0654d?w=600&q=80"
+            alt="EPDM Flooring" loading="lazy" />
+          <div class="bento-card-num">08</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Specialty Surfaces</div>
+            <h3 class="bento-card-title">EPDM Flooring</h3>
+            <p class="bento-card-desc">Vibrant, rubber-granule EPDM flooring with superior shock absorption for kids'
+              zones and athletic tracks.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SERVICE DETAIL SECTIONS ====== -->
+  <section class="service-details-zone" id="service-details">
+
+    <!-- SERVICE 1: Cricket & Football Turf -->
+    <div class="service-detail-block" id="cricket-football-turf">
+      <div class="sd-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80"
+          alt="Cricket & Football Turf Construction" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 01</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Turf Construction
+        </div>
+        <h3 class="sd-title">Cricket & Football Turf</h3>
+        <p class="sd-description">
+          We construct world-class synthetic turfs that meet FIFA and ICC quality standards. Our turfs deliver
+          exceptional playability, consistent ball response, and year-round durability — whether for competitive
+          tournaments or community recreation.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            FIFA & ICC grade synthetic grass
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Professional shock-pad underlayer
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            UV-stabilized for all weather conditions
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            LED floodlight integration available
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Get Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 2: Pickleball Courts -->
+    <div class="service-detail-block reverse" id="pickleball-courts">
+      <div class="sd-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&q=80"
+          alt="Pickleball Court Construction" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 02</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Court Construction
+        </div>
+        <h3 class="sd-title">Pickleball Courts</h3>
+        <p class="sd-description">
+          Pickleball is the fastest-growing sport worldwide. We build tournament-ready courts with precision-applied
+          acrylic surfaces, proper cushioning, and accurate USAPA-standard markings that deliver consistent play quality.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            USAPA tournament-standard dimensions
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Multi-coat acrylic surface system
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Anti-slip & weather-resistant finish
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Indoor & outdoor configurations
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Get Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 3: Badminton Courts -->
+    <div class="service-detail-block" id="badminton-courts">
+      <div class="sd-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800&q=80"
+          alt="Badminton Court Construction" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 03</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Court Construction
+        </div>
+        <h3 class="sd-title">Badminton Courts</h3>
+        <p class="sd-description">
+          Our badminton courts are engineered for competitive excellence. Built with BWF-approved synthetic or wooden
+          flooring systems, they offer optimal shock absorption, consistent grip, and professional-grade line markings.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            BWF-standard court specifications
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            PVC / vinyl / wooden flooring options
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Optimal shock absorption layer
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Glare-free LED lighting setup
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Get Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 4: Wooden Sports Flooring -->
+    <div class="service-detail-block reverse" id="wooden-flooring">
+      <div class="sd-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
+          alt="Wooden Sports Flooring" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 04</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Flooring Solutions
+        </div>
+        <h3 class="sd-title">Wooden Sports Flooring</h3>
+        <p class="sd-description">
+          Premium hardwood flooring systems crafted from maple, teak, or engineered wood. Designed for basketball,
+          volleyball, and multipurpose indoor courts with superior ball bounce, low injury risk, and elegant aesthetics.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Maple, teak & engineered wood options
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Floating subfloor system for impact absorption
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Anti-skid polyurethane finish
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            FIBA & BWF compliant installations
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Get Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 5: Acrylic Sports Flooring -->
+    <div class="service-detail-block" id="acrylic-flooring">
+      <div class="sd-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1568579351588-eb5e327c4bfc?w=800&q=80"
+          alt="Acrylic Sports Flooring" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 05</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Flooring Solutions
+        </div>
+        <h3 class="sd-title">Acrylic Sports Flooring</h3>
+        <p class="sd-description">
+          Our multi-layered acrylic flooring systems are the go-to choice for tennis, basketball, and multi-sport
+          courts. They provide excellent ball response, color vibrancy, and all-weather performance at competitive
+          pricing.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            5–8 layer professional coating system
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            UV-resistant, vibrant color options
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Consistent ball bounce & speed
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Low maintenance, 8+ years lifespan
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Get Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 6: Synthetic Sports Flooring -->
+    <div class="service-detail-block reverse" id="synthetic-flooring">
+      <div class="sd-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&q=80"
+          alt="Synthetic Sports Flooring" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 06</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Flooring Solutions
+        </div>
+        <h3 class="sd-title">Synthetic Sports Flooring</h3>
+        <p class="sd-description">
+          Versatile synthetic flooring solutions engineered for indoor and outdoor multi-sport environments. From PU and
+          PP interlocking tiles to rubber rolls — we offer the right solution for every sports facility.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            PU, PP tiles & rubber roll options
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Multi-sport line marking capability
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Non-toxic, eco-friendly materials
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Ideal for schools, gyms & training centres
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Get Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 7: Gem Surface -->
+    <div class="service-detail-block" id="gem-surface">
+      <div class="sd-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
+          alt="Gem Surface" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 07</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Specialty Surfaces
+        </div>
+        <h3 class="sd-title">Gem Surface</h3>
+        <p class="sd-description">
+          Gem Surface is a high-performance textured coating ideal for multipurpose zones, recreational areas, and
+          pathways. It provides excellent traction, aesthetic appeal, and long-lasting durability in all weather
+          conditions.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Textured, anti-slip surface finish
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Custom color & pattern options
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Suitable for indoor & outdoor applications
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Low maintenance, weather-resistant
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Get Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 8: EPDM Flooring -->
+    <div class="service-detail-block reverse" id="epdm-flooring">
+      <div class="sd-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1590239926044-4131f5d0654d?w=800&q=80"
+          alt="EPDM Flooring" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 08</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Specialty Surfaces
+        </div>
+        <h3 class="sd-title">EPDM Flooring</h3>
+        <p class="sd-description">
+          EPDM (Ethylene Propylene Diene Monomer) rubber flooring delivers vibrant colours, exceptional shock
+          absorption, and maximum safety. Perfect for children's play areas, athletic tracks, gym zones, and landscaped
+          sports complexes.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Vibrant, UV-stable colour granules
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Superior shock absorption & safety
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Seamless, poured-in-place installation
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            10+ years lifespan, minimal upkeep
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Get Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====== TRUST / STATS STRIP ====== -->
+  <section class="trust-strip">
+    <div class="trust-strip-inner reveal-on-scroll">
+      <div class="trust-stat-item">
+        <div class="trust-stat-number">50+</div>
+        <div class="trust-stat-label">Projects Completed</div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="trust-stat-number">8</div>
+        <div class="trust-stat-label">Service Categories</div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="trust-stat-number">100%</div>
+        <div class="trust-stat-label">Client Satisfaction</div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="trust-stat-number">5+</div>
+        <div class="trust-stat-label">Years Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA SECTION ====== -->
+  <section class="services-cta-section">
+    <div class="services-cta-card reveal-on-scroll">
+      <div class="cta-badge">★ Let's Build Together</div>
+      <h2 class="cta-title">Ready to Build Your<br>Dream Sports Facility?</h2>
+      <p class="cta-subtitle">
+        Get a free consultation and customized quote for your sports infrastructure project. Our engineers are ready to
+        help.
+      </p>
+      <div class="cta-buttons-row">
+        <a href="index.html#contact" class="cta-btn-primary">
+          Get Free Quote
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+        <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+          target="_blank" class="cta-btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" />
+          </svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER (Matching index.html) ====== -->
+  <footer class="site-footer">
+    <div class="footer-bg-arcs-top-right">
+      <svg width="450" height="450" viewBox="0 0 400 400" fill="none">
+        <circle cx="400" cy="0" r="360" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6" />
+        <circle cx="400" cy="0" r="290" stroke="#1F3D24" stroke-width="1" opacity="0.4" />
+        <circle cx="400" cy="0" r="220" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.5" />
+      </svg>
+    </div>
+    <div class="footer-bg-arcs-bottom-left">
+      <svg width="450" height="450" viewBox="0 0 400 400" fill="none">
+        <circle cx="0" cy="400" r="360" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6" />
+        <circle cx="0" cy="400" r="290" stroke="#1F3D24" stroke-width="1" opacity="0.4" />
+        <circle cx="0" cy="400" r="220" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.5" />
+      </svg>
+    </div>
+
+    <div class="footer-container">
+      <div class="footer-card">
+        <div class="footer-top-grid">
+
+          <!-- Column 1: Brand -->
+          <div class="footer-col footer-col-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-main">SOLAI</div>
+              <div class="footer-logo-line"></div>
+              <div class="footer-logo-sub">SPORTS ARENA</div>
+            </div>
+            <p class="footer-brand-desc">
+              Premier sports infrastructure builders specializing in FIFA-grade synthetic turfs, official pickleball
+              courts, and multi-sport synthetic flooring.
+            </p>
+            <div class="footer-social-group">
+              <a href="#" class="social-circle-btn" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                  </path>
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="Location">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </a>
+            </div>
+            <div class="footer-col-tagline">
+              PLAN &nbsp;|&nbsp; BUILD &nbsp;|&nbsp; DELIVER
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="footer-col footer-col-links">
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">OUR SERVICES</h4>
+            </div>
+            <ul class="footer-links-list">
+              <li><a href="#cricket-football-turf"><span class="link-chevron">›</span> Turf Construction</a></li>
+              <li><a href="#pickleball-courts"><span class="link-chevron">›</span> Pickleball Courts</a></li>
+              <li><a href="#synthetic-flooring"><span class="link-chevron">›</span> Synthetic Flooring</a></li>
+              <li><a href="index.html#why-choose-us"><span class="link-chevron">›</span> Why Choose Us</a></li>
+              <li><a href="index.html#gallery"><span class="link-chevron">›</span> Completed Projects</a></li>
+              <li><a href="index.html#testimonials"><span class="link-chevron">›</span> Client Reviews</a></li>
+              <li><a href="index.html#faq"><span class="link-chevron">›</span> FAQs</a></li>
+              <li><a href="index.html#contact"><span class="link-chevron">›</span> Get Free Quote</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Get In Touch -->
+          <div class="footer-col footer-col-touch">
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">GET IN TOUCH</h4>
+            </div>
+            <div class="contact-info-stack">
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Our Office</span>
+                  <p class="contact-val">123, Sports Avenue,<br>Coimbatore, Tamil Nadu – 641001</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Call Our Engineers</span>
+                  <a href="tel:+919876543210" class="contact-val phone-link">+91 98765 43210</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Email Us</span>
+                  <a href="mailto:info@solaisportsinfra.com"
+                    class="contact-val email-link">info@solaisportsinfra.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 4: Working Hours -->
+          <div class="footer-col footer-col-hours">
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">WORKING HOURS</h4>
+            </div>
+            <div class="contact-item hours-item">
+              <div class="contact-icon-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Monday – Saturday</span>
+                <p class="contact-val hours-val">9:00 AM – 7:00 PM</p>
+              </div>
+            </div>
+            <div class="hours-divider"></div>
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">GET A FREE QUOTE</h4>
+            </div>
+            <div class="book-slot-wrapper">
+              <div class="contact-icon-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <div class="book-slot-content">
+                <span class="book-subtext">Plan your sports facility today.</span>
+                <a href="index.html#contact" class="footer-book-btn">
+                  CONSULT NOW &nbsp;→
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Watermark -->
+        <div class="footer-watermark-row">
+          <div class="watermark-center-text">solaisports</div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="bottom-bar-line"></div>
+        <div class="bottom-bar-content">
+          <p class="copyright-text">© 2026 SolaiSports. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="#">Privacy Policy</a>
+            <span class="legal-sep">|</span>
+            <a href="#">Terms & Conditions</a>
+            <span class="legal-sep">|</span>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+    target="_blank" class="whatsapp-float-btn" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" />
+    </svg>
+  </a>
+
+  <!-- ====== JAVASCRIPT ====== -->
+  <script>
+    // ===== Mobile Menu Toggle =====
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+      });
+    }
+
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener('click', () => {
+        mobileDrawer.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+      });
+    }
+
+    // ===== Scroll Reveal (Intersection Observer) =====
+    const revealElements = document.querySelectorAll('.reveal-on-scroll, .service-detail-block');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ===== Bento Card Click → Smooth Scroll to Detail =====
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const serviceId = card.getAttribute('data-service');
+        const target = document.getElementById(serviceId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    });
+
+    // ===== Counter Animation for Trust Stats =====
+    const statNumbers = document.querySelectorAll('.trust-stat-number');
+    let statsAnimated = false;
+
+    function animateCounters() {
+      statNumbers.forEach(stat => {
+        const text = stat.textContent.trim();
+        const hasPlus = text.includes('+');
+        const hasPercent = text.includes('%');
+        const numericVal = parseInt(text.replace(/[^0-9]/g, ''));
+
+        let current = 0;
+        const increment = Math.ceil(numericVal / 40);
+        const suffix = hasPlus ? '+' : (hasPercent ? '%' : '');
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= numericVal) {
+            current = numericVal;
+            clearInterval(timer);
+          }
+          stat.textContent = current + suffix;
+        }, 35);
+      });
+    }
+
+    const statsSection = document.querySelector('.trust-strip-inner');
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !statsAnimated) {
+            statsAnimated = true;
+            animateCounters();
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      statsObserver.observe(statsSection);
+    }
+  </script>
+
+</body>
+
+</html>

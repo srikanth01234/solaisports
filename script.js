@@ -144,23 +144,112 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initHeroSlideshow();
 
-  // Book Your Slot Buttons (Desktop & Mobile)
-  const bookBtns = [
-    document.getElementById('headerBookBtn'),
-    document.getElementById('leftBookBtn'),
-    document.getElementById('mobileCtaBtn'),
-    document.getElementById('mobileBannerBookBtn'),
-    document.getElementById('drawerBookBtn')
-  ];
+  /* ==========================================================================
+     TIMED POPUP MODAL & QUOTE SYSTEM INTERACTIVITY
+     ========================================================================== */
+  const modalOverlay = document.getElementById('quoteModalOverlay');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const modalForm = document.getElementById('modalQuoteForm');
+  const btnModalWhatsApp = document.getElementById('btnModalWhatsApp');
 
-  bookBtns.forEach(btn => {
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        showNotification("Opening Slot Booking System for Solai Sports Arena...");
-      });
+  function openQuoteModal() {
+    if (modalOverlay) {
+      modalOverlay.classList.add('active');
+    }
+  }
+
+  function closeQuoteModal() {
+    if (modalOverlay) {
+      modalOverlay.classList.remove('active');
+    }
+  }
+
+  // Auto-popup after 4 seconds on initial visit
+  setTimeout(() => {
+    if (!sessionStorage.getItem('solai_modal_shown')) {
+      openQuoteModal();
+      sessionStorage.setItem('solai_modal_shown', 'true');
+    }
+  }, 4000);
+
+  // Close modal events
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeQuoteModal);
+  }
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        closeQuoteModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeQuoteModal();
     }
   });
+
+  // Attach modal trigger to all Quote / Consultation CTA buttons & WhatsApp Float Button across site
+  const quoteTriggerBtns = document.querySelectorAll(
+    '#headerBookBtn, #leftBookBtn, #mobileCtaBtn, #mobileBannerBookBtn, #drawerBookBtn, .explore-facilities-btn, .final-cta-btn, .banner-community-cta, .story-cta-btn, .faq-cta-banner, .footer-book-btn, #waFloatBtn'
+  );
+
+  quoteTriggerBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openQuoteModal();
+    });
+  });
+
+  // Handle Quote Form Submit (Sends filled message directly to WhatsApp)
+  if (modalForm) {
+    modalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('modalName')?.value.trim() || '';
+      const phone = document.getElementById('modalPhone')?.value.trim() || '';
+      const email = document.getElementById('modalEmail')?.value.trim() || '';
+      const service = document.getElementById('modalService')?.value || 'Sports Infrastructure Construction';
+      const location = document.getElementById('modalLocation')?.value.trim() || '';
+
+      let text = `Hi Solai Sports Infra, I would like to request a construction quote:%0A%0A`;
+      if (name) text += `*Full Name:* ${encodeURIComponent(name)}%0A`;
+      if (phone) text += `*Mobile Number:* ${encodeURIComponent(phone)}%0A`;
+      if (email) text += `*Email:* ${encodeURIComponent(email)}%0A`;
+      if (service) text += `*Service Required:* ${encodeURIComponent(service)}%0A`;
+      if (location) text += `*Project Location:* ${encodeURIComponent(location)}%0A`;
+
+      // Launch WhatsApp with filled message text
+      window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+      showNotification(`Thank you ${name || 'Valued Customer'}! Opening WhatsApp with your project details...`);
+      closeQuoteModal();
+      modalForm.reset();
+    });
+  }
+
+  // Handle Direct WhatsApp Chat button inside Modal Form
+  if (btnModalWhatsApp) {
+    btnModalWhatsApp.addEventListener('click', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('modalName')?.value.trim() || '';
+      const phone = document.getElementById('modalPhone')?.value.trim() || '';
+      const email = document.getElementById('modalEmail')?.value.trim() || '';
+      const service = document.getElementById('modalService')?.value || 'Sports Infrastructure Construction';
+      const location = document.getElementById('modalLocation')?.value.trim() || '';
+
+      let text = `Hi Solai Sports Infra, I would like to chat about a sports construction project:%0A%0A`;
+      if (name) text += `*Full Name:* ${encodeURIComponent(name)}%0A`;
+      if (phone) text += `*Mobile Number:* ${encodeURIComponent(phone)}%0A`;
+      if (email) text += `*Email:* ${encodeURIComponent(email)}%0A`;
+      if (service) text += `*Service:* ${encodeURIComponent(service)}%0A`;
+      if (location) text += `*Location:* ${encodeURIComponent(location)}%0A`;
+
+      window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+      closeQuoteModal();
+      if (modalForm) modalForm.reset();
+    });
+  }
 
   // Mobile Carousel Dots scroll listener
   const carousel = document.querySelector('.mobile-cards-carousel');
@@ -339,37 +428,37 @@ document.addEventListener('DOMContentLoaded', () => {
   function initTestimonialSlider() {
     const testimonials = [
       {
-        quote: "“One of the best turf arenas in the city! The ground, lighting and facilities are excellent. A perfect place to play with friends.”",
+        quote: "“Solai Infra built our 7-a-side football turf with precision sub-base drainage and FIFA-standard grass. Completed right on schedule!”",
         name: "Arun Prakash",
-        role: "Regular Player",
+        role: "Sports Club Owner",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
         stars: "★★★★★"
       },
       {
-        quote: "“Great turf, well maintained and safe. The staff are very supportive. Highly recommended for weekend matches!”",
+        quote: "“Our professional pickleball courts were constructed with flawless acrylic cushion surfacing. Excellent bounce and pace!”",
         name: "Divya S",
-        role: "Team Captain",
+        role: "Academy Director",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
         stars: "★★★★★"
       },
       {
-        quote: "“We hosted our corporate sports day here. The lighting, pitch condition and seating arrangements were top notch!”",
+        quote: "“Exceptional work on our school's multi-sport synthetic flooring and LED floodlight towers. Durable and top-quality finish!”",
         name: "Karthik Raja",
-        role: "Tournament Host",
+        role: "School Sports Head",
         avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
         stars: "★★★★★"
       },
       {
-        quote: "“Super clean badminton courts and awesome lighting. Booking slots online is fast & seamless. Truly a modern sports facility!”",
+        quote: "“Constructed a box cricket turf with heavy-duty perimeter netting for our venture. Highly professional engineering team!”",
         name: "Sneha Reddy",
-        role: "Badminton Enthusiast",
+        role: "Turf Entrepreneur",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
         stars: "★★★★★"
       },
       {
-        quote: "“Playing under the high-intensity floodlights at Solai Arena is an incredible feeling. Turf quality is phenomenal!”",
+        quote: "“From site survey to final surface installation, Solai delivered our private villa pickleball court with top aesthetics!”",
         name: "Vikram Menon",
-        role: "Weekend Cricketer",
+        role: "Private Property Owner",
         avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
         stars: "★★★★★"
       }

@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Solai Sports Infra | Get in Touch</title>
+  <meta name="description"
+    content="Contact Solai Sports Infra for your premium sports infrastructure needs. Reach out to our experts for turf, courts, and flooring." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       RESET & GLOBAL STYLES
+       ========================================================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --primary-green: #8CF716;
+      --primary-green-hover: #7ae605;
+      --dark-green: #194812;
+      --deep-green: #1b4d27;
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --text-main: #111827;
+      --bg-dark: #ffffff;
+      --bg-darker: #060c08;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: #ffffff;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .page-top-wrapper {
+      position: relative;
+      width: 100%;
+      background: var(--bg-darker);
+      overflow: hidden;
+    }
+
+    .header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+      height: 52px;
+      padding: 20px 48px;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .logo-main {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      line-height: 1;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .logo-main .green-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background-color: var(--primary-green);
+      border-radius: 2px;
+      margin-left: 2px;
+    }
+
+    .logo-sub {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 2px;
+    }
+
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      padding: 5px;
+      border-radius: 100px;
+      gap: 2px;
+    }
+
+    .nav-link {
+      padding: 8px 22px;
+      border-radius: 100px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link.active {
+      background: #ffffff;
+      color: #0b120c;
+      font-weight: 700;
+    }
+
+    .btn-header-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #194812;
+      color: #ffffff;
+      padding: 6px 6px 6px 20px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: 1px solid rgba(140, 247, 22, 0.35);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-header-cta:hover {
+      background: #1f5916;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(140, 247, 22, 0.25);
+    }
+
+    .btn-header-cta .icon-circle {
+      width: 32px;
+      height: 32px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b120c;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(10, 18, 12, 0.96);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 80px 24px 30px 24px;
+      gap: 18px;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .mobile-nav-drawer.active { right: 0; }
+
+    .mobile-nav-item {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-nav-item.active { color: var(--primary-green); }
+
+    .mobile-drawer-btn {
+      margin-top: 12px;
+      background: var(--primary-green);
+      color: #0b120c;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .mobile-overlay-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-overlay-bg.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* ==========================================================================
+       HERO BANNER
+       ========================================================================== */
+    .contact-hero {
+      position: relative;
+      width: 100%;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 48px 40px;
+      background: var(--bg-darker);
+      overflow: hidden;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(140, 247, 22, 0.15) 0%, transparent 60%);
+      border-radius: 50%;
+      animation: orbFloat1 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .contact-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(140, 247, 22, 0.08) 0%, transparent 55%);
+      border-radius: 50%;
+      animation: orbFloat2 10s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes orbFloat1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.1); }
+    }
+
+    @keyframes orbFloat2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-50px, -20px) scale(1.15); }
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(140, 247, 22, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140, 247, 22, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .hero-breadcrumb {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 16px;
+    }
+
+    .hero-breadcrumb a {
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .hero-breadcrumb a:hover {
+      color: var(--primary-green);
+    }
+
+    .hero-breadcrumb .bc-sep {
+      color: var(--primary-green);
+      font-size: 11px;
+    }
+
+    .hero-breadcrumb .bc-current {
+      color: var(--primary-green);
+      font-weight: 700;
+    }
+
+    .hero-tag-pill {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(140, 247, 22, 0.08);
+      border: 1px solid rgba(140, 247, 22, 0.25);
+      padding: 8px 22px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--primary-green);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-tag-pill .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--primary-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary-green);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .hero-main-title {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -2px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      position: relative;
+      z-index: 2;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 580px;
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       CONTACT LAYOUT
+       ========================================================================== */
+    .contact-page-wrapper {
+      width: 100%;
+      padding: 80px 48px;
+      background: #ffffff;
+    }
+
+    .contact-grid-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    /* Cards Style */
+    .contact-card-box {
+      background: #f8faf8;
+      border-radius: 20px;
+      padding: 40px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    }
+
+    .contact-card-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    /* Contact Form (Left) */
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #111827;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 15px;
+      color: #111827;
+      transition: all 0.3s ease;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--deep-green);
+      box-shadow: 0 0 0 3px rgba(27, 77, 39, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-submit-btn {
+      grid-column: span 2;
+      background: var(--deep-green);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 18px 32px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .form-submit-btn:hover {
+      background: #143b1e;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(27, 77, 39, 0.2);
+    }
+
+    /* Info Column (Right) */
+    .contact-info-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .info-icon {
+      color: var(--deep-green);
+      padding-top: 2px;
+    }
+
+    .info-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .info-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #111827;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-value {
+      font-size: 15px;
+      color: #4B5563;
+      font-weight: 500;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    .info-value.link:hover {
+      color: var(--deep-green);
+    }
+
+    .info-divider {
+      width: 100%;
+      height: 1px;
+      background: #e5e7eb;
+      margin: 16px 0;
+    }
+
+    /* Business Hours */
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .hours-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hours-day {
+      font-size: 11px;
+      font-weight: 800;
+      color: #111827;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hours-time {
+      font-size: 14px;
+      color: #4B5563;
+      font-weight: 500;
+    }
+
+    /* Map Section */
+    .map-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 400px;
+      border: 1px solid #e5e7eb;
+      position: relative;
+    }
+
+    .map-placeholder-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .site-footer {
+      position: relative;
+      width: 100%;
+      background-color: #060c07;
+      overflow: hidden;
+      padding: 80px 48px 40px;
+    }
+
+    .footer-bg-arcs-top-right,
+    .footer-bg-arcs-bottom-left {
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .footer-bg-arcs-top-right { top: -100px; right: -100px; }
+    .footer-bg-arcs-bottom-left { bottom: -100px; left: -100px; }
+
+    .footer-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .footer-card {
+      background: rgba(140, 247, 22, 0.03);
+      border: 1px solid rgba(140, 247, 22, 0.1);
+      border-radius: 32px;
+      padding: 60px 48px 40px 48px;
+    }
+
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr 2.5fr 2fr;
+      gap: 40px;
+    }
+
+    .footer-col { display: flex; flex-direction: column; }
+
+    .footer-col-brand { gap: 24px; }
+
+    .footer-logo { display: flex; flex-direction: column; }
+
+    .footer-logo-main {
+      font-size: 32px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .footer-logo-line {
+      width: 32px;
+      height: 3px;
+      background: var(--primary-green);
+      margin: 8px 0;
+      border-radius: 2px;
+    }
+
+    .footer-logo-sub {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-brand-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 320px;
+      font-weight: 500;
+    }
+
+    .footer-social-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-circle-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-circle-btn:hover {
+      background: var(--primary-green);
+      color: #0b120c;
+      border-color: var(--primary-green);
+      transform: translateY(-3px);
+    }
+
+    .footer-col-tagline {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--primary-green);
+      letter-spacing: 2px;
+      margin-top: 8px;
+    }
+
+    .footer-section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .header-green-bar {
+      width: 4px; height: 16px;
+      background: var(--primary-green);
+      border-radius: 2px;
+    }
+
+    .footer-header-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links-list li a {
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .link-chevron {
+      color: var(--primary-green);
+      font-weight: bold;
+      font-size: 16px;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .footer-links-list li a:hover {
+      color: #ffffff;
+      transform: translateX(4px);
+    }
+
+    .footer-links-list li a:hover .link-chevron {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .footer-col-touch {
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      padding-left: 40px;
+    }
+
+    .contact-info-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon-badge {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(140, 247, 22, 0.1);
+      border: 1px solid rgba(140, 247, 22, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-green);
+      flex-shrink: 0;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-val {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    .phone-link, .email-link {
+      transition: color 0.3s ease;
+    }
+
+    .phone-link:hover, .email-link:hover {
+      color: var(--primary-green);
+    }
+
+    .hours-item {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hours-val {
+      color: var(--primary-green);
+      font-weight: 700;
+    }
+
+    .hours-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 24px 0;
+    }
+
+    .book-slot-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .book-slot-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .book-subtext {
+      font-size: 13px;
+      color: #6B7280;
+      font-weight: 500;
+    }
+
+    .footer-book-btn {
+      display: inline-flex;
+      align-items: center;
+      background: #1b4d27;
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-book-btn:hover {
+      background: #256934;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(27, 77, 39, 0.3);
+    }
+
+    .footer-watermark-row {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #EAECE9;
+      text-align: center;
+    }
+
+    .watermark-center-text {
+      font-size: 100px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: #F3F5F2;
+      user-select: none;
+      line-height: 1;
+      opacity: 0.55;
+    }
+
+    .footer-bottom-bar { margin-top: 20px; }
+
+    .bottom-bar-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+    }
+
+    .bottom-bar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .copyright-text {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
+    .legal-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .legal-links a {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .legal-links a:hover { color: var(--primary-green); }
+
+    .legal-sep {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 11px;
+    }
+
+    /* ==========================================================================
+       WHATSAPP BUTTON
+       ========================================================================== */
+    .whatsapp-float-btn {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 1500;
+      width: 60px; height: 60px;
+      background: #25D366;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: waPulse 2.2s infinite;
+      border: none;
+      cursor: pointer;
+    }
+
+    .whatsapp-float-btn:hover {
+      transform: scale(1.1) translateY(-3px);
+      background: #20bd5a;
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+    }
+
+    .whatsapp-float-btn svg {
+      width: 34px; height: 34px;
+      fill: #ffffff;
+    }
+
+    @keyframes waPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* ==========================================================================
+       RESPONSIVE
+       ========================================================================== */
+    @media (max-width: 1200px) {
+      .footer-card { padding: 44px 36px 36px 36px; }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 28px;
+      }
+
+      .footer-col-touch {
+        border-left: none;
+        padding-left: 0;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .header { padding: 20px 24px; }
+      
+      .contact-grid-container {
+        grid-template-columns: 1fr;
+      }
+
+      .watermark-center-text { font-size: 60px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-pill { display: none; }
+      .mobile-menu-btn { display: flex; }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .contact-form-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-group.full-width {
+        grid-column: 1;
+      }
+      
+      .form-submit-btn {
+        grid-column: 1;
+      }
+      
+      .hours-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .watermark-center-text { font-size: 40px; }
+      .footer-card { padding: 32px 24px; }
+
+      .bottom-bar-content {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-card-box {
+        padding: 24px;
+      }
+      .map-section {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====== HEADER & NAV ====== -->
+  <div class="page-top-wrapper">
+    <header class="header">
+      <a href="index.html" class="logo-container">
+        <div class="logo-main">SOLAI<span class="green-dot"></span></div>
+        <div class="logo-sub">SPORTS INFRA</div>
+      </a>
+
+      <nav class="nav-pill">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Facilities</a>
+        <a href="projects.html" class="nav-link">Gallery</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <a href="contact.html" class="btn-header-cta">
+        Get Free Quote
+        <div class="icon-circle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <!-- ====== HERO BANNER ====== -->
+    <section class="contact-hero">
+      <div class="hero-grid-lines"></div>
+
+      <div class="hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Contact Us</span>
+      </div>
+
+      <div class="hero-tag-pill">
+        <div class="pulse-dot"></div>
+        WE'RE HERE TO HELP
+      </div>
+
+      <h1 class="hero-main-title">Get In <span class="green-text">Touch</span></h1>
+      <p class="hero-subtitle">Have a project in mind? Reach out to our experts and let's build world-class sports infrastructure together.</p>
+    </section>
+  </div>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-overlay-bg" id="mobileOverlay"></div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <a href="index.html" class="mobile-nav-item">Home</a>
+    <a href="services.html" class="mobile-nav-item">Services</a>
+    <a href="index.html#gallery" class="mobile-nav-item">Projects</a>
+    <a href="about.html" class="mobile-nav-item">About Us</a>
+    <a href="contact.html" class="mobile-nav-item active">Contact</a>
+    <button class="mobile-drawer-btn" onclick="window.location.href='contact.html'">Get Free Quote</button>
+  </div>
+
+
+  <!-- ====== MAIN CONTACT CONTENT ====== -->
+  <div class="contact-page-wrapper">
+    <div class="contact-grid-container">
+      
+      <!-- Left Box: Contact Form -->
+      <div class="contact-card-box">
+        <h2 class="contact-card-title">Send a Message</h2>
+        
+        <form class="contact-form-grid" action="#" method="POST">
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name*" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your phone number*" required>
+          </div>
+          
+          <div class="form-group full-width">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email*" required>
+          </div>
+          
+          <div class="form-group full-width">
+            <label class="form-label" for="message">Your Message</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="How can we help you?" required></textarea>
+          </div>
+          
+          <button type="submit" class="form-submit-btn">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Right Box Stack: Info & Hours -->
+      <div class="contact-info-stack">
+        
+        <!-- Info Box -->
+        <div class="contact-card-box">
+          <h2 class="contact-card-title">Contact Information</h2>
+          <div class="info-list">
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="info-text-group">
+                <span class="info-label">Phone</span>
+                <a href="tel:+919876543210" class="info-value link">+91 98765 43210</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="info-text-group">
+                <span class="info-label">Email</span>
+                <a href="mailto:info@solaisportsinfra.com" class="info-value link">info@solaisportsinfra.com</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="info-text-group">
+                <span class="info-label">Address</span>
+                <span class="info-value">123, Sports Avenue,<br>Coimbatore, Tamil Nadu – 641001</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Hours Box -->
+        <div class="contact-card-box">
+          <h2 class="contact-card-title">Business Hours</h2>
+          
+          <div class="hours-grid">
+            <div class="hours-col">
+              <span class="hours-day">Mon - Fri</span>
+              <span class="hours-time">9:00 AM - 7:00 PM</span>
+            </div>
+            
+            <div class="hours-col">
+              <span class="hours-day">Saturday</span>
+              <span class="hours-time">9:00 AM - 4:00 PM</span>
+            </div>
+            
+            <div class="hours-col">
+              <span class="hours-day">Sunday</span>
+              <span class="hours-time">Closed</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section">
+      <!-- Using an unsplash image as map placeholder per requirements instead of a real google map iframe if none provided -->
+      <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&q=80" alt="Map Location" class="map-placeholder-img">
+    </div>
+  </div>
+
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <div class="footer-bg-arcs-top-right">
+      <svg width="450" height="450" viewBox="0 0 400 400" fill="none">
+        <circle cx="400" cy="0" r="360" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6" />
+        <circle cx="400" cy="0" r="290" stroke="#1F3D24" stroke-width="1" opacity="0.4" />
+        <circle cx="400" cy="0" r="220" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.5" />
+      </svg>
+    </div>
+    <div class="footer-bg-arcs-bottom-left">
+      <svg width="450" height="450" viewBox="0 0 400 400" fill="none">
+        <circle cx="0" cy="400" r="360" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6" />
+        <circle cx="0" cy="400" r="290" stroke="#1F3D24" stroke-width="1" opacity="0.4" />
+        <circle cx="0" cy="400" r="220" stroke="#1F3D24" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.5" />
+      </svg>
+    </div>
+
+    <div class="footer-container">
+      <div class="footer-card">
+        <div class="footer-top-grid">
+          <div class="footer-col footer-col-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-main">SOLAI</div>
+              <div class="footer-logo-line"></div>
+              <div class="footer-logo-sub">SPORTS ARENA</div>
+            </div>
+            <p class="footer-brand-desc">Premier sports infrastructure builders specializing in FIFA-grade synthetic turfs, official pickleball courts, and multi-sport synthetic flooring.</p>
+            <div class="footer-social-group">
+              <a href="#" class="social-circle-btn" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+              </a>
+              <a href="#" class="social-circle-btn" aria-label="Location">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </a>
+            </div>
+            <div class="footer-col-tagline">PLAN &nbsp;|&nbsp; BUILD &nbsp;|&nbsp; DELIVER</div>
+          </div>
+
+          <div class="footer-col footer-col-links">
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">OUR SERVICES</h4>
+            </div>
+            <ul class="footer-links-list">
+              <li><a href="services.html#cricket-football-turf"><span class="link-chevron">›</span> Turf Construction</a></li>
+              <li><a href="services.html#pickleball-courts"><span class="link-chevron">›</span> Pickleball Courts</a></li>
+              <li><a href="services.html#synthetic-flooring"><span class="link-chevron">›</span> Synthetic Flooring</a></li>
+              <li><a href="index.html#why-choose-us"><span class="link-chevron">›</span> Why Choose Us</a></li>
+              <li><a href="index.html#gallery"><span class="link-chevron">›</span> Completed Projects</a></li>
+              <li><a href="index.html#testimonials"><span class="link-chevron">›</span> Client Reviews</a></li>
+              <li><a href="index.html#faq"><span class="link-chevron">›</span> FAQs</a></li>
+              <li><a href="contact.html"><span class="link-chevron">›</span> Get Free Quote</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col footer-col-touch">
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">GET IN TOUCH</h4>
+            </div>
+            <div class="contact-info-stack">
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Our Office</span>
+                  <p class="contact-val">123, Sports Avenue,<br>Coimbatore, Tamil Nadu – 641001</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Call Our Engineers</span>
+                  <a href="tel:+919876543210" class="contact-val phone-link">+91 98765 43210</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon-badge">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="contact-details">
+                  <span class="contact-label">Email Us</span>
+                  <a href="mailto:info@solaisportsinfra.com" class="contact-val email-link">info@solaisportsinfra.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-col footer-col-hours">
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">WORKING HOURS</h4>
+            </div>
+            <div class="contact-item hours-item">
+              <div class="contact-icon-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Monday – Saturday</span>
+                <p class="contact-val hours-val">9:00 AM – 7:00 PM</p>
+              </div>
+            </div>
+            <div class="hours-divider"></div>
+            <div class="footer-section-header">
+              <span class="header-green-bar"></span>
+              <h4 class="footer-header-title">GET A FREE QUOTE</h4>
+            </div>
+            <div class="book-slot-wrapper">
+              <div class="contact-icon-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <div class="book-slot-content">
+                <span class="book-subtext">Plan your sports facility today.</span>
+                <a href="contact.html" class="footer-book-btn">CONSULT NOW &nbsp;→</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-watermark-row">
+          <div class="watermark-center-text">solaisports</div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="bottom-bar-line"></div>
+        <div class="bottom-bar-content">
+          <p class="copyright-text">© 2026 SolaiSports. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="#">Privacy Policy</a>
+            <span class="legal-sep">|</span>
+            <a href="#">Terms & Conditions</a>
+            <span class="legal-sep">|</span>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+    target="_blank" class="whatsapp-float-btn" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" /></svg>
+  </a>
+
+  <!-- ====== JAVASCRIPT ====== -->
+  <script>
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+      });
+    }
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener('click', () => {
+        mobileDrawer.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+      });
+    }
+  </script>
+
+</body>
+
+</html>
