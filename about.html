@@ -26,8 +26,8 @@
     }
 
     :root {
-      --primary-green: #8CF716;
-      --primary-green-hover: #7ae605;
+      --primary-green: #16A34A;
+      --primary-green-hover: #15803D;
       --dark-green: #194812;
       --deep-green: #1b4d27;
       --glass-border: rgba(255, 255, 255, 0.2);
@@ -40,7 +40,8 @@
       scroll-behavior: smooth;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       min-height: 100vh;
       background-color: #ffffff;
@@ -58,16 +59,21 @@
     }
 
     .header {
-      position: relative;
-      z-index: 10;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 1380px;
-      margin: 0 auto;
-      height: 52px;
-      padding: 20px 48px;
+      padding: 14px 48px;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: none;
+      transition: all 0.3s ease;
     }
 
     .logo-container {
@@ -107,13 +113,14 @@
     .nav-pill {
       display: flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(10, 24, 15, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      padding: 5px;
+      border: 1.5px solid rgba(22, 163, 74, 0.4);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(22, 163, 74, 0.15);
+      padding: 6px;
       border-radius: 100px;
-      gap: 2px;
+      gap: 4px;
     }
 
     .nav-link {
@@ -148,7 +155,7 @@
       text-decoration: none;
       font-size: 13.5px;
       font-weight: 700;
-      border: 1px solid rgba(140, 247, 22, 0.35);
+      border: 1px solid rgba(22, 163, 74, 0.35);
       transition: all 0.3s ease;
       cursor: pointer;
     }
@@ -156,7 +163,7 @@
     .btn-header-cta:hover {
       background: #1f5916;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(140, 247, 22, 0.25);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.25);
     }
 
     .btn-header-cta .icon-circle {
@@ -200,7 +207,9 @@
       border-left: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .mobile-nav-drawer.active { right: 0; }
+    .mobile-nav-drawer.active {
+      right: 0;
+    }
 
     .mobile-nav-item {
       color: #ffffff;
@@ -211,7 +220,9 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .mobile-nav-item.active { color: var(--primary-green); }
+    .mobile-nav-item.active {
+      color: var(--primary-green);
+    }
 
     .mobile-drawer-btn {
       margin-top: 12px;
@@ -227,8 +238,10 @@
 
     .mobile-overlay-bg {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.5);
       z-index: 998;
       opacity: 0;
@@ -259,7 +272,10 @@
 
     .about-hero-bg {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background-image: url('https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1400&q=80');
       background-size: cover;
       background-position: center 30%;
@@ -268,21 +284,27 @@
 
     .about-hero-overlay {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: linear-gradient(180deg,
-        rgba(6, 12, 8, 0.80) 0%,
-        rgba(11, 18, 12, 0.70) 40%,
-        rgba(6, 12, 8, 0.92) 100%);
+          rgba(6, 12, 8, 0.80) 0%,
+          rgba(11, 18, 12, 0.70) 40%,
+          rgba(6, 12, 8, 0.92) 100%);
       z-index: 1;
     }
 
     /* Decorative lines */
     .hero-accent-lines {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background-image:
-        linear-gradient(rgba(140, 247, 22, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(140, 247, 22, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(22, 163, 74, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 163, 74, 0.04) 1px, transparent 1px);
       background-size: 100px 100px;
       pointer-events: none;
       z-index: 2;
@@ -306,10 +328,19 @@
       transition: color 0.3s ease;
     }
 
-    .hero-breadcrumb a:hover { color: var(--primary-green); }
+    .hero-breadcrumb a:hover {
+      color: var(--primary-green);
+    }
 
-    .hero-breadcrumb .bc-sep { color: var(--primary-green); font-size: 11px; }
-    .hero-breadcrumb .bc-current { color: var(--primary-green); font-weight: 700; }
+    .hero-breadcrumb .bc-sep {
+      color: var(--primary-green);
+      font-size: 11px;
+    }
+
+    .hero-breadcrumb .bc-current {
+      color: var(--primary-green);
+      font-weight: 700;
+    }
 
     .hero-tag-pill {
       position: relative;
@@ -317,8 +348,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(140, 247, 22, 0.08);
-      border: 1px solid rgba(140, 247, 22, 0.25);
+      background: rgba(22, 163, 74, 0.08);
+      border: 1px solid rgba(22, 163, 74, 0.25);
       padding: 8px 22px;
       border-radius: 100px;
       font-size: 11px;
@@ -330,7 +361,8 @@
     }
 
     .hero-tag-pill .pulse-dot {
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       background: var(--primary-green);
       border-radius: 50%;
       box-shadow: 0 0 10px var(--primary-green);
@@ -338,8 +370,17 @@
     }
 
     @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+      }
     }
 
     .hero-main-title {
@@ -353,7 +394,9 @@
       margin-bottom: 12px;
     }
 
-    .hero-main-title .green-text { color: var(--primary-green); }
+    .hero-main-title .green-text {
+      color: var(--primary-green);
+    }
 
     .hero-subtitle {
       position: relative;
@@ -416,12 +459,29 @@
       transform: translateY(0);
     }
 
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .reveal-delay-5 {
+      transition-delay: 0.5s;
+    }
+
+    .reveal-delay-6 {
+      transition-delay: 0.6s;
+    }
 
     /* ==========================================================================
        WHO WE ARE — INTRO SECTION
@@ -506,7 +566,7 @@
       border-radius: 16px;
       text-align: center;
       z-index: 5;
-      box-shadow: 0 12px 30px rgba(140, 247, 22, 0.3);
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.3);
     }
 
     .who-exp-badge .exp-num {
@@ -554,7 +614,9 @@
       margin-bottom: 20px;
     }
 
-    .who-title .green-text { color: var(--deep-green); }
+    .who-title .green-text {
+      color: var(--deep-green);
+    }
 
     .who-description {
       font-size: 15px;
@@ -644,11 +706,12 @@
     .who-cta-btn:hover {
       background: var(--primary-green-hover);
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(140, 247, 22, 0.35);
+      box-shadow: 0 10px 30px rgba(22, 163, 74, 0.35);
     }
 
     .who-cta-btn .btn-circle {
-      width: 34px; height: 34px;
+      width: 34px;
+      height: 34px;
       background: #ffffff;
       border-radius: 50%;
       display: flex;
@@ -657,7 +720,8 @@
     }
 
     .who-cta-btn .btn-circle svg {
-      width: 16px; height: 16px;
+      width: 16px;
+      height: 16px;
       stroke: #0b120c;
       stroke-width: 2.5;
       fill: none;
@@ -681,7 +745,7 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(140, 247, 22, 0.15), transparent);
+      background: linear-gradient(90deg, transparent, rgba(22, 163, 74, 0.15), transparent);
     }
 
     .story-inner {
@@ -712,9 +776,9 @@
       width: 2px;
       height: 100%;
       background: linear-gradient(180deg,
-        rgba(27, 77, 39, 0.4) 0%,
-        rgba(27, 77, 39, 0.15) 50%,
-        rgba(27, 77, 39, 0.4) 100%);
+          rgba(27, 77, 39, 0.4) 0%,
+          rgba(27, 77, 39, 0.15) 50%,
+          rgba(27, 77, 39, 0.4) 100%);
     }
 
     .timeline-item {
@@ -868,7 +932,9 @@
     .approach-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 3px;
       background: linear-gradient(90deg, transparent, var(--deep-green), transparent);
       opacity: 0;
@@ -956,7 +1022,9 @@
     .trust-section::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(27, 77, 39, 0.15), transparent);
     }
@@ -994,8 +1062,10 @@
     .trust-image-block::before {
       content: '';
       position: absolute;
-      bottom: 0; right: 0;
-      width: 60px; height: 60px;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
       border-bottom: 3px solid var(--primary-green);
       border-right: 3px solid var(--primary-green);
       border-radius: 0 0 24px 0;
@@ -1105,7 +1175,9 @@
     .difference-section::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(27, 77, 39, 0.15), transparent);
     }
@@ -1217,7 +1289,9 @@
     .mission-vision-section::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(27, 77, 39, 0.15), transparent);
     }
@@ -1321,15 +1395,17 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(140, 247, 22, 0.2);
+      border: 1px solid rgba(22, 163, 74, 0.2);
     }
 
     .about-cta-card::before {
       content: '';
       position: absolute;
-      top: -100px; right: -100px;
-      width: 350px; height: 350px;
-      background: radial-gradient(circle, rgba(140, 247, 22, 0.15) 0%, transparent 60%);
+      top: -100px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(22, 163, 74, 0.15) 0%, transparent 60%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -1337,9 +1413,11 @@
     .about-cta-card::after {
       content: '';
       position: absolute;
-      bottom: -80px; left: -60px;
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, rgba(140, 247, 22, 0.1) 0%, transparent 55%);
+      bottom: -80px;
+      left: -60px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(22, 163, 74, 0.1) 0%, transparent 55%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -1348,8 +1426,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(140, 247, 22, 0.1);
-      border: 1px solid rgba(140, 247, 22, 0.25);
+      background: rgba(22, 163, 74, 0.1);
+      border: 1px solid rgba(22, 163, 74, 0.25);
       padding: 8px 20px;
       border-radius: 100px;
       font-size: 11px;
@@ -1411,11 +1489,12 @@
     .cta-btn-primary:hover {
       background: var(--primary-green-hover);
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(140, 247, 22, 0.4);
+      box-shadow: 0 12px 35px rgba(22, 163, 74, 0.4);
     }
 
     .cta-btn-primary .btn-circle {
-      width: 38px; height: 38px;
+      width: 38px;
+      height: 38px;
       background: #ffffff;
       border-radius: 50%;
       display: flex;
@@ -1424,7 +1503,8 @@
     }
 
     .cta-btn-primary .btn-circle svg {
-      width: 18px; height: 18px;
+      width: 18px;
+      height: 18px;
       stroke: #0b120c;
       stroke-width: 2.5;
       fill: none;
@@ -1465,7 +1545,8 @@
 
     .footer-bg-arcs-top-right {
       position: absolute;
-      top: -30px; right: -30px;
+      top: -30px;
+      right: -30px;
       pointer-events: none;
       z-index: 1;
       opacity: 0.7;
@@ -1473,7 +1554,8 @@
 
     .footer-bg-arcs-bottom-left {
       position: absolute;
-      bottom: 10px; left: -30px;
+      bottom: 10px;
+      left: -30px;
       pointer-events: none;
       z-index: 1;
       opacity: 0.7;
@@ -1503,7 +1585,9 @@
       align-items: start;
     }
 
-    .footer-col-links, .footer-col-touch, .footer-col-hours {
+    .footer-col-links,
+    .footer-col-touch,
+    .footer-col-hours {
       border-left: 1px solid #EAECE9;
       padding-left: 36px;
     }
@@ -1634,7 +1718,9 @@
       transform: translateX(4px);
     }
 
-    .footer-links-list li a:hover .link-chevron { color: #1b4d27; }
+    .footer-links-list li a:hover .link-chevron {
+      color: #1b4d27;
+    }
 
     .contact-info-stack {
       display: flex;
@@ -1679,14 +1765,18 @@
       font-weight: 500;
     }
 
-    .contact-val.phone-link, .contact-val.email-link {
+    .contact-val.phone-link,
+    .contact-val.email-link {
       text-decoration: none;
       color: #4B5563;
       font-weight: 600;
       transition: color 0.2s ease;
     }
 
-    .contact-val.phone-link:hover, .contact-val.email-link:hover { color: #1b4d27; }
+    .contact-val.phone-link:hover,
+    .contact-val.email-link:hover {
+      color: #1b4d27;
+    }
 
     .hours-divider {
       width: 100%;
@@ -1695,7 +1785,10 @@
       margin: 20px 0;
     }
 
-    .hours-val { font-weight: 700 !important; color: #374151 !important; }
+    .hours-val {
+      font-weight: 700 !important;
+      color: #374151 !important;
+    }
 
     .book-slot-wrapper {
       display: flex;
@@ -1752,7 +1845,9 @@
       opacity: 0.55;
     }
 
-    .footer-bottom-bar { margin-top: 20px; }
+    .footer-bottom-bar {
+      margin-top: 20px;
+    }
 
     .bottom-bar-line {
       width: 100%;
@@ -1788,7 +1883,9 @@
       transition: color 0.2s ease;
     }
 
-    .legal-links a:hover { color: #8CF716; }
+    .legal-links a:hover {
+      color: #16A34A;
+    }
 
     .legal-sep {
       color: rgba(255, 255, 255, 0.3);
@@ -1800,9 +1897,11 @@
        ========================================================================== */
     .whatsapp-float-btn {
       position: fixed;
-      bottom: 28px; right: 28px;
+      bottom: 28px;
+      right: 28px;
       z-index: 1500;
-      width: 60px; height: 60px;
+      width: 60px;
+      height: 60px;
       background: #25D366;
       color: #ffffff;
       border-radius: 50%;
@@ -1824,14 +1923,23 @@
     }
 
     .whatsapp-float-btn svg {
-      width: 34px; height: 34px;
+      width: 34px;
+      height: 34px;
       fill: #ffffff;
     }
 
     @keyframes waPulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-      70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      }
+
+      70% {
+        box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
 
     /* ==========================================================================
@@ -1842,7 +1950,9 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .footer-card { padding: 44px 36px 36px 36px; }
+      .footer-card {
+        padding: 44px 36px 36px 36px;
+      }
 
       .footer-top-grid {
         grid-template-columns: 1fr 1fr;
@@ -1856,11 +1966,26 @@
     }
 
     @media (max-width: 992px) {
-      .header { padding: 20px 24px; }
+      .header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+        padding: 12px 18px !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: none !important;
+      }
 
-      .about-hero { padding: 80px 24px 60px; }
+      .about-hero {
+        padding: 80px 24px 60px;
+      }
 
-      .who-we-are { padding: 70px 24px 60px; }
+      .who-we-are {
+        padding: 70px 24px 60px;
+      }
 
       .who-inner {
         grid-template-columns: 1fr;
@@ -1873,7 +1998,9 @@
         margin: 0 auto;
       }
 
-      .our-story-section { padding: 60px 24px 70px; }
+      .our-story-section {
+        padding: 60px 24px 70px;
+      }
 
       .timeline-item {
         grid-template-columns: 40px 1fr;
@@ -1906,38 +2033,60 @@
         height: 36px;
       }
 
-      .approach-section { padding: 60px 24px; }
+      .approach-section {
+        padding: 60px 24px;
+      }
 
-      .trust-section { padding: 60px 24px; }
+      .trust-section {
+        padding: 60px 24px;
+      }
 
       .trust-inner {
         grid-template-columns: 1fr;
         gap: 40px;
       }
 
-      .difference-section { padding: 60px 24px; }
+      .difference-section {
+        padding: 60px 24px;
+      }
 
       .difference-layout {
         grid-template-columns: 1fr;
         gap: 36px;
       }
 
-      .mission-vision-section { padding: 60px 24px; }
+      .mission-vision-section {
+        padding: 60px 24px;
+      }
 
       .mv-inner {
         grid-template-columns: 1fr;
         gap: 20px;
       }
 
-      .about-cta-section { padding: 60px 24px; }
+      .about-cta-section {
+        padding: 60px 24px;
+      }
 
-      .about-cta-card { padding: 48px 32px; }
+      .about-cta-card {
+        padding: 48px 32px;
+      }
     }
 
     @media (max-width: 768px) {
-      .nav-pill, .btn-header-cta { display: none; }
-      .mobile-menu-btn { display: flex; }
-      .header { padding: 16px 18px; }
+
+      .nav-pill,
+      .btn-header-cta {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .header {
+        padding: 16px 18px;
+      }
 
       .about-hero {
         padding: 70px 18px 50px;
@@ -1949,17 +2098,25 @@
         letter-spacing: -1px;
       }
 
-      .hero-subtitle { font-size: 14px; }
+      .hero-subtitle {
+        font-size: 14px;
+      }
 
-      .who-we-are { padding: 50px 18px; }
+      .who-we-are {
+        padding: 50px 18px;
+      }
 
-      .who-image-collage { height: 300px; }
+      .who-image-collage {
+        height: 300px;
+      }
 
       .who-exp-badge {
         padding: 14px 20px;
       }
 
-      .who-exp-badge .exp-num { font-size: 28px; }
+      .who-exp-badge .exp-num {
+        font-size: 28px;
+      }
 
       .who-stat-pills {
         gap: 10px;
@@ -1971,40 +2128,66 @@
         min-width: 140px;
       }
 
-      .our-story-section { padding: 48px 18px 56px; }
+      .our-story-section {
+        padding: 48px 18px 56px;
+      }
 
-      .timeline-item { padding: 20px 0; }
+      .timeline-item {
+        padding: 20px 0;
+      }
 
-      .tl-title { font-size: 18px; }
+      .tl-title {
+        font-size: 18px;
+      }
 
-      .approach-section { padding: 48px 18px; }
+      .approach-section {
+        padding: 48px 18px;
+      }
 
       .approach-grid {
         grid-template-columns: 1fr;
       }
 
-      .approach-card { padding: 28px 22px 24px; }
+      .approach-card {
+        padding: 28px 22px 24px;
+      }
 
-      .trust-section { padding: 48px 18px; }
+      .trust-section {
+        padding: 48px 18px;
+      }
 
-      .difference-section { padding: 48px 18px; }
+      .difference-section {
+        padding: 48px 18px;
+      }
 
-      .diff-cards-grid { gap: 12px; }
+      .diff-cards-grid {
+        gap: 12px;
+      }
 
-      .mission-vision-section { padding: 48px 18px; }
+      .mission-vision-section {
+        padding: 48px 18px;
+      }
 
-      .about-cta-section { padding: 40px 18px; }
+      .about-cta-section {
+        padding: 40px 18px;
+      }
 
       .about-cta-card {
         padding: 40px 22px;
         border-radius: 24px;
       }
 
-      .cta-title { font-size: 28px; }
+      .cta-title {
+        font-size: 28px;
+      }
 
-      .cta-buttons-row { flex-direction: column; }
+      .cta-buttons-row {
+        flex-direction: column;
+      }
 
-      .site-footer { padding: 24px 0 16px 0; }
+      .site-footer {
+        padding: 24px 0 16px 0;
+      }
 
       .footer-card {
         border-radius: 24px;
@@ -2016,14 +2199,22 @@
         gap: 24px;
       }
 
-      .footer-col-links, .footer-col-touch, .footer-col-hours {
+      .footer-col-links,
+      .footer-col-touch,
+      .footer-col-hours {
         border-left: none;
         padding-left: 0;
       }
 
-      .footer-watermark-row { margin-top: 16px; padding-top: 12px; }
+      .footer-watermark-row {
+        margin-top: 16px;
+        padding-top: 12px;
+      }
 
-      .watermark-center-text { font-size: 38px; opacity: 0.35; }
+      .watermark-center-text {
+        font-size: 38px;
+        opacity: 0.35;
+      }
 
       .bottom-bar-content {
         flex-direction: column;
@@ -2034,14 +2225,27 @@
     }
 
     @media (max-width: 480px) {
-      .hero-main-title { font-size: 28px; }
+      .hero-main-title {
+        font-size: 28px;
+      }
 
-      .who-image-collage { height: 260px; }
+      .who-image-collage {
+        height: 260px;
+      }
 
-      .who-img-main { width: 68%; height: 70%; }
-      .who-img-secondary { width: 58%; height: 50%; }
+      .who-img-main {
+        width: 68%;
+        height: 70%;
+      }
 
-      .diff-cards-grid { grid-template-columns: 1fr; }
+      .who-img-secondary {
+        width: 58%;
+        height: 50%;
+      }
+
+      .diff-cards-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -2060,13 +2264,13 @@
 
       <nav class="nav-pill">
         <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="projects.html" class="nav-link">Projects</a>
         <a href="about.html" class="nav-link active">About Us</a>
-        <a href="services.html" class="nav-link">Facilities</a>
-        <a href="projects.html" class="nav-link">Gallery</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
 
-      <a href="index.html#contact" class="btn-header-cta">
+      <a href="contact.html" class="btn-header-cta" style="text-decoration:none;">
         Get Free Quote
         <span class="icon-circle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -2092,10 +2296,10 @@
     <div class="mobile-nav-drawer" id="mobileDrawer">
       <a href="index.html" class="mobile-nav-item">Home</a>
       <a href="services.html" class="mobile-nav-item">Services</a>
-      <a href="index.html#gallery" class="mobile-nav-item">Projects</a>
+      <a href="projects.html" class="mobile-nav-item">Projects</a>
       <a href="about.html" class="mobile-nav-item active">About Us</a>
-      <a href="index.html#contact" class="mobile-nav-item">Contact</a>
-      <button class="mobile-drawer-btn" onclick="window.location.href='index.html#contact'">Get Free Quote →</button>
+      <a href="contact.html" class="mobile-nav-item">Contact</a>
+      <button class="mobile-drawer-btn" onclick="window.location.href='contact.html'">Get Free Quote →</button>
     </div>
 
     <!-- ====== HERO BANNER ====== -->
@@ -2121,7 +2325,8 @@
       </h1>
 
       <p class="hero-subtitle">
-        We're a team of civil engineers and sports enthusiasts who believe every community deserves world-class sports infrastructure.
+        We're a team of civil engineers and sports enthusiasts who believe every community deserves world-class sports
+        infrastructure.
       </p>
     </section>
   </div>
@@ -2135,8 +2340,8 @@
             alt="Solai Sports Infrastructure Construction" loading="lazy" />
         </div>
         <div class="who-img-secondary">
-          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
-            alt="Our Team at Work" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Our Team at Work"
+            loading="lazy" />
         </div>
         <div class="who-exp-badge">
           <div class="exp-num">5+</div>
@@ -2155,10 +2360,13 @@
           That <span class="green-text">Elevate Performance</span>
         </h2>
         <p class="who-description">
-          At Solai Sports Infra, we combine engineering expertise with hands-on supervision to deliver sports facilities that are strong, functional, and built with care. Every project is planned with attention to detail, ensuring quality, transparency, and long-term durability for your sports facility.
+          At Solai Sports Infra, we combine engineering expertise with hands-on supervision to deliver sports facilities
+          that are strong, functional, and built with care. Every project is planned with attention to detail, ensuring
+          quality, transparency, and long-term durability for your sports facility.
         </p>
         <p class="who-description" style="margin-bottom: 8px;">
-          From FIFA-grade turfs to EPDM athletic tracks, we handle every step — planning, execution, and handover — so you get a facility that's ready for champions.
+          From FIFA-grade turfs to EPDM athletic tracks, we handle every step — planning, execution, and handover — so
+          you get a facility that's ready for champions.
         </p>
 
         <div class="who-stat-pills">
@@ -2222,7 +2430,7 @@
         </div>
         <h2 class="section-title">Our Story</h2>
         <p class="section-desc" style="margin:0 auto;">
-          What started as a passion project by a team of civil engineers has grown into a trusted name in sports infrastructure across India.
+          At Solai Sports Infra, our journey began with landscaping and creating beautiful outdoor spaces, evolving into a premier sports infrastructure specialist.
         </p>
       </div>
 
@@ -2232,31 +2440,33 @@
         <div class="timeline-item reveal-on-scroll">
           <div class="tl-content">
             <div class="tl-year">The Beginning</div>
-            <h3 class="tl-title">Founded with a Clear Purpose</h3>
-            <p class="tl-desc">Solai Sports Infra was born from a simple vision — to bring international-standard sports surfaces to every corner of India. Our founding team of civil engineers set out to bridge the gap between vision and execution.</p>
+            <h3 class="tl-title">Landscaping & Outdoor Spaces</h3>
+            <p class="tl-desc">At Solai Sports Infra, our journey began with landscaping and creating beautiful outdoor
+              spaces. From the start, our focus was on quality execution, craftsmanship, and transforming open land.</p>
           </div>
           <div class="tl-dot-col">
             <div class="tl-dot"></div>
           </div>
           <div class="tl-image-wrap">
-            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80"
-              alt="Foundation" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&q=80" alt="Landscaping & Outdoor Spaces"
+              loading="lazy" />
           </div>
         </div>
 
         <!-- Milestone 2 -->
         <div class="timeline-item reveal-on-scroll">
           <div class="tl-content">
-            <div class="tl-year">Growth Phase</div>
-            <h3 class="tl-title">Expanding Across India</h3>
-            <p class="tl-desc">With successful projects under our belt, we expanded our services from turfs to pickleball courts, badminton courts, and a full range of sports flooring solutions — covering both residential and commercial projects.</p>
+            <div class="tl-year">Growth & Specialization</div>
+            <h3 class="tl-title">Turf & Sports Arena Construction</h3>
+            <p class="tl-desc">Today, we specialize in Football & Cricket Turf Construction, Pickleball Court Construction,
+              and Synthetic Sports Flooring — combining quality, innovation, and technical expertise.</p>
           </div>
           <div class="tl-dot-col">
             <div class="tl-dot"></div>
           </div>
           <div class="tl-image-wrap">
-            <img src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=600&q=80"
-              alt="Growth" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80" alt="Turf & Sports Arena Construction"
+              loading="lazy" />
           </div>
         </div>
 
@@ -2264,15 +2474,16 @@
         <div class="timeline-item reveal-on-scroll">
           <div class="tl-content">
             <div class="tl-year">Today & Beyond</div>
-            <h3 class="tl-title">50+ Projects & Counting</h3>
-            <p class="tl-desc">Today we've delivered over 50 projects across 8 service categories with 100% client satisfaction. Our journey continues as we push the boundaries of what's possible in Indian sports infrastructure.</p>
+            <h3 class="tl-title">Spaces to Play, Connect & Enjoy</h3>
+            <p class="tl-desc">We build safe, durable, and high-performance sports facilities. Our goal is to create spaces
+              where communities and athletes can play, connect, and enjoy the true power of sports.</p>
           </div>
           <div class="tl-dot-col">
             <div class="tl-dot"></div>
           </div>
           <div class="tl-image-wrap">
-            <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=600&q=80"
-              alt="Today" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80" alt="Spaces to Play, Connect & Enjoy"
+              loading="lazy" />
           </div>
         </div>
 
@@ -2291,7 +2502,8 @@
         </div>
         <h2 class="section-title">Our Approach</h2>
         <p class="section-desc" style="margin:0 auto;">
-          We believe every project deserves thoughtful planning and precise execution. Our approach combines personal attention, honest communication, and strong technical expertise.
+          We believe every project deserves thoughtful planning and precise execution. Our approach combines personal
+          attention, honest communication, and strong technical expertise.
         </p>
       </div>
 
@@ -2308,7 +2520,8 @@
             </svg>
           </div>
           <h3 class="approach-card-title">Client-First<br>Understanding</h3>
-          <p class="approach-card-desc">We begin by truly understanding your needs, lifestyle, budget, and expectations. Every decision is guided by what matters most to you.</p>
+          <p class="approach-card-desc">We begin by truly understanding your needs, lifestyle, budget, and expectations.
+            Every decision is guided by what matters most to you.</p>
         </div>
 
         <div class="approach-card reveal-on-scroll reveal-delay-2">
@@ -2321,7 +2534,8 @@
             </svg>
           </div>
           <h3 class="approach-card-title">Transparent &<br>Structured Process</h3>
-          <p class="approach-card-desc">From planning to handover, we follow a clear step-by-step workflow with regular updates, honest communication, and zero hidden surprises.</p>
+          <p class="approach-card-desc">From planning to handover, we follow a clear step-by-step workflow with regular
+            updates, honest communication, and zero hidden surprises.</p>
         </div>
 
         <div class="approach-card reveal-on-scroll reveal-delay-3">
@@ -2333,7 +2547,8 @@
             </svg>
           </div>
           <h3 class="approach-card-title">Quality Without<br>Compromise</h3>
-          <p class="approach-card-desc">We choose reliable materials, skilled labour, and industry-standard practices to ensure your project is built to last for decades.</p>
+          <p class="approach-card-desc">We choose reliable materials, skilled labour, and industry-standard practices to
+            ensure your project is built to last for decades.</p>
         </div>
 
         <div class="approach-card reveal-on-scroll reveal-delay-4">
@@ -2345,7 +2560,8 @@
             </svg>
           </div>
           <h3 class="approach-card-title">On-Time, On-Budget<br>Delivery</h3>
-          <p class="approach-card-desc">We plan efficiently, coordinate smoothly, and execute smartly to deliver your project within the promised timeline and budget.</p>
+          <p class="approach-card-desc">We plan efficiently, coordinate smoothly, and execute smartly to deliver your
+            project within the promised timeline and budget.</p>
         </div>
 
       </div>
@@ -2379,7 +2595,8 @@
             </div>
             <div class="trust-item-text">
               <h4 class="trust-item-title">Transparent & Honest Communication</h4>
-              <p class="trust-item-desc">We keep clients updated with clear timelines, cost clarity, and open communication at every stage.</p>
+              <p class="trust-item-desc">We keep clients updated with clear timelines, cost clarity, and open
+                communication at every stage.</p>
             </div>
           </div>
 
@@ -2392,7 +2609,8 @@
             </div>
             <div class="trust-item-text">
               <h4 class="trust-item-title">Engineering-Driven Quality</h4>
-              <p class="trust-item-desc">Our technical expertise, strict material standards, and detailed supervision ensure long-lasting, reliable construction.</p>
+              <p class="trust-item-desc">Our technical expertise, strict material standards, and detailed supervision
+                ensure long-lasting, reliable construction.</p>
             </div>
           </div>
 
@@ -2404,7 +2622,8 @@
             </div>
             <div class="trust-item-text">
               <h4 class="trust-item-title">Consistent On-Time Delivery</h4>
-              <p class="trust-item-desc">Disciplined planning and hands-on project management help us deliver every project on schedule.</p>
+              <p class="trust-item-desc">Disciplined planning and hands-on project management help us deliver every
+                project on schedule.</p>
             </div>
           </div>
         </div>
@@ -2473,7 +2692,8 @@
           <div class="diff-card reveal-on-scroll reveal-delay-5">
             <div class="diff-card-icon">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+                <path
+                  d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
               </svg>
             </div>
             <h4 class="diff-card-title">Hassle-Free<br>Process</h4>
@@ -2482,7 +2702,8 @@
           <div class="diff-card reveal-on-scroll reveal-delay-6">
             <div class="diff-card-icon">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
               </svg>
             </div>
             <h4 class="diff-card-title">Trusted by<br>Communities</h4>
@@ -2491,8 +2712,8 @@
         </div>
 
         <div class="diff-image-block reveal-on-scroll reveal-delay-3">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80"
-            alt="Our Team Planning" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="Our Team Planning"
+            loading="lazy" />
         </div>
       </div>
     </div>
@@ -2544,7 +2765,8 @@
       <div class="cta-badge">★ Partner With Us</div>
       <h2 class="cta-title">Let's Build Something<br>Extraordinary Together</h2>
       <p class="cta-subtitle">
-        Ready to transform your vision into a world-class sports facility? Our engineering team is here to guide you every step of the way.
+        Ready to transform your vision into a world-class sports facility? Our engineering team is here to guide you
+        every step of the way.
       </p>
       <div class="cta-buttons-row">
         <a href="index.html#contact" class="cta-btn-primary">
@@ -2559,7 +2781,8 @@
         <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20want%20to%20discuss%20a%20project."
           target="_blank" class="cta-btn-secondary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" />
+            <path
+              d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" />
           </svg>
           Chat on WhatsApp
         </a>
@@ -2593,19 +2816,38 @@
               <div class="footer-logo-line"></div>
               <div class="footer-logo-sub">SPORTS ARENA</div>
             </div>
-            <p class="footer-brand-desc">Premier sports infrastructure builders specializing in FIFA-grade synthetic turfs, official pickleball courts, and multi-sport synthetic flooring.</p>
+            <p class="footer-brand-desc">Premier sports infrastructure builders specializing in FIFA-grade synthetic
+              turfs, official pickleball courts, and multi-sport synthetic flooring.</p>
             <div class="footer-social-group">
               <a href="#" class="social-circle-btn" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
               </a>
               <a href="#" class="social-circle-btn" aria-label="Facebook">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
               </a>
               <a href="#" class="social-circle-btn" aria-label="YouTube">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                  </path>
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
               </a>
               <a href="#" class="social-circle-btn" aria-label="Location">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
               </a>
             </div>
             <div class="footer-col-tagline">PLAN &nbsp;|&nbsp; BUILD &nbsp;|&nbsp; DELIVER</div>
@@ -2617,9 +2859,12 @@
               <h4 class="footer-header-title">OUR SERVICES</h4>
             </div>
             <ul class="footer-links-list">
-              <li><a href="services.html#cricket-football-turf"><span class="link-chevron">›</span> Turf Construction</a></li>
-              <li><a href="services.html#pickleball-courts"><span class="link-chevron">›</span> Pickleball Courts</a></li>
-              <li><a href="services.html#synthetic-flooring"><span class="link-chevron">›</span> Synthetic Flooring</a></li>
+              <li><a href="services.html#cricket-football-turf"><span class="link-chevron">›</span> Turf
+                  Construction</a></li>
+              <li><a href="services.html#pickleball-courts"><span class="link-chevron">›</span> Pickleball Courts</a>
+              </li>
+              <li><a href="services.html#synthetic-flooring"><span class="link-chevron">›</span> Synthetic Flooring</a>
+              </li>
               <li><a href="index.html#why-choose-us"><span class="link-chevron">›</span> Why Choose Us</a></li>
               <li><a href="index.html#gallery"><span class="link-chevron">›</span> Completed Projects</a></li>
               <li><a href="index.html#testimonials"><span class="link-chevron">›</span> Client Reviews</a></li>
@@ -2636,29 +2881,43 @@
             <div class="contact-info-stack">
               <div class="contact-item">
                 <div class="contact-icon-badge">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Our Office</span>
-                  <p class="contact-val">123, Sports Avenue,<br>Coimbatore, Tamil Nadu – 641001</p>
+                  <p class="contact-val">Bharathi Nagar, <br>Puthur, trichy,tamilnadu </p>
                 </div>
               </div>
               <div class="contact-item">
                 <div class="contact-icon-badge">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Call Our Engineers</span>
-                  <a href="tel:+919876543210" class="contact-val phone-link">+91 98765 43210</a>
+                  <a href="tel:+919876543210" class="contact-val phone-link">+91 8056531313</a>
                 </div>
               </div>
               <div class="contact-item">
                 <div class="contact-icon-badge">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Email Us</span>
-                  <a href="mailto:info@solaisportsinfra.com" class="contact-val email-link">info@solaisportsinfra.com</a>
+                  <a href="mailto:info@solaisportsinfra.com"
+                    class="contact-val email-link">info@solaisportsinfra.com</a>
                 </div>
               </div>
             </div>
@@ -2671,7 +2930,11 @@
             </div>
             <div class="contact-item hours-item">
               <div class="contact-icon-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
               </div>
               <div class="contact-details">
                 <span class="contact-label">Monday – Saturday</span>
@@ -2685,7 +2948,13 @@
             </div>
             <div class="book-slot-wrapper">
               <div class="contact-icon-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
               </div>
               <div class="book-slot-content">
                 <span class="book-subtext">Plan your sports facility today.</span>
@@ -2719,7 +2988,10 @@
   <!-- WHATSAPP BUTTON -->
   <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
     target="_blank" class="whatsapp-float-btn" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" /></svg>
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
+      <path
+        d="M16 2a13.93 13.93 0 0 0-11.83 21.23L2 30l7.03-1.84A13.93 13.93 0 1 0 16 2zm0 25.55a11.54 11.54 0 0 1-5.89-1.61l-.42-.25-4.38 1.15 1.17-4.27-.27-.44A11.56 11.56 0 1 1 16 27.55zm6.34-8.63c-.35-.17-2.07-1.02-2.39-1.14s-.55-.17-.78.17-.9 1.14-1.1 1.37-.41.26-.76.09a9.62 9.62 0 0 1-2.82-1.74 10.6 10.6 0 0 1-1.95-2.43c-.21-.35 0-.54.16-.71.16-.16.35-.41.53-.62s.23-.35.35-.58a.7.7 0 0 0 0-.66c-.09-.17-.78-1.88-1.07-2.58s-.57-.59-.78-.6h-.66a1.27 1.27 0 0 0-.92.43 3.9 3.9 0 0 0-1.22 2.9 6.78 6.78 0 0 0 1.42 3.6 15.54 15.54 0 0 0 5.96 5.26 13.37 13.37 0 0 0 1.99.73 4.8 4.8 0 0 0 2.21.14 3.6 3.6 0 0 0 2.37-1.67 2.92 2.92 0 0 0 .2-1.67c-.08-.13-.3-.21-.65-.38z" />
+    </svg>
   </a>
 
   <!-- ====== JAVASCRIPT ====== -->

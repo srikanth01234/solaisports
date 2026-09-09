@@ -25,8 +25,8 @@
     }
 
     :root {
-      --primary-green: #8CF716;
-      --primary-green-hover: #7ae605;
+      --primary-green: #16A34A;
+      --primary-green-hover: #15803D;
       --glass-border: rgba(255, 255, 255, 0.2);
       --text-main: #ffffff;
     }
@@ -49,7 +49,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 20px 48px 24px 48px;
+      padding: 90px 48px 24px 48px;
       background: #060c08;
       overflow: hidden;
     }
@@ -106,7 +106,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at 18% 25%, rgba(140, 247, 22, 0.12) 0%, transparent 45%),
+      background: radial-gradient(circle at 18% 25%, rgba(22, 163, 74, 0.12) 0%, transparent 45%),
         radial-gradient(circle at 82% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
       pointer-events: none;
       z-index: 2;
@@ -116,15 +116,21 @@
        HEADER & NAVIGATION
        ========================================================================== */
     .header {
-      position: relative;
-      z-index: 10;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 1380px;
-      margin: 0 auto;
-      height: 52px;
+      padding: 14px 48px;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: none;
+      transition: all 0.3s ease;
     }
 
     /* Logo */
@@ -166,13 +172,14 @@
     .nav-pill {
       display: flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(10, 24, 15, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      padding: 5px;
+      border: 1.5px solid rgba(22, 163, 74, 0.4);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(22, 163, 74, 0.15);
+      padding: 6px;
       border-radius: 100px;
-      gap: 2px;
+      gap: 4px;
     }
 
     .nav-link {
@@ -208,7 +215,7 @@
       text-decoration: none;
       font-size: 13.5px;
       font-weight: 700;
-      border: 1px solid rgba(140, 247, 22, 0.35);
+      border: 1px solid rgba(22, 163, 74, 0.35);
       transition: all 0.3s ease;
       cursor: pointer;
     }
@@ -216,7 +223,7 @@
     .btn-header-cta:hover {
       background: #1f5916;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(140, 247, 22, 0.25);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.25);
     }
 
     .btn-header-cta .icon-circle {
@@ -371,7 +378,7 @@
     .btn-left-cta:hover {
       background: var(--primary-green-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(140, 247, 22, 0.4);
+      box-shadow: 0 8px 25px rgba(22, 163, 74, 0.4);
     }
 
     .btn-left-cta .btn-arrow-circle {
@@ -442,7 +449,7 @@
     .sports-card:hover {
       transform: translateY(-5px) scale(1.03);
       border-color: var(--primary-green);
-      box-shadow: 0 12px 30px rgba(140, 247, 22, 0.25);
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.25);
     }
 
     .sports-card:hover .sports-card-img-wrapper img {
@@ -452,13 +459,13 @@
     /* Active Highlighted Sports Card State */
     .sports-card.active {
       border-color: var(--primary-green) !important;
-      box-shadow: 0 0 24px rgba(140, 247, 22, 0.5), 0 10px 28px rgba(0, 0, 0, 0.5) !important;
+      box-shadow: 0 0 24px rgba(22, 163, 74, 0.5), 0 10px 28px rgba(0, 0, 0, 0.5) !important;
       transform: translateY(-4px) scale(1.04) !important;
     }
 
     .sports-card.active .sports-card-label {
       color: var(--primary-green) !important;
-      text-shadow: 0 0 10px rgba(140, 247, 22, 0.4);
+      text-shadow: 0 0 10px rgba(22, 163, 74, 0.4);
     }
 
     .sports-card.active .sports-card-img-wrapper img {
@@ -467,7 +474,7 @@
 
     .mobile-sport-card.active {
       border: 2px solid var(--primary-green) !important;
-      box-shadow: 0 0 22px rgba(140, 247, 22, 0.45) !important;
+      box-shadow: 0 0 22px rgba(22, 163, 74, 0.45) !important;
     }
 
     /* ==========================================================================
@@ -536,8 +543,8 @@
       left: 50%;
       transform: translateX(-50%) translateY(100px);
       background: rgba(18, 26, 20, 0.95);
-      color: #8CF716;
-      border: 1px solid #8CF716;
+      color: #16A34A;
+      border: 1px solid #16A34A;
       padding: 12px 24px;
       border-radius: 100px;
       font-size: 13.5px;
@@ -642,20 +649,28 @@
         height: auto !important;
         min-height: auto !important;
         max-height: none !important;
-        padding: 16px 16px 36px 16px !important;
+        padding: 76px 16px 36px 16px !important;
         overflow: visible !important;
         position: relative !important;
       }
 
       .header {
-        height: 52px !important;
+        height: 60px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: space-between !important;
-        position: relative !important;
-        z-index: 50 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
         width: 100% !important;
         max-width: 100% !important;
+        padding: 12px 20px !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: none !important;
       }
 
       .mobile-hero-container.mobile-only {
@@ -710,9 +725,9 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(140, 247, 22, 0.15);
+        background: rgba(22, 163, 74, 0.15);
         color: var(--primary-green);
-        border: 1px solid rgba(140, 247, 22, 0.35);
+        border: 1px solid rgba(22, 163, 74, 0.35);
         padding: 7px 16px;
         border-radius: 6px;
         font-size: 11.5px;
@@ -757,7 +772,7 @@
         font-size: 16px;
         font-weight: 900;
         letter-spacing: 0.5px;
-        box-shadow: 0 8px 25px rgba(140, 247, 22, 0.35);
+        box-shadow: 0 8px 25px rgba(22, 163, 74, 0.35);
         cursor: pointer;
         margin-bottom: 36px;
       }
@@ -811,7 +826,7 @@
         flex: 0 0 134px;
         height: 185px;
         border: 1.8px solid var(--primary-green) !important;
-        box-shadow: 0 12px 32px rgba(140, 247, 22, 0.35), 0 0 16px rgba(140, 247, 22, 0.2);
+        box-shadow: 0 12px 32px rgba(22, 163, 74, 0.35), 0 0 16px rgba(22, 163, 74, 0.2);
         transform: scale(1.04);
         opacity: 1;
         z-index: 5;
@@ -877,7 +892,7 @@
       }
 
       .mobile-sport-card.featured .arrow-btn {
-        background: rgba(140, 247, 22, 0.2);
+        background: rgba(22, 163, 74, 0.2);
         border-color: var(--primary-green);
         color: var(--primary-green);
       }
@@ -904,7 +919,7 @@
         background: var(--primary-green);
         width: 18px;
         border-radius: 100px;
-        box-shadow: 0 0 10px rgba(140, 247, 22, 0.6);
+        box-shadow: 0 0 10px rgba(22, 163, 74, 0.6);
       }
 
       /* Mobile Stats Box (Reduced Height & Shifted Down) */
@@ -979,7 +994,7 @@
 
       .banner-badge {
         display: inline-block;
-        background: rgba(140, 247, 22, 0.12);
+        background: rgba(22, 163, 74, 0.12);
         color: var(--primary-green);
         font-size: 10px;
         font-weight: 800;
@@ -1165,7 +1180,7 @@
     .explore-facilities-btn .btn-arrow-icon {
       width: 36px;
       height: 36px;
-      background-color: #8CF716;
+      background-color: #16A34A;
       color: #0D140E;
       border-radius: 50%;
       display: flex;
@@ -1332,10 +1347,10 @@
     .cursive-underline {
       width: 48px;
       height: 3px;
-      background-color: var(--primary-green, #8CF716);
+      background-color: var(--primary-green, #16A34A);
       margin-top: 14px;
       border-radius: 3px;
-      box-shadow: 0 0 10px rgba(140, 247, 22, 0.5);
+      box-shadow: 0 0 10px rgba(22, 163, 74, 0.5);
     }
 
     /* --- 6-COLUMN FEATURES GRID --- */
@@ -1501,7 +1516,7 @@
     .stat-number-val {
       font-size: 32px;
       font-weight: 900;
-      color: #8CF716;
+      color: #16A34A;
       line-height: 1;
     }
 
@@ -1522,14 +1537,14 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background-color: #8CF716;
+      background-color: #16A34A;
       color: #081109;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 20px;
       font-weight: 900;
-      box-shadow: 0 4px 15px rgba(140, 247, 22, 0.3);
+      box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
     }
 
     .community-cta-text {
@@ -1834,7 +1849,7 @@
       .banner-eyebrow {
         font-size: 10px;
         letter-spacing: 2px;
-        color: #8CF716;
+        color: #16A34A;
       }
 
       .banner-headline {
@@ -1908,7 +1923,7 @@
         width: 34px;
         height: 34px;
         font-size: 15px;
-        background: #8CF716;
+        background: #16A34A;
         color: #0A130C;
         border-radius: 50%;
         display: flex;
@@ -2009,7 +2024,7 @@
     }
 
     .unfolds-title .highlight-green-text {
-      color: #8CF716;
+      color: #16A34A;
     }
 
     .unfolds-subtitle {
@@ -2027,8 +2042,8 @@
       height: 340px;
       border-radius: 50%;
       overflow: hidden;
-      border: 2px solid #8CF716;
-      box-shadow: 0 0 40px rgba(140, 247, 22, 0.35), 0 20px 60px rgba(0, 0, 0, 0.8);
+      border: 2px solid #16A34A;
+      box-shadow: 0 0 40px rgba(22, 163, 74, 0.35), 0 20px 60px rgba(0, 0, 0, 0.8);
       z-index: 10;
       will-change: transform, width, height, border-radius, opacity;
       display: flex;
@@ -2066,12 +2081,12 @@
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: rgba(140, 247, 22, 0.95);
+      background: rgba(22, 163, 74, 0.95);
       color: #040905;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 25px rgba(140, 247, 22, 0.6);
+      box-shadow: 0 0 25px rgba(22, 163, 74, 0.6);
     }
 
     .play-icon-circle svg {
@@ -2110,7 +2125,7 @@
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 3px;
-      color: #8CF716;
+      color: #16A34A;
       text-transform: uppercase;
       margin-bottom: 12px;
       display: block;
@@ -2130,7 +2145,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: #8CF716;
+      background: #16A34A;
       color: #040905;
       padding: 16px 36px;
       border-radius: 100px;
@@ -2139,7 +2154,7 @@
       letter-spacing: 1.5px;
       text-decoration: none;
       text-transform: uppercase;
-      box-shadow: 0 10px 30px rgba(140, 247, 22, 0.4);
+      box-shadow: 0 10px 30px rgba(22, 163, 74, 0.4);
       transition: transform 0.3s ease, background 0.3s ease;
     }
 
@@ -2163,7 +2178,7 @@
       height: 360px;
       border-radius: 24px;
       overflow: hidden;
-      border: 1.5px solid #8CF716;
+      border: 1.5px solid #16A34A;
       background-color: #0B130C;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
       will-change: transform, opacity;
@@ -2172,7 +2187,7 @@
     }
 
     .unfolds-card:hover {
-      box-shadow: 0 0 30px rgba(140, 247, 22, 0.35);
+      box-shadow: 0 0 30px rgba(22, 163, 74, 0.35);
       border-color: #9EE827;
     }
 
@@ -2203,7 +2218,7 @@
     .unfolds-card-num {
       font-size: 36px;
       font-weight: 900;
-      color: #8CF716;
+      color: #16A34A;
       line-height: 1;
     }
 
@@ -2211,7 +2226,7 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      border: 1.5px solid #8CF716;
+      border: 1.5px solid #16A34A;
       background: rgba(4, 9, 5, 0.8);
       display: flex;
       align-items: center;
@@ -2223,7 +2238,7 @@
     .unfolds-card-badge svg {
       width: 24px;
       height: 24px;
-      stroke: #8CF716;
+      stroke: #16A34A;
       stroke-width: 1.8;
       fill: none;
     }
@@ -2281,7 +2296,7 @@
     .mouse-badge {
       width: 22px;
       height: 34px;
-      border: 2px solid #8CF716;
+      border: 2px solid #16A34A;
       border-radius: 12px;
       display: flex;
       justify-content: center;
@@ -2291,7 +2306,7 @@
     .mouse-dot {
       width: 4px;
       height: 6px;
-      background: #8CF716;
+      background: #16A34A;
       border-radius: 2px;
       animation: mouseScrollAnim 1.8s infinite ease-in-out;
     }
@@ -2304,7 +2319,7 @@
     }
 
     .down-arrow {
-      color: #8CF716;
+      color: #16A34A;
       font-size: 12px;
     }
 
@@ -2631,7 +2646,7 @@
       content: '';
       width: 20px;
       height: 1.5px;
-      background-color: #8CF716;
+      background-color: #16A34A;
     }
 
     /* CENTER MAIN FEATURE CARD (Stepped Tab Shape with Smooth Curves) */
@@ -3244,7 +3259,7 @@
         align-items: center;
         justify-content: center;
         font-size: 16px;
-        color: #8CF716;
+        color: #16A34A;
         flex-shrink: 0;
       }
 
@@ -3344,7 +3359,7 @@
       display: inline-block;
       width: 32px;
       height: 2px;
-      background-color: var(--primary-green, #8CF716);
+      background-color: var(--primary-green, #16A34A);
     }
 
     /* Card Wrapper & Top-Right Tagline */
@@ -3421,7 +3436,7 @@
       display: inline-block;
       width: 48px;
       height: 2px;
-      background-color: var(--primary-green, #8CF716);
+      background-color: var(--primary-green, #16A34A);
       border-radius: 2px;
     }
 
@@ -3578,7 +3593,7 @@
       height: 48px;
       border-radius: 50%;
       background: #0D2314;
-      color: var(--primary-green, #8CF716);
+      color: var(--primary-green, #16A34A);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -4314,7 +4329,7 @@
     }
 
     .stack-stars {
-      color: #8CF716;
+      color: #16A34A;
       font-size: 14px;
       letter-spacing: 2px;
       margin-bottom: 12px;
@@ -4341,7 +4356,7 @@
       height: 36px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid #8CF716;
+      border: 1.5px solid #16A34A;
     }
 
     .stack-name {
@@ -4856,7 +4871,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #8CF716;
+      color: #16A34A;
       flex-shrink: 0;
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
@@ -4870,7 +4885,7 @@
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 1.5px;
-      color: #8CF716;
+      color: #16A34A;
       text-transform: uppercase;
       margin-bottom: 2px;
     }
@@ -4894,7 +4909,7 @@
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: #8CF716;
+      background: #16A34A;
       color: #060c07;
       display: flex;
       align-items: center;
@@ -5576,7 +5591,7 @@
     }
 
     .legal-links a:hover {
-      color: #8CF716;
+      color: #16A34A;
     }
 
     .legal-sep {
@@ -6144,7 +6159,7 @@
     <!-- NAVBAR / HEADER -->
     <header class="header">
       <!-- Logo -->
-      <a href="#" class="logo-container">
+      <a href="index.html" class="logo-container">
         <div class="logo-main">
           SOLAI<span class="green-dot"></span>
         </div>
@@ -6153,15 +6168,15 @@
 
       <!-- Desktop Navigation Pill -->
       <nav class="nav-pill">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#facilities" class="nav-link active">Services</a>
-        <a href="#gallery" class="nav-link">Projects</a>
-        <a href="#about" class="nav-link">About Us</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </nav>
 
       <!-- CTA Button -->
-      <button class="btn-header-cta" id="headerBookBtn">
+      <a href="contact.html" class="btn-header-cta" id="headerBookBtn" style="text-decoration:none;">
         Get Free Quote
         <span class="icon-circle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -6170,7 +6185,7 @@
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
         </span>
-      </button>
+      </a>
 
       <!-- Mobile Hamburger Button -->
       <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
@@ -6185,12 +6200,13 @@
 
     <!-- MOBILE MENU OVERLAY -->
     <div class="mobile-nav-drawer" id="mobileDrawer">
-      <a href="#home" class="mobile-nav-item active">Home</a>
-      <a href="#facilities" class="mobile-nav-item">Services</a>
-      <a href="#gallery" class="mobile-nav-item">Projects</a>
-      <a href="#about" class="mobile-nav-item">About Us</a>
-      <a href="#contact" class="mobile-nav-item">Contact</a>
-      <button class="mobile-drawer-btn" id="drawerBookBtn">Get Free Quote →</button>
+      <a href="index.html" class="mobile-nav-item active">Home</a>
+      <a href="services.html" class="mobile-nav-item">Services</a>
+      <a href="projects.html" class="mobile-nav-item">Projects</a>
+      <a href="about.html" class="mobile-nav-item">About Us</a>
+      <a href="contact.html" class="mobile-nav-item">Contact</a>
+      <button class="mobile-drawer-btn" id="drawerBookBtn" onclick="window.location.href='contact.html'">Get Free Quote
+        →</button>
     </div>
 
     <!-- MAIN HERO CONTENT (Desktop & Tablet) -->
@@ -6395,7 +6411,7 @@
       <div class="mobile-stats-box">
         <div class="stat-col">
           <div class="stat-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#8CF716" stroke-width="2" stroke-linecap="round"
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
               <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
               <circle cx="12" cy="10" r="3" />
@@ -6406,7 +6422,7 @@
         </div>
         <div class="stat-col">
           <div class="stat-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#8CF716" stroke-width="2" stroke-linecap="round"
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
@@ -6416,7 +6432,7 @@
         </div>
         <div class="stat-col">
           <div class="stat-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#8CF716" stroke-width="2" stroke-linecap="round"
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
@@ -6430,7 +6446,7 @@
         </div>
         <div class="stat-col">
           <div class="stat-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#8CF716" stroke-width="2" stroke-linecap="round"
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               <path d="m9 12 2 2 4-4" />
@@ -7790,7 +7806,7 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Our Office</span>
-                  <p class="contact-val">123, Sports Avenue,<br>Coimbatore, Tamil Nadu – 641001</p>
+                  <p class="contact-val">Bharathi Nagar, <br>Puthur, trichy,tamilnadu </p>
                 </div>
               </div>
 
@@ -7806,7 +7822,7 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Call Our Engineers</span>
-                  <a href="tel:+919876543210" class="contact-val phone-link">+91 98765 43210</a>
+                  <a href="tel:+919876543210" class="contact-val phone-link">+91 8056531313</a>
                 </div>
               </div>
 
@@ -7910,9 +7926,9 @@
   <!-- FLOATING WHATSAPP BUTTON -->
   <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
     target="_blank" class="whatsapp-float-btn" id="waFloatBtn" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
       <path
-        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" />
+        d="M16 2a13.93 13.93 0 0 0-11.83 21.23L2 30l7.03-1.84A13.93 13.93 0 1 0 16 2zm0 25.55a11.54 11.54 0 0 1-5.89-1.61l-.42-.25-4.38 1.15 1.17-4.27-.27-.44A11.56 11.56 0 1 1 16 27.55zm6.34-8.63c-.35-.17-2.07-1.02-2.39-1.14s-.55-.17-.78.17-.9 1.14-1.1 1.37-.41.26-.76.09a9.62 9.62 0 0 1-2.82-1.74 10.6 10.6 0 0 1-1.95-2.43c-.21-.35 0-.54.16-.71.16-.16.35-.41.53-.62s.23-.35.35-.58a.7.7 0 0 0 0-.66c-.09-.17-.78-1.88-1.07-2.58s-.57-.59-.78-.6h-.66a1.27 1.27 0 0 0-.92.43 3.9 3.9 0 0 0-1.22 2.9 6.78 6.78 0 0 0 1.42 3.6 15.54 15.54 0 0 0 5.96 5.26 13.37 13.37 0 0 0 1.99.73 4.8 4.8 0 0 0 2.21.14 3.6 3.6 0 0 0 2.37-1.67 2.92 2.92 0 0 0 .2-1.67c-.08-.13-.3-.21-.65-.38z" />
     </svg>
     <span class="whatsapp-tooltip">Chat with Us on WhatsApp</span>
   </a>
@@ -8010,9 +8026,9 @@
               GET FREE QUOTE ➔
             </button>
             <a href="#" class="btn-modal-whatsapp" id="btnModalWhatsApp">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
                 <path
-                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" />
+                  d="M16 2a13.93 13.93 0 0 0-11.83 21.23L2 30l7.03-1.84A13.93 13.93 0 1 0 16 2zm0 25.55a11.54 11.54 0 0 1-5.89-1.61l-.42-.25-4.38 1.15 1.17-4.27-.27-.44A11.56 11.56 0 1 1 16 27.55zm6.34-8.63c-.35-.17-2.07-1.02-2.39-1.14s-.55-.17-.78.17-.9 1.14-1.1 1.37-.41.26-.76.09a9.62 9.62 0 0 1-2.82-1.74 10.6 10.6 0 0 1-1.95-2.43c-.21-.35 0-.54.16-.71.16-.16.35-.41.53-.62s.23-.35.35-.58a.7.7 0 0 0 0-.66c-.09-.17-.78-1.88-1.07-2.58s-.57-.59-.78-.6h-.66a1.27 1.27 0 0 0-.92.43 3.9 3.9 0 0 0-1.22 2.9 6.78 6.78 0 0 0 1.42 3.6 15.54 15.54 0 0 0 5.96 5.26 13.37 13.37 0 0 0 1.99.73 4.8 4.8 0 0 0 2.21.14 3.6 3.6 0 0 0 2.37-1.67 2.92 2.92 0 0 0 .2-1.67c-.08-.13-.3-.21-.65-.38z" />
               </svg>
               CHAT DIRECTLY ON WHATSAPP
             </a>

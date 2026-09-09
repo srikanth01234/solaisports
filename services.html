@@ -26,8 +26,8 @@
     }
 
     :root {
-      --primary-green: #8CF716;
-      --primary-green-hover: #7ae605;
+      --primary-green: #16A34A;
+      --primary-green-hover: #15803D;
       --dark-green: #194812;
       --deep-green: #1b4d27;
       --glass-border: rgba(255, 255, 255, 0.2);
@@ -59,16 +59,21 @@
     }
 
     .header {
-      position: relative;
-      z-index: 10;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 1380px;
-      margin: 0 auto;
-      height: 52px;
-      padding: 20px 48px;
+      padding: 14px 48px;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: none;
+      transition: all 0.3s ease;
     }
 
     .logo-container {
@@ -108,13 +113,14 @@
     .nav-pill {
       display: flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(10, 24, 15, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      padding: 5px;
+      border: 1.5px solid rgba(22, 163, 74, 0.4);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(22, 163, 74, 0.15);
+      padding: 6px;
       border-radius: 100px;
-      gap: 2px;
+      gap: 4px;
     }
 
     .nav-link {
@@ -149,7 +155,7 @@
       text-decoration: none;
       font-size: 13.5px;
       font-weight: 700;
-      border: 1px solid rgba(140, 247, 22, 0.35);
+      border: 1px solid rgba(22, 163, 74, 0.35);
       transition: all 0.3s ease;
       cursor: pointer;
     }
@@ -157,7 +163,7 @@
     .btn-header-cta:hover {
       background: #1f5916;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(140, 247, 22, 0.25);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.25);
     }
 
     .btn-header-cta .icon-circle {
@@ -274,7 +280,7 @@
       left: -80px;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(140, 247, 22, 0.15) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(22, 163, 74, 0.15) 0%, transparent 60%);
       border-radius: 50%;
       animation: orbFloat1 8s ease-in-out infinite;
       pointer-events: none;
@@ -287,20 +293,34 @@
       right: -100px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(140, 247, 22, 0.08) 0%, transparent 55%);
+      background: radial-gradient(circle, rgba(22, 163, 74, 0.08) 0%, transparent 55%);
       border-radius: 50%;
       animation: orbFloat2 10s ease-in-out infinite;
       pointer-events: none;
     }
 
     @keyframes orbFloat1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(40px, 30px) scale(1.1); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(40px, 30px) scale(1.1);
+      }
     }
 
     @keyframes orbFloat2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-50px, -20px) scale(1.15); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(-50px, -20px) scale(1.15);
+      }
     }
 
     /* Decorative grid lines */
@@ -311,8 +331,8 @@
       right: 0;
       bottom: 0;
       background-image:
-        linear-gradient(rgba(140, 247, 22, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(140, 247, 22, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(22, 163, 74, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 163, 74, 0.03) 1px, transparent 1px);
       background-size: 80px 80px;
       pointer-events: none;
     }
@@ -355,8 +375,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(140, 247, 22, 0.08);
-      border: 1px solid rgba(140, 247, 22, 0.25);
+      background: rgba(22, 163, 74, 0.08);
+      border: 1px solid rgba(22, 163, 74, 0.25);
       padding: 8px 22px;
       border-radius: 100px;
       font-size: 11px;
@@ -377,8 +397,17 @@
     }
 
     @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+      }
     }
 
     .hero-main-title {
@@ -409,7 +438,7 @@
     /* Decorative floating shapes */
     .hero-deco-shape {
       position: absolute;
-      border: 1px solid rgba(140, 247, 22, 0.15);
+      border: 1px solid rgba(22, 163, 74, 0.15);
       border-radius: 16px;
       pointer-events: none;
       z-index: 1;
@@ -444,8 +473,17 @@
     }
 
     @keyframes decoFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
-      50% { transform: translateY(-15px) rotate(10deg); opacity: 1; }
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: translateY(-15px) rotate(10deg);
+        opacity: 1;
+      }
     }
 
     /* ==========================================================================
@@ -702,7 +740,7 @@
       direction: rtl;
     }
 
-    .service-detail-block.reverse > * {
+    .service-detail-block.reverse>* {
       direction: ltr;
     }
 
@@ -913,7 +951,7 @@
       margin: 0 auto;
       background: #ffffff;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
       border-radius: 24px;
       padding: 40px 48px;
       display: grid;
@@ -972,7 +1010,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(140, 247, 22, 0.2);
+      border: 1px solid rgba(22, 163, 74, 0.2);
     }
 
     .services-cta-card::before {
@@ -982,7 +1020,7 @@
       right: -100px;
       width: 350px;
       height: 350px;
-      background: radial-gradient(circle, rgba(140, 247, 22, 0.15) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(22, 163, 74, 0.15) 0%, transparent 60%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -994,7 +1032,7 @@
       left: -60px;
       width: 280px;
       height: 280px;
-      background: radial-gradient(circle, rgba(140, 247, 22, 0.1) 0%, transparent 55%);
+      background: radial-gradient(circle, rgba(22, 163, 74, 0.1) 0%, transparent 55%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -1003,8 +1041,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(140, 247, 22, 0.1);
-      border: 1px solid rgba(140, 247, 22, 0.25);
+      background: rgba(22, 163, 74, 0.1);
+      border: 1px solid rgba(22, 163, 74, 0.25);
       padding: 8px 20px;
       border-radius: 100px;
       font-size: 11px;
@@ -1066,7 +1104,7 @@
     .cta-btn-primary:hover {
       background: var(--primary-green-hover);
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(140, 247, 22, 0.4);
+      box-shadow: 0 12px 35px rgba(22, 163, 74, 0.4);
     }
 
     .cta-btn-primary .btn-circle {
@@ -1463,7 +1501,7 @@
     }
 
     .legal-links a:hover {
-      color: #8CF716;
+      color: #16A34A;
     }
 
     .legal-sep {
@@ -1508,9 +1546,17 @@
     }
 
     @keyframes waPulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-      70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+      }
+
+      70% {
+        box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
 
     /* ==========================================================================
@@ -1527,14 +1573,37 @@
       transform: translateY(0);
     }
 
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
-    .reveal-delay-7 { transition-delay: 0.7s; }
-    .reveal-delay-8 { transition-delay: 0.8s; }
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .reveal-delay-5 {
+      transition-delay: 0.5s;
+    }
+
+    .reveal-delay-6 {
+      transition-delay: 0.6s;
+    }
+
+    .reveal-delay-7 {
+      transition-delay: 0.7s;
+    }
+
+    .reveal-delay-8 {
+      transition-delay: 0.8s;
+    }
 
     /* ==========================================================================
        RESPONSIVE STYLES
@@ -1612,6 +1681,7 @@
     }
 
     @media (max-width: 768px) {
+
       .nav-pill,
       .btn-header-cta {
         display: none;
@@ -1622,7 +1692,16 @@
       }
 
       .header {
-        padding: 16px 18px;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+        padding: 12px 18px !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: none !important;
       }
 
       .services-hero {
@@ -1785,13 +1864,13 @@
 
       <nav class="nav-pill">
         <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="projects.html" class="nav-link">Projects</a>
         <a href="about.html" class="nav-link">About Us</a>
-        <a href="services.html" class="nav-link active">Facilities</a>
-        <a href="projects.html" class="nav-link">Gallery</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
 
-      <a href="index.html#contact" class="btn-header-cta">
+      <a href="contact.html" class="btn-header-cta" style="text-decoration:none;">
         Get Free Quote
         <span class="icon-circle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -1818,10 +1897,10 @@
     <div class="mobile-nav-drawer" id="mobileDrawer">
       <a href="index.html" class="mobile-nav-item">Home</a>
       <a href="services.html" class="mobile-nav-item active">Services</a>
-      <a href="index.html#gallery" class="mobile-nav-item">Projects</a>
-      <a href="index.html#about" class="mobile-nav-item">About Us</a>
-      <a href="index.html#contact" class="mobile-nav-item">Contact</a>
-      <button class="mobile-drawer-btn" onclick="window.location.href='index.html#contact'">Get Free Quote →</button>
+      <a href="projects.html" class="mobile-nav-item">Projects</a>
+      <a href="about.html" class="mobile-nav-item">About Us</a>
+      <a href="contact.html" class="mobile-nav-item">Contact</a>
+      <button class="mobile-drawer-btn" onclick="window.location.href='contact.html'">Get Free Quote →</button>
     </div>
 
     <!-- ====== HERO BANNER ====== -->
@@ -1876,8 +1955,7 @@
 
         <!-- Card 1: Cricket & Football Turf (Wide) -->
         <div class="bento-card card-wide reveal-on-scroll reveal-delay-1" data-service="cricket-football-turf">
-          <img class="bento-card-img"
-            src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80"
+          <img class="bento-card-img" src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80"
             alt="Cricket & Football Turf" loading="lazy" />
           <div class="bento-card-num">01</div>
           <div class="bento-card-arrow">
@@ -1896,8 +1974,7 @@
 
         <!-- Card 2: Pickleball Courts -->
         <div class="bento-card reveal-on-scroll reveal-delay-2" data-service="pickleball-courts">
-          <img class="bento-card-img"
-            src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80"
+          <img class="bento-card-img" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80"
             alt="Pickleball Courts" loading="lazy" />
           <div class="bento-card-num">02</div>
           <div class="bento-card-arrow">
@@ -1916,8 +1993,7 @@
 
         <!-- Card 3: Badminton Courts -->
         <div class="bento-card reveal-on-scroll reveal-delay-3" data-service="badminton-courts">
-          <img class="bento-card-img"
-            src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=600&q=80"
+          <img class="bento-card-img" src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=600&q=80"
             alt="Badminton Courts" loading="lazy" />
           <div class="bento-card-num">03</div>
           <div class="bento-card-arrow">
@@ -1936,8 +2012,7 @@
 
         <!-- Card 4: Wooden Sports Flooring -->
         <div class="bento-card reveal-on-scroll reveal-delay-4" data-service="wooden-flooring">
-          <img class="bento-card-img"
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80"
+          <img class="bento-card-img" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80"
             alt="Wooden Sports Flooring" loading="lazy" />
           <div class="bento-card-num">04</div>
           <div class="bento-card-arrow">
@@ -1956,8 +2031,7 @@
 
         <!-- Card 5: Acrylic Sports Flooring -->
         <div class="bento-card reveal-on-scroll reveal-delay-5" data-service="acrylic-flooring">
-          <img class="bento-card-img"
-            src="https://images.unsplash.com/photo-1568579351588-eb5e327c4bfc?w=600&q=80"
+          <img class="bento-card-img" src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=600&q=80"
             alt="Acrylic Sports Flooring" loading="lazy" />
           <div class="bento-card-num">05</div>
           <div class="bento-card-arrow">
@@ -1976,8 +2050,7 @@
 
         <!-- Card 6: Synthetic Sports Flooring (Wide) -->
         <div class="bento-card card-wide reveal-on-scroll reveal-delay-6" data-service="synthetic-flooring">
-          <img class="bento-card-img"
-            src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&q=80"
+          <img class="bento-card-img" src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&q=80"
             alt="Synthetic Sports Flooring" loading="lazy" />
           <div class="bento-card-num">06</div>
           <div class="bento-card-arrow">
@@ -1996,8 +2069,7 @@
 
         <!-- Card 7: Gem Surface -->
         <div class="bento-card reveal-on-scroll reveal-delay-7" data-service="gem-surface">
-          <img class="bento-card-img"
-            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
+          <img class="bento-card-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
             alt="Gem Surface" loading="lazy" />
           <div class="bento-card-num">07</div>
           <div class="bento-card-arrow">
@@ -2016,8 +2088,7 @@
 
         <!-- Card 8: EPDM Flooring -->
         <div class="bento-card reveal-on-scroll reveal-delay-8" data-service="epdm-flooring">
-          <img class="bento-card-img"
-            src="https://images.unsplash.com/photo-1590239926044-4131f5d0654d?w=600&q=80"
+          <img class="bento-card-img" src="https://images.unsplash.com/photo-1590239926044-4131f5d0654d?w=600&q=80"
             alt="EPDM Flooring" loading="lazy" />
           <div class="bento-card-num">08</div>
           <div class="bento-card-arrow">
@@ -2114,7 +2185,8 @@
         <h3 class="sd-title">Pickleball Courts</h3>
         <p class="sd-description">
           Pickleball is the fastest-growing sport worldwide. We build tournament-ready courts with precision-applied
-          acrylic surfaces, proper cushioning, and accurate USAPA-standard markings that deliver consistent play quality.
+          acrylic surfaces, proper cushioning, and accurate USAPA-standard markings that deliver consistent play
+          quality.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
@@ -2216,8 +2288,8 @@
     <!-- SERVICE 4: Wooden Sports Flooring -->
     <div class="service-detail-block reverse" id="wooden-flooring">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
-          alt="Wooden Sports Flooring" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80" alt="Wooden Sports Flooring"
+          loading="lazy" />
         <div class="sd-number-badge">SERVICE 04</div>
       </div>
       <div class="sd-content">
@@ -2273,8 +2345,8 @@
     <!-- SERVICE 5: Acrylic Sports Flooring -->
     <div class="service-detail-block" id="acrylic-flooring">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1568579351588-eb5e327c4bfc?w=800&q=80"
-          alt="Acrylic Sports Flooring" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&q=80" alt="Acrylic Sports Flooring"
+          loading="lazy" />
         <div class="sd-number-badge">SERVICE 05</div>
       </div>
       <div class="sd-content">
@@ -2388,8 +2460,8 @@
     <!-- SERVICE 7: Gem Surface -->
     <div class="service-detail-block" id="gem-surface">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
-          alt="Gem Surface" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80" alt="Gem Surface"
+          loading="lazy" />
         <div class="sd-number-badge">SERVICE 07</div>
       </div>
       <div class="sd-content">
@@ -2446,8 +2518,8 @@
     <!-- SERVICE 8: EPDM Flooring -->
     <div class="service-detail-block reverse" id="epdm-flooring">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1590239926044-4131f5d0654d?w=800&q=80"
-          alt="EPDM Flooring" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1590239926044-4131f5d0654d?w=800&q=80" alt="EPDM Flooring"
+          loading="lazy" />
         <div class="sd-number-badge">SERVICE 08</div>
       </div>
       <div class="sd-content">
@@ -2658,7 +2730,7 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Our Office</span>
-                  <p class="contact-val">123, Sports Avenue,<br>Coimbatore, Tamil Nadu – 641001</p>
+                  <p class="contact-val">Bharathi Nagar, <br>Puthur, trichy,tamilnadu </p>
                 </div>
               </div>
               <div class="contact-item">
@@ -2672,7 +2744,7 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Call Our Engineers</span>
-                  <a href="tel:+919876543210" class="contact-val phone-link">+91 98765 43210</a>
+                  <a href="tel:+919876543210" class="contact-val phone-link">+91 8056531313</a>
                 </div>
               </div>
               <div class="contact-item">
@@ -2763,9 +2835,9 @@
   <!-- FLOATING WHATSAPP BUTTON -->
   <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
     target="_blank" class="whatsapp-float-btn" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
       <path
-        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.155 4.218 4.24-1.111z" />
+        d="M16 2a13.93 13.93 0 0 0-11.83 21.23L2 30l7.03-1.84A13.93 13.93 0 1 0 16 2zm0 25.55a11.54 11.54 0 0 1-5.89-1.61l-.42-.25-4.38 1.15 1.17-4.27-.27-.44A11.56 11.56 0 1 1 16 27.55zm6.34-8.63c-.35-.17-2.07-1.02-2.39-1.14s-.55-.17-.78.17-.9 1.14-1.1 1.37-.41.26-.76.09a9.62 9.62 0 0 1-2.82-1.74 10.6 10.6 0 0 1-1.95-2.43c-.21-.35 0-.54.16-.71.16-.16.35-.41.53-.62s.23-.35.35-.58a.7.7 0 0 0 0-.66c-.09-.17-.78-1.88-1.07-2.58s-.57-.59-.78-.6h-.66a1.27 1.27 0 0 0-.92.43 3.9 3.9 0 0 0-1.22 2.9 6.78 6.78 0 0 0 1.42 3.6 15.54 15.54 0 0 0 5.96 5.26 13.37 13.37 0 0 0 1.99.73 4.8 4.8 0 0 0 2.21.14 3.6 3.6 0 0 0 2.37-1.67 2.92 2.92 0 0 0 .2-1.67c-.08-.13-.3-.21-.65-.38z" />
     </svg>
   </a>
 

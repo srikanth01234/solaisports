@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Navigation Pill Active State Switch
+  // Navigation Pill Active State
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
+    link.addEventListener('click', () => {
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
     });
@@ -362,10 +361,10 @@ document.addEventListener('DOMContentLoaded', () => {
       centerVideo.style.borderRadius = `${borderRadius}%`;
 
       if (p > 0.5) {
-        centerVideo.style.borderColor = `rgba(140, 247, 22, ${Math.min(1, (p - 0.5) * 2)})`;
-        centerVideo.style.boxShadow = `0 0 ${40 + p * 30}px rgba(140, 247, 22, 0.4)`;
+        centerVideo.style.borderColor = `rgba(22, 163, 74, ${Math.min(1, (p - 0.5) * 2)})`;
+        centerVideo.style.boxShadow = `0 0 ${40 + p * 30}px rgba(22, 163, 74, 0.4)`;
       } else {
-        centerVideo.style.borderColor = '#8CF716';
+        centerVideo.style.borderColor = '#16A34A';
       }
 
       // Fades & Transitions
