@@ -24,28 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Sports Cards Interactivity (Desktop & Mobile)
-  const sportsCards = document.querySelectorAll('.sports-card, .mobile-sport-card');
-  sportsCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const sportName = card.getAttribute('data-sport');
-      showNotification(`Selected: ${sportName} - Click 'Book Your Slot' to reserve!`);
-    });
-  });
 
   /* ==========================================================================
-     HERO SECTION DYNAMIC BACKGROUND SLIDESHOW (3-SECOND ROTATION)
+     HERO SECTION DYNAMIC BACKGROUND SLIDESHOW (3-SECOND ROTATION & MOBILE SYNC)
      ========================================================================== */
   function initHeroSlideshow() {
     const layer1 = document.getElementById('heroBgLayer1');
     const layer2 = document.getElementById('heroBgLayer2');
-    const allSportsCards = document.querySelectorAll('.sports-card, .mobile-sport-card');
-
-    if (!layer1 || !layer2) return;
-
-    // Collect slides based on desktop sports cards
     const desktopCards = Array.from(document.querySelectorAll('.sports-card'));
-    if (desktopCards.length === 0) return;
+    const mobileCards = Array.from(document.querySelectorAll('.mobile-sport-card'));
+    const carousel = document.querySelector('.mobile-cards-carousel');
+    const dots = Array.from(document.querySelectorAll('.mobile-dots .dot'));
+
+    if (!layer1 || !layer2 || desktopCards.length === 0) return;
 
     const slides = desktopCards.map(card => {
       const img = card.querySelector('img');
@@ -74,14 +65,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial background image
     activeLayer.style.backgroundImage = `url('${slides[0].image}')`;
     activeLayer.classList.add('active');
-    updateActiveCardStates(slides[0].sport);
 
-    function updateActiveCardStates(sportName) {
-      allSportsCards.forEach(card => {
-        if (card.getAttribute('data-sport') === sportName) {
+    function updateActiveCardStates(slideIdx) {
+      const currentSport = slides[slideIdx]?.sport;
+
+      // Update Desktop Cards
+      desktopCards.forEach((card, idx) => {
+        if (idx === slideIdx || card.getAttribute('data-sport') === currentSport) {
           card.classList.add('active');
         } else {
           card.classList.remove('active');
+        }
+      });
+
+      // Update Mobile Cards & Auto-Scroll Carousel
+      if (mobileCards.length > 0) {
+        mobileCards.forEach((card, idx) => {
+          if (idx === slideIdx || card.getAttribute('data-sport') === currentSport) {
+            card.classList.add('active', 'featured');
+          } else {
+            card.classList.remove('active', 'featured');
+          }
+        });
+
+        const activeMobileCard = mobileCards[slideIdx] || mobileCards.find(c => c.getAttribute('data-sport') === currentSport);
+        if (carousel && activeMobileCard) {
+          const cardLeft = activeMobileCard.offsetLeft;
+          const cardWidth = activeMobileCard.offsetWidth;
+          const carouselWidth = carousel.offsetWidth;
+          const scrollTarget = cardLeft - (carouselWidth / 2) + (cardWidth / 2);
+
+          carousel.scrollTo({
+            left: Math.max(0, scrollTarget),
+            behavior: 'smooth'
+          });
+        }
+      }
+
+      // Update Mobile Dots
+      dots.forEach((dot, idx) => {
+        if (idx === slideIdx) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
         }
       });
     }
@@ -92,20 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const nextSlide = slides[index];
       currentIndex = index;
 
-      // Prepare inactive layer background image
       inactiveLayer.style.backgroundImage = `url('${nextSlide.image}')`;
-
-      // Smooth CSS opacity cross-fade
       inactiveLayer.classList.add('active');
       activeLayer.classList.remove('active');
 
-      // Swap active layer references
       const temp = activeLayer;
       activeLayer = inactiveLayer;
       inactiveLayer = temp;
 
-      // Highlight corresponding sports card
-      updateActiveCardStates(nextSlide.sport);
+      updateActiveCardStates(currentIndex);
     }
 
     function nextSlide() {
@@ -125,17 +146,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Attach click listeners to cards for instant switch & timer reset
-    allSportsCards.forEach(card => {
+    // Attach click listeners to desktop cards
+    desktopCards.forEach((card, idx) => {
       card.addEventListener('click', () => {
-        const sportName = card.getAttribute('data-sport');
-        const slideIndex = slides.findIndex(s => s.sport === sportName);
-        if (slideIndex !== -1) {
-          goToSlide(slideIndex);
-          startTimer(); // Reset 3s cycle on user click
-        }
+        goToSlide(idx);
+        startTimer();
       });
     });
+
+    // Attach click listeners to mobile cards
+    mobileCards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        goToSlide(idx);
+        startTimer();
+      });
+    });
+
+    // Attach click listeners to mobile dots
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        goToSlide(idx);
+        startTimer();
+      });
+    });
+
+    // Initial render setup
+    updateActiveCardStates(0);
 
     // Start auto-play
     startTimer();
@@ -287,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     THE GAME UNFOLDS — 4-STAGE CINEMATIC SCROLL ANIMATION
+     THE GAME UNFOLDS — 4-STAGE CINEMATIC SCROLL ANIMATION (Desktop & Mobile)
      ========================================================================== */
   function initUnfoldsScrollAnimation() {
     const track = document.getElementById('unfoldsTrack');
@@ -310,13 +346,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const rect = track.getBoundingClientRect();
       const trackHeight = track.offsetHeight - window.innerHeight;
 
+      if (trackHeight <= 0) return;
+
       // Calculate scroll progress p between 0.0 and 1.0
       let p = -rect.top / trackHeight;
       p = Math.max(0, Math.min(1, p));
 
+      const isMobile = window.innerWidth <= 768;
+
       // --- STAGE 1 & 2: DIAGONAL CARDS EXPANSION ---
-      const moveVW = p * 48; // Max horizontal shift in vw
-      const moveVH = p * 42; // Max vertical shift in vh
+      const maxMoveVW = isMobile ? 55 : 48; // Max horizontal shift in vw
+      const maxMoveVH = isMobile ? 50 : 42; // Max vertical shift in vh
+      const moveVW = p * maxMoveVW;
+      const moveVH = p * maxMoveVH;
       const opacity = p > 0.4 ? Math.max(0, 1 - (p - 0.4) * 3.5) : 1;
 
       // Card 01: Cricket (Top-Left ↖)
@@ -348,13 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // --- STAGE 3 & 4: CENTER VIDEO TRANSFORM (Circle ◯ -> Rounded Fullscreen ▭) ---
-      const initialSize = 340;
-      const targetWidth = window.innerWidth * 0.90;
-      const targetHeight = window.innerHeight * 0.78;
+      const initialSize = isMobile ? 220 : 340;
+      const targetWidth = isMobile ? window.innerWidth * 0.94 : window.innerWidth * 0.90;
+      const targetHeight = isMobile ? window.innerHeight * 0.75 : window.innerHeight * 0.78;
 
       const currentWidth = initialSize + p * (targetWidth - initialSize);
       const currentHeight = initialSize + p * (targetHeight - initialSize);
-      const borderRadius = Math.max(28, 50 - p * 45);
+      const borderRadius = Math.max(20, 50 - p * 45);
 
       centerVideo.style.width = `${currentWidth}px`;
       centerVideo.style.height = `${currentHeight}px`;
@@ -362,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (p > 0.5) {
         centerVideo.style.borderColor = `rgba(22, 163, 74, ${Math.min(1, (p - 0.5) * 2)})`;
-        centerVideo.style.boxShadow = `0 0 ${40 + p * 30}px rgba(22, 163, 74, 0.4)`;
+        centerVideo.style.boxShadow = `0 0 ${30 + p * 30}px rgba(22, 163, 74, 0.4)`;
       } else {
         centerVideo.style.borderColor = '#16A34A';
       }
@@ -405,14 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', () => {
-      if (window.innerWidth <= 768) {
-        // Reset styles for mobile
-        if (centerVideo) {
-          centerVideo.style.width = '';
-          centerVideo.style.height = '';
-          centerVideo.style.borderRadius = '';
-        }
-      }
+      onScroll();
     });
 
     // Initial trigger
@@ -589,6 +624,227 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  /* ==========================================================================
+     GALLERY / OUR PROJECTS SLIDER INTERACTIVITY
+     ========================================================================== */
+  function initGallerySlider() {
+    const prevBtn = document.querySelector('#gallery .btn-slider-prev');
+    const nextBtn = document.querySelector('#gallery .btn-slider-next');
+    const mainImg = document.querySelector('#gallery .gallery-main-card-bg');
+    const mainTag = document.querySelector('#gallery .main-tag-left');
+    const counterEl = document.querySelector('#gallery .main-counter-right');
+    const fillLine = document.querySelector('#gallery .progress-fill-line');
+    const currentNumEl = document.querySelector('#gallery .slider-progress-wrapper .progress-num:first-child');
+    const totalNumEl = document.querySelector('#gallery .slider-progress-wrapper .progress-num:last-child');
+    const quoteText = document.querySelector('#gallery .quote-text');
+    const quoteAuthor = document.querySelector('#gallery .quote-author');
+    const sideCards = document.querySelectorAll('#gallery .gallery-card-sm');
+
+    if (!prevBtn || !nextBtn || !mainImg) return;
+
+    const galleryData = [
+      {
+        tag: 'CRICKET TURF',
+        mainImg: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80',
+        quote: '"Outstanding craftsmanship! The sub-base drainage and turf quality are top notch."',
+        author: '— SPORTS CLUB OWNER',
+        sides: [
+          { tag: 'FOOTBALL TURF', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' }
+        ]
+      },
+      {
+        tag: 'FOOTBALL ARENA',
+        mainImg: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=1200&q=80',
+        quote: '"State of the art 7-a-side pitch with high density monofilament turf. Players love it!"',
+        author: '— ARENA MANAGER, CHENNAI',
+        sides: [
+          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'CRICKET TURF', img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80' }
+        ]
+      },
+      {
+        tag: 'PICKLEBALL COURT',
+        mainImg: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=1200&q=80',
+        quote: '"8-layer acrylic cushion surface gave our academy world-class court pacing."',
+        author: '— ACADEMY DIRECTOR',
+        sides: [
+          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'CRICKET TURF', img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'FOOTBALL ARENA', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' }
+        ]
+      },
+      {
+        tag: 'SYNTHETIC FLOORING',
+        mainImg: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=1200&q=80',
+        quote: '"Seamless rubberized polyurethane flooring installed flawlessly inside our school hall."',
+        author: '— SCHOOL PRINCIPAL',
+        sides: [
+          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'CRICKET TURF', img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'FOOTBALL ARENA', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' }
+        ]
+      },
+      {
+        tag: 'TURNKEY INFRA',
+        mainImg: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1200&q=80',
+        quote: '"From civil foundation to LED stadium floodlighting, Solai handled everything end-to-end."',
+        author: '— INFRASTRUCTURE DEVELOPER',
+        sides: [
+          { tag: 'CRICKET TURF', img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'FOOTBALL ARENA', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' }
+        ]
+      },
+      {
+        tag: 'BOX CRICKET ARENA',
+        mainImg: 'https://images.unsplash.com/photo-1512719994953-eabf50895df7?auto=format&fit=crop&w=1200&q=80',
+        quote: '"High durability perimeter nets and shock-pad backing turf. High booking rates from day 1!"',
+        author: '— TURF ENTREPRENEUR',
+        sides: [
+          { tag: 'FOOTBALL ARENA', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' },
+          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' }
+        ]
+      }
+    ];
+
+    let currentIdx = 0;
+    let isAnimating = false;
+    const total = galleryData.length;
+
+    // Preload images
+    galleryData.forEach(item => {
+      const img = new Image();
+      img.src = item.mainImg;
+    });
+
+    function renderSlide(index, direction = 'next') {
+      if (isAnimating) return;
+      isAnimating = true;
+      currentIdx = index;
+      const data = galleryData[currentIdx];
+
+      const shiftOutX = direction === 'next' ? -25 : 25;
+      const shiftInX = direction === 'next' ? 25 : -25;
+
+      // Phase 1: Slide Out & Fade Out
+      mainImg.style.transition = 'transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease';
+      mainImg.style.opacity = '0';
+      mainImg.style.transform = `scale(1.05) translateX(${shiftOutX}px)`;
+
+      if (quoteText) {
+        quoteText.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        quoteText.style.opacity = '0';
+        quoteText.style.transform = 'translateY(6px)';
+      }
+
+      sideCards.forEach(card => {
+        const imgEl = card.querySelector('img');
+        if (imgEl) {
+          imgEl.style.transition = 'opacity 0.2s ease';
+          imgEl.style.opacity = '0.3';
+        }
+      });
+
+      setTimeout(() => {
+        // Phase 2: Update content & prepare incoming image
+        mainImg.src = data.mainImg;
+        if (mainTag) mainTag.innerText = data.tag;
+        if (counterEl) counterEl.innerText = `${String(currentIdx + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+        if (currentNumEl) currentNumEl.innerText = String(currentIdx + 1).padStart(2, '0');
+        if (totalNumEl) totalNumEl.innerText = String(total).padStart(2, '0');
+        if (fillLine) fillLine.style.width = `${((currentIdx + 1) / total) * 100}%`;
+
+        if (quoteText) quoteText.innerText = data.quote;
+        if (quoteAuthor) quoteAuthor.innerText = data.author;
+
+        if (data.sides && sideCards.length >= 4) {
+          sideCards.forEach((card, idx) => {
+            if (data.sides[idx]) {
+              const imgEl = card.querySelector('img');
+              const tagEl = card.querySelector('.gallery-card-tag');
+              if (imgEl) imgEl.src = data.sides[idx].img;
+              if (tagEl) tagEl.innerText = data.sides[idx].tag;
+            }
+          });
+        }
+
+        // Set position for incoming slide
+        mainImg.style.transition = 'none';
+        mainImg.style.transform = `scale(1.05) translateX(${shiftInX}px)`;
+
+        // Force reflow
+        void mainImg.offsetHeight;
+
+        // Phase 3: Slide In & Fade In
+        mainImg.style.transition = 'transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease';
+        mainImg.style.opacity = '1';
+        mainImg.style.transform = 'scale(1) translateX(0)';
+
+        if (quoteText) {
+          quoteText.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+          quoteText.style.opacity = '1';
+          quoteText.style.transform = 'translateY(0)';
+        }
+
+        sideCards.forEach(card => {
+          const imgEl = card.querySelector('img');
+          if (imgEl) {
+            imgEl.style.opacity = '1';
+          }
+        });
+
+        setTimeout(() => {
+          isAnimating = false;
+        }, 380);
+      }, 220);
+    }
+
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const nextIdx = (currentIdx - 1 + total) % total;
+      renderSlide(nextIdx, 'prev');
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const nextIdx = (currentIdx + 1) % total;
+      renderSlide(nextIdx, 'next');
+    });
+
+    // Allow clicking side cards to jump to selected project
+    sideCards.forEach((card) => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        const tagEl = card.querySelector('.gallery-card-tag');
+        if (tagEl) {
+          const targetTag = tagEl.innerText.trim();
+          const targetIdx = galleryData.findIndex(g => g.tag === targetTag);
+          const dir = targetIdx >= currentIdx ? 'next' : 'prev';
+          if (targetIdx !== -1) {
+            renderSlide(targetIdx, dir);
+          } else {
+            renderSlide((currentIdx + 1) % total, 'next');
+          }
+        }
+      });
+    });
+
+    // Initial render
+    renderSlide(0, 'next');
+  }
+
+  initGallerySlider();
 });
 
 
