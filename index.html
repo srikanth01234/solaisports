@@ -4195,11 +4195,12 @@
     }
 
     .testi-author-avatar {
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #E2E8F0;
+      flex-shrink: 0;
     }
 
     .testi-author-info {
@@ -5686,12 +5687,16 @@
 
     @media (max-width: 768px) {
       .site-footer {
-        padding: 24px 0 16px 0;
+        padding: 28px 0 80px 0;
+      }
+
+      .footer-container {
+        padding: 0 16px;
       }
 
       .footer-card {
         border-radius: 24px;
-        padding: 24px 18px 16px 18px;
+        padding: 28px 20px 24px 20px;
       }
 
       .footer-top-grid {
@@ -5704,16 +5709,53 @@
       .footer-col-hours {
         border-left: none;
         padding-left: 0;
+        border-top: 1px solid #EAECE9;
+        padding-top: 24px;
+      }
+
+      .footer-brand-desc {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .footer-social-group {
+        margin-bottom: 20px;
+      }
+
+      .footer-col-tagline {
+        display: inline-block;
+        background: #F0F4EE;
+        padding: 8px 16px;
+        border-radius: 100px;
+        color: #1b4d27;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+      }
+
+      .footer-links-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 10px;
+      }
+
+      .contact-val.email-link {
+        word-break: break-all;
+      }
+
+      .footer-book-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
 
       .footer-watermark-row {
-        margin-top: 16px;
-        padding-top: 12px;
+        margin-top: 24px;
+        padding-top: 16px;
       }
 
       .watermark-center-text {
-        font-size: 38px;
-        opacity: 0.35;
+        font-size: clamp(32px, 9vw, 44px);
+        opacity: 0.28;
       }
 
       .bottom-bar-content {
@@ -5721,6 +5763,29 @@
         align-items: center;
         text-align: center;
         gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-links-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 8px;
+      }
+
+      .footer-links-list li a {
+        font-size: 13px;
+      }
+
+      .whatsapp-float-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .whatsapp-float-btn svg {
+        width: 26px;
+        height: 26px;
       }
     }
 
@@ -6370,7 +6435,7 @@
 
             <div class="sports-card" data-sport="Turnkey Sports Infra" style="margin-top: 14px;">
               <div class="sports-card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=400&q=80"
+                <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=400&q=80"
                   alt="Turnkey Sports Infra" />
               </div>
               <span class="sports-card-label">Turnkey Infra</span>
@@ -6401,8 +6466,7 @@
       <div class="mobile-cards-carousel">
         <!-- Card 1 -->
         <div class="mobile-sport-card active featured" data-sport="Football Turf Construction">
-          <img src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=500&q=80"
-            alt="Football Turf Construction" />
+          <img src="assets/services/cricket and footbal turf.jpg" alt="Football Turf Construction" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
@@ -6415,8 +6479,7 @@
 
         <!-- Card 2 -->
         <div class="mobile-sport-card" data-sport="Cricket Turf Construction">
-          <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=500&q=80"
-            alt="Cricket Turf Construction" />
+          <img src="assets/services/cricket and footbal turf.jpg" alt="Cricket Turf Construction" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
@@ -6429,8 +6492,7 @@
 
         <!-- Card 3 -->
         <div class="mobile-sport-card" data-sport="Synthetic Sports Flooring">
-          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=80"
-            alt="Synthetic Sports Flooring" />
+          <img src="assets/services/Synthetic Sports Flooring.jpg" alt="Synthetic Sports Flooring" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
@@ -6443,8 +6505,7 @@
 
         <!-- Card 4 -->
         <div class="mobile-sport-card" data-sport="Pickleball Court Construction">
-          <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=500&q=80"
-            alt="Pickleball Court Construction" />
+          <img src="assets/services/Pickleball Courts.jpg" alt="Pickleball Court Construction" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
@@ -6457,8 +6518,7 @@
 
         <!-- Card 5 -->
         <div class="mobile-sport-card" data-sport="Turnkey Sports Infra">
-          <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=500&q=80"
-            alt="Turnkey Sports Infra" />
+          <img src="assets/services/Padel Courts.jpg" alt="Turnkey Sports Infra" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
@@ -6604,7 +6664,7 @@
           </div>
 
           <div class="about-image-card">
-            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1200&q=85"
+            <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1200&q=85"
               alt="Solai Sports Infra Construction" />
           </div>
         </div>
@@ -6698,16 +6758,16 @@
         <!-- 3-Column Stats Bar -->
         <div class="about-stats-bar">
           <div class="about-stat-item">
-            <div class="stat-num">50+</div>
-            <div class="stat-label">PROJECTS BUILT</div>
+            <div class="stat-num">FULL</div>
+            <div class="stat-label">SERVICE SUPPORT</div>
           </div>
           <div class="about-stat-item">
             <div class="stat-num">100%</div>
-            <div class="stat-label">QUALITY ASSURED</div>
+            <div class="stat-label">QUALITY FOCUSED</div>
           </div>
           <div class="about-stat-item">
-            <div class="stat-num">10 YRS</div>
-            <div class="stat-label">TURF WARRANTY</div>
+            <div class="stat-num">PRO</div>
+            <div class="stat-label">EXPERT INSTALLATION</div>
           </div>
         </div>
 
@@ -6749,7 +6809,7 @@
             pickleball courts and synthetic sports flooring.
           </p>
 
-          <a href="#facilities" class="explore-facilities-btn">
+          <a href="services.html" class="explore-facilities-btn">
             EXPLORE OUR SERVICES
             <span class="btn-arrow-icon">↗</span>
           </a>
@@ -6764,23 +6824,23 @@
         <div class="slanted-gallery-wrapper">
           <!-- Card 1 -->
           <div class="slanted-card">
-            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85"
-              alt="Solai Turf Arena Slice 1" />
+            <img src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=1600&q=85"
+              alt="Football Turf Construction" />
           </div>
           <!-- Card 2 -->
           <div class="slanted-card">
-            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85"
-              alt="Solai Turf Arena Slice 2" />
+            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1600&q=85"
+              alt="Cricket Turf Construction" />
           </div>
           <!-- Card 3 -->
           <div class="slanted-card">
-            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85"
-              alt="Solai Turf Arena Slice 3" />
+            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1600&q=85"
+              alt="Official Pickleball Court" />
           </div>
           <!-- Card 4 -->
           <div class="slanted-card">
-            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85"
-              alt="Solai Turf Arena Slice 4" />
+            <img src="https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=1600&q=85"
+              alt="Synthetic Sports Flooring" />
           </div>
           <!-- Card 5 (Dark Cursive Script Card) -->
           <div class="slanted-card">
@@ -6905,33 +6965,7 @@
 
       </div>
 
-      <!-- Bottom Stat & Community Banner -->
-      <div class="why-choose-banner">
-        <div class="banner-left-content">
-          <span class="banner-eyebrow">ONE PARTNER.</span>
-          <h3 class="banner-headline">COMPLETE SPORTS INFRASTRUCTURE.</h3>
-        </div>
 
-        <div class="banner-stats-group">
-          <div class="banner-stat-item">
-            <span class="stat-label">PROJECTS COMPLETED</span>
-            <span class="stat-number-val">150+</span>
-          </div>
-          <div class="banner-stat-item">
-            <span class="stat-label">SQ.FT INSTALLED</span>
-            <span class="stat-number-val">1M+</span>
-          </div>
-          <div class="banner-stat-item">
-            <span class="stat-label">CLIENT SATISFACTION</span>
-            <span class="stat-number-val">99%</span>
-          </div>
-        </div>
-
-        <a href="#contact" class="banner-community-cta">
-          <span class="community-arrow-btn">↗</span>
-          <span class="community-cta-text">GET A FREE<br>PROJECT QUOTE</span>
-        </a>
-      </div>
 
     </div>
   </section>
@@ -6956,7 +6990,7 @@
         <!-- Center Circular Video Reveal Container -->
         <div class="unfolds-center-video-wrapper" id="unfoldsCenterVideo">
           <video class="unfolds-video-player" autoplay loop muted playsinline
-            poster="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=80">
+            poster="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1600&q=80">
             <source
               src="https://assets.mixkit.co/videos/preview/mixkit-playing-a-game-of-soccer-on-a-field-41544-large.mp4"
               type="video/mp4">
@@ -6986,9 +7020,7 @@
 
           <!-- Card 01: TURF CONSTRUCTION (Top-Left ↖) -->
           <div class="unfolds-card card-cricket" id="unfoldsCard1">
-            <img class="unfolds-card-img"
-              src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1000&q=80"
-              alt="Turf Construction" />
+            <img class="unfolds-card-img" src="assets/services/cricket and footbal turf.jpg" alt="Turf Construction" />
             <div class="unfolds-card-overlay"></div>
             <div class="unfolds-card-content">
               <span class="unfolds-card-num">01</span>
@@ -7007,8 +7039,7 @@
 
           <!-- Card 02: PICKLEBALL COURTS (Top-Right ↗) -->
           <div class="unfolds-card card-football" id="unfoldsCard2">
-            <img class="unfolds-card-img"
-              src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1000&q=80"
+            <img class="unfolds-card-img" src="assets/services/Pickleball Courts.jpg"
               alt="Pickleball Court Construction" />
             <div class="unfolds-card-overlay"></div>
             <div class="unfolds-card-content">
@@ -7031,8 +7062,7 @@
 
           <!-- Card 03: SYNTHETIC FLOORING (Bottom-Left ↙) -->
           <div class="unfolds-card card-indoor" id="unfoldsCard3">
-            <img class="unfolds-card-img"
-              src="https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=1000&q=80"
+            <img class="unfolds-card-img" src="assets/services/Synthetic Sports Flooring.jpg"
               alt="Synthetic Flooring" />
             <div class="unfolds-card-overlay"></div>
             <div class="unfolds-card-content">
@@ -7050,9 +7080,7 @@
 
           <!-- Card 04: TURNKEY CIVIL WORKS (Bottom-Right ↘) -->
           <div class="unfolds-card card-turf" id="unfoldsCard4">
-            <img class="unfolds-card-img"
-              src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1000&q=80"
-              alt="Turnkey Civil Works" />
+            <img class="unfolds-card-img" src="assets/services/Padel Courts.jpg" alt="Turnkey Civil Works" />
             <div class="unfolds-card-overlay"></div>
             <div class="unfolds-card-content">
               <span class="unfolds-card-num">04</span>
@@ -7068,15 +7096,6 @@
             </div>
           </div>
 
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="unfolds-scroll-hint" id="unfoldsScrollHint">
-          <div class="mouse-badge">
-            <div class="mouse-dot"></div>
-          </div>
-          <span>SCROLL TO EXPLORE</span>
-          <span class="down-arrow">∨</span>
         </div>
 
       </div>
@@ -7116,11 +7135,6 @@
             Explore our completed sports infrastructure projects — engineered for schools, clubs, commercial turfs and
             private arenas.
           </p>
-
-          <a href="#gallery" class="explore-gallery-btn">
-            <span class="btn-circle-outline">→</span>
-            EXPLORE FULL GALLERY
-          </a>
         </div>
 
         <div class="gallery-header-right">
@@ -7163,7 +7177,7 @@
         <!-- Center Main Feature Card (Stepped Tab Profile) -->
         <div class="gallery-main-card">
           <img class="gallery-main-card-bg"
-            src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1200&q=80"
+            src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80"
             alt="Solai Sports Infrastructure Project View" />
           <div class="gallery-main-card-overlay"></div>
 
@@ -7239,8 +7253,8 @@
               </svg>
             </div>
             <div class="light-stat-info">
-              <span class="light-stat-val">150+</span>
-              <span class="light-stat-lbl">PROJECTS BUILT</span>
+              <span class="light-stat-val">MULTI-SPORT</span>
+              <span class="light-stat-lbl">FACILITY SOLUTIONS</span>
             </div>
           </div>
 
@@ -7255,8 +7269,8 @@
               </svg>
             </div>
             <div class="light-stat-info">
-              <span class="light-stat-val">1M+</span>
-              <span class="light-stat-lbl">SQ.FT INSTALLED</span>
+              <span class="light-stat-val">CUSTOM</span>
+              <span class="light-stat-lbl">DESIGN OPTIONS</span>
             </div>
           </div>
 
@@ -7269,15 +7283,15 @@
             </div>
             <div class="light-stat-info">
               <span class="light-stat-val">99%</span>
-              <span class="light-stat-lbl">SATISFACTION RATE</span>
+              <span class="light-stat-lbl">CLIENT SATISFACTION</span>
             </div>
           </div>
 
         </div>
 
-        <a href="#contact" class="story-cta-btn">
+        <a href="projects.html" class="story-cta-btn">
           <span class="story-btn-circle">→</span>
-          <span class="story-btn-text">BUILD YOUR ARENA WITH US</span>
+          <span class="story-btn-text">VIEW OUR PROJECTS</span>
         </a>
       </div>
 
@@ -7348,16 +7362,16 @@
             <div class="testi-stars-row" id="testiStars">★★★★★</div>
 
             <p class="testi-quote-text" id="testiQuote">
-              “Solai Infra built our 7-a-side football turf with precision sub-base drainage and FIFA-standard grass.
-              Completed right on schedule!”
+              “Excellent work done by solai team. They fullfill our needs. Using very good quality products and nice
+              installation.”
             </p>
 
             <div class="testi-author-box">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
-                alt="Arun Prakash" class="testi-author-avatar" id="testiAvatar" />
+              <img src="assets/boy_porfile.jpg" alt="Shyambalaji Nagarajan" class="testi-author-avatar"
+                id="testiAvatar" />
               <div class="testi-author-info">
-                <div class="testi-author-name" id="testiName">Arun Prakash</div>
-                <div class="testi-author-role" id="testiRole">Sports Club Owner</div>
+                <div class="testi-author-name" id="testiName">Shyambalaji Nagarajan</div>
+                <div class="testi-author-role" id="testiRole">Google Review</div>
               </div>
             </div>
           </div>
@@ -7398,13 +7412,13 @@
             <div class="stack-card-overlay"></div>
             <div class="stack-card-body">
               <div class="stack-stars">★★★★★</div>
-              <p class="stack-quote">“Built our football turf with precision drainage and FIFA-spec grass!”</p>
+              <p class="stack-quote">“Excellent work done by solai team. They fullfill our needs. Using very good
+                quality products!”</p>
               <div class="stack-author">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
-                  alt="Arun Prakash" class="stack-avatar" />
+                <img src="assets/boy_porfile.jpg" alt="Shyambalaji Nagarajan" class="stack-avatar" />
                 <div>
-                  <div class="stack-name">Arun Prakash</div>
-                  <div class="stack-role">Sports Club Owner</div>
+                  <div class="stack-name">Shyambalaji Nagarajan</div>
+                  <div class="stack-role">Google Review</div>
                 </div>
               </div>
             </div>
@@ -7412,18 +7426,18 @@
 
           <!-- Stack Card 1 -->
           <div class="stack-card card-mid" data-stack-index="1">
-            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80"
-              alt="Pickleball Court Project" class="stack-card-bg" />
+            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80"
+              alt="Ground Floor Installation" class="stack-card-bg" />
             <div class="stack-card-overlay"></div>
             <div class="stack-card-body">
               <div class="stack-stars">★★★★★</div>
-              <p class="stack-quote">“Our pickleball courts were constructed with flawless cushion surfacing!”</p>
+              <p class="stack-quote">“The installation team came and did a perfect job... extremely satisfied with
+                service!”</p>
               <div class="stack-author">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
-                  alt="Divya S" class="stack-avatar" />
+                <img src="assets/boy_porfile.jpg" alt="Puneet Srivastava" class="stack-avatar" />
                 <div>
-                  <div class="stack-name">Divya S</div>
-                  <div class="stack-role">Academy Director</div>
+                  <div class="stack-name">Puneet Srivastava</div>
+                  <div class="stack-role">Google Review</div>
                 </div>
               </div>
             </div>
@@ -7432,17 +7446,16 @@
           <!-- Stack Card 2 -->
           <div class="stack-card card-back" data-stack-index="2">
             <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80"
-              alt="Synthetic Flooring Project" class="stack-card-bg" />
+              alt="Residence Project" class="stack-card-bg" />
             <div class="stack-card-overlay"></div>
             <div class="stack-card-body">
               <div class="stack-stars">★★★★★</div>
-              <p class="stack-quote">“Exceptional work on our school's multi-sport synthetic flooring!”</p>
+              <p class="stack-quote">“Thank you Solai for best works done. As an architect I recommend solai!”</p>
               <div class="stack-author">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
-                  alt="Karthik Raja" class="stack-avatar" />
+                <img src="assets/boy_porfile.jpg" alt="Terry Mike" class="stack-avatar" />
                 <div>
-                  <div class="stack-name">Karthik Raja</div>
-                  <div class="stack-role">School Sports Head</div>
+                  <div class="stack-name">Terry Mike</div>
+                  <div class="stack-role">Architect</div>
                 </div>
               </div>
             </div>
@@ -7451,17 +7464,16 @@
           <!-- Stack Card 3 -->
           <div class="stack-card card-hidden" data-stack-index="3">
             <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80"
-              alt="Box Cricket Turf Project" class="stack-card-bg" />
+              alt="Garden Turf Installation" class="stack-card-bg" />
             <div class="stack-card-overlay"></div>
             <div class="stack-card-body">
               <div class="stack-stars">★★★★★</div>
-              <p class="stack-quote">“Constructed box cricket turf with heavy-duty perimeter netting!”</p>
+              <p class="stack-quote">“Really impressed with quality of turf. Grass looks natural & durable!”</p>
               <div class="stack-author">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
-                  alt="Sneha Reddy" class="stack-avatar" />
+                <img src="assets/girl_profile.jpg" alt="Gourav Tandon" class="stack-avatar" />
                 <div>
-                  <div class="stack-name">Sneha Reddy</div>
-                  <div class="stack-role">Turf Entrepreneur</div>
+                  <div class="stack-name">Gourav Tandon</div>
+                  <div class="stack-role">Google Review</div>
                 </div>
               </div>
             </div>
@@ -7470,17 +7482,16 @@
           <!-- Stack Card 4 -->
           <div class="stack-card card-hidden" data-stack-index="4">
             <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80"
-              alt="Villa Pickleball Court Project" class="stack-card-bg" />
+              alt="Home Project Grass Fixing" class="stack-card-bg" />
             <div class="stack-card-overlay"></div>
             <div class="stack-card-body">
               <div class="stack-stars">★★★★★</div>
-              <p class="stack-quote">“Delivered our private villa pickleball court with top aesthetics!”</p>
+              <p class="stack-quote">“Completed my home project grass fixing on time, workers worked at night!”</p>
               <div class="stack-author">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80"
-                  alt="Vikram Menon" class="stack-avatar" />
+                <img src="assets/boy_porfile.jpg" alt="Roshan Singh" class="stack-avatar" />
                 <div>
-                  <div class="stack-name">Vikram Menon</div>
-                  <div class="stack-role">Private Property Owner</div>
+                  <div class="stack-name">Roshan Singh</div>
+                  <div class="stack-role">Google Review</div>
                 </div>
               </div>
             </div>
@@ -7518,25 +7529,7 @@
             Need a custom quote? We are here to assist.
           </p>
 
-          <!-- Ready To Play Pill Banner -->
-          <a href="#contact" class="faq-cta-banner">
-            <div class="cta-banner-left">
-              <div class="cta-icon-badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-              </div>
-              <div class="cta-text-box">
-                <span class="cta-eyebrow">READY TO BUILD?</span>
-                <span class="cta-heading">Get Free Project Estimate</span>
-              </div>
-            </div>
-            <div class="cta-arrow-circle">➔</div>
-          </a>
+
 
           <!-- Cursive Watermark -->
           <div class="faq-cursive-text">
@@ -7604,7 +7597,7 @@
             <div class="faq-item-body">
               <div class="faq-answer-inner">
                 <p class="faq-answer-text">
-                  Typically, a standard 7-a-side football turf or pickleball court construction takes between 15 to 30
+                  Typically, a standard 7-a-side football turf or pickleball court construction takes between 45 to 60
                   days depending on civil work requirements.
                 </p>
               </div>

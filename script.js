@@ -462,38 +462,38 @@ document.addEventListener('DOMContentLoaded', () => {
   function initTestimonialSlider() {
     const testimonials = [
       {
-        quote: "“Solai Infra built our 7-a-side football turf with precision sub-base drainage and FIFA-standard grass. Completed right on schedule!”",
-        name: "Arun Prakash",
-        role: "Sports Club Owner",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+        quote: "“Excellent work done by solai team. They fullfill our needs. Using very good quality products and nice installation.”",
+        name: "Shyambalaji Nagarajan",
+        role: "Google Review",
+        avatar: "assets/boy_porfile.jpg",
         stars: "★★★★★"
       },
       {
-        quote: "“Our professional pickleball courts were constructed with flawless acrylic cushion surfacing. Excellent bounce and pace!”",
-        name: "Divya S",
-        role: "Academy Director",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+        quote: "“The installation team came and did a perfect job on my ground floor, ensuring everything was laid out neatly without any hassle. The area now looks much more attractive, green, and lively. Overall, I’m extremely satisfied with both the product and service, and I would surely recommend it to anyone planning to buy an artificial grass mat.”",
+        name: "Puneet Srivastava",
+        role: "Google Review",
+        avatar: "assets/boy_porfile.jpg",
         stars: "★★★★★"
       },
       {
-        quote: "“Exceptional work on our school's multi-sport synthetic flooring and LED floodlight towers. Durable and top-quality finish!”",
-        name: "Karthik Raja",
-        role: "School Sports Head",
-        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+        quote: "“Thank you Solai and team for the best works done in one of my residence projects. As an architect I would recommend solai for their best competitive rates and on time project delivery.”",
+        name: "Terry Mike",
+        role: "Architect | Google Review",
+        avatar: "assets/boy_porfile.jpg",
         stars: "★★★★★"
       },
       {
-        quote: "“Constructed a box cricket turf with heavy-duty perimeter netting for our venture. Highly professional engineering team!”",
-        name: "Sneha Reddy",
-        role: "Turf Entrepreneur",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+        quote: "“Really impressed with the quality of this artificial turf. The grass looks natural, durable, and low maintenance. Perfect for my garden and easy to install. Highly recommend this turf company for premium artificial grass.”",
+        name: "Gourav Tandon",
+        role: "Google Review",
+        avatar: "assets/girl_profile.jpg",
         stars: "★★★★★"
       },
       {
-        quote: "“From site survey to final surface installation, Solai delivered our private villa pickleball court with top aesthetics!”",
-        name: "Vikram Menon",
-        role: "Private Property Owner",
-        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
+        quote: "“Thanks to solai for completing my home project grass fixing on time,even tho they had a busy schedule the workers worked at night and completed it”",
+        name: "Roshan Singh",
+        role: "Google Review",
+        avatar: "assets/boy_porfile.jpg",
         stars: "★★★★★"
       }
     ];
@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = document.querySelectorAll('#testiDots .testi-dot');
     const stackCards = document.querySelectorAll('#testiPhotoStack .stack-card');
 
-    if (!quoteEl || !nameEl || !avatarEl) return;
+    if (!quoteEl || !nameEl) return;
 
     function updateStackCards(activeIndex) {
       if (!stackCards.length) return;
@@ -550,8 +550,15 @@ document.addEventListener('DOMContentLoaded', () => {
         quoteEl.innerText = data.quote;
         nameEl.innerText = data.name;
         roleEl.innerText = data.role;
-        avatarEl.src = data.avatar;
-        avatarEl.alt = data.name;
+        if (avatarEl) {
+          if (data.avatar) {
+            avatarEl.src = data.avatar;
+            avatarEl.alt = data.name;
+            avatarEl.style.display = 'block';
+          } else {
+            avatarEl.style.display = 'none';
+          }
+        }
         starsEl.innerText = data.stars;
         counterEl.innerText = String(currentIdx + 1).padStart(2, '0');
 

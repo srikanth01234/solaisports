@@ -261,14 +261,15 @@
     .services-hero {
       position: relative;
       width: 100%;
-      min-height: 280px;
+      min-height: 380px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 48px 48px 40px;
-      background: var(--bg-darker);
+      padding: 90px 48px 65px;
+      background: linear-gradient(180deg, rgba(6, 12, 8, 0.65) 0%, rgba(14, 38, 20, 0.55) 50%, rgba(6, 12, 8, 0.75) 100%),
+                  url('assets/services/cricket and footbal turf.jpg') center/cover no-repeat;
       overflow: hidden;
     }
 
@@ -938,56 +939,125 @@
     }
 
     /* ==========================================================================
-       TRUST/STATS STRIP
+       MATERIALS & BRANDS MARQUEE
        ========================================================================== */
-    .trust-strip {
+    .brands-section {
       width: 100%;
-      padding: 60px 48px;
+      padding: 48px 0;
       background: #f8faf8;
-    }
-
-    .trust-strip-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-      border-radius: 24px;
-      padding: 40px 48px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .trust-stat-item {
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+      overflow: hidden;
       text-align: center;
-      position: relative;
     }
 
-    .trust-stat-item:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 20%;
-      height: 60%;
-      width: 1px;
-      background: #e5e7eb;
-    }
-
-    .trust-stat-number {
-      font-size: 42px;
-      font-weight: 900;
-      color: var(--deep-green);
-      letter-spacing: -1px;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .trust-stat-label {
+    .brands-title {
       font-size: 13px;
-      font-weight: 700;
-      color: #4B5563;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--deep-green);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .brands-title::before,
+    .brands-title::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: var(--primary-green);
+      opacity: 0.5;
+      border-radius: 2px;
+    }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+      display: flex;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      animation: marqueeScroll 24s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .marquee-item:hover {
+      border-color: var(--primary-green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.15);
+    }
+
+    .marquee-item .logo-box {
+      height: 26px;
+      min-width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .marquee-item img {
+      max-height: 24px;
+      max-width: 48px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .marquee-item .brand-text {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #111827;
       letter-spacing: 0.5px;
+    }
+
+    .marquee-sep {
+      color: var(--primary-green);
+      font-size: 15px;
+      font-weight: 900;
+      margin-left: 4px;
+    }
+
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     /* ==========================================================================
@@ -1794,12 +1864,16 @@
       }
 
       .site-footer {
-        padding: 24px 0 16px 0;
+        padding: 28px 0 80px 0;
+      }
+
+      .footer-container {
+        padding: 0 16px;
       }
 
       .footer-card {
         border-radius: 24px;
-        padding: 24px 18px 16px 18px;
+        padding: 28px 20px 24px 20px;
       }
 
       .footer-top-grid {
@@ -1812,16 +1886,53 @@
       .footer-col-hours {
         border-left: none;
         padding-left: 0;
+        border-top: 1px solid #EAECE9;
+        padding-top: 24px;
+      }
+
+      .footer-brand-desc {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .footer-social-group {
+        margin-bottom: 20px;
+      }
+
+      .footer-col-tagline {
+        display: inline-block;
+        background: #F0F4EE;
+        padding: 8px 16px;
+        border-radius: 100px;
+        color: #1b4d27;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+      }
+
+      .footer-links-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 10px;
+      }
+
+      .contact-val.email-link {
+        word-break: break-all;
+      }
+
+      .footer-book-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
 
       .footer-watermark-row {
-        margin-top: 16px;
-        padding-top: 12px;
+        margin-top: 24px;
+        padding-top: 16px;
       }
 
       .watermark-center-text {
-        font-size: 38px;
-        opacity: 0.35;
+        font-size: clamp(32px, 9vw, 44px);
+        opacity: 0.28;
       }
 
       .bottom-bar-content {
@@ -1833,6 +1944,27 @@
     }
 
     @media (max-width: 480px) {
+      .footer-links-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 8px;
+      }
+
+      .footer-links-list li a {
+        font-size: 13px;
+      }
+
+      .whatsapp-float-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .whatsapp-float-btn svg {
+        width: 26px;
+        height: 26px;
+      }
+
       .hero-main-title {
         font-size: 30px;
       }
@@ -1947,7 +2079,7 @@
         </div>
         <h2 class="section-title">Explore Our Expertise</h2>
         <p class="section-desc">
-          Eight specialized services covering every aspect of modern sports infrastructure construction.
+          Nine specialized services covering every aspect of modern sports infrastructure construction.
         </p>
       </div>
 
@@ -1955,8 +2087,8 @@
 
         <!-- Card 1: Cricket & Football Turf (Wide) -->
         <div class="bento-card card-wide reveal-on-scroll reveal-delay-1" data-service="cricket-football-turf">
-          <img class="bento-card-img" src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80"
-            alt="Cricket & Football Turf" loading="lazy" />
+          <img class="bento-card-img" src="assets/services/cricket and footbal turf.jpg" alt="Cricket & Football Turf"
+            loading="lazy" />
           <div class="bento-card-num">01</div>
           <div class="bento-card-arrow">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -1974,8 +2106,8 @@
 
         <!-- Card 2: Pickleball Courts -->
         <div class="bento-card reveal-on-scroll reveal-delay-2" data-service="pickleball-courts">
-          <img class="bento-card-img" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80"
-            alt="Pickleball Courts" loading="lazy" />
+          <img class="bento-card-img" src="assets/services/Pickleball Courts.jpg" alt="Pickleball Courts"
+            loading="lazy" />
           <div class="bento-card-num">02</div>
           <div class="bento-card-arrow">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -1993,8 +2125,8 @@
 
         <!-- Card 3: Badminton Courts -->
         <div class="bento-card reveal-on-scroll reveal-delay-3" data-service="badminton-courts">
-          <img class="bento-card-img" src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=600&q=80"
-            alt="Badminton Courts" loading="lazy" />
+          <img class="bento-card-img" src="assets/services/Badminton Courts.jpg" alt="Badminton Courts"
+            loading="lazy" />
           <div class="bento-card-num">03</div>
           <div class="bento-card-arrow">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -2012,8 +2144,8 @@
 
         <!-- Card 4: Wooden Sports Flooring -->
         <div class="bento-card reveal-on-scroll reveal-delay-4" data-service="wooden-flooring">
-          <img class="bento-card-img" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80"
-            alt="Wooden Sports Flooring" loading="lazy" />
+          <img class="bento-card-img" src="assets/services/Wooden Sports Flooring.jpg" alt="Wooden Sports Flooring"
+            loading="lazy" />
           <div class="bento-card-num">04</div>
           <div class="bento-card-arrow">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -2031,8 +2163,8 @@
 
         <!-- Card 5: Acrylic Sports Flooring -->
         <div class="bento-card reveal-on-scroll reveal-delay-5" data-service="acrylic-flooring">
-          <img class="bento-card-img" src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=600&q=80"
-            alt="Acrylic Sports Flooring" loading="lazy" />
+          <img class="bento-card-img" src="assets/services/Acrylic Sports Flooring.jpg" alt="Acrylic Sports Flooring"
+            loading="lazy" />
           <div class="bento-card-num">05</div>
           <div class="bento-card-arrow">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -2050,7 +2182,7 @@
 
         <!-- Card 6: Synthetic Sports Flooring (Wide) -->
         <div class="bento-card card-wide reveal-on-scroll reveal-delay-6" data-service="synthetic-flooring">
-          <img class="bento-card-img" src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&q=80"
+          <img class="bento-card-img" src="assets/services/Synthetic Sports Flooring.jpg"
             alt="Synthetic Sports Flooring" loading="lazy" />
           <div class="bento-card-num">06</div>
           <div class="bento-card-arrow">
@@ -2069,8 +2201,7 @@
 
         <!-- Card 7: Gem Surface -->
         <div class="bento-card reveal-on-scroll reveal-delay-7" data-service="gem-surface">
-          <img class="bento-card-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
-            alt="Gem Surface" loading="lazy" />
+          <img class="bento-card-img" src="assets/services/gem pvc surface.jpg" alt="Gem Surface" loading="lazy" />
           <div class="bento-card-num">07</div>
           <div class="bento-card-arrow">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -2086,10 +2217,9 @@
           </div>
         </div>
 
-        <!-- Card 8: EPDM Flooring -->
-        <div class="bento-card reveal-on-scroll reveal-delay-8" data-service="epdm-flooring">
-          <img class="bento-card-img" src="https://images.unsplash.com/photo-1590239926044-4131f5d0654d?w=600&q=80"
-            alt="EPDM Flooring" loading="lazy" />
+        <!-- Card 8: Padel Courts -->
+        <div class="bento-card reveal-on-scroll reveal-delay-8" data-service="padel-courts">
+          <img class="bento-card-img" src="assets/services/Padel Courts.jpg" alt="Padel Courts" loading="lazy" />
           <div class="bento-card-num">08</div>
           <div class="bento-card-arrow">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -2098,10 +2228,29 @@
             </svg>
           </div>
           <div class="bento-card-overlay">
-            <div class="bento-card-category"><span class="cat-dot"></span>Specialty Surfaces</div>
-            <h3 class="bento-card-title">EPDM Flooring</h3>
-            <p class="bento-card-desc">Vibrant, rubber-granule EPDM flooring with superior shock absorption for kids'
-              zones and athletic tracks.</p>
+            <div class="bento-card-category"><span class="cat-dot"></span>Court Construction</div>
+            <h3 class="bento-card-title">Padel Courts</h3>
+            <p class="bento-card-desc">Professional padel courts with synthetic surfaces, tempered glass enclosures, and
+              LED lighting.</p>
+          </div>
+        </div>
+
+        <!-- Card 9: Gym Flooring -->
+        <div class="bento-card card-wide reveal-on-scroll reveal-delay-1" data-service="gym-flooring">
+          <img class="bento-card-img" src="assets/services/Gym&Weightlifting Flooring.jpg" alt="Gym Flooring"
+            loading="lazy" />
+          <div class="bento-card-num">09</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Gym Flooring</div>
+            <h3 class="bento-card-title">Weightlifting & Gym Flooring</h3>
+            <p class="bento-card-desc">Heavy-duty rubber flooring designed for weightlifting, free-weight zones, and
+              high-impact training areas.</p>
           </div>
         </div>
 
@@ -2115,8 +2264,8 @@
     <!-- SERVICE 1: Cricket & Football Turf -->
     <div class="service-detail-block" id="cricket-football-turf">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800&q=80"
-          alt="Cricket & Football Turf Construction" loading="lazy" />
+        <img src="assets/services/cricket and footbal turf.jpg" alt="Cricket & Football Turf Construction"
+          loading="lazy" />
         <div class="sd-number-badge">SERVICE 01</div>
       </div>
       <div class="sd-content">
@@ -2126,16 +2275,16 @@
         </div>
         <h3 class="sd-title">Cricket & Football Turf</h3>
         <p class="sd-description">
-          We construct world-class synthetic turfs that meet FIFA and ICC quality standards. Our turfs deliver
-          exceptional playability, consistent ball response, and year-round durability — whether for competitive
-          tournaments or community recreation.
+          We build professional synthetic sports turfs engineered for consistent play, excellent ball response, and
+          year-round outdoor performance. From recreational grounds to competitive facilities, every surface is built
+          for durability.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            FIFA & ICC grade synthetic grass
+            FIFA & FIH certified sports turf
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -2147,17 +2296,17 @@
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            UV-stabilized for all weather conditions
+            Engineered drainage system
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            LED floodlight integration available
+            Garware sports netting options
           </div>
         </div>
         <a href="index.html#contact" class="sd-cta-btn">
-          Get Quote
+          Explore Turf Solutions
           <span class="btn-circle">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -2173,8 +2322,7 @@
     <!-- SERVICE 2: Pickleball Courts -->
     <div class="service-detail-block reverse" id="pickleball-courts">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&q=80"
-          alt="Pickleball Court Construction" loading="lazy" />
+        <img src="assets/services/Pickleball Courts.jpg" alt="Pickleball Court Construction" loading="lazy" />
         <div class="sd-number-badge">SERVICE 02</div>
       </div>
       <div class="sd-content">
@@ -2184,38 +2332,38 @@
         </div>
         <h3 class="sd-title">Pickleball Courts</h3>
         <p class="sd-description">
-          Pickleball is the fastest-growing sport worldwide. We build tournament-ready courts with precision-applied
-          acrylic surfaces, proper cushioning, and accurate USAPA-standard markings that deliver consistent play
-          quality.
+          We create precision-built pickleball courts with high-performance acrylic surfaces, reliable grip, and
+          accurate court markings. Designed for comfortable play and dependable performance in both indoor and outdoor
+          environments.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            USAPA tournament-standard dimensions
+            Tournament-standard court dimensions
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Multi-coat acrylic surface system
+            Multi-layer acrylic surface system
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Anti-slip & weather-resistant finish
+            Anti-slip, weather-resistant finish
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Indoor & outdoor configurations
+            Garware pickleball netting
           </div>
         </div>
         <a href="index.html#contact" class="sd-cta-btn">
-          Get Quote
+          Build Your Court
           <span class="btn-circle">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -2231,8 +2379,7 @@
     <!-- SERVICE 3: Badminton Courts -->
     <div class="service-detail-block" id="badminton-courts">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800&q=80"
-          alt="Badminton Court Construction" loading="lazy" />
+        <img src="assets/services/Badminton Courts.jpg" alt="Badminton Court Construction" loading="lazy" />
         <div class="sd-number-badge">SERVICE 03</div>
       </div>
       <div class="sd-content">
@@ -2242,8 +2389,9 @@
         </div>
         <h3 class="sd-title">Badminton Courts</h3>
         <p class="sd-description">
-          Our badminton courts are engineered for competitive excellence. Built with BWF-approved synthetic or wooden
-          flooring systems, they offer optimal shock absorption, consistent grip, and professional-grade line markings.
+          Our badminton courts combine professional specifications with purpose-built sports flooring for controlled
+          movement, comfort, and consistent play. Choose from Gem PVC and synthetic flooring systems based on your
+          facility requirements.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
@@ -2256,23 +2404,23 @@
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            PVC / vinyl / wooden flooring options
+            Gem PVC & synthetic flooring
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Optimal shock absorption layer
+            Shock-absorbing underlayer
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Glare-free LED lighting setup
+            Garware badminton netting
           </div>
         </div>
         <a href="index.html#contact" class="sd-cta-btn">
-          Get Quote
+          View Court Options
           <span class="btn-circle">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -2288,8 +2436,7 @@
     <!-- SERVICE 4: Wooden Sports Flooring -->
     <div class="service-detail-block reverse" id="wooden-flooring">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80" alt="Wooden Sports Flooring"
-          loading="lazy" />
+        <img src="assets/services/Wooden Sports Flooring.jpg" alt="Wooden Sports Flooring" loading="lazy" />
         <div class="sd-number-badge">SERVICE 04</div>
       </div>
       <div class="sd-content">
@@ -2299,21 +2446,21 @@
         </div>
         <h3 class="sd-title">Wooden Sports Flooring</h3>
         <p class="sd-description">
-          Premium hardwood flooring systems crafted from maple, teak, or engineered wood. Designed for basketball,
-          volleyball, and multipurpose indoor courts with superior ball bounce, low injury risk, and elegant aesthetics.
+          Premium wooden flooring systems designed for indoor sports where comfort, controlled bounce, and impact
+          absorption matter. Available in hardwood and engineered wood configurations for multipurpose facilities.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Maple, teak & engineered wood options
+            Hardwood & engineered wood options
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Floating subfloor system for impact absorption
+            Floating impact-absorption system
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -2325,11 +2472,11 @@
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            FIBA & BWF compliant installations
+            Professional sports-grade installation
           </div>
         </div>
         <a href="index.html#contact" class="sd-cta-btn">
-          Get Quote
+          Discover Flooring
           <span class="btn-circle">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -2345,8 +2492,7 @@
     <!-- SERVICE 5: Acrylic Sports Flooring -->
     <div class="service-detail-block" id="acrylic-flooring">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&q=80" alt="Acrylic Sports Flooring"
-          loading="lazy" />
+        <img src="assets/services/Acrylic Sports Flooring.jpg" alt="Acrylic Sports Flooring" loading="lazy" />
         <div class="sd-number-badge">SERVICE 05</div>
       </div>
       <div class="sd-content">
@@ -2356,38 +2502,37 @@
         </div>
         <h3 class="sd-title">Acrylic Sports Flooring</h3>
         <p class="sd-description">
-          Our multi-layered acrylic flooring systems are the go-to choice for tennis, basketball, and multi-sport
-          courts. They provide excellent ball response, color vibrancy, and all-weather performance at competitive
-          pricing.
+          Our multi-layer acrylic systems deliver dependable ball response, excellent grip, vibrant finishes, and
+          reliable outdoor performance. Ideal for tennis, pickleball, basketball, and multipurpose courts.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            5–8 layer professional coating system
+            5–8 layer professional system
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            UV-resistant, vibrant color options
+            UV-resistant surface finish
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Consistent ball bounce & speed
+            Consistent ball response & speed
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Low maintenance, 8+ years lifespan
+            Weather-resistant & low maintenance
           </div>
         </div>
         <a href="index.html#contact" class="sd-cta-btn">
-          Get Quote
+          Explore Acrylic Systems
           <span class="btn-circle">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -2403,8 +2548,7 @@
     <!-- SERVICE 6: Synthetic Sports Flooring -->
     <div class="service-detail-block reverse" id="synthetic-flooring">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&q=80"
-          alt="Synthetic Sports Flooring" loading="lazy" />
+        <img src="assets/services/Synthetic Sports Flooring.jpg" alt="Synthetic Sports Flooring" loading="lazy" />
         <div class="sd-number-badge">SERVICE 06</div>
       </div>
       <div class="sd-content">
@@ -2414,37 +2558,37 @@
         </div>
         <h3 class="sd-title">Synthetic Sports Flooring</h3>
         <p class="sd-description">
-          Versatile synthetic flooring solutions engineered for indoor and outdoor multi-sport environments. From PU and
-          PP interlocking tiles to rubber rolls — we offer the right solution for every sports facility.
+          Versatile synthetic flooring solutions designed for indoor and outdoor sports environments. We provide
+          practical surface options that balance durability, comfort, safety, and long-term performance.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            PU, PP tiles & rubber roll options
+            PU, PP tiles & rubber options
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Multi-sport line marking capability
+            Multi-sport line marking
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Non-toxic, eco-friendly materials
+            Impact-resistant surface systems
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Ideal for schools, gyms & training centres
+            Ideal for schools & training centres
           </div>
         </div>
         <a href="index.html#contact" class="sd-cta-btn">
-          Get Quote
+          Find Your Surface
           <span class="btn-circle">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -2457,11 +2601,10 @@
 
     <div class="service-divider"></div>
 
-    <!-- SERVICE 7: Gem Surface -->
+    <!-- SERVICE 7: Gem surface -->
     <div class="service-detail-block" id="gem-surface">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80" alt="Gem Surface"
-          loading="lazy" />
+        <img src="assets/services/gem pvc surface.jpg" alt="Gem surface" loading="lazy" />
         <div class="sd-number-badge">SERVICE 07</div>
       </div>
       <div class="sd-content">
@@ -2469,40 +2612,40 @@
           <span class="tag-line"></span>
           Specialty Surfaces
         </div>
-        <h3 class="sd-title">Gem Surface</h3>
+        <h3 class="sd-title">Gem surface</h3>
         <p class="sd-description">
-          Gem Surface is a high-performance textured coating ideal for multipurpose zones, recreational areas, and
-          pathways. It provides excellent traction, aesthetic appeal, and long-lasting durability in all weather
-          conditions.
+          Gem PVC sports flooring provides a textured, high-grip surface designed for badminton and other indoor sports
+          applications. Its layered construction offers comfortable movement, reliable traction, and durable everyday
+          performance.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Textured, anti-slip surface finish
+            Gem-textured PVC surface
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Custom color & pattern options
+            High-grip, anti-slip finish
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Suitable for indoor & outdoor applications
+            Shock-absorbing construction
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Low maintenance, weather-resistant
+            Durable & low-maintenance
           </div>
         </div>
         <a href="index.html#contact" class="sd-cta-btn">
-          Get Quote
+          Explore Gem Flooring
           <span class="btn-circle">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -2515,52 +2658,107 @@
 
     <div class="service-divider"></div>
 
-    <!-- SERVICE 8: EPDM Flooring -->
-    <div class="service-detail-block reverse" id="epdm-flooring">
+    <!-- SERVICE 8: Padel Courts -->
+    <div class="service-detail-block reverse" id="padel-courts">
       <div class="sd-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1590239926044-4131f5d0654d?w=800&q=80" alt="EPDM Flooring"
-          loading="lazy" />
+        <img src="assets/services/Padel Courts.jpg" alt="Padel Courts" loading="lazy" />
         <div class="sd-number-badge">SERVICE 08</div>
       </div>
       <div class="sd-content">
         <div class="sd-category-tag">
           <span class="tag-line"></span>
-          Specialty Surfaces
+          Court Construction
         </div>
-        <h3 class="sd-title">EPDM Flooring</h3>
+        <h3 class="sd-title">Padel Courts</h3>
         <p class="sd-description">
-          EPDM (Ethylene Propylene Diene Monomer) rubber flooring delivers vibrant colours, exceptional shock
-          absorption, and maximum safety. Perfect for children's play areas, athletic tracks, gym zones, and landscaped
-          sports complexes.
+          We build professional padel courts with durable playing surfaces, precision-engineered enclosures, and
+          reliable court systems. Designed for consistent play, player safety, and long-term outdoor performance.
         </p>
         <div class="sd-features">
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Vibrant, UV-stable colour granules
+            Professional padel court dimensions
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Superior shock absorption & safety
+            High-performance synthetic surface
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            Seamless, poured-in-place installation
+            Tempered glass & steel enclosure
           </div>
           <div class="sd-feature-item">
             <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg></span>
-            10+ years lifespan, minimal upkeep
+            LED sports lighting system
           </div>
         </div>
         <a href="index.html#contact" class="sd-cta-btn">
-          Get Quote
+          Build Your Padel Court
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 9: Gym Flooring -->
+    <div class="service-detail-block" id="gym-flooring">
+      <div class="sd-image-wrapper">
+        <img src="assets/services/Gym&Weightlifting Flooring.jpg" alt="Gym Flooring" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 09</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Gym Flooring
+        </div>
+        <h3 class="sd-title">Weightlifting & Gym Flooring</h3>
+        <p class="sd-description">
+          We provide heavy-duty gym flooring designed for weightlifting, free-weight zones, and high-impact training
+          areas. Built for durability, shock absorption, grip, and floor protection, our rubber flooring systems create
+          a safer and more comfortable training environment.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Heavy-duty rubber flooring
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            High-impact & shock absorption
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Anti-slip training surface
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Weight & floor protection
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Build Your Gym Floor
           <span class="btn-circle">
             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -2573,24 +2771,98 @@
 
   </section>
 
-  <!-- ====== TRUST / STATS STRIP ====== -->
-  <section class="trust-strip">
-    <div class="trust-strip-inner reveal-on-scroll">
-      <div class="trust-stat-item">
-        <div class="trust-stat-number">50+</div>
-        <div class="trust-stat-label">Projects Completed</div>
-      </div>
-      <div class="trust-stat-item">
-        <div class="trust-stat-number">8</div>
-        <div class="trust-stat-label">Service Categories</div>
-      </div>
-      <div class="trust-stat-item">
-        <div class="trust-stat-number">100%</div>
-        <div class="trust-stat-label">Client Satisfaction</div>
-      </div>
-      <div class="trust-stat-item">
-        <div class="trust-stat-number">5+</div>
-        <div class="trust-stat-label">Years Experience</div>
+  <!-- ====== MATERIALS & BRANDS MARQUEE ====== -->
+  <section class="brands-section">
+    <div class="brands-title">BRANDS & MATERIALS WE USE</div>
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <!-- Loop Set 1 -->
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
+          </div>
+          <span class="brand-text">BELLINTURF</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
+          </div>
+          <span class="brand-text">CCGRASS</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
+          </div>
+          <span class="brand-text">APOLLO PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
+          </div>
+          <span class="brand-text">TATA PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
+          </div>
+          <span class="brand-text">GARWARE</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
+          </div>
+          <span class="brand-text">PACECOURT</span>
+          <span class="marquee-sep">•</span>
+        </div>
+
+        <!-- Loop Set 2 (Duplicates for seamless continuous infinite marquee) -->
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
+          </div>
+          <span class="brand-text">BELLINTURF</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
+          </div>
+          <span class="brand-text">CCGRASS</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
+          </div>
+          <span class="brand-text">APOLLO PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
+          </div>
+          <span class="brand-text">TATA PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
+          </div>
+          <span class="brand-text">GARWARE</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
+          </div>
+          <span class="brand-text">PACECOURT</span>
+          <span class="marquee-sep">•</span>
+        </div>
       </div>
     </div>
   </section>

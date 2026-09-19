@@ -256,180 +256,132 @@
     }
 
     /* ==========================================================================
-       HERO SECTION (GALLERY SPECIFIC)
+       HERO BANNER SECTION (MATCHING SERVICES PAGE)
        ========================================================================== */
-    .gallery-hero {
+    .projects-hero {
       position: relative;
       width: 100%;
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 60px 48px 80px;
+      min-height: 380px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      overflow: hidden;
-      background: #f8fbf8;
-    }
-
-    .gallery-hero-content {
-      width: 45%;
-      position: relative;
-      z-index: 2;
-    }
-
-    .gallery-tagline {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      color: #4B5563;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .gallery-title {
-      font-size: clamp(48px, 6vw, 84px);
-      font-weight: 300;
-      line-height: 1.05;
-      color: #111827;
-      margin-bottom: 24px;
-      letter-spacing: -2px;
-    }
-
-    .gallery-title span {
-      font-weight: 800;
-      color: var(--deep-green);
-      display: block;
-    }
-
-    .gallery-subtitle {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #4B5563;
-      max-width: 400px;
-      margin-bottom: 32px;
-      font-weight: 500;
-    }
-
-    .gallery-features {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--deep-green);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .gallery-features .feature-line {
-      width: 40px;
-      height: 2px;
-      background: var(--deep-green);
-    }
-
-    .gallery-features span {
-      color: #9CA3AF;
-      margin: 0 4px;
-    }
-
-    .gallery-hero-visual {
-      width: 50%;
-      position: relative;
-      height: 500px;
-    }
-
-    .hero-main-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50% 50% 50px 50px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-bg-shape {
-      position: absolute;
-      top: -20px;
-      left: -40px;
-      width: calc(100% + 80px);
-      height: calc(100% + 40px);
-      background: #eef4ed;
-      border-radius: 50% 50% 50px 50px;
-      z-index: 0;
-    }
-
-    .hero-badge-circle {
-      position: absolute;
-      bottom: 20px;
-      left: -40px;
-      width: 160px;
-      height: 160px;
-      background: var(--deep-green);
-      border-radius: 50%;
-      z-index: 2;
-      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: #ffffff;
+      padding: 90px 48px 65px;
+      background: linear-gradient(180deg, rgba(6, 12, 8, 0.65) 0%, rgba(14, 38, 20, 0.55) 50%, rgba(6, 12, 8, 0.75) 100%),
+                  url('assets/services/cricket and footbal turf.jpg') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(22, 163, 74, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 163, 74, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .hero-breadcrumb {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 16px;
+    }
+
+    .hero-breadcrumb a {
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .hero-breadcrumb a:hover {
+      color: var(--primary-green);
+    }
+
+    .hero-breadcrumb .bc-sep {
+      color: var(--primary-green);
+      font-size: 11px;
+    }
+
+    .hero-breadcrumb .bc-current {
+      color: var(--primary-green);
+      font-weight: 700;
+    }
+
+    .hero-tag-pill {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(22, 163, 74, 0.08);
+      border: 1px solid rgba(22, 163, 74, 0.25);
+      padding: 8px 22px;
+      border-radius: 100px;
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
-      line-height: 1.8;
-      box-shadow: 0 10px 30px rgba(27, 77, 39, 0.3);
-      padding: 20px;
+      color: var(--primary-green);
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
-    .hero-badge-circle::after {
-      content: '';
-      position: absolute;
-      bottom: 30px;
-      width: 30px;
-      height: 2px;
+    .hero-tag-pill .pulse-dot {
+      width: 6px;
+      height: 6px;
       background: var(--primary-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary-green);
+      animation: pulseDot 2s ease-in-out infinite;
     }
 
-    .hero-cursive-text {
-      position: absolute;
-      right: -60px;
-      bottom: 60px;
-      font-family: 'Caveat', cursive;
-      font-size: 48px;
-      color: #4B5563;
-      transform: rotate(-5deg);
-      line-height: 1;
-      opacity: 0.4;
-      z-index: 0;
+    @keyframes pulseDot {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+      }
     }
 
-    .hero-number-stack {
-      position: absolute;
-      right: -40px;
-      top: 50px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #9CA3AF;
-      z-index: 2;
-    }
-
-    .hero-number-stack .active-num {
-      color: #111827;
-      font-weight: 900;
+    .hero-main-title {
       position: relative;
+      z-index: 2;
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -2px;
+      color: #ffffff;
+      margin-bottom: 12px;
     }
 
-    .hero-number-stack .active-num::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--deep-green);
+    .hero-main-title .green-text {
+      color: var(--primary-green);
+    }
+
+    .hero-subtitle {
+      position: relative;
+      z-index: 2;
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 580px;
+      font-weight: 500;
     }
 
     /* ==========================================================================
@@ -437,7 +389,7 @@
        ========================================================================== */
     .filter-bar-container {
       max-width: 1380px;
-      margin: 0 auto 40px;
+      margin: 60px auto 40px;
       padding: 0 48px;
       display: flex;
       justify-content: center;
@@ -489,7 +441,6 @@
       border-radius: 16px;
       overflow: hidden;
       background: #e5e7eb;
-      group;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
@@ -1410,17 +1361,106 @@
         grid-row: span 2 !important;
       }
 
-      .footer-top-grid {
-        grid-template-columns: 1fr;
+      .site-footer {
+        padding: 28px 0 80px 0;
       }
 
-      .footer-col-touch {
+      .footer-container {
+        padding: 0 16px;
+      }
+
+      .footer-card {
+        border-radius: 24px;
+        padding: 28px 20px 24px 20px;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .footer-col-links,
+      .footer-col-touch,
+      .footer-col-hours {
         border-left: none;
         padding-left: 0;
+        border-top: 1px solid #EAECE9;
+        padding-top: 24px;
+      }
+
+      .footer-brand-desc {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .footer-social-group {
+        margin-bottom: 20px;
+      }
+
+      .footer-col-tagline {
+        display: inline-block;
+        background: #F0F4EE;
+        padding: 8px 16px;
+        border-radius: 100px;
+        color: #1b4d27;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+      }
+
+      .footer-links-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 10px;
+      }
+
+      .contact-val.email-link {
+        word-break: break-all;
+      }
+
+      .footer-book-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .footer-watermark-row {
+        margin-top: 24px;
+        padding-top: 16px;
       }
 
       .watermark-center-text {
-        font-size: 50px;
+        font-size: clamp(32px, 9vw, 44px);
+        opacity: 0.28;
+      }
+
+      .bottom-bar-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-links-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 8px;
+      }
+
+      .footer-links-list li a {
+        font-size: 13px;
+      }
+
+      .whatsapp-float-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .whatsapp-float-btn svg {
+        width: 26px;
+        height: 26px;
       }
     }
   </style>
@@ -1464,6 +1504,31 @@
         </svg>
       </button>
     </header>
+
+    <!-- ====== HERO BANNER ====== -->
+    <section class="projects-hero" id="projects-top">
+      <div class="hero-grid-lines"></div>
+
+      <div class="hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="bc-sep">›</span>
+        <span class="bc-current">Completed Projects</span>
+      </div>
+
+      <div class="hero-tag-pill">
+        <span class="pulse-dot"></span>
+        Our Portfolio
+      </div>
+
+      <h1 class="hero-main-title">
+        Crafting World-Class<br>
+        <span class="green-text">Sports Arenas</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Explore our showcase of Cricket & Football Turfs, Pickleball Courts, Badminton Courts, Wooden Flooring, Acrylic Systems, Synthetic Surfaces, Gem Flooring, Padel Courts, and Gym Flooring across India.
+      </p>
+    </section>
   </div>
 
   <!-- Mobile Drawer Overlay -->
@@ -1479,60 +1544,32 @@
     <button class="mobile-drawer-btn" onclick="window.location.href='contact.html'">Get Free Quote →</button>
   </div>
 
-
-  <!-- ====== HERO SECTION ====== -->
-  <section class="gallery-hero">
-    <div class="gallery-hero-content">
-      <div class="gallery-tagline">PROJECT SHOWCASE</div>
-      <h1 class="gallery-title">Crafting<br>World-Class<br><span>Sports Arenas</span></h1>
-      <p class="gallery-subtitle">Explore our showcase of Football & Cricket Turf Construction, Pickleball Court
-        Construction, and Premium Synthetic Sports Flooring across India.</p>
-
-      <div class="gallery-features">
-        <div class="feature-line"></div>
-        TURF <span>|</span> PICKLEBALL <span>|</span> SYNTHETIC FLOORING
-      </div>
-    </div>
-
-    <div class="gallery-hero-visual">
-      <div class="hero-bg-shape"></div>
-      <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80"
-        alt="Solai Sports Infra Facility" class="hero-main-img">
-
-      <div class="hero-badge-circle">
-        50+<br>PROJECTS<br>BUILT
-      </div>
-
-      <div class="hero-cursive-text">Built to<br>Last</div>
-
-      <div class="hero-number-stack">
-        <span class="active-num">01</span>
-        <span>02</span>
-        <span>03</span>
-      </div>
-    </div>
-  </section>
-
   <!-- ====== FILTER PILLS ====== -->
   <div class="filter-bar-container">
     <button class="filter-pill active" data-filter="all">All Projects</button>
-    <button class="filter-pill" data-filter="turf">Football & Cricket Turf</button>
+    <button class="filter-pill" data-filter="turf">Turf Construction</button>
     <button class="filter-pill" data-filter="pickleball">Pickleball Courts</button>
+    <button class="filter-pill" data-filter="badminton">Badminton Courts</button>
+    <button class="filter-pill" data-filter="wooden">Wooden Flooring</button>
+    <button class="filter-pill" data-filter="acrylic">Acrylic Systems</button>
     <button class="filter-pill" data-filter="synthetic">Synthetic Flooring</button>
+    <button class="filter-pill" data-filter="gem">Gem Surface</button>
+    <button class="filter-pill" data-filter="padel">Padel Courts</button>
+    <button class="filter-pill" data-filter="gym">Gym Flooring</button>
   </div>
 
   <!-- ====== MASONRY GRID ====== -->
   <section class="gallery-grid-section">
     <div class="gallery-grid">
 
-      <!-- Football & Cricket Turf Construction -->
+      <!-- 1. Football & Cricket Turf Construction -->
       <div class="grid-item item-turf" data-category="turf">
-        <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1000&q=80"
-          alt="Football & Cricket Turf Construction">
+        <img src="assets/services/cricket and footbal turf.jpg"
+          alt="Cricket & Football Turf Construction">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Football & Cricket Turf Construction</h3>
-            <p class="grid-desc">FIFA-grade synthetic turf with silica sand & rubber infill system.</p>
+            <h3 class="grid-title">Cricket & Football Turf</h3>
+            <p class="grid-desc">FIFA & ICC grade synthetic sports turf with silica sand & shockpad underlayer.</p>
           </div>
           <div class="grid-arrow-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1544,14 +1581,14 @@
         </div>
       </div>
 
-      <!-- Pickleball Court Construction -->
+      <!-- 2. Pickleball Court Construction -->
       <div class="grid-item item-community" data-category="pickleball">
-        <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80"
+        <img src="assets/services/Pickleball Courts.jpg"
           alt="Pickleball Court Construction">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Pickleball Court Construction</h3>
-            <p class="grid-desc">Multi-layer cushioned acrylic surfacing with USA Pickleball specs.</p>
+            <h3 class="grid-title">Pickleball Courts</h3>
+            <p class="grid-desc">Precision acrylic multi-layer surfacing with official court markings.</p>
           </div>
           <div class="grid-arrow-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1563,14 +1600,14 @@
         </div>
       </div>
 
-      <!-- Synthetic Sports Flooring -->
-      <div class="grid-item item-lounge" data-category="synthetic">
-        <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=800&q=80"
-          alt="Synthetic Sports Flooring">
+      <!-- 3. Badminton Courts -->
+      <div class="grid-item item-lounge" data-category="badminton">
+        <img src="assets/services/Badminton Courts.jpg"
+          alt="Badminton Court Construction">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Synthetic Sports Flooring</h3>
-            <p class="grid-desc">Seamless Polyurethane & shock-absorbing indoor/outdoor flooring.</p>
+            <h3 class="grid-title">Badminton Courts</h3>
+            <p class="grid-desc">BWF-standard court specifications with Gem PVC and synthetic flooring.</p>
           </div>
           <div class="grid-arrow-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1582,14 +1619,14 @@
         </div>
       </div>
 
-      <!-- Box Cricket Turf Arena -->
-      <div class="grid-item item-indoor" data-category="turf">
-        <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80"
-          alt="Box Cricket Turf Arena">
+      <!-- 4. Wooden Sports Flooring -->
+      <div class="grid-item item-indoor" data-category="wooden">
+        <img src="assets/services/Wooden Sports Flooring.jpg"
+          alt="Wooden Sports Flooring">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Box Cricket Turf Arena</h3>
-            <p class="grid-desc">Heavy-duty perimeter netting and high-density grass turf.</p>
+            <h3 class="grid-title">Wooden Sports Flooring</h3>
+            <p class="grid-desc">Hardwood & engineered wood with floating impact-absorption underlayer.</p>
           </div>
           <div class="grid-arrow-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1601,7 +1638,7 @@
         </div>
       </div>
 
-      <!-- Text Box Item -->
+      <!-- 5. Text Box Branding Card -->
       <div class="grid-item item-text-box">
         <div class="text-box-content">
           SOLAI<br>SPORTS<br>INFRA
@@ -1609,14 +1646,14 @@
         <div class="text-box-line"></div>
       </div>
 
-      <!-- Commercial Turf Arenas -->
-      <div class="grid-item item-events" data-category="turf">
-        <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1000&q=80"
-          alt="Commercial Turf Arenas">
+      <!-- 6. Acrylic Sports Flooring -->
+      <div class="grid-item item-events" data-category="acrylic">
+        <img src="assets/services/Acrylic Sports Flooring.jpg"
+          alt="Acrylic Sports Flooring">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Commercial Turf Arenas</h3>
-            <p class="grid-desc">Complete sub-base preparation, drainage & floodlight installation.</p>
+            <h3 class="grid-title">Acrylic Sports Flooring</h3>
+            <p class="grid-desc">5-8 layer professional UV-resistant all-weather acrylic system.</p>
           </div>
           <div class="grid-arrow-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1628,14 +1665,14 @@
         </div>
       </div>
 
-      <!-- Tournament Pickleball Courts -->
-      <div class="grid-item item-moments" data-category="pickleball">
-        <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80"
-          alt="Tournament Pickleball Courts">
+      <!-- 7. Synthetic Sports Flooring -->
+      <div class="grid-item item-moments" data-category="synthetic">
+        <img src="assets/services/Synthetic Sports Flooring.jpg"
+          alt="Synthetic Sports Flooring">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Tournament Pickleball Courts</h3>
-            <p class="grid-desc">Non-glare game markings & professional court enclosures.</p>
+            <h3 class="grid-title">Synthetic Sports Flooring</h3>
+            <p class="grid-desc">Seamless PU & PP tile cushion flooring for indoor & outdoor courts.</p>
           </div>
           <div class="grid-arrow-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1647,14 +1684,14 @@
         </div>
       </div>
 
-      <!-- Badminton & Basketball Flooring -->
-      <div class="grid-item item-facility" data-category="synthetic">
-        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80"
-          alt="Badminton & Basketball Flooring">
+      <!-- 8. Gem Surface Flooring -->
+      <div class="grid-item item-facility" data-category="gem">
+        <img src="assets/services/gem pvc surface.jpg"
+          alt="Gem PVC Surface">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Badminton & Basketball Flooring</h3>
-            <p class="grid-desc">High-durability anti-skid synthetic court surfaces.</p>
+            <h3 class="grid-title">Gem Surface</h3>
+            <p class="grid-desc">High-grip, anti-slip textured PVC flooring for indoor sports.</p>
           </div>
           <div class="grid-arrow-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1665,6 +1702,47 @@
           </div>
         </div>
       </div>
+
+      <!-- 9. Padel Courts -->
+      <div class="grid-item item-turf" data-category="padel">
+        <img src="assets/services/Padel Courts.jpg"
+          alt="Padel Courts">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Padel Courts</h3>
+            <p class="grid-desc">Professional padel courts with synthetic turf, tempered glass & steel enclosure.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Gym & Weightlifting Flooring -->
+      <div class="grid-item item-community" data-category="gym">
+        <img src="assets/services/Gym&Weightlifting Flooring.jpg"
+          alt="Weightlifting & Gym Flooring">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Weightlifting & Gym Flooring</h3>
+            <p class="grid-desc">Heavy-duty rubber flooring for high-impact zones & floor protection.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
     </div>
   </section>
@@ -1673,12 +1751,12 @@
   <div class="quote-section">
     <div class="quote-content">
       <div class="quote-icon">“</div>
-      <h2 class="quote-text">Engineering Quality Turf<br><span>& Court Infrastructure.</span></h2>
+      <h2 class="quote-text" id="quoteMainText">Engineering Quality Turf<br><span id="quoteSubText">& Court Infrastructure.</span></h2>
       <div class="quote-line"></div>
     </div>
 
     <div class="quote-controls">
-      <button class="quote-btn-prev" aria-label="Previous">
+      <button class="quote-btn-prev" id="quotePrevBtn" aria-label="Previous">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -1687,11 +1765,11 @@
       </button>
 
       <div class="quote-image-circle">
-        <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=600&q=80"
+        <img id="quoteCircleImg" src="assets/services/cricket and footbal turf.jpg"
           alt="Solai Construction Team">
       </div>
 
-      <button class="quote-btn-next" aria-label="Next">
+      <button class="quote-btn-next" id="quoteNextBtn" aria-label="Next">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1700,32 +1778,9 @@
       </button>
     </div>
 
-    <div class="quote-side-label">SOLAI STANDARDS</div>
+    <div class="quote-side-label" id="quoteSideLabel">SOLAI STANDARDS</div>
   </div>
 
-  <!-- ====== CTA BANNER ====== -->
-  <div class="gallery-cta-banner">
-    <div class="cta-banner-inner">
-      <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=80"
-        alt="Background Turf" class="cta-banner-bg-img">
-
-      <div class="cta-banner-content">
-        <div class="cta-small-text">START YOUR CONSTRUCTION PROJECT TODAY</div>
-        <h2 class="cta-main-title">Build Your Dream<br><span>Sports Arena</span></h2>
-
-        <a href="contact.html" class="cta-btn-white">
-          Get Free Construction Quote
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <div class="cta-cursive-overlay">Plan<br>Build<br>Deliver</div>
-    </div>
-  </div>
 
 
   <!-- ====== FOOTER ====== -->
@@ -1797,17 +1852,15 @@
               <h4 class="footer-header-title">OUR SERVICES</h4>
             </div>
             <ul class="footer-links-list">
-              <li><a href="services.html#cricket-football-turf"><span class="link-chevron">›</span> Turf
-                  Construction</a></li>
-              <li><a href="services.html#pickleball-courts"><span class="link-chevron">›</span> Pickleball Courts</a>
-              </li>
-              <li><a href="services.html#synthetic-flooring"><span class="link-chevron">›</span> Synthetic Flooring</a>
-              </li>
-              <li><a href="index.html#why-choose-us"><span class="link-chevron">›</span> Why Choose Us</a></li>
-              <li><a href="projects.html"><span class="link-chevron">›</span> Completed Projects</a></li>
-              <li><a href="index.html#testimonials"><span class="link-chevron">›</span> Client Reviews</a></li>
-              <li><a href="index.html#faq"><span class="link-chevron">›</span> FAQs</a></li>
-              <li><a href="contact.html"><span class="link-chevron">›</span> Get Free Quote</a></li>
+              <li><a href="services.html#cricket-football-turf"><span class="link-chevron">›</span> Cricket & Football Turf</a></li>
+              <li><a href="services.html#pickleball-courts"><span class="link-chevron">›</span> Pickleball Courts</a></li>
+              <li><a href="services.html#badminton-courts"><span class="link-chevron">›</span> Badminton Courts</a></li>
+              <li><a href="services.html#wooden-flooring"><span class="link-chevron">›</span> Wooden Sports Flooring</a></li>
+              <li><a href="services.html#acrylic-flooring"><span class="link-chevron">›</span> Acrylic Sports Flooring</a></li>
+              <li><a href="services.html#synthetic-flooring"><span class="link-chevron">›</span> Synthetic Sports Flooring</a></li>
+              <li><a href="services.html#gem-surface"><span class="link-chevron">›</span> Gem Surface</a></li>
+              <li><a href="services.html#padel-courts"><span class="link-chevron">›</span> Padel Courts</a></li>
+              <li><a href="services.html#gym-flooring"><span class="link-chevron">›</span> Gym Flooring</a></li>
             </ul>
           </div>
 
@@ -1958,7 +2011,6 @@
 
     filterPills.forEach(pill => {
       pill.addEventListener('click', () => {
-        // Remove active class from all pills
         filterPills.forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
 
@@ -1976,8 +2028,66 @@
         });
       });
     });
+
+    // Quote / Engineering Slider logic
+    const quoteSlides = [
+      {
+        main: "Engineering Quality Turf",
+        sub: "& Court Infrastructure.",
+        img: "assets/services/cricket and footbal turf.jpg",
+        label: "TURF EXCELLENCE"
+      },
+      {
+        main: "Precision Pickleball Courts",
+        sub: "Built to Official Specs.",
+        img: "assets/services/Pickleball Courts.jpg",
+        label: "COURT PRECISION"
+      },
+      {
+        main: "Durable Padel Enclosures",
+        sub: "& Professional Lighting.",
+        img: "assets/services/Padel Courts.jpg",
+        label: "PADEL ARENAS"
+      },
+      {
+        main: "Impact-Absorbing Flooring",
+        sub: "Hardwood & Cushion Systems.",
+        img: "assets/services/Wooden Sports Flooring.jpg",
+        label: "FLOORING STANDARDS"
+      }
+    ];
+
+    let currentQuoteIndex = 0;
+    const quoteMainText = document.getElementById('quoteMainText');
+    const quoteCircleImg = document.getElementById('quoteCircleImg');
+    const quoteSideLabel = document.getElementById('quoteSideLabel');
+    const quotePrevBtn = document.getElementById('quotePrevBtn');
+    const quoteNextBtn = document.getElementById('quoteNextBtn');
+
+    function updateQuoteSlide(index) {
+      const slide = quoteSlides[index];
+      if (quoteMainText && quoteCircleImg) {
+        quoteMainText.innerHTML = `${slide.main}<br><span id="quoteSubText">${slide.sub}</span>`;
+        quoteCircleImg.src = slide.img;
+        if (quoteSideLabel) quoteSideLabel.textContent = slide.label;
+      }
+    }
+
+    if (quotePrevBtn) {
+      quotePrevBtn.addEventListener('click', () => {
+        currentQuoteIndex = (currentQuoteIndex - 1 + quoteSlides.length) % quoteSlides.length;
+        updateQuoteSlide(currentQuoteIndex);
+      });
+    }
+
+    if (quoteNextBtn) {
+      quoteNextBtn.addEventListener('click', () => {
+        currentQuoteIndex = (currentQuoteIndex + 1) % quoteSlides.length;
+        updateQuoteSlide(currentQuoteIndex);
+      });
+    }
   </script>
 
 </body>
 
-</html>
+</html>

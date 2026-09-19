@@ -1119,9 +1119,76 @@
         display: flex;
       }
 
+      .site-footer {
+        padding: 28px 0 80px 0;
+      }
+
+      .footer-container {
+        padding: 0 16px;
+      }
+
+      .footer-card {
+        border-radius: 24px;
+        padding: 28px 20px 24px 20px;
+      }
+
       .footer-top-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 24px;
+      }
+
+      .footer-col-links,
+      .footer-col-touch,
+      .footer-col-hours {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid #EAECE9;
+        padding-top: 24px;
+      }
+
+      .footer-brand-desc {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .footer-social-group {
+        margin-bottom: 20px;
+      }
+
+      .footer-col-tagline {
+        display: inline-block;
+        background: #F0F4EE;
+        padding: 8px 16px;
+        border-radius: 100px;
+        color: #1b4d27;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+      }
+
+      .footer-links-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 10px;
+      }
+
+      .contact-val.email-link {
+        word-break: break-all;
+      }
+
+      .footer-book-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .footer-watermark-row {
+        margin-top: 24px;
+        padding-top: 16px;
+      }
+
+      .watermark-center-text {
+        font-size: clamp(32px, 9vw, 44px);
+        opacity: 0.28;
       }
 
       .contact-form-grid {
@@ -1141,14 +1208,6 @@
         gap: 16px;
       }
 
-      .watermark-center-text {
-        font-size: 40px;
-      }
-
-      .footer-card {
-        padding: 32px 24px;
-      }
-
       .bottom-bar-content {
         flex-direction: column;
         justify-content: center;
@@ -1157,6 +1216,27 @@
     }
 
     @media (max-width: 480px) {
+      .footer-links-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 8px;
+      }
+
+      .footer-links-list li a {
+        font-size: 13px;
+      }
+
+      .whatsapp-float-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .whatsapp-float-btn svg {
+        width: 26px;
+        height: 26px;
+      }
+
       .contact-card-box {
         padding: 24px;
       }
