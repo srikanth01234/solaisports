@@ -38,23 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!layer1 || !layer2 || desktopCards.length === 0) return;
 
-    const slides = desktopCards.map(card => {
-      const img = card.querySelector('img');
-      const sportName = card.getAttribute('data-sport');
-      let src = img ? img.src : '';
-      if (src.includes('unsplash.com')) {
-        src = src.replace('w=400', 'w=2000').replace('q=80', 'q=85');
-      }
+    const slides = desktopCards.map((card, idx) => {
+      const desktopImg = card.querySelector('img');
+      const mobileCard = mobileCards[idx];
+      const mobileImg = mobileCard ? mobileCard.querySelector('img') : null;
+
+      const desktopSrc = desktopImg ? (desktopImg.getAttribute('src') || desktopImg.src) : '';
+      const mobileSrc = mobileImg ? (mobileImg.getAttribute('src') || mobileImg.src) : desktopSrc;
+
       return {
-        sport: sportName,
-        image: src
+        sport: card.getAttribute('data-sport'),
+        desktopImage: desktopSrc,
+        mobileImage: mobileSrc
       };
     });
 
+    function getSlideImage(slide) {
+      if (!slide) return '';
+      return window.innerWidth <= 768 ? slide.mobileImage : slide.desktopImage;
+    }
+
     // Preload slide images
     slides.forEach(slide => {
-      const img = new Image();
-      img.src = slide.image;
+      const imgD = new Image();
+      imgD.src = slide.desktopImage;
+      const imgM = new Image();
+      imgM.src = slide.mobileImage;
     });
 
     let currentIndex = 0;
@@ -63,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let slideshowTimer = null;
 
     // Set initial background image
-    activeLayer.style.backgroundImage = `url('${slides[0].image}')`;
+    activeLayer.style.backgroundImage = `url('${getSlideImage(slides[0])}')`;
     activeLayer.classList.add('active');
 
     function updateActiveCardStates(slideIdx) {
@@ -118,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const nextSlide = slides[index];
       currentIndex = index;
 
-      inactiveLayer.style.backgroundImage = `url('${nextSlide.image}')`;
+      inactiveLayer.style.backgroundImage = `url('${getSlideImage(nextSlide)}')`;
       inactiveLayer.classList.add('active');
       activeLayer.classList.remove('active');
 
@@ -639,7 +648,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('#gallery .btn-slider-prev');
     const nextBtn = document.querySelector('#gallery .btn-slider-next');
     const mainImg = document.querySelector('#gallery .gallery-main-card-bg');
+    const mainVideo = document.querySelector('#gallery .gallery-main-card-video');
     const mainTag = document.querySelector('#gallery .main-tag-left');
+    const notchTag = document.querySelector('#galleryNotchTag');
     const counterEl = document.querySelector('#gallery .main-counter-right');
     const fillLine = document.querySelector('#gallery .progress-fill-line');
     const currentNumEl = document.querySelector('#gallery .slider-progress-wrapper .progress-num:first-child');
@@ -648,79 +659,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const quoteAuthor = document.querySelector('#gallery .quote-author');
     const sideCards = document.querySelectorAll('#gallery .gallery-card-sm');
 
-    if (!prevBtn || !nextBtn || !mainImg) return;
+    if (!prevBtn || !nextBtn || (!mainImg && !mainVideo)) return;
 
     const galleryData = [
       {
         tag: 'CRICKET TURF',
-        mainImg: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80',
+        video: 'assets/home/cricket_normal.mp4',
+        poster: 'assets/home/hero_cricket.png',
         quote: '"Outstanding craftsmanship! The sub-base drainage and turf quality are top notch."',
         author: '— SPORTS CLUB OWNER',
         sides: [
-          { tag: 'FOOTBALL TURF', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' }
+          { tag: 'FOOTBALL ARENA', img: 'assets/home/hero_football.png' },
+          { tag: 'PICKLEBALL COURT', img: 'assets/home/her0_pickelball.png' },
+          { tag: 'PADEL COURT', img: 'assets/home/hero_padel.png' },
+          { tag: 'BADMINTON COURT', img: 'assets/home/hero_badminaton.png' }
         ]
       },
       {
         tag: 'FOOTBALL ARENA',
-        mainImg: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=1200&q=80',
+        video: 'assets/home/Football_normal.mp4',
+        poster: 'assets/home/hero_football.png',
         quote: '"State of the art 7-a-side pitch with high density monofilament turf. Players love it!"',
         author: '— ARENA MANAGER, CHENNAI',
         sides: [
-          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'CRICKET TURF', img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80' }
+          { tag: 'PICKLEBALL COURT', img: 'assets/home/her0_pickelball.png' },
+          { tag: 'PADEL COURT', img: 'assets/home/hero_padel.png' },
+          { tag: 'CRICKET TURF', img: 'assets/home/hero_cricket.png' },
+          { tag: 'BADMINTON COURT', img: 'assets/home/hero_badminaton.png' }
         ]
       },
       {
         tag: 'PICKLEBALL COURT',
-        mainImg: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=1200&q=80',
+        video: 'assets/home/pickelball_normal.mp4',
+        poster: 'assets/home/her0_pickelball.png',
         quote: '"8-layer acrylic cushion surface gave our academy world-class court pacing."',
         author: '— ACADEMY DIRECTOR',
         sides: [
-          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'CRICKET TURF', img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'FOOTBALL ARENA', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' }
+          { tag: 'PADEL COURT', img: 'assets/home/hero_padel.png' },
+          { tag: 'CRICKET TURF', img: 'assets/home/hero_cricket.png' },
+          { tag: 'FOOTBALL ARENA', img: 'assets/home/hero_football.png' },
+          { tag: 'BADMINTON COURT', img: 'assets/home/hero_badminaton.png' }
         ]
       },
       {
-        tag: 'SYNTHETIC FLOORING',
-        mainImg: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=1200&q=80',
-        quote: '"Seamless rubberized polyurethane flooring installed flawlessly inside our school hall."',
-        author: '— SCHOOL PRINCIPAL',
+        tag: 'PADEL COURT',
+        video: 'assets/home/padels_normal.mp4',
+        poster: 'assets/home/hero_padel.png',
+        quote: '"Seamless panoramic glass padel courts installed flawlessly for our sports complex."',
+        author: '— CLUB DEVELOPER',
         sides: [
-          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'CRICKET TURF', img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'FOOTBALL ARENA', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' }
-        ]
-      },
-      {
-        tag: 'TURNKEY INFRA',
-        mainImg: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1200&q=80',
-        quote: '"From civil foundation to LED stadium floodlighting, Solai handled everything end-to-end."',
-        author: '— INFRASTRUCTURE DEVELOPER',
-        sides: [
-          { tag: 'CRICKET TURF', img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'FOOTBALL ARENA', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' }
-        ]
-      },
-      {
-        tag: 'BOX CRICKET ARENA',
-        mainImg: 'https://images.unsplash.com/photo-1512719994953-eabf50895df7?auto=format&fit=crop&w=1200&q=80',
-        quote: '"High durability perimeter nets and shock-pad backing turf. High booking rates from day 1!"',
-        author: '— TURF ENTREPRENEUR',
-        sides: [
-          { tag: 'FOOTBALL ARENA', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'PICKLEBALL COURT', img: 'https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'SYNTHETIC FLOORING', img: 'https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80' },
-          { tag: 'TURNKEY INFRA', img: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=600&q=80' }
+          { tag: 'CRICKET TURF', img: 'assets/home/hero_cricket.png' },
+          { tag: 'FOOTBALL ARENA', img: 'assets/home/hero_football.png' },
+          { tag: 'PICKLEBALL COURT', img: 'assets/home/her0_pickelball.png' },
+          { tag: 'BADMINTON COURT', img: 'assets/home/hero_badminaton.png' }
         ]
       }
     ];
@@ -728,12 +719,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIdx = 0;
     let isAnimating = false;
     const total = galleryData.length;
-
-    // Preload images
-    galleryData.forEach(item => {
-      const img = new Image();
-      img.src = item.mainImg;
-    });
 
     function renderSlide(index, direction = 'next') {
       if (isAnimating) return;
@@ -745,9 +730,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const shiftInX = direction === 'next' ? 25 : -25;
 
       // Phase 1: Slide Out & Fade Out
-      mainImg.style.transition = 'transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease';
-      mainImg.style.opacity = '0';
-      mainImg.style.transform = `scale(1.05) translateX(${shiftOutX}px)`;
+      if (mainVideo) {
+        mainVideo.style.transition = 'transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease';
+        mainVideo.style.opacity = '0';
+        mainVideo.style.transform = `scale(1.05) translateX(${shiftOutX}px)`;
+      }
+
+      if (mainImg) {
+        mainImg.style.transition = 'transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease';
+        mainImg.style.opacity = '0';
+        mainImg.style.transform = `scale(1.05) translateX(${shiftOutX}px)`;
+      }
 
       if (quoteText) {
         quoteText.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
@@ -764,9 +757,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       setTimeout(() => {
-        // Phase 2: Update content & prepare incoming image
-        mainImg.src = data.mainImg;
+        // Phase 2: Update content & prepare incoming video/image
+        if (mainVideo && data.video) {
+          if (data.poster) mainVideo.poster = data.poster;
+          mainVideo.src = data.video;
+          mainVideo.load();
+          mainVideo.play().catch(() => { });
+        }
+        if (mainImg && data.mainImg) {
+          mainImg.src = data.mainImg;
+        }
+
         if (mainTag) mainTag.innerText = data.tag;
+        if (notchTag) notchTag.innerText = data.tag;
         if (counterEl) counterEl.innerText = `${String(currentIdx + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
         if (currentNumEl) currentNumEl.innerText = String(currentIdx + 1).padStart(2, '0');
         if (totalNumEl) totalNumEl.innerText = String(total).padStart(2, '0');
@@ -787,16 +790,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Set position for incoming slide
-        mainImg.style.transition = 'none';
-        mainImg.style.transform = `scale(1.05) translateX(${shiftInX}px)`;
+        if (mainVideo) {
+          mainVideo.style.transition = 'none';
+          mainVideo.style.transform = `scale(1.05) translateX(${shiftInX}px)`;
+        }
+        if (mainImg) {
+          mainImg.style.transition = 'none';
+          mainImg.style.transform = `scale(1.05) translateX(${shiftInX}px)`;
+        }
 
         // Force reflow
-        void mainImg.offsetHeight;
+        if (mainVideo) void mainVideo.offsetHeight;
+        if (mainImg) void mainImg.offsetHeight;
 
         // Phase 3: Slide In & Fade In
-        mainImg.style.transition = 'transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease';
-        mainImg.style.opacity = '1';
-        mainImg.style.transform = 'scale(1) translateX(0)';
+        if (mainVideo) {
+          mainVideo.style.transition = 'transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease';
+          mainVideo.style.opacity = '1';
+          mainVideo.style.transform = 'scale(1) translateX(0)';
+        }
+        if (mainImg) {
+          mainImg.style.transition = 'transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease';
+          mainImg.style.opacity = '1';
+          mainImg.style.transform = 'scale(1) translateX(0)';
+        }
 
         if (quoteText) {
           quoteText.style.transition = 'opacity 0.35s ease, transform 0.35s ease';

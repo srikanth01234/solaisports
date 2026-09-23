@@ -45,11 +45,13 @@
     .hero-wrapper {
       position: relative;
       width: 100%;
-      min-height: 100vh;
+      height: 100vh;
+      min-height: 650px;
+      max-height: 1080px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 90px 48px 24px 48px;
+      padding: 75px 48px 16px 48px;
       background: #060c08;
       overflow: hidden;
     }
@@ -136,36 +138,25 @@
     /* Logo */
     .logo-container {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       text-decoration: none;
       user-select: none;
     }
 
-    .logo-main {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: #ffffff;
-      line-height: 1;
-      display: flex;
-      align-items: baseline;
+    .brand-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .logo-main .green-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      background-color: var(--primary-green);
-      border-radius: 2px;
-      margin-left: 2px;
-    }
-
-    .logo-sub {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: rgba(255, 255, 255, 0.85);
-      margin-top: 2px;
+    .logo-container:hover .brand-logo-img {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.35);
     }
 
     /* Nav Tabs Pill */
@@ -282,13 +273,13 @@
 
     /* Main Title */
     .hero-title {
-      font-size: clamp(48px, 6vw, 84px);
+      font-size: clamp(38px, 4.8vw, 68px);
       font-weight: 800;
       line-height: 1.04;
-      letter-spacing: -2px;
+      letter-spacing: -1.5px;
       color: #ffffff;
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       user-select: none;
     }
 
@@ -300,10 +291,9 @@
     .hero-grid-content {
       display: flex;
       width: 100%;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
-      margin-top: -45px;
-      /* Shifted UP to eliminate empty space */
+      margin-top: 0px;
     }
 
     /* Left Side Content (NO BACKGROUND CARD - Pure Text & Button) */
@@ -311,13 +301,12 @@
       max-width: 380px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       background: none;
       border: none;
       box-shadow: none;
       padding: 0;
-      transform: translateY(-100px);
-      /* Moved further UP as requested */
+      transform: none;
     }
 
     .left-title {
@@ -1298,39 +1287,35 @@
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
     }
 
-    /* Continuous Sliced Image Alignment Across Cards 1 to 4 */
+    /* Continuous Sliced Master Image (assets/home/whychooseus.png) Alignment Across Cards 1 to 4 */
     .slanted-card img {
-      width: 340%;
-      width: 360%;
-      height: 140%;
-      object-fit: cover;
       position: absolute;
-      top: -20%;
+      width: 631px;
+      height: 440px;
+      max-width: none;
+      object-fit: cover;
       transform: skewX(14deg);
       pointer-events: none;
     }
 
     .slanted-card:nth-child(1) img {
-      left: 0%;
-      top: -30%;
+      left: 0px;
+      top: -130px;
     }
 
     .slanted-card:nth-child(2) img {
-      left: -65%;
-      left: -50%;
-      top: -15%;
+      left: -105px;
+      top: -50px;
     }
 
     .slanted-card:nth-child(3) img {
-      left: -130%;
-      left: -110%;
-      top: 0%;
+      left: -224px;
+      top: 0px;
     }
 
     .slanted-card:nth-child(4) img {
-      left: -195%;
-      left: -170%;
-      top: -18%;
+      left: -371px;
+      top: -75px;
     }
 
     /* Card 5 Cursive Dark Card Content */
@@ -1578,10 +1563,6 @@
       .why-feature-item {
         border-bottom: 1px solid #E2E8F0;
       }
-
-      .slanted-card:nth-child(1) {
-        display: none;
-      }
     }
 
     @media (max-width: 992px) {
@@ -1712,11 +1693,26 @@
         border: 1.5px solid #FFFFFF;
       }
 
+      .slanted-card img {
+        position: absolute;
+        height: 225px;
+        max-width: none;
+        object-fit: cover;
+        transform: skewX(12deg);
+        pointer-events: none;
+      }
+
       .slanted-card:nth-child(1) {
         display: block;
         width: 17%;
         height: 140px;
         margin-top: 55px;
+      }
+
+      .slanted-card:nth-child(1) img {
+        width: 471%;
+        left: 0%;
+        top: -55px;
       }
 
       .slanted-card:nth-child(2) {
@@ -1726,6 +1722,12 @@
         margin-top: 22px;
       }
 
+      .slanted-card:nth-child(2) img {
+        width: 421%;
+        left: -89.5%;
+        top: -22px;
+      }
+
       .slanted-card:nth-child(3) {
         display: block;
         width: 20%;
@@ -1733,11 +1735,23 @@
         margin-top: 0px;
       }
 
+      .slanted-card:nth-child(3) img {
+        width: 400%;
+        left: -180%;
+        top: 0px;
+      }
+
       .slanted-card:nth-child(4) {
         display: block;
         width: 24%;
         height: 170px;
         margin-top: 28px;
+      }
+
+      .slanted-card:nth-child(4) img {
+        width: 333%;
+        left: -233%;
+        top: -28px;
       }
 
       .slanted-card:nth-child(5) {
@@ -2354,115 +2368,7 @@
     }
 
     @media (max-width: 768px) {
-      .unfolds-scroll-track {
-        height: auto !important;
-      }
-
-      .unfolds-sticky-wrapper {
-        position: relative !important;
-        height: auto !important;
-        padding: 50px 16px 40px 16px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        background: radial-gradient(circle at center, #0B160D 0%, #040905 85%) !important;
-      }
-
-      .unfolds-header {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
-        text-align: center !important;
-        margin-bottom: 24px !important;
-        width: 100% !important;
-        opacity: 1 !important;
-      }
-
-      .unfolds-title {
-        font-size: 26px !important;
-      }
-
-      .unfolds-subtitle {
-        font-size: 10px !important;
-        letter-spacing: 2px !important;
-      }
-
-      .unfolds-center-video-wrapper {
-        position: relative !important;
-        width: 100% !important;
-        max-width: 360px !important;
-        height: 200px !important;
-        border-radius: 20px !important;
-        margin-bottom: 24px !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-      }
-
-      .unfolds-play-badge {
-        opacity: 1 !important;
-      }
-
-      .unfolds-play-badge .watch-text {
-        font-size: 10px !important;
-        letter-spacing: 1.2px !important;
-      }
-
-      .unfolds-cards-wrapper {
-        position: relative !important;
-        inset: auto !important;
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        width: 100% !important;
-        pointer-events: auto !important;
-      }
-
-      .unfolds-card {
-        position: relative !important;
-        width: 100% !important;
-        height: 200px !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-        opacity: 1 !important;
-        border-radius: 18px !important;
-        overflow: hidden !important;
-      }
-
-      .unfolds-card-content {
-        padding: 14px !important;
-      }
-
-      .unfolds-card-num {
-        font-size: 22px !important;
-      }
-
-      .unfolds-card-badge {
-        width: 32px !important;
-        height: 32px !important;
-        margin-top: 6px !important;
-      }
-
-      .unfolds-card-badge svg {
-        width: 16px !important;
-        height: 16px !important;
-      }
-
-      .unfolds-card-title {
-        font-size: 13px !important;
-      }
-
-      .unfolds-card-sub {
-        font-size: 10px !important;
-      }
-
-      .unfolds-scroll-hint {
+      .unfolds-section {
         display: none !important;
       }
     }
@@ -2713,6 +2619,47 @@
       background-color: #16A34A;
     }
 
+    .gallery-main-card-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+    }
+
+    .gallery-notch-title-box {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gallery-notch-tag {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: #111827;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    .gallery-notch-tag::after {
+      content: '';
+      width: 28px;
+      height: 2.5px;
+      background-color: #277443;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
     /* CENTER MAIN FEATURE CARD (Stepped Tab Shape with Smooth Curves) */
     .gallery-main-card {
       position: relative;
@@ -2720,6 +2667,7 @@
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
       cursor: pointer;
       min-height: 400px;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2727,7 +2675,8 @@
       -webkit-clip-path: url(#mainCardClip);
     }
 
-    .gallery-main-card-bg {
+    .gallery-main-card-bg,
+    .gallery-main-card-video {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -2735,16 +2684,22 @@
       object-fit: cover;
       object-position: center;
       transition: transform 0.6s ease, opacity 0.3s ease;
+      z-index: 1;
+      display: block;
+      background: #0b120c;
     }
 
-    .gallery-main-card:hover .gallery-main-card-bg {
+    .gallery-main-card:hover .gallery-main-card-bg,
+    .gallery-main-card:hover .gallery-main-card-video {
       transform: scale(1.05);
     }
 
     .gallery-main-card-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(8, 17, 10, 0.3) 0%, rgba(8, 17, 10, 0.2) 50%, rgba(8, 17, 10, 0.85) 100%);
+      background: linear-gradient(180deg, rgba(8, 17, 10, 0.2) 0%, rgba(8, 17, 10, 0.1) 50%, rgba(8, 17, 10, 0.75) 100%);
+      z-index: 2;
+      pointer-events: none;
     }
 
     /* Play Badge Overlay */
@@ -3114,17 +3069,24 @@
         display: flex;
         flex-direction: column;
         gap: 14px;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
+      }
+
+      .gallery-main-card-wrapper {
+        order: 1;
+        width: 100%;
+        min-height: 0 !important;
+        height: auto !important;
       }
 
       .gallery-main-card {
-        order: 1;
         width: 100%;
-        min-height: 240px;
-        max-height: 280px;
-        border-radius: 24px;
-        clip-path: none;
-        -webkit-clip-path: none;
+        height: 210px !important;
+        min-height: 210px !important;
+        max-height: 210px !important;
+        border-radius: 20px;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
       }
 
@@ -5345,33 +5307,25 @@
 
     /* Column 1: Brand / Logo */
     .footer-logo {
-      display: flex;
-      flex-direction: column;
+      display: inline-flex;
+      align-items: center;
       user-select: none;
       margin-bottom: 20px;
     }
 
-    .footer-logo-main {
-      font-size: 36px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: #0c180e;
-      line-height: 1;
+    .footer-logo-img {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease;
     }
 
-    .footer-logo-line {
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, #1b4d27 35%, #e0e7dd 35%);
-      margin: 6px 0 8px 0;
-    }
-
-    .footer-logo-sub {
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 4px;
-      color: #0c180e;
-      text-transform: uppercase;
+    .footer-logo:hover .footer-logo-img {
+      transform: translateY(-2px);
     }
 
     .footer-brand-desc {
@@ -6289,10 +6243,7 @@
     <header class="header">
       <!-- Logo -->
       <a href="index.html" class="logo-container">
-        <div class="logo-main">
-          SOLAI<span class="green-dot"></span>
-        </div>
-        <div class="logo-sub">SPORTS INFRA</div>
+        <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="brand-logo-img" />
       </a>
 
       <!-- Desktop Navigation Pill -->
@@ -6380,7 +6331,7 @@
             <span class="rating-score">4.9</span>
           </div>
 
-          <div class="happy-players">50+ Projects Completed</div>
+          <!-- <div class="happy-players">50+ Projects Completed</div> -->
 
           <a href="#contact" class="btn-left-cta" id="leftBookBtn">
             Request Quote
@@ -6400,45 +6351,40 @@
           <div class="sports-col-1">
             <div class="sports-card" data-sport="Football Turf Construction">
               <div class="sports-card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=400&q=80"
-                  alt="Football Turf Construction" />
+                <img src="assets/home/hero_football.png" alt="Football Turf Construction" />
               </div>
               <span class="sports-card-label">Football Turf</span>
             </div>
 
             <div class="sports-card" data-sport="Cricket Turf Construction" style="margin-top: 14px;">
               <div class="sports-card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=400&q=80"
-                  alt="Cricket Turf Construction" />
+                <img src="assets/home/hero_cricket.png" alt="Cricket Turf Construction" />
               </div>
               <span class="sports-card-label">Cricket Turf</span>
             </div>
 
-            <div class="sports-card" data-sport="Synthetic Sports Flooring" style="margin-top: 14px;">
+            <div class="sports-card" data-sport="Pickleball Court Construction" style="margin-top: 14px;">
               <div class="sports-card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80"
-                  alt="Synthetic Sports Flooring" />
+                <img src="assets/home/her0_pickelball.png" alt="Pickleball Court Construction" />
               </div>
-              <span class="sports-card-label">Synthetic Flooring</span>
+              <span class="sports-card-label">Pickleball Court</span>
             </div>
           </div>
 
           <!-- Column 2 -->
           <div class="sports-col-2">
-            <div class="sports-card" data-sport="Pickleball Court Construction">
+            <div class="sports-card" data-sport="Padel Court Construction">
               <div class="sports-card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80"
-                  alt="Pickleball Court Construction" />
+                <img src="assets/home/hero_padel.png" alt="Padel Court Construction" />
               </div>
-              <span class="sports-card-label">Pickleball Court</span>
+              <span class="sports-card-label">Padel Court</span>
             </div>
 
-            <div class="sports-card" data-sport="Turnkey Sports Infra" style="margin-top: 14px;">
+            <div class="sports-card" data-sport="Badminton Court Construction" style="margin-top: 14px;">
               <div class="sports-card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=400&q=80"
-                  alt="Turnkey Sports Infra" />
+                <img src="assets/home/hero_badminaton.png" alt="Badminton Court Construction" />
               </div>
-              <span class="sports-card-label">Turnkey Infra</span>
+              <span class="sports-card-label">Badminton Court</span>
             </div>
           </div>
         </div>
@@ -6459,14 +6405,14 @@
       </h1>
 
       <p class="mobile-hero-sub">
-        Premier Football & Cricket turfs, Pickleball courts and Synthetic sports flooring construction.
+        Premier Football & Cricket turfs, Pickleball, Padel and Badminton court construction.
       </p>
 
       <!-- Horizontal Cards Carousel -->
       <div class="mobile-cards-carousel">
         <!-- Card 1 -->
         <div class="mobile-sport-card active featured" data-sport="Football Turf Construction">
-          <img src="assets/services/cricket and footbal turf.jpg" alt="Football Turf Construction" />
+          <img src="assets/home/hero_football_mob.png" alt="Football Turf Construction" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
@@ -6479,7 +6425,7 @@
 
         <!-- Card 2 -->
         <div class="mobile-sport-card" data-sport="Cricket Turf Construction">
-          <img src="assets/services/cricket and footbal turf.jpg" alt="Cricket Turf Construction" />
+          <img src="assets/home/hero_cricket_mob.png" alt="Cricket Turf Construction" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
@@ -6491,21 +6437,8 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="mobile-sport-card" data-sport="Synthetic Sports Flooring">
-          <img src="assets/services/Synthetic Sports Flooring.jpg" alt="Synthetic Sports Flooring" />
-          <div class="card-gradient"></div>
-          <div class="card-footer">
-            <div>
-              <div class="card-sport-title">SYNTHETIC</div>
-              <div class="card-sport-sub">FLOORING</div>
-            </div>
-            <div class="arrow-btn">➔</div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
         <div class="mobile-sport-card" data-sport="Pickleball Court Construction">
-          <img src="assets/services/Pickleball Courts.jpg" alt="Pickleball Court Construction" />
+          <img src="assets/home/her0_pickelball_mob.png" alt="Pickleball Court Construction" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
@@ -6516,14 +6449,27 @@
           </div>
         </div>
 
-        <!-- Card 5 -->
-        <div class="mobile-sport-card" data-sport="Turnkey Sports Infra">
-          <img src="assets/services/Padel Courts.jpg" alt="Turnkey Sports Infra" />
+        <!-- Card 4 -->
+        <div class="mobile-sport-card" data-sport="Padel Court Construction">
+          <img src="assets/home/hero_padel_mob.png" alt="Padel Court Construction" />
           <div class="card-gradient"></div>
           <div class="card-footer">
             <div>
-              <div class="card-sport-title">TURNKEY</div>
-              <div class="card-sport-sub">INFRA</div>
+              <div class="card-sport-title">PADEL</div>
+              <div class="card-sport-sub">COURT</div>
+            </div>
+            <div class="arrow-btn">➔</div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="mobile-sport-card" data-sport="Badminton Court Construction">
+          <img src="assets/home/hero_badminaton_mob.png" alt="Badminton Court Construction" />
+          <div class="card-gradient"></div>
+          <div class="card-footer">
+            <div>
+              <div class="card-sport-title">BADMINTON</div>
+              <div class="card-sport-sub">COURT</div>
             </div>
             <div class="arrow-btn">➔</div>
           </div>
@@ -6820,27 +6766,23 @@
           PLAN &nbsp;|&nbsp; BUILD &nbsp;|&nbsp; DELIVER
         </div>
 
-        <!-- Right Column: Slanted Gallery Cards -->
+        <!-- Right Column: Slanted Gallery Cards (Single Master Image Window Slices) -->
         <div class="slanted-gallery-wrapper">
           <!-- Card 1 -->
           <div class="slanted-card">
-            <img src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&w=1600&q=85"
-              alt="Football Turf Construction" />
+            <img src="assets/home/whychooseus.png" alt="Solai Sports Infrastructure" />
           </div>
           <!-- Card 2 -->
           <div class="slanted-card">
-            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1600&q=85"
-              alt="Cricket Turf Construction" />
+            <img src="assets/home/whychooseus.png" alt="Solai Sports Infrastructure" />
           </div>
           <!-- Card 3 -->
           <div class="slanted-card">
-            <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1600&q=85"
-              alt="Official Pickleball Court" />
+            <img src="assets/home/whychooseus.png" alt="Solai Sports Infrastructure" />
           </div>
           <!-- Card 4 -->
           <div class="slanted-card">
-            <img src="https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=1600&q=85"
-              alt="Synthetic Sports Flooring" />
+            <img src="assets/home/whychooseus.png" alt="Solai Sports Infrastructure" />
           </div>
           <!-- Card 5 (Dark Cursive Script Card) -->
           <div class="slanted-card">
@@ -6989,30 +6931,10 @@
 
         <!-- Center Circular Video Reveal Container -->
         <div class="unfolds-center-video-wrapper" id="unfoldsCenterVideo">
-          <video class="unfolds-video-player" autoplay loop muted playsinline
-            poster="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1600&q=80">
-            <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-playing-a-game-of-soccer-on-a-field-41544-large.mp4"
-              type="video/mp4">
+          <video class="unfolds-video-player" autoplay loop muted playsinline>
+            <source src="assets/home/our_constrution_service.mp4" type="video/mp4">
           </video>
           <div class="unfolds-video-overlay"></div>
-
-          <!-- Initial Center Play Button & Badge -->
-          <div class="unfolds-play-badge" id="unfoldsPlayBadge">
-            <div class="play-icon-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="8 5 19 12 8 19 8 5" />
-              </svg>
-            </div>
-            <span class="watch-text">WATCH OUR CONSTRUCTION PROCESS</span>
-          </div>
-
-          <!-- Final Stage Headline Reveal Inside Fullscreen Video -->
-          <div class="unfolds-final-headline" id="unfoldsFinalHeadline">
-            <span class="final-eyebrow">SOLAI SPORTS INFRASTRUCTURE</span>
-            <h3 class="final-title">WORLD-CLASS.<br><span class="highlight-green-text">BUILT TO LAST.</span></h3>
-            <a href="#contact" class="final-cta-btn">GET FREE PROJECT QUOTE ➔</a>
-          </div>
         </div>
 
         <!-- The 4 Dynamic Tilted Cards Surrounding the Center -->
@@ -7174,42 +7096,36 @@
           </div>
         </div>
 
-        <!-- Center Main Feature Card (Stepped Tab Profile) -->
-        <div class="gallery-main-card">
-          <img class="gallery-main-card-bg"
-            src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80"
-            alt="Solai Sports Infrastructure Project View" />
-          <div class="gallery-main-card-overlay"></div>
-
-          <div class="gallery-main-play-badge">
-            <div class="gallery-play-circle">
-              <svg viewBox="0 0 24 24">
-                <polygon points="8 5 19 12 8 19 8 5" />
-              </svg>
-            </div>
-            <span class="gallery-watch-text">WATCH PROJECT TOUR</span>
+        <!-- Center Main Feature Card (Stepped Tab Profile with Top-Left Notch Video Name Title) -->
+        <div class="gallery-main-card-wrapper">
+          <div class="gallery-notch-title-box">
+            <span class="gallery-notch-tag" id="galleryNotchTag">CRICKET TURF</span>
           </div>
 
-          <div class="gallery-main-footer">
-            <span class="main-tag-left">COMPLETED PROJECTS</span>
-            <span class="main-counter-right">01 / 06</span>
+          <div class="gallery-main-card">
+            <video class="gallery-main-card-video" id="galleryMainVideo" src="assets/home/cricket_normal.mp4"
+              poster="assets/home/hero_cricket.png" autoplay loop muted playsinline></video>
+            <div class="gallery-main-card-overlay"></div>
+
+            <div class="gallery-main-footer">
+              <span class="main-tag-left">CRICKET TURF</span>
+              <span class="main-counter-right">01 / 04</span>
+            </div>
           </div>
         </div>
 
         <!-- Right Side Column (2 Cards) -->
         <div class="gallery-col-side">
           <div class="gallery-card-sm">
-            <img src="https://images.unsplash.com/photo-1626225967045-94408422615d?auto=format&fit=crop&w=600&q=80"
-              alt="Pickleball Court" />
+            <img src="assets/home/her0_pickelball.png" alt="Pickleball Court" />
             <div class="gallery-card-sm-overlay"></div>
             <span class="gallery-card-tag">PICKLEBALL COURT</span>
           </div>
 
           <div class="gallery-card-sm">
-            <img src="https://images.unsplash.com/photo-1538388149542-5e24932d11a8?auto=format&fit=crop&w=600&q=80"
-              alt="Synthetic Flooring" />
+            <img src="assets/home/hero_padel.png" alt="Padel Court" />
             <div class="gallery-card-sm-overlay"></div>
-            <span class="gallery-card-tag">SYNTHETIC FLOORING</span>
+            <span class="gallery-card-tag">PADEL COURT</span>
           </div>
         </div>
 
@@ -7226,7 +7142,7 @@
             <div class="progress-track-line">
               <div class="progress-fill-line"></div>
             </div>
-            <span class="progress-num">06</span>
+            <span class="progress-num">04</span>
           </div>
         </div>
 
@@ -7542,8 +7458,7 @@
         <!-- Column 2: Center Capsule Image Card -->
         <div class="faq-col-center">
           <div class="faq-capsule-card">
-            <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=800&q=80"
-              alt="Turf Construction Detail" />
+            <img src="assets/home/faq2.jpg" alt="Solai Sports Infrastructure FAQ" />
 
             <div class="capsule-top-tagline">
               LEADERS IN SPORTS<br>INFRASTRUCTURE
@@ -7755,9 +7670,7 @@
           <!-- Column 1: Brand & Logo -->
           <div class="footer-col footer-col-brand">
             <div class="footer-logo">
-              <div class="footer-logo-main">SOLAI</div>
-              <div class="footer-logo-line"></div>
-              <div class="footer-logo-sub">SPORTS ARENA</div>
+              <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="footer-logo-img" />
             </div>
 
             <p class="footer-brand-desc">

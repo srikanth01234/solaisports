@@ -88,39 +88,28 @@
     /* Header Logo */
     .header-logo {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-decoration: none;
       user-select: none;
       margin-bottom: 24px;
       z-index: 5;
     }
 
-    .logo-main {
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: #ffffff;
-      line-height: 1;
-      display: flex;
-      align-items: baseline;
+    .brand-logo-img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 6px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .logo-main .green-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background-color: var(--primary-green);
-      border-radius: 2px;
-      margin-left: 2px;
-    }
-
-    .logo-sub {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3.5px;
-      color: rgba(255, 255, 255, 0.85);
-      margin-top: 3px;
+    .header-logo:hover .brand-logo-img {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.35);
     }
 
     /* Container Box */
@@ -576,10 +565,7 @@
     <div class="container">
       <!-- Header Logo -->
       <a href="index.html" class="header-logo">
-        <div class="logo-main">
-          SOLAI<span class="green-dot"></span>
-        </div>
-        <div class="logo-sub">SPORTS ARENA</div>
+        <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="brand-logo-img" />
       </a>
 
       <!-- Welcome Badge -->

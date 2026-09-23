@@ -77,38 +77,28 @@
       transition: all 0.3s ease;
     }
 
+    /* Logo */
     .logo-container {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       text-decoration: none;
       user-select: none;
     }
 
-    .logo-main {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: #ffffff;
-      line-height: 1;
-      display: flex;
-      align-items: baseline;
+    .brand-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .logo-main .green-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      background-color: var(--primary-green);
-      border-radius: 2px;
-      margin-left: 2px;
-    }
-
-    .logo-sub {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: rgba(255, 255, 255, 0.85);
-      margin-top: 2px;
+    .logo-container:hover .brand-logo-img {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.35);
     }
 
     .nav-pill {
@@ -840,32 +830,122 @@
       gap: 24px;
     }
 
+    /* Column 1: Brand / Logo */
     .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo-img {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease;
+    }
+
+    .footer-logo:hover .footer-logo-img {
+      transform: translateY(-2px);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(4, 10, 6, 0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .lightbox-content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      max-height: 90vh;
+      background: #0d1a10;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
 
-    .footer-logo-main {
-      font-size: 32px;
-      font-weight: 900;
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .lightbox-details {
+      margin-top: 16px;
+      text-align: center;
       color: #ffffff;
-      line-height: 1;
-      letter-spacing: -1px;
     }
 
-    .footer-logo-line {
-      width: 32px;
-      height: 3px;
-      background: var(--primary-green);
-      margin: 8px 0;
-      border-radius: 2px;
-    }
-
-    .footer-logo-sub {
-      font-size: 11px;
+    .lightbox-details h3 {
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: 4px;
-      color: rgba(255, 255, 255, 0.7);
+      color: #22c55e;
+      margin-bottom: 6px;
+    }
+
+    .lightbox-details p {
+      font-size: 14px;
+      color: #9ca3af;
+      max-width: 600px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: #fff;
+      font-size: 28px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      background: #16a34a;
     }
 
     .footer-brand-desc {
@@ -1472,8 +1552,7 @@
   <div class="page-top-wrapper">
     <header class="header">
       <a href="index.html" class="logo-container">
-        <div class="logo-main">SOLAI<span class="green-dot"></span></div>
-        <div class="logo-sub">SPORTS INFRA</div>
+        <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="brand-logo-img" />
       </a>
 
       <nav class="nav-pill">
@@ -1547,33 +1626,26 @@
   <!-- ====== FILTER PILLS ====== -->
   <div class="filter-bar-container">
     <button class="filter-pill active" data-filter="all">All Projects</button>
-    <button class="filter-pill" data-filter="turf">Turf Construction</button>
-    <button class="filter-pill" data-filter="pickleball">Pickleball Courts</button>
-    <button class="filter-pill" data-filter="badminton">Badminton Courts</button>
-    <button class="filter-pill" data-filter="wooden">Wooden Flooring</button>
-    <button class="filter-pill" data-filter="acrylic">Acrylic Systems</button>
-    <button class="filter-pill" data-filter="synthetic">Synthetic Flooring</button>
-    <button class="filter-pill" data-filter="gem">Gem Surface</button>
-    <button class="filter-pill" data-filter="padel">Padel Courts</button>
-    <button class="filter-pill" data-filter="gym">Gym Flooring</button>
+    <button class="filter-pill" data-filter="turf">Synthetic Turf</button>
+    <button class="filter-pill" data-filter="pickleball">Pickleball & Courts</button>
+    <button class="filter-pill" data-filter="flooring">Indoor & Multi-Sport</button>
+    <button class="filter-pill" data-filter="arena">Arena Infrastructure</button>
   </div>
 
   <!-- ====== MASONRY GRID ====== -->
   <section class="gallery-grid-section">
     <div class="gallery-grid">
 
-      <!-- 1. Football & Cricket Turf Construction -->
-      <div class="grid-item item-turf" data-category="turf">
-        <img src="assets/services/cricket and footbal turf.jpg"
-          alt="Cricket & Football Turf Construction">
+      <!-- 1. FIFA Turf Field -->
+      <div class="grid-item item-turf" data-category="turf" data-img="assets/projects/1.jpeg" data-title="FIFA-Grade Synthetic Turf Field" data-desc="High-density multi-sport synthetic turf field with silica sand infill and shockpad cushioning.">
+        <img src="assets/projects/1.jpeg" alt="FIFA-Grade Synthetic Turf Field" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Cricket & Football Turf</h3>
-            <p class="grid-desc">FIFA & ICC grade synthetic sports turf with silica sand & shockpad underlayer.</p>
+            <h3 class="grid-title">FIFA-Grade Synthetic Turf Field</h3>
+            <p class="grid-desc">High-density multi-sport synthetic turf field with silica sand infill and shockpad cushioning.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1581,18 +1653,16 @@
         </div>
       </div>
 
-      <!-- 2. Pickleball Court Construction -->
-      <div class="grid-item item-community" data-category="pickleball">
-        <img src="assets/services/Pickleball Courts.jpg"
-          alt="Pickleball Court Construction">
+      <!-- 2. Football & Cricket Arena -->
+      <div class="grid-item item-community" data-category="turf" data-img="assets/projects/2.jpeg" data-title="Professional Football & Cricket Arena" data-desc="All-weather turf installation designed for maximum durability and professional play.">
+        <img src="assets/projects/2.jpeg" alt="Professional Football & Cricket Arena" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Pickleball Courts</h3>
-            <p class="grid-desc">Precision acrylic multi-layer surfacing with official court markings.</p>
+            <h3 class="grid-title">Professional Football & Cricket Arena</h3>
+            <p class="grid-desc">All-weather turf installation designed for maximum durability and professional play.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1600,18 +1670,16 @@
         </div>
       </div>
 
-      <!-- 3. Badminton Courts -->
-      <div class="grid-item item-lounge" data-category="badminton">
-        <img src="assets/services/Badminton Courts.jpg"
-          alt="Badminton Court Construction">
+      <!-- 3. Acrylic Pickleball Court -->
+      <div class="grid-item item-lounge" data-category="pickleball" data-img="assets/projects/3.jpeg" data-title="Precision Acrylic Pickleball Court" data-desc="Multi-layer UV-resistant acrylic surfacing with official regulation court boundary markings.">
+        <img src="assets/projects/3.jpeg" alt="Precision Acrylic Pickleball Court" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Badminton Courts</h3>
-            <p class="grid-desc">BWF-standard court specifications with Gem PVC and synthetic flooring.</p>
+            <h3 class="grid-title">Precision Acrylic Pickleball Court</h3>
+            <p class="grid-desc">Multi-layer UV-resistant acrylic surfacing with official regulation court boundary markings.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1619,18 +1687,16 @@
         </div>
       </div>
 
-      <!-- 4. Wooden Sports Flooring -->
-      <div class="grid-item item-indoor" data-category="wooden">
-        <img src="assets/services/Wooden Sports Flooring.jpg"
-          alt="Wooden Sports Flooring">
+      <!-- 4. Outdoor Sports Court Surfacing -->
+      <div class="grid-item item-indoor" data-category="pickleball" data-img="assets/projects/4.jpeg" data-title="Outdoor Sports Court Surfacing" data-desc="Seamless high-traction acrylic cushioned court system engineered for all-weather performance.">
+        <img src="assets/projects/4.jpeg" alt="Outdoor Sports Court Surfacing" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Wooden Sports Flooring</h3>
-            <p class="grid-desc">Hardwood & engineered wood with floating impact-absorption underlayer.</p>
+            <h3 class="grid-title">Outdoor Sports Court Surfacing</h3>
+            <p class="grid-desc">Seamless high-traction acrylic cushioned court system engineered for all-weather performance.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1638,7 +1704,7 @@
         </div>
       </div>
 
-      <!-- 5. Text Box Branding Card -->
+      <!-- Text Box Branding Card -->
       <div class="grid-item item-text-box">
         <div class="text-box-content">
           SOLAI<br>SPORTS<br>INFRA
@@ -1646,18 +1712,16 @@
         <div class="text-box-line"></div>
       </div>
 
-      <!-- 6. Acrylic Sports Flooring -->
-      <div class="grid-item item-events" data-category="acrylic">
-        <img src="assets/services/Acrylic Sports Flooring.jpg"
-          alt="Acrylic Sports Flooring">
+      <!-- 5. Indoor Badminton & PVC Flooring -->
+      <div class="grid-item item-events" data-category="flooring" data-img="assets/projects/6.jpeg" data-title="Indoor Badminton & PVC Flooring" data-desc="BWF-standard textured PVC sports flooring providing optimal grip and impact absorption.">
+        <img src="assets/projects/6.jpeg" alt="Indoor Badminton & PVC Flooring" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Acrylic Sports Flooring</h3>
-            <p class="grid-desc">5-8 layer professional UV-resistant all-weather acrylic system.</p>
+            <h3 class="grid-title">Indoor Badminton & PVC Flooring</h3>
+            <p class="grid-desc">BWF-standard textured PVC sports flooring providing optimal grip and impact absorption.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1665,18 +1729,16 @@
         </div>
       </div>
 
-      <!-- 7. Synthetic Sports Flooring -->
-      <div class="grid-item item-moments" data-category="synthetic">
-        <img src="assets/services/Synthetic Sports Flooring.jpg"
-          alt="Synthetic Sports Flooring">
+      <!-- 6. Gem Surface Multi-Sport Court -->
+      <div class="grid-item item-moments" data-category="flooring" data-img="assets/projects/7.jpeg" data-title="Gem Surface Multi-Sport Court" data-desc="Heavy-duty anti-slip synthetic flooring engineered for multi-purpose indoor sports complexes.">
+        <img src="assets/projects/7.jpeg" alt="Gem Surface Multi-Sport Court" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Synthetic Sports Flooring</h3>
-            <p class="grid-desc">Seamless PU & PP tile cushion flooring for indoor & outdoor courts.</p>
+            <h3 class="grid-title">Gem Surface Multi-Sport Court</h3>
+            <p class="grid-desc">Heavy-duty anti-slip synthetic flooring engineered for multi-purpose indoor sports complexes.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1684,18 +1746,16 @@
         </div>
       </div>
 
-      <!-- 8. Gem Surface Flooring -->
-      <div class="grid-item item-facility" data-category="gem">
-        <img src="assets/services/gem pvc surface.jpg"
-          alt="Gem PVC Surface">
+      <!-- 7. Sub-Base Drainage Substructure -->
+      <div class="grid-item item-facility" data-category="arena" data-img="assets/projects/11.jpeg" data-title="Sub-Base Drainage Substructure" data-desc="Laser-leveled aggregate base and sub-surface drainage network for long-lasting turf performance.">
+        <img src="assets/projects/11.jpeg" alt="Sub-Base Drainage Substructure" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Gem Surface</h3>
-            <p class="grid-desc">High-grip, anti-slip textured PVC flooring for indoor sports.</p>
+            <h3 class="grid-title">Sub-Base Drainage Substructure</h3>
+            <p class="grid-desc">Laser-leveled aggregate base and sub-surface drainage network for long-lasting turf performance.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1703,18 +1763,16 @@
         </div>
       </div>
 
-      <!-- 9. Padel Courts -->
-      <div class="grid-item item-turf" data-category="padel">
-        <img src="assets/services/Padel Courts.jpg"
-          alt="Padel Courts">
+      <!-- 8. Floodlit Night Turf Arena -->
+      <div class="grid-item item-turf" data-category="turf" data-img="assets/projects/12.jpeg" data-title="Floodlit Night Turf Arena" data-desc="Complete night-play turf stadium complete with high-lumen LED mast lighting and perimeter fencing.">
+        <img src="assets/projects/12.jpeg" alt="Floodlit Night Turf Arena" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Padel Courts</h3>
-            <p class="grid-desc">Professional padel courts with synthetic turf, tempered glass & steel enclosure.</p>
+            <h3 class="grid-title">Floodlit Night Turf Arena</h3>
+            <p class="grid-desc">Complete night-play turf stadium complete with high-lumen LED mast lighting and perimeter fencing.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1722,18 +1780,16 @@
         </div>
       </div>
 
-      <!-- 10. Gym & Weightlifting Flooring -->
-      <div class="grid-item item-community" data-category="gym">
-        <img src="assets/services/Gym&Weightlifting Flooring.jpg"
-          alt="Weightlifting & Gym Flooring">
+      <!-- 9. Rubber Cushion & Gym Flooring -->
+      <div class="grid-item item-community" data-category="flooring" data-img="assets/projects/13.jpeg" data-title="Rubber Cushion & Gym Flooring" data-desc="High-density impact absorbing rubber flooring tailored for weightlifting and fitness arenas.">
+        <img src="assets/projects/13.jpeg" alt="Rubber Cushion & Gym Flooring" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
-            <h3 class="grid-title">Weightlifting & Gym Flooring</h3>
-            <p class="grid-desc">Heavy-duty rubber flooring for high-impact zones & floor protection.</p>
+            <h3 class="grid-title">Rubber Cushion & Gym Flooring</h3>
+            <p class="grid-desc">High-density impact absorbing rubber flooring tailored for weightlifting and fitness arenas.</p>
           </div>
           <div class="grid-arrow-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -1741,8 +1797,175 @@
         </div>
       </div>
 
-    </div>
-  </section>
+      <!-- 10. Hardwood Sports Flooring System -->
+      <div class="grid-item item-lounge" data-category="flooring" data-img="assets/projects/14.jpeg" data-title="Hardwood Sports Flooring System" data-desc="Premium engineered hardwood sports floor with floating resilient subfloor underlayment.">
+        <img src="assets/projects/14.jpeg" alt="Hardwood Sports Flooring System" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Hardwood Sports Flooring System</h3>
+            <p class="grid-desc">Premium engineered hardwood sports floor with floating resilient subfloor underlayment.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Precision Court Marking & Coating -->
+      <div class="grid-item item-indoor" data-category="pickleball" data-img="assets/projects/21.jpeg" data-title="Precision Court Marking & Coating" data-desc="Laser-aligned boundary line striping and specialized anti-glare acrylic surface finish.">
+        <img src="assets/projects/21.jpeg" alt="Precision Court Marking & Coating" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Precision Court Marking & Coating</h3>
+            <p class="grid-desc">Laser-aligned boundary line striping and specialized anti-glare acrylic surface finish.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Panoramic Glass Padel Court -->
+      <div class="grid-item item-events" data-category="arena" data-img="assets/projects/22.jpeg" data-title="Panoramic Glass Padel Court" data-desc="Tempered glass enclosure and specialized monofilament turf system for official padel play.">
+        <img src="assets/projects/22.jpeg" alt="Panoramic Glass Padel Court" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Panoramic Glass Padel Court</h3>
+            <p class="grid-desc">Tempered glass enclosure and specialized monofilament turf system for official padel play.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Commercial Sports Hub Construction -->
+      <div class="grid-item item-moments" data-category="arena" data-img="assets/projects/24.jpeg" data-title="Commercial Sports Hub Construction" data-desc="End-to-end sports facility execution including turf, lighting, netting, and spectator amenities.">
+        <img src="assets/projects/24.jpeg" alt="Commercial Sports Hub Construction" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Commercial Sports Hub Construction</h3>
+            <p class="grid-desc">End-to-end sports facility execution including turf, lighting, netting, and spectator amenities.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Multipurpose Arena Complex -->
+      <div class="grid-item item-facility" data-category="arena" data-img="assets/projects/66.jpeg" data-title="Multipurpose Arena Complex" data-desc="State-of-the-art sports arena built to international safety and quality standards.">
+        <img src="assets/projects/66.jpeg" alt="Multipurpose Arena Complex" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Multipurpose Arena Complex</h3>
+            <p class="grid-desc">State-of-the-art sports arena built to international safety and quality standards.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. Turf Laying & Infill Operations -->
+      <div class="grid-item item-turf" data-category="turf" data-img="assets/projects/WhatsApp Image 2026-09-20 1at 1.47.25 AM.jpeg" data-title="Turf Laying & Infill Operations" data-desc="On-site precision seaming, silica sand distribution, and rubber granule infill application.">
+        <img src="assets/projects/WhatsApp Image 2026-09-20 1at 1.47.25 AM.jpeg" alt="Turf Laying & Infill Operations" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Turf Laying & Infill Operations</h3>
+            <p class="grid-desc">On-site precision seaming, silica sand distribution, and rubber granule infill application.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. Pro Court Surface Finishing -->
+      <div class="grid-item item-community" data-category="pickleball" data-img="assets/projects/WhatsApp Image 2026-09-20 at 1.47.24 AM.jpeg" data-title="Pro Court Surface Finishing" data-desc="Multi-coat application for non-slip texture and vibrant tournament-grade coloration.">
+        <img src="assets/projects/WhatsApp Image 2026-09-20 at 1.47.24 AM.jpeg" alt="Pro Court Surface Finishing" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Pro Court Surface Finishing</h3>
+            <p class="grid-desc">Multi-coat application for non-slip texture and vibrant tournament-grade coloration.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17. Full Field Turf Infrastructure -->
+      <div class="grid-item item-lounge" data-category="turf" data-img="assets/projects/WhatsApp Image 2026-09-20 at 1.47.25 AM.jpeg" data-title="Full Field Turf Infrastructure" data-desc="Turnkey execution of full-scale multi-sport synthetic grass facility.">
+        <img src="assets/projects/WhatsApp Image 2026-09-20 at 1.47.25 AM.jpeg" alt="Full Field Turf Infrastructure" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Full Field Turf Infrastructure</h3>
+            <p class="grid-desc">Turnkey execution of full-scale multi-sport synthetic grass facility.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18. Custom Sports Arena Field Build -->
+      <div class="grid-item item-indoor" data-category="arena" data-img="assets/projects/WhatsApp Image 2026-09-20 at 1.47.26 AM.jpeg" data-title="Custom Sports Arena Field Build" data-desc="Custom ground civil work, slope compaction, perimeter fencing, and netting installation.">
+        <img src="assets/projects/WhatsApp Image 2026-09-20 at 1.47.26 AM.jpeg" alt="Custom Sports Arena Field Build" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">Custom Sports Arena Field Build</h3>
+            <p class="grid-desc">Custom ground civil work, slope compaction, perimeter fencing, and netting installation.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19. High-Performance Sports Complex -->
+      <div class="grid-item item-events" data-category="arena" data-img="assets/projects/WhatsApp Image 2026-09-20 at 1.47.26 AM1.jpeg" data-title="High-Performance Sports Complex" data-desc="Finished installation showcasing crystal-clear boundary lines and premium turf aesthetic.">
+        <img src="assets/projects/WhatsApp Image 2026-09-20 at 1.47.26 AM1.jpeg" alt="High-Performance Sports Complex" loading="lazy">
+        <div class="grid-overlay">
+          <div class="grid-info">
+            <h3 class="grid-title">High-Performance Sports Complex</h3>
+            <p class="grid-desc">Finished installation showcasing crystal-clear boundary lines and premium turf aesthetic.</p>
+          </div>
+          <div class="grid-arrow-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -1805,9 +2028,7 @@
         <div class="footer-top-grid">
           <div class="footer-col footer-col-brand">
             <div class="footer-logo">
-              <div class="footer-logo-main">SOLAI</div>
-              <div class="footer-logo-line"></div>
-              <div class="footer-logo-sub">SPORTS ARENA</div>
+              <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="footer-logo-img" />
             </div>
             <p class="footer-brand-desc">Premier sports infrastructure builders specializing in FIFA-grade synthetic
               turfs, official pickleball courts, and multi-sport synthetic flooring.</p>
@@ -2029,30 +2250,58 @@
       });
     });
 
+    // Lightbox Modal script
+    const lightboxModal = document.getElementById('projectLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+    const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+    const lightboxBackdrop = document.querySelector('.lightbox-backdrop');
+
+    document.querySelectorAll('.grid-item[data-img]').forEach(item => {
+      item.addEventListener('click', () => {
+        const imgSrc = item.getAttribute('data-img');
+        const title = item.getAttribute('data-title');
+        const desc = item.getAttribute('data-desc');
+
+        if (lightboxImg) lightboxImg.src = imgSrc;
+        if (lightboxTitle) lightboxTitle.textContent = title || '';
+        if (lightboxDesc) lightboxDesc.textContent = desc || '';
+        if (lightboxModal) lightboxModal.classList.add('active');
+      });
+    });
+
+    const closeLightbox = () => {
+      if (lightboxModal) lightboxModal.classList.remove('active');
+    };
+
+    if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+
     // Quote / Engineering Slider logic
     const quoteSlides = [
       {
         main: "Engineering Quality Turf",
         sub: "& Court Infrastructure.",
-        img: "assets/services/cricket and footbal turf.jpg",
+        img: "assets/projects/1.jpeg",
         label: "TURF EXCELLENCE"
       },
       {
         main: "Precision Pickleball Courts",
         sub: "Built to Official Specs.",
-        img: "assets/services/Pickleball Courts.jpg",
+        img: "assets/projects/3.jpeg",
         label: "COURT PRECISION"
       },
       {
         main: "Durable Padel Enclosures",
         sub: "& Professional Lighting.",
-        img: "assets/services/Padel Courts.jpg",
+        img: "assets/projects/22.jpeg",
         label: "PADEL ARENAS"
       },
       {
         main: "Impact-Absorbing Flooring",
         sub: "Hardwood & Cushion Systems.",
-        img: "assets/services/Wooden Sports Flooring.jpg",
+        img: "assets/projects/14.jpeg",
         label: "FLOORING STANDARDS"
       }
     ];
@@ -2087,6 +2336,19 @@
       });
     }
   </script>
+
+  <!-- ====== PROJECT LIGHTBOX MODAL ====== -->
+  <div id="projectLightbox" class="lightbox-modal">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxCloseBtn">&times;</button>
+      <img id="lightboxImg" src="" alt="Project Image High Res">
+      <div class="lightbox-details">
+        <h3 id="lightboxTitle">Project Title</h3>
+        <p id="lightboxDesc">Project Description</p>
+      </div>
+    </div>
+  </div>
 
 </body>
 
