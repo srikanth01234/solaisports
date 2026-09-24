@@ -531,22 +531,22 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 30px;
+      padding: 24px;
     }
 
-    .text-box-content {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--deep-green);
-      letter-spacing: 3px;
-      line-height: 1.6;
+    .grid-item.item-text-box img,
+    .grid-item img.project-card-logo {
+      width: auto !important;
+      height: auto !important;
+      max-width: 88% !important;
+      max-height: 82% !important;
+      object-fit: contain !important;
+      transition: transform 0.3s ease !important;
+      filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.06));
     }
 
-    .text-box-line {
-      width: 40px;
-      height: 2px;
-      background: var(--deep-green);
-      margin-top: 16px;
+    .grid-item.item-text-box:hover img.project-card-logo {
+      transform: scale(1.05) !important;
     }
 
     .item-events {
@@ -1708,15 +1708,12 @@
 
       <!-- Text Box Branding Card -->
       <div class="grid-item item-text-box">
-        <div class="text-box-content">
-          SOLAI<br>SPORTS<br>INFRA
-        </div>
-        <div class="text-box-line"></div>
+        <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="project-card-logo">
       </div>
 
       <!-- 5. Indoor Badminton & PVC Flooring -->
-      <div class="grid-item item-events" data-category="flooring" data-img="assets/projects/6.jpeg" data-title="Indoor Badminton & PVC Flooring" data-desc="BWF-standard textured PVC sports flooring providing optimal grip and impact absorption.">
-        <img src="assets/projects/6.jpeg" alt="Indoor Badminton & PVC Flooring" loading="lazy">
+      <div class="grid-item item-events" data-category="flooring" data-img="assets/projects/Indoor Badminton & PVC Flooring.jpg" data-title="Indoor Badminton & PVC Flooring" data-desc="BWF-standard textured PVC sports flooring providing optimal grip and impact absorption.">
+        <img src="assets/projects/Indoor Badminton & PVC Flooring.jpg" alt="Indoor Badminton & PVC Flooring" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
             <h3 class="grid-title">Indoor Badminton & PVC Flooring</h3>
@@ -1783,8 +1780,8 @@
       </div>
 
       <!-- 9. Rubber Cushion & Gym Flooring -->
-      <div class="grid-item item-community" data-category="flooring" data-img="assets/projects/13.jpeg" data-title="Rubber Cushion & Gym Flooring" data-desc="High-density impact absorbing rubber flooring tailored for weightlifting and fitness arenas.">
-        <img src="assets/projects/13.jpeg" alt="Rubber Cushion & Gym Flooring" loading="lazy">
+      <div class="grid-item item-community" data-category="flooring" data-img="assets/projects/Rubber Cushion & Gym Flooring.jpg" data-title="Rubber Cushion & Gym Flooring" data-desc="High-density impact absorbing rubber flooring tailored for weightlifting and fitness arenas.">
+        <img src="assets/projects/Rubber Cushion & Gym Flooring.jpg" alt="Rubber Cushion & Gym Flooring" loading="lazy">
         <div class="grid-overlay">
           <div class="grid-info">
             <h3 class="grid-title">Rubber Cushion & Gym Flooring</h3>

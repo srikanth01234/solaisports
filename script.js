@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const activeMobileCard = mobileCards[slideIdx] || mobileCards.find(c => c.getAttribute('data-sport') === currentSport);
-        if (carousel && activeMobileCard) {
+        if (carousel && activeMobileCard && !window.isUserTouchingMobileCarousel) {
           const cardLeft = activeMobileCard.offsetLeft;
           const cardWidth = activeMobileCard.offsetWidth;
           const carouselWidth = carousel.offsetWidth;
@@ -208,13 +208,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Auto-popup after 4 seconds on initial visit
+  // Auto-popup after 10 seconds on initial visit
   setTimeout(() => {
     if (!sessionStorage.getItem('solai_modal_shown')) {
       openQuoteModal();
       sessionStorage.setItem('solai_modal_shown', 'true');
     }
-  }, 4000);
+  }, 10000);
 
   // Close modal events
   if (modalCloseBtn) {
@@ -295,18 +295,105 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Carousel Dots scroll listener
+  // Mobile Carousel Touch Swipe & Dot Controller
   const carousel = document.querySelector('.mobile-cards-carousel');
   const dots = document.querySelectorAll('.mobile-dots .dot');
+  const mobileCardsList = document.querySelectorAll('.mobile-sport-card');
+  window.isUserTouchingMobileCarousel = false;
+  let touchTimeout = null;
 
-  if (carousel && dots.length > 0) {
+  if (carousel) {
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const setTouching = () => {
+      window.isUserTouchingMobileCarousel = true;
+      if (touchTimeout) clearTimeout(touchTimeout);
+    };
+
+    const resetTouching = () => {
+      if (touchTimeout) clearTimeout(touchTimeout);
+      touchTimeout = setTimeout(() => {
+        window.isUserTouchingMobileCarousel = false;
+      }, 500);
+    };
+
+    carousel.addEventListener('touchstart', setTouching, { passive: true });
+    carousel.addEventListener('touchmove', setTouching, { passive: true });
+    carousel.addEventListener('touchend', resetTouching, { passive: true });
+
+    carousel.addEventListener('mousedown', (e) => {
+      setTouching();
+      isDown = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => { isDown = false; resetTouching(); });
+    carousel.addEventListener('mouseup', () => { isDown = false; resetTouching(); });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Scroll & Touch Swipe Listener — calculate nearest centered card
     carousel.addEventListener('scroll', () => {
-      const scrollPos = carousel.scrollLeft;
-      const cardWidth = 184; // Card width + gap
-      const activeIdx = Math.min(Math.floor(scrollPos / cardWidth), dots.length - 1);
+      const carouselCenter = carousel.scrollLeft + (carousel.offsetWidth / 2);
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      mobileCardsList.forEach((card, idx) => {
+        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+        const distance = Math.abs(carouselCenter - cardCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIdx = idx;
+        }
+      });
+
       dots.forEach((dot, idx) => {
-        if (idx === activeIdx) dot.classList.add('active');
+        if (idx === closestIdx) dot.classList.add('active');
         else dot.classList.remove('active');
+      });
+
+      mobileCardsList.forEach((card, idx) => {
+        if (idx === closestIdx) card.classList.add('active', 'featured');
+        else card.classList.remove('active', 'featured');
+      });
+
+      if (typeof window.heroGoToSlide === 'function' && window.heroCurrentIndex !== closestIdx) {
+        window.heroGoToSlide(closestIdx);
+      }
+    }, { passive: true });
+
+    // Allow clicking card directly to smooth scroll center and change slide
+    mobileCardsList.forEach((card, idx) => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        const scrollTarget = card.offsetLeft - (carousel.offsetWidth / 2) + (card.offsetWidth / 2);
+        carousel.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
+        if (typeof window.heroGoToSlide === 'function') {
+          window.heroGoToSlide(idx);
+        }
+      });
+    });
+
+    // Dot click smooth navigation
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const targetCard = mobileCardsList[idx];
+        if (targetCard) {
+          const scrollTarget = targetCard.offsetLeft - (carousel.offsetWidth / 2) + (targetCard.offsetWidth / 2);
+          carousel.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
+          if (typeof window.heroGoToSlide === 'function') {
+            window.heroGoToSlide(idx);
+          }
+        }
       });
     });
   }
