@@ -899,6 +899,128 @@
       margin: 0 auto;
     }
 
+    /* ==========================================================================
+       MATERIALS & BRANDS MARQUEE
+       ========================================================================== */
+    .brands-section {
+      width: 100%;
+      padding: 48px 0;
+      background: #f8faf8;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .brands-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #1b4d27;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .brands-title::before,
+    .brands-title::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: #16a34a;
+      opacity: 0.5;
+      border-radius: 2px;
+    }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+      display: flex;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      animation: marqueeScroll 24s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .marquee-item:hover {
+      border-color: #16a34a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.15);
+    }
+
+    .marquee-item .logo-box {
+      height: 26px;
+      min-width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .marquee-item img {
+      max-height: 24px;
+      max-width: 48px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .marquee-item .brand-text {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: 0.5px;
+    }
+
+    .marquee-sep {
+      color: #16a34a;
+      font-size: 15px;
+      font-weight: 900;
+      margin-left: 4px;
+    }
+
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
     .approach-header {
       text-align: center;
       margin-bottom: 60px;
@@ -1828,13 +1950,29 @@
     }
 
     .watermark-center-text {
-      font-size: 100px;
-      font-weight: 900;
-      letter-spacing: -4px;
-      color: #F3F5F2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 8px 0;
       user-select: none;
-      line-height: 1;
-      opacity: 0.55;
+    }
+
+    .footer-watermark-logo {
+      height: clamp(50px, 8vw, 90px);
+      max-width: 90%;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 10px 24px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .footer-watermark-logo:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 25px rgba(22, 163, 74, 0.2);
     }
 
     .footer-bottom-bar {
@@ -2245,8 +2383,7 @@
       }
 
       .watermark-center-text {
-        font-size: clamp(32px, 9vw, 44px);
-        opacity: 0.28;
+        padding: 4px 0;
       }
 
       .bottom-bar-content {
@@ -2393,8 +2530,7 @@
             alt="Solai Sports Infrastructure Construction" loading="lazy" />
         </div>
         <div class="who-img-secondary">
-          <img src="assets/about us/Engineering Sports Infrastructure2.jpg" alt="Our Team at Work"
-            loading="lazy" />
+          <img src="assets/about us/Engineering Sports Infrastructure2.jpg" alt="Our Team at Work" loading="lazy" />
         </div>
         <div class="who-exp-badge">
           <div class="exp-num">5+</div>
@@ -2413,10 +2549,15 @@
           Built to <span class="green-text">Perform</span>
         </h2>
         <p class="who-description">
-          At Solai Sports Infra, we are an engineering-driven team dedicated to designing and building professional sports infrastructure. From court construction and sports flooring to synthetic turf and gym surfaces, we combine technical expertise, careful execution, and on-site supervision to create facilities built for performance and long-term durability.
+          At Solai Sports Infra, we are an engineering-driven team dedicated to designing and building professional
+          sports infrastructure. From court construction and sports flooring to synthetic turf and gym surfaces, we
+          combine technical expertise, careful execution, and on-site supervision to create facilities built for
+          performance and long-term durability.
         </p>
         <p class="who-description" style="margin-bottom: 8px;">
-          We work with quality-focused materials and trusted brands such as CCGrass, Bellinturf, Pacecourt, Garware, Apollo Pipes, and Tata Pipes — selecting the right systems for every project. From planning and material selection to installation and final handover, we manage every stage with precision and care.
+          We work with quality-focused materials and trusted brands such as CCGrass, Bellinturf, Pacecourt, Garware,
+          Apollo Pipes, and Tata Pipes — selecting the right systems for every project. From planning and material
+          selection to installation and final handover, we manage every stage with precision and care.
         </p>
 
         <div class="who-stat-pills">
@@ -2474,7 +2615,8 @@
         </div>
         <h2 class="section-title">Our Story</h2>
         <p class="section-desc" style="margin:0 auto;">
-          At Solai Sports Infra, our journey began with landscaping and creating beautiful outdoor spaces, evolving into a premier sports infrastructure specialist.
+          At Solai Sports Infra, our journey began with landscaping and creating beautiful outdoor spaces, evolving into
+          a premier sports infrastructure specialist.
         </p>
       </div>
 
@@ -2492,8 +2634,8 @@
             <div class="tl-dot"></div>
           </div>
           <div class="tl-image-wrap">
-            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&q=80" alt="Landscaping & Outdoor Spaces"
-              loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&q=80"
+              alt="Landscaping & Outdoor Spaces" loading="lazy" />
           </div>
         </div>
 
@@ -2502,7 +2644,8 @@
           <div class="tl-content">
             <div class="tl-year">Growth & Specialization</div>
             <h3 class="tl-title">Turf & Sports Arena Construction</h3>
-            <p class="tl-desc">Today, we specialize in Football & Cricket Turf Construction, Pickleball Court Construction,
+            <p class="tl-desc">Today, we specialize in Football & Cricket Turf Construction, Pickleball Court
+              Construction,
               and Synthetic Sports Flooring — combining quality, innovation, and technical expertise.</p>
           </div>
           <div class="tl-dot-col">
@@ -2519,7 +2662,8 @@
           <div class="tl-content">
             <div class="tl-year">Today & Beyond</div>
             <h3 class="tl-title">Spaces to Play, Connect & Enjoy</h3>
-            <p class="tl-desc">We build safe, durable, and high-performance sports facilities. Our goal is to create spaces
+            <p class="tl-desc">We build safe, durable, and high-performance sports facilities. Our goal is to create
+              spaces
               where communities and athletes can play, connect, and enjoy the true power of sports.</p>
           </div>
           <div class="tl-dot-col">
@@ -2616,8 +2760,8 @@
   <section class="trust-section" id="trust-us">
     <div class="trust-inner">
       <div class="trust-image-block reveal-on-scroll">
-        <img src="assets/about us/why client trust us.png"
-          alt="Solai Sports Team at Construction Site" loading="lazy" />
+        <img src="assets/about us/why client trust us.png" alt="Solai Sports Team at Construction Site"
+          loading="lazy" />
       </div>
 
       <div class="trust-content reveal-on-scroll reveal-delay-2">
@@ -2640,7 +2784,8 @@
             </div>
             <div class="trust-item-text">
               <h4 class="trust-item-title">Engineered Precision</h4>
-              <p class="trust-item-desc">Our engineers focus on accurate planning, technical specifications, and detailed execution at every stage.</p>
+              <p class="trust-item-desc">Our engineers focus on accurate planning, technical specifications, and
+                detailed execution at every stage.</p>
             </div>
           </div>
 
@@ -2652,7 +2797,8 @@
             </div>
             <div class="trust-item-text">
               <h4 class="trust-item-title">Performance-Focused Solutions</h4>
-              <p class="trust-item-desc">We select sports surfaces and infrastructure systems according to the requirements of each sport, site, and level of use.</p>
+              <p class="trust-item-desc">We select sports surfaces and infrastructure systems according to the
+                requirements of each sport, site, and level of use.</p>
             </div>
           </div>
 
@@ -2664,7 +2810,8 @@
             </div>
             <div class="trust-item-text">
               <h4 class="trust-item-title">Built for Long-Term Performance</h4>
-              <p class="trust-item-desc">From foundations and drainage to playing surfaces and finishing, every element is designed with durability.</p>
+              <p class="trust-item-desc">From foundations and drainage to playing surfaces and finishing, every element
+                is designed with durability.</p>
             </div>
           </div>
         </div>
@@ -2732,7 +2879,8 @@
 
           <div class="diff-card reveal-on-scroll reveal-delay-5">
             <div class="diff-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 16 14" />
               </svg>
@@ -2742,7 +2890,8 @@
 
           <div class="diff-card reveal-on-scroll reveal-delay-6">
             <div class="diff-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
                 <path
                   d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
               </svg>
@@ -2753,8 +2902,7 @@
         </div>
 
         <div class="diff-image-block reveal-on-scroll reveal-delay-3">
-          <img src="assets/about us/What Makes Us Different.jpg" alt="Our Team Planning"
-            loading="lazy" />
+          <img src="assets/about us/What Makes Us Different.jpg" alt="Our Team Planning" loading="lazy" />
         </div>
       </div>
     </div>
@@ -2791,7 +2939,9 @@
         <div class="mv-label">Our Vision</div>
         <h3 class="mv-title">Building Trust Through Better Sports Infrastructure</h3>
         <p class="mv-desc">
-          We aim to build lasting trust through engineering expertise, quality materials, and responsible execution. By combining proven sports systems with careful workmanship and attention to detail, we create reliable facilities that deliver performance, durability, and long-term value for every project.
+          We aim to build lasting trust through engineering expertise, quality materials, and responsible execution. By
+          combining proven sports systems with careful workmanship and attention to detail, we create reliable
+          facilities that deliver performance, durability, and long-term value for every project.
         </p>
       </div>
 
@@ -2817,7 +2967,7 @@
             </svg>
           </span>
         </a>
-        <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20want%20to%20discuss%20a%20project."
+        <a href="https://wa.me/9180565 31313?text=Hi%20Solai%20Sports%20Infra,%20I%20want%20to%20discuss%20a%20project."
           target="_blank" class="cta-btn-secondary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -2825,6 +2975,102 @@
           </svg>
           Chat on WhatsApp
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== MATERIALS & BRANDS MARQUEE ====== -->
+  <section class="brands-section">
+    <div class="brands-title">BRANDS &amp; MATERIALS WE USE</div>
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <!-- Loop Set 1 -->
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
+          </div>
+          <span class="brand-text">BELLINTURF</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
+          </div>
+          <span class="brand-text">CCGRASS</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
+          </div>
+          <span class="brand-text">APOLLO PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
+          </div>
+          <span class="brand-text">TATA PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
+          </div>
+          <span class="brand-text">GARWARE</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
+          </div>
+          <span class="brand-text">PACECOURT</span>
+          <span class="marquee-sep">•</span>
+        </div>
+
+        <!-- Loop Set 2 (Duplicates for seamless continuous infinite marquee) -->
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
+          </div>
+          <span class="brand-text">BELLINTURF</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
+          </div>
+          <span class="brand-text">CCGRASS</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
+          </div>
+          <span class="brand-text">APOLLO PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
+          </div>
+          <span class="brand-text">TATA PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
+          </div>
+          <span class="brand-text">GARWARE</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
+          </div>
+          <span class="brand-text">PACECOURT</span>
+          <span class="marquee-sep">•</span>
+        </div>
       </div>
     </div>
   </section>
@@ -2940,7 +3186,7 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Call Our Engineers</span>
-                  <a href="tel:+919876543210" class="contact-val phone-link">+91 8056531313</a>
+                  <a href="tel:+9180565 31313" class="contact-val phone-link">+91 8056531313</a>
                 </div>
               </div>
               <div class="contact-item">
@@ -3002,7 +3248,9 @@
         </div>
 
         <div class="footer-watermark-row">
-          <div class="watermark-center-text">solaisports</div>
+          <div class="watermark-center-text">
+            <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="footer-watermark-logo" />
+          </div>
         </div>
       </div>
 
@@ -3023,7 +3271,7 @@
   </footer>
 
   <!-- WHATSAPP BUTTON -->
-  <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+  <a href="https://wa.me/9180565 31313?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
     target="_blank" class="whatsapp-float-btn" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
       <path

@@ -261,7 +261,7 @@
       text-align: center;
       padding: 90px 48px 65px;
       background: linear-gradient(180deg, rgba(6, 12, 8, 0.65) 0%, rgba(14, 38, 20, 0.55) 50%, rgba(6, 12, 8, 0.75) 100%),
-                  url('assets/services/cricket and footbal turf.jpg') center/cover no-repeat;
+        url('assets/services/cricket and footbal turf.jpg') center/cover no-repeat;
       overflow: hidden;
     }
 
@@ -1508,13 +1508,29 @@
     }
 
     .watermark-center-text {
-      font-size: 100px;
-      font-weight: 900;
-      letter-spacing: -4px;
-      color: #F3F5F2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 8px 0;
       user-select: none;
-      line-height: 1;
-      opacity: 0.55;
+    }
+
+    .footer-watermark-logo {
+      height: clamp(50px, 8vw, 90px);
+      max-width: 90%;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 10px 24px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .footer-watermark-logo:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 25px rgba(22, 163, 74, 0.2);
     }
 
     .footer-bottom-bar {
@@ -1916,8 +1932,7 @@
       }
 
       .watermark-center-text {
-        font-size: clamp(32px, 9vw, 44px);
-        opacity: 0.28;
+        padding: 4px 0;
       }
 
       .bottom-bar-content {
@@ -2230,7 +2245,7 @@
           </div>
           <div class="bento-card-overlay">
             <div class="bento-card-category"><span class="cat-dot"></span>Gym Flooring</div>
-            <h3 class="bento-card-title">Weightlifting & Gym Flooring</h3>
+            <h3 class="bento-card-title">Gym Flooring</h3>
             <p class="bento-card-desc">Heavy-duty rubber flooring designed for weightlifting, free-weight zones, and
               high-impact training areas.</p>
           </div>
@@ -2868,7 +2883,7 @@
             </svg>
           </span>
         </a>
-        <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+        <a href="https://wa.me/9180565 31313?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
           target="_blank" class="cta-btn-secondary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -2996,7 +3011,7 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Call Our Engineers</span>
-                  <a href="tel:+919876543210" class="contact-val phone-link">+91 8056531313</a>
+                  <a href="tel:+9180565 31313" class="contact-val phone-link">+91 8056531313</a>
                 </div>
               </div>
               <div class="contact-item">
@@ -3063,7 +3078,9 @@
 
         <!-- Watermark -->
         <div class="footer-watermark-row">
-          <div class="watermark-center-text">solaisports</div>
+          <div class="watermark-center-text">
+            <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="footer-watermark-logo" />
+          </div>
         </div>
       </div>
 
@@ -3085,7 +3102,7 @@
   </footer>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+  <a href="https://wa.me/9180565 31313?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
     target="_blank" class="whatsapp-float-btn" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
       <path

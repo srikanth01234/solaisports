@@ -611,6 +611,128 @@
       cursor: pointer;
     }
 
+    /* ==========================================================================
+       MATERIALS & BRANDS MARQUEE
+       ========================================================================== */
+    .brands-section {
+      width: 100%;
+      padding: 48px 0;
+      background: #f8faf8;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .brands-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #1b4d27;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .brands-title::before,
+    .brands-title::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 2px;
+      background: #16a34a;
+      opacity: 0.5;
+      border-radius: 2px;
+    }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+      display: flex;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      animation: marqueeScroll 24s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .marquee-item:hover {
+      border-color: #16a34a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.15);
+    }
+
+    .marquee-item .logo-box {
+      height: 26px;
+      min-width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .marquee-item img {
+      max-height: 24px;
+      max-width: 48px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .marquee-item .brand-text {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: 0.5px;
+    }
+
+    .marquee-sep {
+      color: #16a34a;
+      font-size: 15px;
+      font-weight: 900;
+      margin-left: 4px;
+    }
+
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
     @media (max-width: 768px) {
       .desktop-only {
         display: none !important;
@@ -647,6 +769,19 @@
         flex-direction: column !important;
         justify-content: space-between !important;
         box-sizing: border-box !important;
+      }
+
+      .hero-bg-overlay {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.05) 30%, rgba(255, 255, 255, 0.15) 65%, rgba(255, 255, 255, 0.5) 100%) !important;
+      }
+
+      .hero-bg-layer {
+        filter: brightness(1.18) contrast(1.05) !important;
+      }
+
+      .hero-wrapper::before {
+        background: radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.3) 0%, transparent 60%),
+          radial-gradient(circle at 50% 20%, rgba(22, 163, 74, 0.15) 0%, transparent 50%) !important;
       }
 
       .header {
@@ -901,13 +1036,13 @@
         box-shadow: 0 0 10px rgba(22, 163, 74, 0.6);
       }
 
-      /* Mobile Stats Box (Shifted Down & Anchored) */
+      /* Mobile Stats Box (Shifted Down & Anchored - Bright Mode) */
       .mobile-stats-box {
         width: 100%;
-        background: rgba(18, 25, 20, 0.92);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.92) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.95) !important;
         border-radius: 20px;
         padding: 12px 6px;
         display: grid;
@@ -916,7 +1051,7 @@
         margin-top: 12px !important;
         margin-bottom: 0px !important;
         text-align: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 0 25px rgba(255, 255, 255, 0.6) !important;
       }
 
       .stat-col {
@@ -927,7 +1062,7 @@
       }
 
       .stat-col:not(:last-child) {
-        border-right: 1px solid rgba(255, 255, 255, 0.12);
+        border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
       }
 
       .stat-icon-wrapper {
@@ -947,7 +1082,7 @@
       .stat-val {
         font-size: 15px;
         font-weight: 900;
-        color: #ffffff;
+        color: #0b120c !important;
         line-height: 1;
         letter-spacing: -0.3px;
       }
@@ -955,7 +1090,7 @@
       .stat-lbl {
         font-size: 8px;
         font-weight: 800;
-        color: rgba(255, 255, 255, 0.65);
+        color: #1f2937 !important;
         margin-top: 3px;
         line-height: 1.2;
         letter-spacing: 0.3px;
@@ -5536,21 +5671,32 @@
       width: 100%;
     }
 
-    /* Center Serif Watermark - Brightly Visible */
+    /* Center Footer Watermark Logo */
     .watermark-center-text {
       position: relative;
       width: 100%;
-      text-align: center;
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(48px, 8vw, 105px);
-      font-weight: 800;
-      color: #1b4d27;
-      opacity: 0.32;
-      letter-spacing: -1.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 0;
       user-select: none;
-      pointer-events: none;
-      white-space: nowrap;
-      line-height: 1;
+    }
+
+    .footer-watermark-logo {
+      height: clamp(50px, 8vw, 90px);
+      max-width: 90%;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 10px 24px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .footer-watermark-logo:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 25px rgba(22, 163, 74, 0.2);
     }
 
     /* Outer Bottom Copyright Bar */
@@ -5619,7 +5765,7 @@
       }
 
       .watermark-center-text {
-        font-size: 80px;
+        padding: 6px 0;
       }
     }
 
@@ -5692,8 +5838,7 @@
       }
 
       .watermark-center-text {
-        font-size: clamp(32px, 9vw, 44px);
-        opacity: 0.28;
+        padding: 4px 0;
       }
 
       .bottom-bar-content {
@@ -7635,6 +7780,102 @@
     </div>
   </section>
 
+  <!-- ====== MATERIALS & BRANDS MARQUEE ====== -->
+  <section class="brands-section">
+    <div class="brands-title">BRANDS &amp; MATERIALS WE USE</div>
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <!-- Loop Set 1 -->
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
+          </div>
+          <span class="brand-text">BELLINTURF</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
+          </div>
+          <span class="brand-text">CCGRASS</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
+          </div>
+          <span class="brand-text">APOLLO PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
+          </div>
+          <span class="brand-text">TATA PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
+          </div>
+          <span class="brand-text">GARWARE</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
+          </div>
+          <span class="brand-text">PACECOURT</span>
+          <span class="marquee-sep">•</span>
+        </div>
+
+        <!-- Loop Set 2 (Duplicates for seamless continuous infinite marquee) -->
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
+          </div>
+          <span class="brand-text">BELLINTURF</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
+          </div>
+          <span class="brand-text">CCGRASS</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
+          </div>
+          <span class="brand-text">APOLLO PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
+          </div>
+          <span class="brand-text">TATA PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
+          </div>
+          <span class="brand-text">GARWARE</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
+          </div>
+          <span class="brand-text">PACECOURT</span>
+          <span class="marquee-sep">•</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==========================================================================
        FOOTER SECTION (Matching Reference Design)
        ========================================================================== -->
@@ -7765,7 +8006,7 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Call Our Engineers</span>
-                  <a href="tel:+919876543210" class="contact-val phone-link">+91 8056531313</a>
+                  <a href="tel:+9180565 31313" class="contact-val phone-link">+91 8056531313</a>
                 </div>
               </div>
 
@@ -7842,7 +8083,7 @@
         <!-- Bottom Watermark -->
         <div class="footer-watermark-row">
           <div class="watermark-center-text">
-            solaisports
+            <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="footer-watermark-logo" />
           </div>
         </div>
 
@@ -7867,7 +8108,7 @@
   </footer>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/919876543210?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+  <a href="https://wa.me/9180565 31313?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
     target="_blank" class="whatsapp-float-btn" id="waFloatBtn" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
       <path
