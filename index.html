@@ -617,9 +617,9 @@
     .brands-section {
       width: 100%;
       padding: 48px 0;
-      background: #f8faf8;
-      border-top: 1px solid #e5e7eb;
-      border-bottom: 1px solid #e5e7eb;
+      background: linear-gradient(180deg, #EDF7ED 0%, #E2F2E3 100%);
+      border-top: 1px solid #D4EDD5;
+      border-bottom: 1px solid #D4EDD5;
       overflow: hidden;
       text-align: center;
     }
@@ -3029,13 +3029,14 @@
     /* --- BOTTOM STATS & STORY BANNER --- */
     .gallery-bottom-banner {
       width: 100%;
-      background-color: #F1F5EE;
+      background: linear-gradient(135deg, #14532D 0%, #064E3B 100%);
       border-radius: 36px;
       padding: 20px 32px 20px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border: 1px solid #E2E8F0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(6, 78, 59, 0.25);
     }
 
     .banner-stats-group-light {
@@ -3058,7 +3059,7 @@
       top: 15%;
       height: 70%;
       width: 1px;
-      background-color: #CBD5E1;
+      background-color: rgba(255, 255, 255, 0.25);
     }
 
     .light-stat-icon {
@@ -3069,14 +3070,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     .light-stat-icon svg {
       width: 22px;
       height: 22px;
-      stroke: #111827;
-      stroke-width: 1.8;
+      stroke: #14532D;
+      stroke-width: 2;
       fill: none;
     }
 
@@ -3088,7 +3089,7 @@
     .light-stat-val {
       font-size: 26px;
       font-weight: 900;
-      color: #277443;
+      color: #FFFFFF;
       line-height: 1;
       margin-bottom: 2px;
     }
@@ -3097,7 +3098,7 @@
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 1.2px;
-      color: #6B7280;
+      color: #D1D5DB;
       text-transform: uppercase;
     }
 
@@ -3105,38 +3106,46 @@
       display: inline-flex;
       align-items: center;
       gap: 16px;
-      background-color: #0D150E;
-      color: #FFFFFF;
+      background-color: #FFFFFF;
+      color: #064E3B;
       padding: 10px 24px 10px 14px;
       border-radius: 100px;
       text-decoration: none;
+      font-weight: 800;
       transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(13, 21, 14, 0.2);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .story-cta-btn .story-btn-text {
+      color: #064E3B !important;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      font-size: 12px;
     }
 
     .story-cta-btn:hover {
-      background-color: #1b2b1d;
+      background-color: #F0FDF4;
+      color: #14532D;
       transform: translateY(-2px);
+    }
+
+    .story-cta-btn:hover .story-btn-text {
+      color: #14532D !important;
     }
 
     .story-btn-circle {
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background-color: #064E3B;
+      color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
     }
 
-    .story-cta-btn .story-btn-text {
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: #FFFFFF !important;
-    }
+
 
     /* Responsive Gallery Rules (Strict Reference Match) */
     @media (max-width: 1024px) {
@@ -3311,11 +3320,12 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
         width: 100%;
-        background-color: #F4F9F3;
-        border: 1px solid #E2EFE0;
+        background: linear-gradient(135deg, #14532D 0%, #064E3B 100%);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
         padding: 18px 10px;
         text-align: center;
+        box-shadow: 0 8px 25px rgba(6, 78, 59, 0.25);
       }
 
       .light-stat-item {
@@ -3335,7 +3345,7 @@
         top: 15%;
         height: 70%;
         width: 1px;
-        background-color: #CBD5E1;
+        background-color: rgba(255, 255, 255, 0.25);
         display: block;
       }
 
@@ -3347,15 +3357,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #277443;
+        color: #14532D;
         flex-shrink: 0;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
 
       .light-stat-icon svg {
         width: 20px;
         height: 20px;
-        stroke: #277443;
+        stroke: #14532D;
         fill: none;
       }
 
@@ -3369,7 +3379,7 @@
       .light-stat-val {
         font-size: 18px;
         font-weight: 900;
-        color: #277443;
+        color: #FFFFFF;
         line-height: 1.1;
       }
 
@@ -3377,14 +3387,14 @@
         font-size: 8.5px;
         font-weight: 800;
         letter-spacing: 0.5px;
-        color: #6B7280;
+        color: #D1D5DB;
       }
 
       /* Story CTA Banner Button */
       .story-cta-btn {
         width: 100%;
-        background-color: #0A130C;
-        color: #FFFFFF;
+        background-color: #FFFFFF;
+        color: #064E3B;
         padding: 14px 20px;
         border-radius: 20px;
         display: flex;
@@ -3392,19 +3402,19 @@
         justify-content: flex-start;
         gap: 16px;
         text-decoration: none;
-        box-shadow: 0 10px 25px rgba(10, 19, 12, 0.2);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
       }
 
       .story-btn-circle {
         width: 38px;
         height: 38px;
         border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background-color: #064E3B;
+        color: #FFFFFF;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 16px;
-        color: #16A34A;
         flex-shrink: 0;
       }
 
@@ -3412,7 +3422,7 @@
         font-size: 11.5px;
         font-weight: 800;
         letter-spacing: 1.5px;
-        color: #FFFFFF !important;
+        color: #064E3B !important;
       }
     }
 
@@ -3701,19 +3711,23 @@
     }
 
     .about-stat-item .stat-num {
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 900;
-      color: #1B4D2E;
+      color: #15803D;
       line-height: 1;
-      letter-spacing: -0.5px;
+      letter-spacing: 0.5px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-shadow: 0 2px 10px rgba(22, 163, 74, 0.12);
     }
 
     .about-stat-item .stat-label {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: 1.5px;
-      color: #64748B;
+      letter-spacing: 1.8px;
+      color: #0F172A;
+      text-transform: uppercase;
       margin-top: 6px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     /* CTA Row & Watermark */
@@ -3919,12 +3933,16 @@
       }
 
       .about-stat-item .stat-num {
-        font-size: 26px;
+        font-size: 28px;
+        font-weight: 900;
+        color: #15803D;
       }
 
       .about-stat-item .stat-label {
         font-size: 9.5px;
-        letter-spacing: 1px;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        color: #0F172A;
         margin-top: 4px;
       }
     }
@@ -7338,7 +7356,7 @@
               </svg>
             </div>
             <div class="light-stat-info">
-              <span class="light-stat-val">99%</span>
+              <span class="light-stat-val">100%</span>
               <span class="light-stat-lbl">CLIENT SATISFACTION</span>
             </div>
           </div>
@@ -7351,6 +7369,102 @@
         </a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ====== MATERIALS & BRANDS MARQUEE ====== -->
+  <section class="brands-section">
+    <div class="brands-title">BRANDS &amp; MATERIALS WE USE</div>
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <!-- Loop Set 1 -->
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
+          </div>
+          <span class="brand-text">BELLINTURF</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
+          </div>
+          <span class="brand-text">CCGRASS</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
+          </div>
+          <span class="brand-text">APOLLO PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
+          </div>
+          <span class="brand-text">TATA PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
+          </div>
+          <span class="brand-text">GARWARE</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
+          </div>
+          <span class="brand-text">PACECOURT</span>
+          <span class="marquee-sep">•</span>
+        </div>
+
+        <!-- Loop Set 2 (Duplicates for seamless continuous infinite marquee) -->
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
+          </div>
+          <span class="brand-text">BELLINTURF</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
+          </div>
+          <span class="brand-text">CCGRASS</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
+          </div>
+          <span class="brand-text">APOLLO PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
+          </div>
+          <span class="brand-text">TATA PIPES</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
+          </div>
+          <span class="brand-text">GARWARE</span>
+          <span class="marquee-sep">•</span>
+        </div>
+        <div class="marquee-item">
+          <div class="logo-box">
+            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
+          </div>
+          <span class="brand-text">PACECOURT</span>
+          <span class="marquee-sep">•</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -7780,102 +7894,6 @@
     </div>
   </section>
 
-  <!-- ====== MATERIALS & BRANDS MARQUEE ====== -->
-  <section class="brands-section">
-    <div class="brands-title">BRANDS &amp; MATERIALS WE USE</div>
-    <div class="marquee-container">
-      <div class="marquee-track">
-        <!-- Loop Set 1 -->
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
-          </div>
-          <span class="brand-text">BELLINTURF</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
-          </div>
-          <span class="brand-text">CCGRASS</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
-          </div>
-          <span class="brand-text">APOLLO PIPES</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
-          </div>
-          <span class="brand-text">TATA PIPES</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
-          </div>
-          <span class="brand-text">GARWARE</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
-          </div>
-          <span class="brand-text">PACECOURT</span>
-          <span class="marquee-sep">•</span>
-        </div>
-
-        <!-- Loop Set 2 (Duplicates for seamless continuous infinite marquee) -->
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/Bellinturf.webp" alt="Bellinturf" />
-          </div>
-          <span class="brand-text">BELLINTURF</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/CCGrass.jpg" alt="CCGrass" />
-          </div>
-          <span class="brand-text">CCGRASS</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/APL Apollo.jpg" alt="Apollo Pipes" />
-          </div>
-          <span class="brand-text">APOLLO PIPES</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/TATA pipes.jpg" alt="TATA Pipes" />
-          </div>
-          <span class="brand-text">TATA PIPES</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/Garware.jpg" alt="Garware" />
-          </div>
-          <span class="brand-text">GARWARE</span>
-          <span class="marquee-sep">•</span>
-        </div>
-        <div class="marquee-item">
-          <div class="logo-box">
-            <img src="assets/services/logos/pacecourt.png" alt="Pacecourt" />
-          </div>
-          <span class="brand-text">PACECOURT</span>
-          <span class="marquee-sep">•</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ==========================================================================
        FOOTER SECTION (Matching Reference Design)
        ========================================================================== -->
@@ -8006,7 +8024,7 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Call Our Engineers</span>
-                  <a href="tel:+9180565 31313" class="contact-val phone-link">+91 8056531313</a>
+                  <a href="tel:+918056531313" class="contact-val phone-link">+91 8056531313</a>
                 </div>
               </div>
 
@@ -8046,7 +8064,7 @@
               </div>
               <div class="contact-details">
                 <span class="contact-label">Monday – Saturday</span>
-                <p class="contact-val hours-val">9:00 AM – 7:00 PM</p>
+                <p class="contact-val hours-val">9:00 AM – 8:30 PM</p>
               </div>
             </div>
 
@@ -8108,7 +8126,7 @@
   </footer>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/9180565 31313?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+  <a href="https://wa.me/918056531313?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
     target="_blank" class="whatsapp-float-btn" id="waFloatBtn" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
       <path

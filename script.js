@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (location) text += `*Project Location:* ${encodeURIComponent(location)}%0A`;
 
       // Launch WhatsApp with filled message text
-      window.open(`https://wa.me/9180565 31313?text=${text}`, '_blank');
+      window.open(`https://wa.me/918056531313?text=${text}`, '_blank');
       showNotification(`Thank you ${name || 'Valued Customer'}! Opening WhatsApp with your project details...`);
       closeQuoteModal();
       modalForm.reset();
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (service) text += `*Service:* ${encodeURIComponent(service)}%0A`;
       if (location) text += `*Location:* ${encodeURIComponent(location)}%0A`;
 
-      window.open(`https://wa.me/9180565 31313?text=${text}`, '_blank');
+      window.open(`https://wa.me/918056531313?text=${text}`, '_blank');
       closeQuoteModal();
       if (modalForm) modalForm.reset();
     });
