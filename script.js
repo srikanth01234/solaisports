@@ -921,16 +921,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 220);
     }
 
+    // Auto-Scroll / Auto-Swipe every 10 seconds (10,000 ms)
+    let autoSwipeTimer = null;
+
+    function startAutoSwipe() {
+      stopAutoSwipe();
+      autoSwipeTimer = setInterval(() => {
+        const nextIdx = (currentIdx + 1) % total;
+        renderSlide(nextIdx, 'next');
+      }, 10000);
+    }
+
+    function stopAutoSwipe() {
+      if (autoSwipeTimer) {
+        clearInterval(autoSwipeTimer);
+        autoSwipeTimer = null;
+      }
+    }
+
     prevBtn.addEventListener('click', (e) => {
       e.preventDefault();
       const nextIdx = (currentIdx - 1 + total) % total;
       renderSlide(nextIdx, 'prev');
+      startAutoSwipe();
     });
 
     nextBtn.addEventListener('click', (e) => {
       e.preventDefault();
       const nextIdx = (currentIdx + 1) % total;
       renderSlide(nextIdx, 'next');
+      startAutoSwipe();
     });
 
     // Allow clicking side cards to jump to selected project
@@ -947,12 +967,21 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
             renderSlide((currentIdx + 1) % total, 'next');
           }
+          startAutoSwipe();
         }
       });
     });
 
-    // Initial render
+    // Pause auto-swipe on hover over gallery section
+    const gallerySection = document.querySelector('#gallery');
+    if (gallerySection) {
+      gallerySection.addEventListener('mouseenter', stopAutoSwipe);
+      gallerySection.addEventListener('mouseleave', startAutoSwipe);
+    }
+
+    // Initial render & start 10s auto-swipe
     renderSlide(0, 'next');
+    startAutoSwipe();
   }
 
   initGallerySlider();

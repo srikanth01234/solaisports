@@ -87,7 +87,7 @@
     }
 
     .brand-logo-img {
-      height: 48px;
+      height: 58px;
       width: auto;
       object-fit: contain;
       background: #ffffff;
@@ -260,7 +260,7 @@
       justify-content: center;
       text-align: center;
       padding: 90px 48px 65px;
-      background: linear-gradient(180deg, rgba(6, 12, 8, 0.65) 0%, rgba(14, 38, 20, 0.55) 50%, rgba(6, 12, 8, 0.75) 100%),
+      background: linear-gradient(180deg, rgba(6, 12, 8, 0.3) 0%, rgba(14, 38, 20, 0.15) 50%, rgba(6, 12, 8, 0.4) 100%),
         url('assets/services/cricket and footbal turf.jpg') center/cover no-repeat;
       overflow: hidden;
     }
@@ -1977,6 +1977,454 @@
         grid-template-columns: 1fr;
       }
     }
+  
+    /* ==========================================================================
+       TRANSPARENT GLASSMORPHISM POPUP MODAL SCREEN
+       ========================================================================== */
+    .quote-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .quote-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .quote-modal-card {
+      width: 100%;
+      max-width: 920px;
+      background: rgba(10, 18, 12, 0.65);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.05);
+      position: relative;
+      transform: scale(0.94) translateY(15px);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .quote-modal-overlay.active .quote-modal-card {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Close Button (X) */
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 10;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: #25D366;
+      color: #ffffff;
+      border-color: #25D366;
+      transform: rotate(90deg);
+    }
+
+    /* Left Form Column */
+    .modal-form-col {
+      flex: 1.15;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-form-header-bar {
+      background: rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 18px 28px;
+    }
+
+    .modal-form-header-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .modal-form-body {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .modal-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .modal-field-label {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.2px;
+    }
+
+    .modal-field-label span {
+      color: #25D366;
+    }
+
+    .modal-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-input-icon {
+      position: absolute;
+      left: 14px;
+      width: 18px;
+      height: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      pointer-events: none;
+    }
+
+    .modal-input-field,
+    .modal-select-field,
+    .modal-textarea-field {
+      width: 100%;
+      padding: 10.5px 14px 10.5px 42px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.35);
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .modal-input-field::placeholder,
+    .modal-textarea-field::placeholder {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .modal-select-field {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+
+    .modal-select-field option {
+      background: #0b120c;
+      color: #ffffff;
+    }
+
+    .modal-textarea-field {
+      padding-top: 10px;
+      resize: none;
+      height: 72px;
+    }
+
+    .modal-input-field:focus,
+    .modal-select-field:focus,
+    .modal-textarea-field:focus {
+      border-color: #25D366;
+      background: rgba(0, 0, 0, 0.55);
+      box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.2);
+    }
+
+    /* Action Buttons Row */
+    .modal-actions-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .btn-modal-submit {
+      width: 100%;
+      background: #ffffff;
+      color: #0b120c;
+      border: none;
+      padding: 12.5px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .btn-modal-submit:hover {
+      background: #f1f5f9;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-modal-whatsapp {
+      width: 100%;
+      background: #25D366;
+      color: #ffffff;
+      border: none;
+      padding: 12.5px;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .btn-modal-whatsapp:hover {
+      background: #20bd5a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+    }
+
+    /* Right Branding Column (Glassmorphism Dark & White) */
+    .modal-brand-col {
+      flex: 0.95;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 32px 0 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-brand-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      margin: auto 0;
+    }
+
+    .modal-brand-logo-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .modal-circle-logo-img {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .modal-logo-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .modal-logo-title .green-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: #25D366;
+      border-radius: 1px;
+    }
+
+    .modal-logo-sub {
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 2px;
+    }
+
+    .modal-brand-headline {
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1.15;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .modal-brand-headline .highlight-green-text {
+      color: #25D366;
+    }
+
+    .modal-brand-divider {
+      width: 40px;
+      height: 3px;
+      background: #25D366;
+      border-radius: 2px;
+      margin: 4px 0;
+    }
+
+    .modal-brand-subdesc {
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 270px;
+    }
+
+    /* 3 Circular Badges Row */
+    .modal-badges-row {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .modal-badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      max-width: 80px;
+    }
+
+    .modal-badge-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-badge-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
+    }
+
+    .modal-badge-text {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    /* Bottom Glass Bar */
+    .modal-brand-bottom-bar {
+      width: calc(100% + 64px);
+      margin-left: -32px;
+      margin-right: -32px;
+      background: rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 14px;
+      font-size: 13px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 0.5px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    /* Modal Mobile Responsive */
+    @media (max-width: 820px) {
+      .quote-modal-card {
+        flex-direction: column;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-brand-col {
+        display: none;
+      }
+
+      .whatsapp-float-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+      }
+    }
+
+    
+  
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 72px;
+      top: 50%;
+      transform: translateY(-50%) translateX(10px);
+      background: rgba(10, 18, 12, 0.92);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .whatsapp-float-btn:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
   </style>
 </head>
 
@@ -2969,14 +3417,15 @@
               <h4 class="footer-header-title">OUR SERVICES</h4>
             </div>
             <ul class="footer-links-list">
-              <li><a href="#cricket-football-turf"><span class="link-chevron">›</span> Turf Construction</a></li>
+              <li><a href="#cricket-football-turf"><span class="link-chevron">›</span> Cricket & Football Turf</a></li>
               <li><a href="#pickleball-courts"><span class="link-chevron">›</span> Pickleball Courts</a></li>
-              <li><a href="#synthetic-flooring"><span class="link-chevron">›</span> Synthetic Flooring</a></li>
-              <li><a href="index.html#why-choose-us"><span class="link-chevron">›</span> Why Choose Us</a></li>
-              <li><a href="index.html#gallery"><span class="link-chevron">›</span> Completed Projects</a></li>
-              <li><a href="index.html#testimonials"><span class="link-chevron">›</span> Client Reviews</a></li>
-              <li><a href="index.html#faq"><span class="link-chevron">›</span> FAQs</a></li>
-              <li><a href="index.html#contact"><span class="link-chevron">›</span> Get Free Quote</a></li>
+              <li><a href="#badminton-courts"><span class="link-chevron">›</span> Badminton Courts</a></li>
+              <li><a href="#wooden-flooring"><span class="link-chevron">›</span> Wooden Sports Flooring</a></li>
+              <li><a href="#acrylic-flooring"><span class="link-chevron">›</span> Acrylic Sports Flooring</a></li>
+              <li><a href="#synthetic-flooring"><span class="link-chevron">›</span> Synthetic Sports Flooring</a></li>
+              <li><a href="#gem-surface"><span class="link-chevron">›</span> Gem Surface</a></li>
+              <li><a href="#padel-courts"><span class="link-chevron">›</span> Padel Courts</a></li>
+              <li><a href="#gym-flooring"><span class="link-chevron">›</span> Gym Flooring</a></li>
             </ul>
           </div>
 
@@ -3024,8 +3473,8 @@
                 </div>
                 <div class="contact-details">
                   <span class="contact-label">Email Us</span>
-                  <a href="mailto:info@solaisportsinfra.com"
-                    class="contact-val email-link">info@solaisportsinfra.com</a>
+                  <a href="mailto:soliasportinfra@gmail.com " class="contact-val email-link">soliasportinfra@gmail.com
+                  </a>
                 </div>
               </div>
             </div>
@@ -3101,14 +3550,7 @@
     </div>
   </footer>
 
-  <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/918056531313?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
-    target="_blank" class="whatsapp-float-btn" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
-      <path
-        d="M16 2a13.93 13.93 0 0 0-11.83 21.23L2 30l7.03-1.84A13.93 13.93 0 1 0 16 2zm0 25.55a11.54 11.54 0 0 1-5.89-1.61l-.42-.25-4.38 1.15 1.17-4.27-.27-.44A11.56 11.56 0 1 1 16 27.55zm6.34-8.63c-.35-.17-2.07-1.02-2.39-1.14s-.55-.17-.78.17-.9 1.14-1.1 1.37-.41.26-.76.09a9.62 9.62 0 0 1-2.82-1.74 10.6 10.6 0 0 1-1.95-2.43c-.21-.35 0-.54.16-.71.16-.16.35-.41.53-.62s.23-.35.35-.58a.7.7 0 0 0 0-.66c-.09-.17-.78-1.88-1.07-2.58s-.57-.59-.78-.6h-.66a1.27 1.27 0 0 0-.92.43 3.9 3.9 0 0 0-1.22 2.9 6.78 6.78 0 0 0 1.42 3.6 15.54 15.54 0 0 0 5.96 5.26 13.37 13.37 0 0 0 1.99.73 4.8 4.8 0 0 0 2.21.14 3.6 3.6 0 0 0 2.37-1.67 2.92 2.92 0 0 0 .2-1.67c-.08-.13-.3-.21-.65-.38z" />
-    </svg>
-  </a>
+  
 
   <!-- ====== JAVASCRIPT ====== -->
   <script>
@@ -3199,7 +3641,252 @@
 
       statsObserver.observe(statsSection);
     }
+  
+    /* ==========================================================================
+       TIMED POPUP MODAL & QUOTE SYSTEM INTERACTIVITY
+       ========================================================================== */
+    const modalOverlay = document.getElementById('quoteModalOverlay');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalForm = document.getElementById('modalQuoteForm');
+    const btnModalWhatsApp = document.getElementById('btnModalWhatsApp');
+
+    function openQuoteModal() {
+      if (modalOverlay) {
+        modalOverlay.classList.add('active');
+      }
+    }
+
+    function closeQuoteModal() {
+      if (modalOverlay) {
+        modalOverlay.classList.remove('active');
+      }
+    }
+
+    // Auto-popup after 10 seconds on initial visit per page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const modalKey = 'solai_modal_shown_' + currentPage;
+
+    setTimeout(() => {
+      if (!sessionStorage.getItem(modalKey)) {
+        openQuoteModal();
+        sessionStorage.setItem(modalKey, 'true');
+      }
+    }, 10000);
+
+    // Close modal events
+    if (modalCloseBtn) {
+      modalCloseBtn.addEventListener('click', closeQuoteModal);
+    }
+
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          closeQuoteModal();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeQuoteModal();
+      }
+    });
+
+    // Attach modal trigger to all Quote / Consultation CTA buttons & WhatsApp Float Button across site
+    const quoteTriggerBtns = document.querySelectorAll(
+      '#headerBookBtn, #leftBookBtn, #mobileCtaBtn, #mobileBannerBookBtn, #drawerBookBtn, .explore-facilities-btn, .final-cta-btn, .banner-community-cta, .story-cta-btn, .faq-cta-banner, .footer-book-btn, #waFloatBtn'
+    );
+
+    quoteTriggerBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (e.currentTarget.id !== 'waFloatBtn' || e.currentTarget.classList.contains('quote-trigger-only')) {
+          e.preventDefault();
+        } else {
+            // For whatsapp float btn, we actually want it to open whatsapp, but on the home page it opened the quote. 
+            // The original logic calls e.preventDefault() on #waFloatBtn as well!
+            e.preventDefault();
+        }
+        openQuoteModal();
+      });
+    });
+
   </script>
+
+  
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/918056531313?text=Hi%20Solai%20Sports%20Infra,%20I%20am%20interested%20in%20a%20construction%20quote."
+    target="_blank" class="whatsapp-float-btn" id="waFloatBtn" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor">
+      <path
+        d="M16 2a13.93 13.93 0 0 0-11.83 21.23L2 30l7.03-1.84A13.93 13.93 0 1 0 16 2zm0 25.55a11.54 11.54 0 0 1-5.89-1.61l-.42-.25-4.38 1.15 1.17-4.27-.27-.44A11.56 11.56 0 1 1 16 27.55zm6.34-8.63c-.35-.17-2.07-1.02-2.39-1.14s-.55-.17-.78.17-.9 1.14-1.1 1.37-.41.26-.76.09a9.62 9.62 0 0 1-2.82-1.74 10.6 10.6 0 0 1-1.95-2.43c-.21-.35 0-.54.16-.71.16-.16.35-.41.53-.62s.23-.35.35-.58a.7.7 0 0 0 0-.66c-.09-.17-.78-1.88-1.07-2.58s-.57-.59-.78-.6h-.66a1.27 1.27 0 0 0-.92.43 3.9 3.9 0 0 0-1.22 2.9 6.78 6.78 0 0 0 1.42 3.6 15.54 15.54 0 0 0 5.96 5.26 13.37 13.37 0 0 0 1.99.73 4.8 4.8 0 0 0 2.21.14 3.6 3.6 0 0 0 2.37-1.67 2.92 2.92 0 0 0 .2-1.67c-.08-.13-.3-.21-.65-.38z" />
+    </svg>
+    <span class="whatsapp-tooltip">Chat with Us on WhatsApp</span>
+  </a>
+
+  <!-- GLASSMORPHISM TIMED POPUP MODAL SCREEN -->
+  <div class="quote-modal-overlay" id="quoteModalOverlay">
+    <div class="quote-modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">✕</button>
+
+      <!-- Left Column: Form -->
+      <div class="modal-form-col">
+        <div class="modal-form-header-bar">
+          <h3 class="modal-form-header-title">Get Free Quote</h3>
+        </div>
+
+        <form class="modal-form-body" id="modalQuoteForm">
+          <!-- Full Name -->
+          <div class="modal-field-group">
+            <label class="modal-field-label">Full Name <span>*</span></label>
+            <div class="modal-input-wrapper">
+              <svg class="modal-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <input type="text" class="modal-input-field" id="modalName" placeholder="Enter your full name" required />
+            </div>
+          </div>
+
+          <!-- Mobile Number -->
+          <div class="modal-field-group">
+            <label class="modal-field-label">Mobile Number <span>*</span></label>
+            <div class="modal-input-wrapper">
+              <svg class="modal-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <input type="tel" class="modal-input-field" id="modalPhone" placeholder="Enter your mobile number"
+                required />
+            </div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="modal-field-group">
+            <label class="modal-field-label">Email Address</label>
+            <div class="modal-input-wrapper">
+              <svg class="modal-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <input type="email" class="modal-input-field" id="modalEmail" placeholder="Enter your email address" />
+            </div>
+          </div>
+
+          <!-- Select Service -->
+          <div class="modal-field-group">
+            <label class="modal-field-label">Select Service</label>
+            <div class="modal-input-wrapper">
+              <svg class="modal-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+              <select class="modal-select-field" id="modalService">
+                <option value="">Choose the service you need</option>
+                <option value="Football Turf Construction">Football Turf Construction</option>
+                <option value="Cricket Turf Construction">Cricket Turf Construction</option>
+                <option value="Pickleball Court Construction">Pickleball Court Construction</option>
+                <option value="Synthetic Sports Flooring">Synthetic Sports Flooring</option>
+                <option value="Turnkey Sports Infrastructure">Turnkey Sports Infrastructure</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Project Location / Address -->
+          <div class="modal-field-group">
+            <label class="modal-field-label">Project Location / Address</label>
+            <div class="modal-input-wrapper">
+              <svg class="modal-input-icon" style="top: 12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <textarea class="modal-textarea-field" id="modalLocation"
+                placeholder="Enter your project location or address"></textarea>
+            </div>
+          </div>
+
+          <!-- Two Submit Action Buttons -->
+          <div class="modal-actions-row">
+            <button type="submit" class="btn-modal-submit" id="btnSubmitQuote">
+              GET FREE QUOTE ➔
+            </button>
+            <a href="#" class="btn-modal-whatsapp" id="btnModalWhatsApp">
+              <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
+                <path
+                  d="M16 2a13.93 13.93 0 0 0-11.83 21.23L2 30l7.03-1.84A13.93 13.93 0 1 0 16 2zm0 25.55a11.54 11.54 0 0 1-5.89-1.61l-.42-.25-4.38 1.15 1.17-4.27-.27-.44A11.56 11.56 0 1 1 16 27.55zm6.34-8.63c-.35-.17-2.07-1.02-2.39-1.14s-.55-.17-.78.17-.9 1.14-1.1 1.37-.41.26-.76.09a9.62 9.62 0 0 1-2.82-1.74 10.6 10.6 0 0 1-1.95-2.43c-.21-.35 0-.54.16-.71.16-.16.35-.41.53-.62s.23-.35.35-.58a.7.7 0 0 0 0-.66c-.09-.17-.78-1.88-1.07-2.58s-.57-.59-.78-.6h-.66a1.27 1.27 0 0 0-.92.43 3.9 3.9 0 0 0-1.22 2.9 6.78 6.78 0 0 0 1.42 3.6 15.54 15.54 0 0 0 5.96 5.26 13.37 13.37 0 0 0 1.99.73 4.8 4.8 0 0 0 2.21.14 3.6 3.6 0 0 0 2.37-1.67 2.92 2.92 0 0 0 .2-1.67c-.08-.13-.3-.21-.65-.38z" />
+              </svg>
+              CHAT DIRECTLY ON WHATSAPP
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right Column: Branding & Trust Badges -->
+      <div class="modal-brand-col">
+        <div class="modal-brand-center">
+          <div class="modal-brand-logo-circle">
+            <img src="assets/logo.png" alt="Solai Sports Infra Logo" class="modal-circle-logo-img">
+          </div>
+
+          <h3 class="modal-brand-headline">
+            LET'S PLAN<br>
+            <span class="highlight-green-text">YOUR PROJECT</span>
+          </h3>
+
+          <div class="modal-brand-divider"></div>
+
+          <p class="modal-brand-subdesc">
+            Reliable Turf, Pickleball & Sports Surface Construction Solutions
+          </p>
+
+          <!-- 3 Badges -->
+          <div class="modal-badges-row">
+            <div class="modal-badge-item">
+              <div class="modal-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
+              <span class="modal-badge-text">Quality Assured</span>
+            </div>
+
+            <div class="modal-badge-item">
+              <div class="modal-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <span class="modal-badge-text">On-Time Delivery</span>
+            </div>
+
+            <div class="modal-badge-item">
+              <div class="modal-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <span class="modal-badge-text">Customer Focused</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-brand-bottom-bar">
+          Residential & Commercial Sports Projects
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 
