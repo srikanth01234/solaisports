@@ -4,11 +4,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Services — Solai Sports Infra | Premium Sports Infrastructure</title>
+  <title>Sports Infrastructure Services — Solai Sports Infra | Turf, Courts & Flooring</title>
   <link rel="icon" type="image/png" href="assets/favicon2.png" />
   <link rel="shortcut icon" href="assets/favicon2.png" />
   <meta name="description"
-    content="Explore Solai Sports Infra's premium services: Cricket & Football Turf, Pickleball Courts, Badminton Courts, Wooden, Acrylic, Synthetic Flooring, Gem Surface & EPDM Flooring." />
+    content="Explore Solai Sports Infra's premium services: Cricket & Football Turf Construction, Pickleball & Badminton Court Building, Wooden, Acrylic, Synthetic Flooring, Padel Courts, Gym Flooring & more across India." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://solaisportsinfra.in/services.html" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://solaisportsinfra.in/services.html" />
+  <meta property="og:title" content="Sports Infrastructure Services — Solai Sports Infra | Turf, Courts & Flooring" />
+  <meta property="og:description" content="From world-class turfs to professional-grade flooring — we design, build, and deliver sports facilities that inspire peak performance across India." />
+  <meta property="og:image" content="https://solaisportsinfra.in/assets/logo.png" />
+  <meta property="og:site_name" content="Solai Sports Infra" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://solaisportsinfra.in/services.html" />
+  <meta name="twitter:title" content="Sports Infrastructure Services — Solai Sports Infra" />
+  <meta name="twitter:description" content="Cricket & Football Turfs, Pickleball Courts, Badminton Courts, Wooden, Acrylic & Synthetic Flooring, Padel Courts, and more." />
+  <meta name="twitter:image" content="https://solaisportsinfra.in/assets/logo.png" />
+
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE" />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -87,7 +118,7 @@
     }
 
     .brand-logo-img {
-      height: 58px;
+      height: 74px;
       width: auto;
       object-fit: contain;
       background: #ffffff;
@@ -261,7 +292,7 @@
       text-align: center;
       padding: 90px 48px 65px;
       background: linear-gradient(180deg, rgba(6, 12, 8, 0.3) 0%, rgba(14, 38, 20, 0.15) 50%, rgba(6, 12, 8, 0.4) 100%),
-        url('assets/services/cricket and footbal turf.jpg') center/cover no-repeat;
+        url('assets/services/service_banner.jpg') center/cover no-repeat;
       overflow: hidden;
     }
 
@@ -563,7 +594,7 @@
       min-height: 260px;
       background: #f8faf8;
       border: 1px solid #e5e7eb;
-      transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s ease;
     }
 
     .bento-card:hover {
@@ -721,7 +752,19 @@
       align-items: center;
       opacity: 0;
       transform: translateY(40px);
-      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.35s ease;
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.15s ease, transform 0.15s ease !important;
+      transition-delay: 0s !important;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .service-detail-block.revealed {
@@ -981,7 +1024,7 @@
       display: flex;
       align-items: center;
       gap: 32px;
-      animation: marqueeScroll 24s linear infinite;
+      animation: marqueeScroll 12s linear infinite;
       width: max-content;
     }
 
@@ -1555,6 +1598,35 @@
     .copyright-text {
       font-size: 12px;
       color: rgba(255, 255, 255, 0.6);
+
+
+
+
+
+
+
+
+
+    .buildzo-credit {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .buildzo-credit a {
+      color: #16A34A;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .buildzo-credit a:hover {
+      color: #22c55e;
+      text-decoration: underline;
+    }
+
+
       font-weight: 500;
     }
 
@@ -1644,13 +1716,22 @@
       transform: translateY(0);
     }
 
-    .reveal-delay-1 {
-      transition-delay: 0.1s;
+    .reveal-delay-1,
+    .reveal-delay-2,
+    .reveal-delay-3,
+    .reveal-delay-4,
+    .reveal-delay-5,
+    .reveal-delay-6,
+    .reveal-delay-7,
+    .reveal-delay-8 {
+      transition-delay: 0s !important;
     }
 
-    .reveal-delay-2 {
-      transition-delay: 0.2s;
-    }
+
+
+
+
+
 
     .reveal-delay-3 {
       transition-delay: 0.3s;
@@ -2426,6 +2507,37 @@
     }
 
   </style>
+
+  <!-- JSON-LD Structured Data: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Sports Infrastructure Services - Solai Sports Infra",
+    "description": "Complete range of premium sports infrastructure services including turf construction, court building, and sports flooring.",
+    "url": "https://solaisportsinfra.in/services.html",
+    "provider": {
+      "@type": "Organization",
+      "name": "Solai Sports Infra",
+      "url": "https://solaisportsinfra.in"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "item": {"@type": "Service", "name": "Cricket & Football Turf Construction", "description": "Professional-grade synthetic turf installation for cricket and football facilities."}},
+        {"@type": "ListItem", "position": 2, "item": {"@type": "Service", "name": "Pickleball Court Construction", "description": "Tournament-grade pickleball court construction with acrylic and cushion surfaces."}},
+        {"@type": "ListItem", "position": 3, "item": {"@type": "Service", "name": "Badminton Court Construction", "description": "Indoor and outdoor badminton court construction with professional-grade surfaces."}},
+        {"@type": "ListItem", "position": 4, "item": {"@type": "Service", "name": "Wooden Sports Flooring", "description": "Premium wooden sports flooring for indoor courts and gymnasiums."}},
+        {"@type": "ListItem", "position": 5, "item": {"@type": "Service", "name": "Acrylic Sports Flooring", "description": "Durable acrylic sports flooring systems for multi-sport courts."}},
+        {"@type": "ListItem", "position": 6, "item": {"@type": "Service", "name": "Synthetic Sports Flooring", "description": "High-performance synthetic flooring for versatile sports applications."}},
+        {"@type": "ListItem", "position": 7, "item": {"@type": "Service", "name": "Gem PVC Surface Flooring", "description": "Versatile PVC surface flooring for indoor sports facilities."}},
+        {"@type": "ListItem", "position": 8, "item": {"@type": "Service", "name": "Padel Court Construction", "description": "Professional padel court construction with glass walls and synthetic turf."}},
+        {"@type": "ListItem", "position": 9, "item": {"@type": "Service", "name": "Gym & Weightlifting Flooring", "description": "Heavy-duty rubber and EPDM flooring for gyms and weightlifting areas."}},
+        {"@type": "ListItem", "position": 10, "item": {"@type": "Service", "name": "Kids Play Equipment & Flooring", "description": "Safe play area construction with EPDM surfaces and play equipment."}}
+      ]
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -2524,7 +2636,7 @@
         </div>
         <h2 class="section-title">Explore Our Expertise</h2>
         <p class="section-desc">
-          Nine specialized services covering every aspect of modern sports infrastructure construction.
+          Ten specialized services covering every aspect of modern sports infrastructure construction.
         </p>
       </div>
 
@@ -2694,8 +2806,28 @@
           <div class="bento-card-overlay">
             <div class="bento-card-category"><span class="cat-dot"></span>Gym Flooring</div>
             <h3 class="bento-card-title">Gym Flooring</h3>
-            <p class="bento-card-desc">Heavy-duty rubber flooring designed for weightlifting, free-weight zones, and
-              high-impact training areas.</p>
+            <p class="bento-card-desc">Heavy-duty rubber flooring designed for weightlifting, free-weight zones, and high-impact training areas.</p>
+          </div>
+        </div>
+
+        <!-- Card 10: Kids Play Equipment -->
+        <div class="bento-card card-wide reveal-on-scroll reveal-delay-2" data-service="kids-play-equipment">
+          <img class="bento-card-img" src="assets/services/Kids play equipment.jpeg" alt="Kids Play Equipment" loading="lazy" />
+          <div class="bento-card-num">10</div>
+          <div class="bento-card-arrow">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <div class="bento-card-overlay">
+            <div class="bento-card-category"><span class="cat-dot"></span>Playground & Equipment</div>
+            <h3 class="bento-card-title">Kids Play Equipment</h3>
+            <p class="bento-card-desc">Safe, durable, and creative kids play equipment and outdoor playground structures engineered for schools, parks, and residential communities.</p>
+          </div>
+        </div>
+
+
           </div>
         </div>
 
@@ -3214,6 +3346,69 @@
       </div>
     </div>
 
+    <div class="service-divider"></div>
+
+    <!-- SERVICE 10: Kids Play Equipment -->
+    <div class="service-detail-block reverse" id="kids-play-equipment">
+      <div class="sd-image-wrapper">
+        <img src="assets/services/Kids play equipment.jpeg" alt="Kids Play Equipment" loading="lazy" />
+        <div class="sd-number-badge">SERVICE 10</div>
+      </div>
+      <div class="sd-content">
+        <div class="sd-category-tag">
+          <span class="tag-line"></span>
+          Playground & Equipment
+        </div>
+        <h3 class="sd-title">Kids Play Equipment</h3>
+        <p class="sd-description">
+          We supply, design, and install premium kids play equipment and outdoor playground structures. Engineered for child safety, weather durability, and high play value, our solutions are ideal for schools, public parks, resorts, and residential communities.
+        </p>
+        <div class="sd-features">
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Child-safe, non-toxic & ergonomic materials
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            UV-stabilized & weather-resistant construction
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            Customized multi-play stations & swings
+          </div>
+          <div class="sd-feature-item">
+            <span class="check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg></span>
+            EPDM rubber safety flooring installation
+          </div>
+        </div>
+        <a href="index.html#contact" class="sd-cta-btn">
+          Explore Play Equipment
+          <span class="btn-circle">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
   </section>
 
   <!-- ====== MATERIALS & BRANDS MARQUEE ====== -->
@@ -3538,6 +3733,7 @@
         <div class="bottom-bar-line"></div>
         <div class="bottom-bar-content">
           <p class="copyright-text">© 2026 SolaiSports. All rights reserved.</p>
+          <div class="buildzo-credit" style="color: rgba(255, 255, 255, 0.75); font-size: 13px; font-weight: 500; text-align: center;">designed by <a href="https://buildzo.info/" target="_blank" rel="noopener noreferrer" style="color: #16A34A; font-weight: 700; text-decoration: none;">BuildZo</a></div>
           <div class="legal-links">
             <a href="#">Privacy Policy</a>
             <span class="legal-sep">|</span>
@@ -3584,8 +3780,8 @@
         }
       });
     }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.01,
+      rootMargin: '100px 0px 100px 0px'
     });
 
     revealElements.forEach(el => revealObserver.observe(el));

@@ -1,0 +1,17 @@
+# robots.txt for Solai Sports Infra
+# https://solaisportsinfra.in
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://solaisportsinfra.in/sitemap.xml
+
+# Disallow unnecessary files
+Disallow: /clean_wa_btn.js
+Disallow: /fix_css.js
+Disallow: /fix_issues.js
+Disallow: /fix_syntax.js
+Disallow: /readd_btn.js
+Disallow: /.git/
+Disallow: /.vscode/
